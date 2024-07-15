@@ -79,15 +79,15 @@
     $(document).ready(async function() {
         // Define the images with Bootstrap classes and custom styling
         var leftImage =
-            '<div class="col-6 d-flex flex-row"><img src="http://localhost:8000/storage/16462360066530278727.gif" class="float-left d-none d-sm-block" alt="Left Image"></div>';
+            '<div class="col-6 d-flex flex-row"><img src="https://laviola.collaudo.biz/storage/16462360066530278727.gif" class="float-left d-none d-sm-block" alt="Left Image"></div>';
         var rightImage =
-            '<div class="col-6 d-flex flex-row-reverse"><img src="http://localhost:8000/storage/6357840656918928791.gif" class="float-right d-none d-sm-block" alt="Right Image"></div>';
+            '<div class="col-6 d-flex flex-row-reverse"><img src="https://laviola.collaudo.biz/storage/6357840656918928791.gif" class="float-right d-none d-sm-block" alt="Right Image"></div>';
 
         var row = '<div class="container mt-20"><div class="row">' + leftImage + rightImage +
             '</div></div>';
 
         var hero =
-            '<div class="col-12 d-flex justify-content-center"><img src="http://localhost:8000/storage/728x200-la-viola-ecobonus.gif" class="float-right d-none d-sm-block" alt="Right Image"></div>';
+            '<div class="col-12 d-flex justify-content-center"><img src="https://laviola.collaudo.biz/storage/728x200-la-viola-ecobonus.gif" class="float-right d-none d-sm-block" alt="Right Image"></div>';
         var row1 = '<div class="container"><div class="row">' + hero + '</div></div>';
 
         $('.recent-posts').before(row1);
