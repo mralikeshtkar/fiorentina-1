@@ -44,7 +44,7 @@ class AdController extends BaseController
         // Validate the incoming data
         $data = $request->validate([
             'post_title' => 'required|max:255',
-            'advanced_ad[type]' => 'required',
+            'advanced_ad' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'advanced_ad[width]' => 'nullable|integer',
             'advanced_ad[height]' => 'nullable|integer',

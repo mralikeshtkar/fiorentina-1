@@ -339,7 +339,7 @@
                                                 <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
                                             </div>
                                             <div class="inside">
-                                                <select class="form-select" name="advanced_ad[type]" id="advanced-ad-type">
+                                                <select class="form-select" name="advanced_ad" id="advanced-ad-type">
                                                     <option value="1" {{ old('advanced_ad[type]') == '1' ? 'selected' : '' }}>Annuncio immagine</option>
                                                     <option value="2" {{ old('advanced_ad[type]') == '2' ? 'selected' : '' }}>Google Ad Manager</option>
                                                 </select>
