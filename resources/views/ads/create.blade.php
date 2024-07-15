@@ -148,10 +148,34 @@
                         <label for="advads-group-id" class="label">gruppo annunci</label>
                         <div>
                             <select name="advanced_ad[output][group_id]" id="advads-group-id">
-{{--                                @foreach ($ad_groups as $group_id => $group_label)--}}
-{{--                                    <option value="{{ $group_id }}">{{ $group_label }}</option>--}}
-{{--                                @endforeach--}}
+                                <option value="514">230x90 centrale</option>
+                                <option value="515">230x90 dx</option>
+                                <option value="513">230x90 sx</option>
+                                <option value="486">300x250 b1</option>
+                                <option value="485">300x250 c1</option>
+                                <option value="367">300x250 top</option>
+                                <option value="364">468x60 top dx</option>
+                                <option value="362">468x60 top sx</option>
+                                <option value="366">728x90 b1</option>
+                                <option value="365">728x90 c1</option>
+                                <option value="483">728x90 c2</option>
+                                <option value="512">728X90 testata</option>
+                                <option value="8294">Gruppo popup desktop</option>
+                                <option value="9098">Gruppo popup mobile</option>
+                                <option value="18513">In Article Desktop 2024</option>
+                                <option value="8365">Mobile dopo foto</option>
+                                <option value="18512">Mobile home Top 24</option>
+                                <option value="8507">Mobile posizione 1</option>
+                                <option value="8508">Mobile posizione 2</option>
+                                <option value="8364">Mobile posizione 3</option>
+                                <option value="8503">Mobile posizione 4</option>
+                                <option value="16686">Mobile posizione 5</option>
+                                <option value="18587">rotation 100</option>
+                                <option value="18586">Rotazione 728x200</option>
+                                <option value="578">Skin</option>
+                                <option value="2915">Skin_mobile</option>
                             </select>
+
                         </div>
                         <hr>
                         <span class="label">dimensione</span>
