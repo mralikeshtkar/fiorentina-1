@@ -48,8 +48,8 @@ class AdController extends BaseController
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'advanced_ad[width]' => 'nullable|integer',
             'advanced_ad[height]' => 'nullable|integer',
-            'advanced_ad_id' => 'required|integer',
-            'advanced_ad[cache-busting][possible]' => 'sometimes|boolean'
+//            'advanced_ad_id' => 'required|integer',
+//            'advanced_ad[cache-busting][possible]' => 'sometimes|boolean'
         ]);
 
         // Handle file upload
@@ -66,8 +66,8 @@ class AdController extends BaseController
         $advertisement->image = $data['image'] ?? null;
         $advertisement->width = $data['advanced_ad[width]'] ?? null;
         $advertisement->height = $data['advanced_ad[height]'] ?? null;
-        $advertisement->group_id = $data['advanced_ad[output][group_id]'];
-        $advertisement->cache_busting_enabled = $data['advanced_ad[cache-busting][possible]'] ?? false;
+//        $advertisement->group_id = $data['advanced_ad[output][group_id]'];
+//        $advertisement->cache_busting_enabled = $data['advanced_ad[cache-busting][possible]'] ?? false;
 
         // Save the advertisement
         $advertisement->save();
