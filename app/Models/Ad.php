@@ -23,4 +23,5 @@ class Ad extends BaseModel
     protected $casts = [
         'status' => 'bool',
     ];
+    public $timestamps = false;
 }
