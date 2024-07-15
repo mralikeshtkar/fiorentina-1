@@ -1,8 +1,8 @@
 @if ($posts->isNotEmpty())
-    <section class="section hero-section pt-50 pb-50"
+    <section class="section pt-50 pb-50"
         @if ($shortcode->background_color) style="background-color: rgb(93, 46, 142) !important;" @endif>
         @php
-            $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
+            $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'asc')->firstOrFail();
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
             $match->odds = json_decode($match->odds, true);
@@ -40,8 +40,8 @@
                 <!-- Ticket Buttons -->
                 <div class="col-md-3">
                     <div class="d-grid">
-                        <a href="#" class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: none;">GUARDA
-                            ORA!</a>
+                        <a href="#" class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: none;">WATCH
+                            NOW!</a>
                     </div>
                 </div>
             </div>

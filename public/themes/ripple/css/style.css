@@ -4043,7 +4043,7 @@ body {
 }
 
 .upcoming-match::before {
-    content: 'La Prossima Partita';
+    content: 'Upcoming Match';
     background-color: #8424e3;
     padding: 4px;
     position: absolute;
