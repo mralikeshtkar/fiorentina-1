@@ -6,49 +6,52 @@
         @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
         <div id="poststuff">
-            <div id="post-body" class="metabox-holder columns-2">
-                <div id="post-body-content">
-                    <div id="titlediv">
-                        <div id="titlewrap">
-                            <label class="" id="title-prompt-text" for="title">Aggiungi titolo</label>
-                            <input type="text" name="post_title" size="30" value="{{ old('post_title') }}" id="title" spellcheck="true" autocomplete="off">
-                        </div>
-                    </div>
-                </div>
-
-                <div id="postbox-container-1" class="postbox-container">
-                    <div id="side-sortables" class="meta-box-sortables ui-sortable">
-                        <div id="submitdiv" class="postbox ">
-                            <div class="postbox-header">
-                                <h2 class="hndle ui-sortable-handle">Pubblica</h2>
+            <div class="row">
+                <div id="post-body" class="metabox-holder columns-2">
+                    <div id="post-body-content">
+                        <div id="titlediv">
+                            <div id="titlewrap">
+                                <label class="" id="title-prompt-text" for="title">Aggiungi titolo</label>
+                                <input type="text" name="post_title" size="30" value="{{ old('post_title') }}" id="title" spellcheck="true" autocomplete="off">
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="postbox-container-2" class="postbox-container">
-                    <div id="normal-sortables" class="meta-box-sortables ui-sortable">
-                        <div id="ad-main-box" class="postbox ">
-                            <div class="postbox-header">
-                                <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
+                    <div id="postbox-container-1" class="postbox-container">
+                        <div id="side-sortables" class="meta-box-sortables ui-sortable">
+                            <div id="submitdiv" class="postbox ">
+                                <div class="postbox-header">
+                                    <h2 class="hndle ui-sortable-handle">Pubblica</h2>
+                                </div>
                             </div>
-                            <div class="inside">
-                                <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
-                                <select name="advanced_ad[type]" id="advanced-ad-type">
-                                    <option value="1" {{ old('advanced_ad[type]') == '1' ? 'selected' : '' }}>Annuncio immagine</option>
-                                    <option value="2" {{ old('advanced_ad[type]') == '2' ? 'selected' : '' }}>Google Ad Manager</option>
-                                </select>
-                            </div>
-
                         </div>
                     </div>
+
+                    <div id="postbox-container-2" class="postbox-container">
+                        <div id="normal-sortables" class="meta-box-sortables ui-sortable">
+                            <div id="ad-main-box" class="postbox ">
+                                <div class="postbox-header">
+                                    <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
+                                </div>
+                                <div class="inside">
+                                    <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
+                                    <select name="advanced_ad[type]" id="advanced-ad-type">
+                                        <option value="1" {{ old('advanced_ad[type]') == '1' ? 'selected' : '' }}>Annuncio immagine</option>
+                                        <option value="2" {{ old('advanced_ad[type]') == '2' ? 'selected' : '' }}>Google Ad Manager</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="imageUpload">Upload an image:</label>
+                        <input type="file" id="imageUpload" name="image" accept="image/*">
+                    </div>
+                    <!-- Continue with the rest of the form content... -->
                 </div>
-                <div class="row">
-                    <label for="imageUpload">Upload an image:</label>
-                    <input type="file" id="imageUpload" name="image" accept="image/*">
-                </div>
-                <!-- Continue with the rest of the form content... -->
             </div>
+
         </div>
         <div id="ad-parameters-box" class="postbox">
             <div class="postbox-header">
