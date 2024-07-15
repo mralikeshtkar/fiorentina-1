@@ -30,9 +30,12 @@ class AdController extends BaseController
 
         public function create()
         {
-            $this->pageTitle(trans('Create new Ad'));
-    
-            return AdForms::create()->renderForm();
+            $ads=Ad::All();
+            return view('ads.view',compact('ads'));
+
+//            $this->pageTitle(trans('Create new Ad'));
+
+//            return AdForms::create()->renderForm();
         }
 
 
