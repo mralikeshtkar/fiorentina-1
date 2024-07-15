@@ -236,7 +236,8 @@
             </div>
         </div>
         <div class="inside">
-            <div class="advads-video-link-container" data-videolink="{{ $iframeEmbedCode }}"></div>
+{{--            <div class="advads-video-link-container" data-videolink="{{ $iframeEmbedCode }}"></div>--}}
+            <div class="advads-video-link-container" data-videolink=""></div>
             <div class="advads-video-link-container" data-videolink=""></div>
             <ul id="ad-targeting-box-notices" class="advads-metabox-notices"></ul>
             <div class="advads-show-in-wizard" style="display: none;">
