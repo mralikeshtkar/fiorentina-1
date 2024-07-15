@@ -62,7 +62,7 @@ class AdController extends BaseController
         // Create a new advertisement instance
         $advertisement = new Ad();
         $advertisement->title = $data['post_title'];
-        $advertisement->type = $data['advanced_ad[type]'];
+        $advertisement->type = $data['advanced_ad'];
         $advertisement->image = $data['image'] ?? null;
         $advertisement->width = $data['advanced_ad[width]'] ?? null;
         $advertisement->height = $data['advanced_ad[height]'] ?? null;
