@@ -116,26 +116,26 @@
                 </div>
                 <div class="inside">
                     <ul id="ad-parameters-box-notices" class="advads-metabox-notices">
-                        @if($adsense_active)
-                            <li class="advads-auto-ad-in-ad-content advads-notice-inline advads-error">Il codice di verifica AdSense e gli Annunci automatici sono già attivati nelle <a href="https://www.laviola.it/wp-admin/admin.php?page=advanced-ads-settings#top#adsense">impostazioni AdSense</a>. Non è necessario aggiungere manualmente il codice qui, a meno che non lo si voglia includere solo in determinate pagine.</li>
-                        @endif
-                        @if($not_supported_on_amp)
-                            <li class="advanced-ads-adsense-amp-warning advads-notice-inline advads-idea">Questo tipo di annuncio non è supportato nelle pagine AMP</li>
-                        @endif
-                        @if($adsense_position_error)
-                            <li class="advads-ad-notice-responsive-position advads-notice-inline advads-error">Gli annunci AdSense adattabili non funzionano in modo affidabile con <em>Posizione</em> impostata a sinistra o a destra. O cambi il <em>Tipo</em> a "normale" o segui <a href="https://wpadvancedads.com/adsense-responsive-custom-sizes/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=adsense-custom-sizes-tutorial" target="_blank">questo tutorial</a> se vuoi che l'annuncio sia racchiuso nel testo.</li>
-                        @endif
+{{--                        @if($adsense_active)--}}
+{{--                            <li class="advads-auto-ad-in-ad-content advads-notice-inline advads-error">Il codice di verifica AdSense e gli Annunci automatici sono già attivati nelle <a href="https://www.laviola.it/wp-admin/admin.php?page=advanced-ads-settings#top#adsense">impostazioni AdSense</a>. Non è necessario aggiungere manualmente il codice qui, a meno che non lo si voglia includere solo in determinate pagine.</li>--}}
+{{--                        @endif--}}
+{{--                        @if($not_supported_on_amp)--}}
+{{--                            <li class="advanced-ads-adsense-amp-warning advads-notice-inline advads-idea">Questo tipo di annuncio non è supportato nelle pagine AMP</li>--}}
+{{--                        @endif--}}
+{{--                        @if($adsense_position_error)--}}
+{{--                            <li class="advads-ad-notice-responsive-position advads-notice-inline advads-error">Gli annunci AdSense adattabili non funzionano in modo affidabile con <em>Posizione</em> impostata a sinistra o a destra. O cambi il <em>Tipo</em> a "normale" o segui <a href="https://wpadvancedads.com/adsense-responsive-custom-sizes/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=adsense-custom-sizes-tutorial" target="_blank">questo tutorial</a> se vuoi che l'annuncio sia racchiuso nel testo.</li>--}}
+{{--                        @endif--}}
                     </ul>
                     <div id="advanced-ads-tinymce-wrapper" style="display: none;">
-                        @include('partials.advanced-ads-tinymce')
+{{--                        @include('partials.advanced-ads-tinymce')--}}
                     </div>
                     <div id="advanced-ads-ad-parameters" class="advads-option-list">
                         <label for="advads-group-id" class="label">gruppo annunci</label>
                         <div>
                             <select name="advanced_ad[output][group_id]" id="advads-group-id">
-                                @foreach ($ad_groups as $group_id => $group_label)
-                                    <option value="{{ $group_id }}">{{ $group_label }}</option>
-                                @endforeach
+{{--                                @foreach ($ad_groups as $group_id => $group_label)--}}
+{{--                                    <option value="{{ $group_id }}">{{ $group_label }}</option>--}}
+{{--                                @endforeach--}}
                             </select>
                         </div>
                         <hr>
