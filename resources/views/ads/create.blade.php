@@ -277,6 +277,100 @@
             </div>
         </div>
         <br class="clear">
+        <div id="ad-targeting-box" class="postbox">
+            <div class="postbox-header">
+                <h2 class="hndle ui-sortable-handle">
+                    Targetizzazione
+                    <span class="advads-hndlelinks">
+                <a href="#" class="advads-video-link">Video</a>
+                <a href="https://wpadvancedads.com/manual/display-conditions/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=edit-display" target="_blank" class="advads-manual-link">Condizioni di Visualizzazione</a>
+                <a href="https://wpadvancedads.com/manual/visitor-conditions/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=edit-visitor" target="_blank" class="advads-manual-link">Condizioni per Visitatore</a>
+            </span>
+                </h2>
+                <div class="handle-actions hide-if-no-js">
+                    <button type="button" class="handle-order-higher" aria-disabled="false" aria-describedby="ad-targeting-box-handle-order-higher-description">
+                        <span class="screen-reader-text">Sposta in alto</span>
+                        <span class="order-higher-indicator" aria-hidden="true"></span>
+                    </button>
+                    <span class="hidden" id="ad-targeting-box-handle-order-higher-description">Sposta in su il riquadro Targetizzazione</span>
+                    <button type="button" class="handle-order-lower" aria-disabled="false" aria-describedby="ad-targeting-box-handle-order-lower-description">
+                        <span class="screen-reader-text">Sposta in basso</span>
+                        <span class="order-lower-indicator" aria-hidden="true"></span>
+                    </button>
+                    <span class="hidden" id="ad-targeting-box-handle-order-lower-description">Sposta in giù il riquadro Targetizzazione</span>
+                    <button type="button" class="handlediv" aria-expanded="true">
+                        <span class="screen-reader-text">Attiva/disattiva il pannello: Targetizzazione</span>
+                        <span class="toggle-indicator" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="inside">
+                <div class="advads-video-link-container" data-videolink="{{ $iframeEmbedCode }}"></div>
+                <ul id="ad-targeting-box-notices" class="advads-metabox-notices"></ul>
+                <div class="advads-show-in-wizard" style="display: none;">
+                    <p>Fai clic sul pulsante in basso se l'annuncio NON deve essere visualizzato su tutte le pagine se incluso automaticamente.</p>
+                    <button type="button" class="button button-secondary" id="advads-wizard-display-conditions-show">Nascondi l'annuncio su alcune pagine</button>
+                </div>
+                <h3>
+                    Condizioni di Visualizzazione
+                    <span class="advads-help">
+                <span class="advads-tooltip">
+                    Limita l'annuncio alle pagine che soddisfano le seguenti condizioni. Non fare nulla qui se l'annuncio deve apparire ovunque lo incorpori.
+                </span>
+            </span>
+                </h3>
+                <div id="advads-display-conditions" class="advads-hide-in-wizard">
+                    <table id="advads-ad-display-conditions" class="advads-conditions-table">
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <fieldset data-condition-list-target="advads-ad-display-conditions" data-condition-form-name="advanced_ad[conditions]" data-condition-action="load_display_conditions_metabox" data-condition-connector-default="or" class="advads-hide-in-wizard">
+                        <legend>Nuova condizione</legend>
+                        <input type="hidden" class="advads-conditions-index" value="0">
+                        <div class="advads-conditions-new">
+                            <select>
+                                <option value="">-- scegli una condizione --</option>
+                                <!-- Hard coded conditions -->
+                            </select>
+                            <span class="advads-loader" style="display: none;"></span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="advads-show-in-wizard" style="display: none;">
+                    <p>Fai clic sul pulsante in basso se l'annuncio NON deve essere visibile a tutti i visitatori</p>
+                    <button type="button" class="button button-secondary" id="advads-wizard-visitor-conditions-show">Nascondi l'annuncio ad alcuni utenti</button>
+                </div>
+
+                <hr>
+                <h3>
+                    Condizioni per Visitatore
+                    <span class="advads-help">
+                <span class="advads-tooltip">
+                    Indirizza l'annuncio a gruppi di utenti specifici che soddisfano le seguenti condizioni. Non fare nulla qui se tutti gli utenti dovrebbero vedere l'annuncio.
+                </span>
+            </span>
+                </h3>
+
+                <div id="advads-visitor-conditions" class="advads-hide-in-wizard">
+                    <table id="advads-ad-visitor-conditions" class="advads-conditions-table">
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <fieldset data-condition-list-target="advads-ad-visitor-conditions" data-condition-form-name="advanced_ad[visitors]" data-condition-action="load_visitor_conditions_metabox" data-condition-connector-default="and" class="advads-hide-in-wizard">
+                        <legend>Nuova condizione</legend>
+                        <input type="hidden" class="advads-conditions-index" value="0">
+                        <div class="advads-conditions-new">
+                            <select>
+                                <option value="">-- scegli una condizione --</option>
+                                <!-- Hard coded visitor conditions -->
+                            </select>
+                            <span class="advads-loader" style="display: none;"></span>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
 
