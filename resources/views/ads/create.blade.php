@@ -42,6 +42,11 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <label for="imageUpload">Upload an image:</label>
+                <input type="file" id="imageUpload" name="image" accept="image/*">
+                <button type="submit">Upload Image</button>
+            </div>
             <div id="ad-parameters-box" class="postbox">
                 <div class="postbox-header">
                     <h2 class="hndle ui-sortable-handle">Parametri annuncio</h2>
