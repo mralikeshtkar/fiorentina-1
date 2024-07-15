@@ -88,7 +88,7 @@
                 <div id="advanced-ads-ad-parameters" class="advads-option-list">
                     <label for="advads-group-id" class="label">gruppo annunci</label>
                     <div>
-                        <select name="advanced_ad[output][group_id]" id="advads-group-id">
+                        <select name="advanced_ad_id" id="advads-group-id">
                             <option value="514">230x90 centrale</option>
                             <option value="515">230x90 dx</option>
                             <option value="513">230x90 sx</option>

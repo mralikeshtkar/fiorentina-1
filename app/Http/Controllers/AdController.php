@@ -48,7 +48,7 @@ class AdController extends BaseController
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'advanced_ad[width]' => 'nullable|integer',
             'advanced_ad[height]' => 'nullable|integer',
-            'advanced_ad[output][group_id]' => 'required|integer',
+            'advanced_ad_id' => 'required|integer',
             'advanced_ad[cache-busting][possible]' => 'sometimes|boolean'
         ]);
 
