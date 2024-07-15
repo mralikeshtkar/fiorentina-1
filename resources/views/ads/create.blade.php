@@ -35,10 +35,11 @@
                             <div class="inside">
                                 <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
                                 <select name="advanced_ad[type]" id="advanced-ad-type">
-                                    <option value="1" selected="selected">Annuncio immagine</option>
-                                    <option value="2">Google Ad Manager</option>
+                                    <option value="1" {{ old('advanced_ad[type]') == '1' ? 'selected' : '' }}>Annuncio immagine</option>
+                                    <option value="2" {{ old('advanced_ad[type]') == '2' ? 'selected' : '' }}>Google Ad Manager</option>
                                 </select>
                             </div>
+
                         </div>
                     </div>
                 </div>
