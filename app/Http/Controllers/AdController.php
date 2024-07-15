@@ -41,35 +41,39 @@ class AdController extends BaseController
 
     public function store(Request $request)
     {
-        $request->validate([
-            'ad_name' => 'required|string|max:255',
-            'ad_type' => 'required|string',
-            'ad_image' => 'nullable|image',
-            'ad_tag' => 'nullable|string',
-            'ad_link' => 'nullable|url',
-            'ad_group' => 'required|string',
-            'position' => 'required|string',
+        // Validate the incoming data
+        $data = $request->validate([
+            'post_title' => 'required|max:255',
+            'advanced_ad[type]' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'advanced_ad[width]' => 'nullable|integer',
+            'advanced_ad[height]' => 'nullable|integer',
+            'advanced_ad[output][group_id]' => 'required|integer',
+            'advanced_ad[cache-busting][possible]' => 'sometimes|boolean'
         ]);
 
-        $ad = new Ad();
-        $ad->ad_name = $request->ad_name;
-        $ad->ad_type = $request->ad_type;
-
-        if ($request->hasFile('ad_image')) {
-            $ad->ad_image = $request->file('ad_image')->store('ads', 'public');
+        // Handle file upload
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $data['image'] = $imageName;
         }
 
-        if ($request->ad_type == 'google') {
-            $ad->ad_tag = $request->ad_tag;
-        } else {
-            $ad->ad_link = $request->ad_link;
-        }
+        // Create a new advertisement instance
+        $advertisement = new Advertisement();
+        $advertisement->title = $data['post_title'];
+        $advertisement->type = $data['advanced_ad[type]'];
+        $advertisement->image = $data['image'] ?? null;
+        $advertisement->width = $data['advanced_ad[width]'] ?? null;
+        $advertisement->height = $data['advanced_ad[height]'] ?? null;
+        $advertisement->group_id = $data['advanced_ad[output][group_id]'];
+        $advertisement->cache_busting_enabled = $data['advanced_ad[cache-busting][possible]'] ?? false;
 
-        $ad->ad_group = $request->ad_group;
-        $ad->position = $request->position;
-        $ad->save();
+        // Save the advertisement
+        $advertisement->save();
 
-        return redirect()->route('ads.index')->with('success', 'Ad created successfully.');
+        // Redirect with success message
+        return redirect()->back()->with('success', 'Advertisement created successfully!');
     }
 
     public function edit(Ad $ad)
