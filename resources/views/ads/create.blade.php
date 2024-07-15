@@ -23,11 +23,11 @@
                             <div class="submitbox" id="submitpost">
                                 <div id="minor-publishing">
                                     <div style="display:none;">
-                                        <input type="submit" name="save" id="save" class="button" value="Salva">
+                                        <input type="submit" name="save" id="save" value="Salva" class="btn btn-primary">
                                     </div>
                                     <div id="minor-publishing-actions">
                                         <div id="save-action">
-{{--                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn-primary">--}}
+
                                             <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn btn-primary">
 
                                             <span class="spinner"></span>
