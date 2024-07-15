@@ -307,7 +307,8 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
-    <form action="{{ route('ad.submit') }}" method="POST" enctype="multipart/form-data">
+{{--    <form action="{{ route('ad.submit') }}" method="POST" enctype="multipart/form-data">--}}
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
         <div id="poststuff">
