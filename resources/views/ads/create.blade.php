@@ -23,7 +23,7 @@
         </div>
         <br class="clear">
     </div>
-@endsection
+
 
 {{-- Include partials for sections like publishing actions --}}
 {{--@section('partials')--}}
