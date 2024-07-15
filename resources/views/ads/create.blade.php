@@ -143,7 +143,8 @@
                         <div id="advanced-ads-ad-parameters-size">
                             <label>larghezza<input type="number" value="{{ $ad_width ?? 0 }}" name="advanced_ad[width]">px</label>
                             <label>altezza<input type="number" value="{{ $ad_height ?? 0 }}" name="advanced_ad[height]">px</label>
-                            <label><input type="checkbox" id="advads-wrapper-add-sizes" name="advanced_ad[output][add_wrapper_sizes]" value="true" @if($reserve_space) disabled @endif>prenota questo spazio</label>
+{{--                            <label><input type="checkbox" id="advads-wrapper-add-sizes" name="advanced_ad[output][add_wrapper_sizes]" value="true" @if($reserve_space) disabled @endif>prenota questo spazio</label>--}}
+                            <label><input type="checkbox" id="advads-wrapper-add-sizes" name="advanced_ad[output][add_wrapper_sizes]" value="true" >prenota questo spazio</label>
                         </div>
                     </div>
                     <div id="advads-cache-busting-check-wrap">
