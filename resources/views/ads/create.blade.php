@@ -163,6 +163,116 @@
                     </script>
                 </div>
             </div>
+{{--            <div id="ad-output-box" class="postbox">--}}
+{{--                <div class="postbox-header">--}}
+{{--                    <h2 class="hndle ui-sortable-handle">--}}
+{{--                        Layout / Output--}}
+{{--                        <span class="advads-hndlelinks">--}}
+{{--                <a href="https://wpadvancedads.com/manual/optimizing-the-ad-layout/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=edit-ad-layout" target="_blank" class="advads-manual-link">Manuale</a>--}}
+{{--            </span>--}}
+{{--                    </h2>--}}
+{{--                    <div class="handle-actions hide-if-no-js">--}}
+{{--                        <!-- Buttons for handling the order of the box -->--}}
+{{--                        @include('partials.handle-buttons', ['box_id' => 'ad-output-box'])--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="inside">--}}
+{{--                    <ul id="ad-output-box-notices" class="advads-metabox-notices">--}}
+{{--                        <!-- Potential dynamic notices could go here -->--}}
+{{--                    </ul>--}}
+{{--                    <div class="advads-ad-positioning">--}}
+{{--                        @foreach($positioningOptions as $option)--}}
+{{--                            <div class="advads-ad-positioning-position advads-option-list">--}}
+{{--                                <span class="label">{{ $option['label'] }}</span>--}}
+{{--                                <div class="advads-ad-positioning-position-groups-wrapper">--}}
+{{--                                    @foreach($option['groups'] as $group)--}}
+{{--                                        <div class="advads-ad-positioning-position-group">--}}
+{{--                                            <h3 class="advads-ad-positioning-position-group-heading">{{ $group['heading'] }}</h3>--}}
+{{--                                            @foreach($group['positions'] as $position)--}}
+{{--                                                <label class="advads-ad-positioning-position-wrapper {{ $position['is_checked'] ? 'is-checked' : '' }}" for="{{ $position['id'] }}">--}}
+{{--                                                    <input type="radio" class="advads-ad-positioning-position-option" name="advanced_ad[output][position]" id="{{ $position['id'] }}" value="{{ $position['value'] }}" {{ $position['is_checked'] ? 'checked' : '' }}>--}}
+{{--                                                    <div class="advads-ad-positioning-position-icon">--}}
+{{--                                                        {!! $position['icon_svg'] !!}--}}
+{{--                                                    </div>--}}
+{{--                                                </label>--}}
+{{--                                                <p class="advads-ad-positioning-position-group-description">--}}
+{{--                                                    {{ $position['description'] }}--}}
+{{--                                                </p>--}}
+{{--                                            @endforeach--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                        <hr class="advads-hide-in-wizard">--}}
+{{--                        @include('partials.ad-margin-settings', ['margins' => $margins])--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div id="ad-output-box" class="postbox">
+                <div class="postbox-header">
+                    <h2 class="hndle ui-sortable-handle">
+                        Layout / Output
+                        <span class="advads-hndlelinks">
+                <a href="https://wpadvancedads.com/manual/optimizing-the-ad-layout/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=edit-ad-layout" target="_blank" class="advads-manual-link">Manuale</a>
+            </span>
+                    </h2>
+                    <div class="handle-actions hide-if-no-js">
+                        <button type="button" class="handle-order-higher" aria-disabled="false" aria-describedby="ad-output-box-handle-order-higher-description">
+                            <span class="screen-reader-text">Sposta in alto</span>
+                            <span class="order-higher-indicator" aria-hidden="true"></span>
+                        </button>
+                        <span class="hidden" id="ad-output-box-handle-order-higher-description">Sposta in su il riquadro Layout / Output</span>
+                        <button type="button" class="handle-order-lower" aria-disabled="false" aria-describedby="ad-output-box-handle-order-lower-description">
+                            <span class="screen-reader-text">Sposta in basso</span>
+                            <span class="order-lower-indicator" aria-hidden="true"></span>
+                        </button>
+                        <span class="hidden" id="ad-output-box-handle-order-lower-description">Sposta in giù il riquadro Layout / Output</span>
+                        <button type="button" class="handlediv" aria-expanded="true">
+                            <span class="screen-reader-text">Attiva/disattiva il pannello: Layout / Output</span>
+                            <span class="toggle-indicator" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="inside">
+                    <ul id="ad-output-box-notices" class="advads-metabox-notices"></ul>
+                    <div class="advads-ad-positioning">
+                        <div class="advads-ad-positioning-position advads-option-list">
+                            <span class="label">Flusso di testo</span>
+                            <div class="advads-ad-positioning-position-groups-wrapper">
+                                <!-- Example of hard-coded positions -->
+                                <div class="advads-ad-positioning-position-group">
+                                    <h3 class="advads-ad-positioning-position-group-heading">Predefinito del tema</h3>
+                                    <label class="advads-ad-positioning-position-wrapper is-checked" for="advads-ad-positioning-position-none">
+                                        <input type="radio" class="advads-ad-positioning-position-option" name="advanced_ad[output][position]" id="advads-ad-positioning-position-none" value="none" checked>
+                                        <div class="advads-ad-positioning-position-icon">
+                                            <!-- SVG or other icon HTML -->
+                                        </div>
+                                    </label>
+                                    <p class="advads-ad-positioning-position-group-description">
+                                        L'annuncio si comporterà come predefinito dal tema.
+                                    </p>
+                                </div>
+                                <!-- More groups can be added here as static content -->
+                            </div>
+                        </div>
+                        <hr class="advads-hide-in-wizard">
+                        <!-- Margin settings are hard-coded here -->
+                        <div class="advads-ad-positioning-spacing advads-option-list">
+                            <span class="label">Margine</span>
+                            <div class="advads-ad-positioning-spacing-wrapper">
+                                <!-- Input fields for margin settings -->
+                                <label for="advads-ad-positioning-spacing-top">
+                                    <span class="label screen-reader-text">In alto</span>
+                                    <input type="number" step="1" id="advads-ad-positioning-spacing-top" class="advads-ad-positioning-spacing-option" name="advanced_ad[output][margin][top]" value="0">
+                                </label>
+                                <!-- Other margin settings -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
         <br class="clear">
