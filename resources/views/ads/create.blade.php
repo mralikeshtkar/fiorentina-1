@@ -305,7 +305,8 @@
                 </div>
             </div>
             <div class="inside">
-                <div class="advads-video-link-container" data-videolink="{{ $iframeEmbedCode }}"></div>
+{{--                <div class="advads-video-link-container" data-videolink="{{ $iframeEmbedCode }}"></div>--}}
+                <div class="advads-video-link-container" data-videolink=""></div>
                 <ul id="ad-targeting-box-notices" class="advads-metabox-notices"></ul>
                 <div class="advads-show-in-wizard" style="display: none;">
                     <p>Fai clic sul pulsante in basso se l'annuncio NON deve essere visualizzato su tutte le pagine se incluso automaticamente.</p>
