@@ -19,24 +19,7 @@
                         <div class="postbox-header">
                             <h2 class="hndle ui-sortable-handle">Pubblica</h2>
                         </div>
-                        <div class="inside">
-                            <div class="submitbox" id="submitpost">
-                                <div id="minor-publishing">
-                                    <div style="display:none;">
-                                        <input type="submit" name="save" id="save" value="Salva" class="btn btn-primary">
-                                    </div>
-                                    <div id="minor-publishing-actions">
-                                        <div id="save-action">
-
-                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn btn-primary">
-
-                                            <span class="spinner"></span>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -344,5 +327,6 @@
         </div>
 
     </div>
+    <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn btn-primary">
 @endsection
 
