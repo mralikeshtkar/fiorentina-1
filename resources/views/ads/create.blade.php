@@ -27,7 +27,7 @@
                                     </div>
                                     <div id="minor-publishing-actions">
                                         <div id="save-action">
-                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="button">
+                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn-primary">
                                             <span class="spinner"></span>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                         <div class="postbox-header">
                             <h2 class="hndle ui-sortable-handle">Tipo Annuncio: Testo semplice e Codice</h2>
                         </div>
-                      
+
                         <div class="inside">
                             <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
                             <ul id="advanced-ad-type">
