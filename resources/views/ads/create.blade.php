@@ -33,27 +33,7 @@
                                             <span class="spinner"></span>
                                         </div>
                                     </div>
-                                    <div id="misc-publishing-actions">
-                                        <div class="misc-pub-section misc-pub-post-status">
-                                            Stato:
-                                            <span id="post-status-display">
-                                            Bozza
-                                        </span>
-                                            <a href="#post_status" class="edit-post-status hide-if-no-js" role="button">
-                                                <span aria-hidden="true">Modifica</span>
-                                                <span class="screen-reader-text">Modifica stato</span>
-                                            </a>
-                                            <div id="post-status-select" class="hide-if-js">
-                                                <input type="hidden" name="hidden_post_status" id="hidden_post_status" value="draft">
-                                                <select name="post_status" id="post_status">
-                                                    <option value="pending">In attesa di revisione</option>
-                                                    <option selected="selected" value="draft">Bozza</option>
-                                                </select>
-                                                <a href="#post_status" class="save-post-status hide-if-no-js button">OK</a>
-                                                <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel">Annulla</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
