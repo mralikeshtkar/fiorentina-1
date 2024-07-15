@@ -19,7 +19,7 @@
                         <div class="postbox-header">
                             <h2 class="hndle ui-sortable-handle">Pubblica</h2>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -28,45 +28,23 @@
                 <div id="normal-sortables" class="meta-box-sortables ui-sortable">
                     <div id="ad-main-box" class="postbox ">
                         <div class="postbox-header">
-                            <h2 class="hndle ui-sortable-handle">Tipo Annuncio: Testo semplice e Codice</h2>
+                            <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
                         </div>
 
                         <div class="inside">
                             <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
                             <ul id="advanced-ad-type">
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Testo semplice e Codice</label>
-                                </li>
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">fittizio</label>
-                                </li>
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Rich Content</label>
-                                </li>
+
                                 <li class="advanced-ads-type-list-plain">
                                     <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
                                     <label for="advanced-ad-type-plain">Annuncio immagine</label>
                                 </li>
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Gruppo Annunci</label>
-                                </li>
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain"> AMP</label>
-                                </li>
+
                                 <li class="advanced-ads-type-list-plain">
                                     <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
                                     <label for="advanced-ad-type-plain">Google Ad Manager</label>
                                 </li>
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Annuncio AdSense</label>
-                                </li>
-                                {{-- Additional ad types here --}}
+
                             </ul>
                         </div>
                     </div>
