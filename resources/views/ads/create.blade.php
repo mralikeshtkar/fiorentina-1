@@ -13,12 +13,12 @@
 
             <div id="postbox-container-1" class="postbox-container">
                 <div id="side-sortables" class="meta-box-sortables ui-sortable">
-                    @include('partials.publish-box')
+{{--                    @include('partials.publish-box')--}}
                 </div>
             </div>
 
             <div id="postbox-container-2" class="postbox-container">
-                @include('partials.ad-main-box')
+{{--                @include('partials.ad-main-box')--}}
             </div>
         </div>
         <br class="clear">
@@ -26,17 +26,17 @@
 @endsection
 
 {{-- Include partials for sections like publishing actions --}}
-@section('partials')
-    {{-- Publish Box --}}
-    @component('components.publish-box')
-        {{-- Dynamic data can be passed to components like this --}}
-        @slot('status', $postStatus ?? 'Draft')
-    @endcomponent
+{{--@section('partials')--}}
+{{--    --}}{{-- Publish Box --}}
+{{--    @component('components.publish-box')--}}
+{{--        --}}{{-- Dynamic data can be passed to components like this --}}
+{{--        @slot('status', $postStatus ?? 'Draft')--}}
+{{--    @endcomponent--}}
 
-    {{-- Ad Main Box --}}
-    @component('components.ad-main-box')
-        @slot('type', $adType ?? 'Standard')
-    @endcomponent
+{{--    --}}{{-- Ad Main Box --}}
+{{--    @component('components.ad-main-box')--}}
+{{--        @slot('type', $adType ?? 'Standard')--}}
+{{--    @endcomponent--}}
 
 
 
