@@ -11,14 +11,14 @@ class Ad extends BaseModel
 
     protected $fillable = [
         'name',
-        'type',
-        'image',
-        'tag',
-        'link',
-        'position_id',
-        'starts_at',
-        'expires_at',
-        ];
+'type',
+'image',
+'tag',
+'link',
+'position_id',
+'starts_at',
+'expires_at',
+];
 
     protected $casts = [
         'status' => 'bool',
