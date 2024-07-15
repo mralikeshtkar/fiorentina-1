@@ -27,7 +27,9 @@
                                     </div>
                                     <div id="minor-publishing-actions">
                                         <div id="save-action">
-                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn-primary">
+{{--                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn-primary">--}}
+                                            <input type="submit" name="save" id="save-post" value="Salva bozza" class="btn btn-primary">
+
                                             <span class="spinner"></span>
                                         </div>
                                     </div>
@@ -176,55 +178,7 @@
                     </script>
                 </div>
             </div>
-{{--            <div id="ad-output-box" class="postbox">--}}
-{{--                <div class="postbox-header">--}}
-{{--                    <h2 class="hndle ui-sortable-handle">--}}
-{{--                        Layout / Output--}}
-{{--                        <span class="advads-hndlelinks">--}}
-{{--                <a href="https://wpadvancedads.com/manual/optimizing-the-ad-layout/?utm_source=advanced-ads&amp;utm_medium=link&amp;utm_campaign=edit-ad-layout" target="_blank" class="advads-manual-link">Manuale</a>--}}
-{{--            </span>--}}
-{{--                    </h2>--}}
-{{--                    <div class="handle-actions hide-if-no-js">--}}
-{{--                        <!-- Buttons for handling the order of the box -->--}}
-{{--                        @include('partials.handle-buttons', ['box_id' => 'ad-output-box'])--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="inside">--}}
-{{--                    <ul id="ad-output-box-notices" class="advads-metabox-notices">--}}
-{{--                        <!-- Potential dynamic notices could go here -->--}}
-{{--                    </ul>--}}
-{{--                    <div class="advads-ad-positioning">--}}
-{{--                        @foreach($positioningOptions as $option)--}}
-{{--                            <div class="advads-ad-positioning-position advads-option-list">--}}
-{{--                                <span class="label">{{ $option['label'] }}</span>--}}
-{{--                                <div class="advads-ad-positioning-position-groups-wrapper">--}}
-{{--                                    @foreach($option['groups'] as $group)--}}
-{{--                                        <div class="advads-ad-positioning-position-group">--}}
-{{--                                            <h3 class="advads-ad-positioning-position-group-heading">{{ $group['heading'] }}</h3>--}}
-{{--                                            @foreach($group['positions'] as $position)--}}
-{{--                                                <label class="advads-ad-positioning-position-wrapper {{ $position['is_checked'] ? 'is-checked' : '' }}" for="{{ $position['id'] }}">--}}
-{{--                                                    <input type="radio" class="advads-ad-positioning-position-option" name="advanced_ad[output][position]" id="{{ $position['id'] }}" value="{{ $position['value'] }}" {{ $position['is_checked'] ? 'checked' : '' }}>--}}
-{{--                                                    <div class="advads-ad-positioning-position-icon">--}}
-{{--                                                        {!! $position['icon_svg'] !!}--}}
-{{--                                                    </div>--}}
-{{--                                                </label>--}}
-{{--                                                <p class="advads-ad-positioning-position-group-description">--}}
-{{--                                                    {{ $position['description'] }}--}}
-{{--                                                </p>--}}
-{{--                                            @endforeach--}}
-{{--                                        </div>--}}
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                        <hr class="advads-hide-in-wizard">--}}
-{{--                        @include('partials.ad-margin-settings', ['margins' => $margins])--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-
-
+{
         </div>
         <div id="ad-output-box" class="postbox">
             <div class="postbox-header">
