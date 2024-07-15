@@ -72,6 +72,22 @@
                                     <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
                                     <label for="advanced-ad-type-plain">Testo semplice e Codice</label>
                                 </li>
+                                <li class="advanced-ads-type-list-plain">
+                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
+                                    <label for="advanced-ad-type-plain">fittizio</label>
+                                </li>
+                                <li class="advanced-ads-type-list-plain">
+                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
+                                    <label for="advanced-ad-type-plain">Testo semplice e Codice</label>
+                                </li>
+                                <li class="advanced-ads-type-list-plain">
+                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
+                                    <label for="advanced-ad-type-plain">Testo semplice e Codice</label>
+                                </li>
+                                <li class="advanced-ads-type-list-plain">
+                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
+                                    <label for="advanced-ad-type-plain">Testo semplice e Codice</label>
+                                </li>
                                 {{-- Additional ad types here --}}
                             </ul>
                         </div>
