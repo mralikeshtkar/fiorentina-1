@@ -33,20 +33,12 @@
 
                         <div class="inside">
                             <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
-                            <ul id="advanced-ad-type">
-
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Annuncio immagine</label>
-                                </li>
-
-                                <li class="advanced-ads-type-list-plain">
-                                    <input type="radio" name="advanced_ad[type]" id="advanced-ad-type-plain" value="plain" checked="checked">
-                                    <label for="advanced-ad-type-plain">Google Ad Manager</label>
-                                </li>
-
-                            </ul>
+                            <select name="advanced_ad[type]" id="advanced-ad-type">
+                                <option value="plain" selected="selected">Annuncio immagine</option>
+                                <option value="plain">Google Ad Manager</option>
+                            </select>
                         </div>
+
                     </div>
                 </div>
             </div>
