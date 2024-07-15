@@ -35,8 +35,8 @@
                             <div class="inside">
                                 <ul id="ad-main-box-notices" class="advads-metabox-notices"></ul>
                                 <select name="advanced_ad[type]" id="advanced-ad-type">
-                                    <option value="plain" selected="selected">Annuncio immagine</option>
-                                    <option value="plain">Google Ad Manager</option>
+                                    <option value="1" selected="selected">Annuncio immagine</option>
+                                    <option value="2">Google Ad Manager</option>
                                 </select>
                             </div>
                         </div>
