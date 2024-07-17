@@ -42,58 +42,41 @@ class AdController extends BaseController
 
     public function store(Request $request)
     {
-        // Validate the incoming data
-        $data = $request->validate([
-            'post_title' => 'required|max:255',
-            'advanced_ad' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // Validate the incoming request data
+        $validated = $request->validate([
+            'post_title' => 'required|string|max:255',
+            'advanced_ad' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'advanced_ad[width]' => 'nullable|integer',
             'advanced_ad[height]' => 'nullable|integer',
-//            'advanced_ad_id' => 'required|integer',
-//            'advanced_ad[cache-busting][possible]' => 'sometimes|boolean'
+            'advanced_ad_id' => 'nullable|integer',
+            'status' => 'required|string'
         ]);
 
+        // Create a new Ad instance
+        $advertisement = new Ad();
+        $advertisement->title = $validated['post_title'];
+        $advertisement->type = $validated['advanced_ad'];
+        $advertisement->group_id = $validated['advanced_ad_id'] ?? null;
+        $advertisement->width = $validated['advanced_ad[width]'] ?? null;
+        $advertisement->height = $validated['advanced_ad[height]'] ?? null;
+        $advertisement->status = $validated['status'];
+
         // Handle file upload
-
-        try {
-            $advertisement = new Ad();
-
-            // Check if required fields are strings and not empty
-            if (empty($data['post_title']) || !is_string($data['post_title'])) {
-                throw new Exception('Invalid or missing title.');
-            }
-            if (empty($data['advanced_ad']) || !is_string($data['advanced_ad'])) {
-                throw new Exception('Invalid or missing advertisement type.');
-            }
-
-            // Assigning data with validation and sanitization
-            $advertisement->title = htmlspecialchars($data['post_title']);
-            $advertisement->type = htmlspecialchars($data['advanced_ad']);
-
-            // Handling optional image field
-            if (isset($data['image']) && is_string($data['image'])) {
-                $advertisement->image = htmlspecialchars($data['image']);
-            } else {
-                $advertisement->image = null;
-            }
-
-            // Extracting and validating nested data for 'width' and 'height'
-            $advertisement->width = isset($data['advanced_ad']['width']) && is_numeric($data['advanced_ad']['width']) ? intval($data['advanced_ad']['width']) : null;
-            $advertisement->height = isset($data['advanced_ad']['height']) && is_numeric($data['advanced_ad']['height']) ? intval($data['advanced_ad']['height']) : null;
-
-            // Save the advertisement
-            $advertisement->save();
-
-        } catch (Exception $e) {
-            // Error handling, e.g., log the error and send a user-friendly message
-            error_log($e->getMessage());
-            echo "Failed to save advertisement: " . $e->getMessage();
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $advertisement->image = $request->image->store('ads_images', 'public');
         }
 
-
-        // Redirect with success message
-        return redirect()->back()->with('success', 'Advertisement created successfully!');
+        try {
+            // Save the advertisement to the database
+            $advertisement->save();
+            return redirect()->back()->with('success', 'Advertisement created successfully!');
+        } catch (\Exception $e) {
+            Log::error('Failed to save advertisement: ' . $e->getMessage());
+            return redirect()->back()->withErrors('Failed to save advertisement. Please try again.');
+        }
     }
+
 
     public function edit(Ad $ad)
     {
