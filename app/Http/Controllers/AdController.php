@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
-use Exception;
 use Illuminate\Http\Request;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
@@ -58,26 +57,28 @@ class AdController extends BaseController
         try {
             $advertisement = new Ad();
 
-            // Validate required fields
-            if (empty($data['post_title']) || empty($data['advanced_ad'])) {
-                throw new Exception('Required fields are missing.');
+            // Check if required fields are strings and not empty
+            if (empty($data['post_title']) || !is_string($data['post_title'])) {
+                throw new Exception('Invalid or missing title.');
+            }
+            if (empty($data['advanced_ad']) || !is_string($data['advanced_ad'])) {
+                throw new Exception('Invalid or missing advertisement type.');
             }
 
-            // Assigning data with basic validation and sanitization
+            // Assigning data with validation and sanitization
             $advertisement->title = htmlspecialchars($data['post_title']);
             $advertisement->type = htmlspecialchars($data['advanced_ad']);
 
-            // Handling optional fields with checks for existence and null coalescence
-            $advertisement->image = $data['image'] ?? null;
+            // Handling optional image field
+            if (isset($data['image']) && is_string($data['image'])) {
+                $advertisement->image = htmlspecialchars($data['image']);
+            } else {
+                $advertisement->image = null;
+            }
 
-            // Extracting nested data for 'width' and 'height'
-            $advertisement->width = isset($data['advanced_ad']['width']) ? intval($data['advanced_ad']['width']) : null;
-            $advertisement->height = isset($data['advanced_ad']['height']) ? intval($data['advanced_ad']['height']) : null;
-
-            // Additional properties if needed
-            // Uncomment and handle if these fields are expected to be used
-            // $advertisement->group_id = $data['advanced_ad']['output']['group_id'] ?? null;
-            // $advertisement->cache_busting_enabled = $data['advanced_ad']['cache-busting']['possible'] ?? false;
+            // Extracting and validating nested data for 'width' and 'height'
+            $advertisement->width = isset($data['advanced_ad']['width']) && is_numeric($data['advanced_ad']['width']) ? intval($data['advanced_ad']['width']) : null;
+            $advertisement->height = isset($data['advanced_ad']['height']) && is_numeric($data['advanced_ad']['height']) ? intval($data['advanced_ad']['height']) : null;
 
             // Save the advertisement
             $advertisement->save();
