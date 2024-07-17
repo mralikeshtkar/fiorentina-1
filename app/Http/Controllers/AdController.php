@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use Exception;
 use Illuminate\Http\Request;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
