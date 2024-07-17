@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
 use App\Http\Forms\AdForms;
+use Illuminate\Support\Facades\Log;
 
 
 class AdController extends BaseController
