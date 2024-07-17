@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use Exception;
 use Illuminate\Http\Request;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
@@ -53,24 +54,40 @@ class AdController extends BaseController
         ]);
 
         // Handle file upload
-        if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $data['image'] = $imageName;
+
+        try {
+            $advertisement = new Ad();
+
+            // Validate required fields
+            if (empty($data['post_title']) || empty($data['advanced_ad'])) {
+                throw new Exception('Required fields are missing.');
+            }
+
+            // Assigning data with basic validation and sanitization
+            $advertisement->title = htmlspecialchars($data['post_title']);
+            $advertisement->type = htmlspecialchars($data['advanced_ad']);
+
+            // Handling optional fields with checks for existence and null coalescence
+            $advertisement->image = $data['image'] ?? null;
+
+            // Extracting nested data for 'width' and 'height'
+            $advertisement->width = isset($data['advanced_ad']['width']) ? intval($data['advanced_ad']['width']) : null;
+            $advertisement->height = isset($data['advanced_ad']['height']) ? intval($data['advanced_ad']['height']) : null;
+
+            // Additional properties if needed
+            // Uncomment and handle if these fields are expected to be used
+            // $advertisement->group_id = $data['advanced_ad']['output']['group_id'] ?? null;
+            // $advertisement->cache_busting_enabled = $data['advanced_ad']['cache-busting']['possible'] ?? false;
+
+            // Save the advertisement
+            $advertisement->save();
+
+        } catch (Exception $e) {
+            // Error handling, e.g., log the error and send a user-friendly message
+            error_log($e->getMessage());
+            echo "Failed to save advertisement: " . $e->getMessage();
         }
 
-        // Create a new advertisement instance
-        $advertisement = new Ad();
-        $advertisement->title = $data['post_title'];
-        $advertisement->type = $data['advanced_ad'];
-        $advertisement->image = $data['image'] ?? null;
-        $advertisement->width = $data['advanced_ad[width]'] ?? null;
-        $advertisement->height = $data['advanced_ad[height]'] ?? null;
-//        $advertisement->group_id = $data['advanced_ad[output][group_id]'];
-//        $advertisement->cache_busting_enabled = $data['advanced_ad[cache-busting][possible]'] ?? false;
-
-        // Save the advertisement
-        $advertisement->save();
 
         // Redirect with success message
         return redirect()->back()->with('success', 'Advertisement created successfully!');
