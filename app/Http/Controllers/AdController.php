@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use Exception;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
 use App\Http\Forms\AdForms;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Intervention\Image\ImageManager;
 
 
 class AdController extends BaseController
@@ -23,22 +29,20 @@ class AdController extends BaseController
     public function index()
     {
         $this->pageTitle("Ads List");
-        $ads=Ad::All();
-        return view('ads.view',compact('ads'));
+        $ads = Ad::All();
+        return view('ads.view', compact('ads'));
     }
 
 
-
-
-        public function create()
-        {
+    public function create()
+    {
 //            $ads=Ad::All();
-            return view('ads.create');
+        return view('ads.create');
 
 //            $this->pageTitle(trans('Create new Ad'));
 
 //            return AdForms::create()->renderForm();
-        }
+    }
 
 
     public function store(Request $request)
@@ -46,26 +50,29 @@ class AdController extends BaseController
         // Validate the incoming request data
         $validated = $request->validate([
             'post_title' => 'required|string|max:255',
-            'advanced_ad' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'advanced_ad[width]' => 'nullable|integer',
-            'advanced_ad[height]' => 'nullable|integer',
-            'advanced_ad_id' => 'nullable|integer',
-            'status' => 'required|string'
+            'width' => 'nullable|numeric|min:0',
+            'height' => 'nullable|numeric|min:0',
+            'type' => ['required',Rule::in(array_keys(Ad::TYPES))],
+            'group' => ['required',Rule::in(array_keys(Ad::GROUPS))],
         ]);
 
         // Create a new Ad instance
         $advertisement = new Ad();
         $advertisement->title = $validated['post_title'];
-        $advertisement->type = $validated['advanced_ad'];
-        $advertisement->group_id = $validated['advanced_ad_id'] ?? null;
-        $advertisement->width = $validated['advanced_ad[width]'] ?? null;
-        $advertisement->height = $validated['advanced_ad[height]'] ?? null;
-        $advertisement->status = $validated['status'];
+        $advertisement->group = $request->group;
+        $advertisement->type = $request->type;
+        $advertisement->width = $request->width;
+        $advertisement->height = $request->height;
 
         // Handle file upload
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $advertisement->image = $request->image->store('ads_images', 'public');
+            $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
+            $imageResized = ImageManager::gd()->read($request->image)->resize($request->width, $request->height)->encode();
+            $path = "ads-images/" . $filename;
+            Storage::disk('public')->put($path, $imageResized);
+            $advertisement->image = $path;
+//            $advertisement->image = $request->image->store('', 'public');
         }
 
         try {

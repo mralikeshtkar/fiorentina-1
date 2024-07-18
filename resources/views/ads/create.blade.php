@@ -339,9 +339,10 @@
                                                 <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
                                             </div>
                                             <div class="inside">
-                                                <select class="form-select" name="advanced_ad" id="advanced-ad-type">
-                                                    <option value="1" {{ old('advanced_ad[type]') == '1' ? 'selected' : '' }}>Annuncio immagine</option>
-                                                    <option value="2" {{ old('advanced_ad[type]') == '2' ? 'selected' : '' }}>Google Ad Manager</option>
+                                                <select class="form-select" name="type" id="advanced-ad-type">
+                                                    @foreach(\App\Models\Ad::TYPES as $key => $title)
+                                                        <option value="{{ $key }}" @selected(old('type') == $key)>{{ $title }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -361,44 +362,19 @@
                                     </div>
                                     <div class="inside">
                                         <label for="advads-group-id" class="form-label">Gruppo annunci</label>
-                                        <select class="form-select" name="advanced_ad_id" id="advads-group-id">
-
-                                                                                                <option value="514">230x90 centrale</option>
-                                                                                                <option value="515">230x90 dx</option>
-                                                                                                <option value="513">230x90 sx</option>
-                                                                                                <option value="486">300x250 b1</option>
-                                                                                                <option value="485">300x250 c1</option>
-                                                                                                <option value="367">300x250 top</option>
-                                                                                                <option value="364">468x60 top dx</option>
-                                                                                                <option value="362">468x60 top sx</option>
-                                                                                                <option value="366">728x90 b1</option>
-                                                                                                <option value="365">728x90 c1</option>
-                                                                                                <option value="483">728x90 c2</option>
-                                                                                                <option value="512">728X90 testata</option>
-                                                                                                <option value="8294">Gruppo popup desktop</option>
-                                                                                                <option value="9098">Gruppo popup mobile</option>
-                                                                                                <option value="18513">In Article Desktop 2024</option>
-                                                                                                <option value="8365">Mobile dopo foto</option>
-                                                                                                <option value="18512">Mobile home Top 24</option>
-                                                                                                <option value="8507">Mobile posizione 1</option>
-                                                                                                <option value="8508">Mobile posizione 2</option>
-                                                                                                <option value="8364">Mobile posizione 3</option>
-                                                                                                <option value="8503">Mobile posizione 4</option>
-                                                                                                <option value="16686">Mobile posizione 5</option>
-                                                                                                <option value="18587">rotation 100</option>
-                                                                                                <option value="18586">Rotazione 728x200</option>
-                                                                                                <option value="578">Skin</option>
-                                                                                                <option value="2915">Skin_mobile</option>
-
+                                        <select class="form-select" name="group" id="advads-group-id">
+                                            @foreach(\App\Models\Ad::GROUPS as $key => $title)
+                                                <option value="{{ $key }}" @selected(old('type') == $key)>{{ $title }}</option>
+                                            @endforeach
                                         </select>
 
                                         <div class="mt-3">
                                             <label for="width" class="form-label">Larghezza (px)</label>
-                                            <input type="number" class="form-control" id="width" name="advanced_ad[width]" value="{{ $ad_width ?? 0 }}">
+                                            <input type="number" class="form-control" id="width" name="width" value="{{ $ad_width ?? 0 }}">
                                         </div>
                                         <div class="mt-3">
                                             <label for="height" class="form-label">Altezza (px)</label>
-                                            <input type="number" class="form-control" id="height" name="advanced_ad[height]" value="{{ $ad_height ?? 0 }}">
+                                            <input type="number" class="form-control" id="height" name="height" value="{{ $ad_height ?? 0 }}">
                                         </div>
                                         <div class="form-check mt-3">
                                             <input class="form-check-input" type="checkbox" id="advads-wrapper-add-sizes" name="advanced_ad[output][add_wrapper_sizes]" value="true">
