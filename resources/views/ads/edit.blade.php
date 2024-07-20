@@ -1,11 +1,9 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
-    {{--    <form action="{{ route('ad.submit') }}" method="POST" enctype="multipart/form-data">--}}
-    <form action="{{ route('ads.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
-
-
+    <form action="{{ route('ads.update',$ad->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
         <div class="row">
 
             <div class="gap-3 col-md-9">
@@ -17,7 +15,7 @@
                                 <div class="mb-3" id="titlediv">
                                     <label for="title" class="form-label" id="title-prompt-text">Aggiungi titolo</label>
                                     <input type="text" class="form-control" name="post_title" id="title"
-                                           value="{{ old('post_title') }}" spellcheck="true" autocomplete="off">
+                                           value="{{ $ad->title }}" spellcheck="true" autocomplete="off">
                                 </div>
                             </div>
 
@@ -43,7 +41,7 @@
                                             <select class="form-select" name="type" id="advanced-ad-type">
                                                 @foreach(\App\Models\Ad::TYPES as $key => $title)
                                                     <option
-                                                        value="{{ $key }}" @selected(old('type') == $key)>{{ $title }}</option>
+                                                        value="{{ $key }}" @selected($ad->type == $key)>{{ $title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -57,7 +55,8 @@
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
-                                        <img src="" class="image-preview" alt="">
+                                        <img src="{{ $ad->getImageUrl() }}" class="image-preview"
+                                             alt="{{ $ad->title }}">
                                     </div>
                                 </div>
                             </div>
@@ -72,19 +71,19 @@
                                     <select class="form-select" name="group" id="advads-group-id">
                                         @foreach(\App\Models\Ad::GROUPS as $key => $title)
                                             <option
-                                                value="{{ $key }}" @selected(old('group') == $key)>{{ $title }}</option>
+                                                value="{{ $key }}" @selected($ad->group == $key)>{{ $title }}</option>
                                         @endforeach
                                     </select>
 
                                     <div class="mt-3">
                                         <label for="width" class="form-label">Larghezza (px)</label>
                                         <input type="number" class="form-control" id="width" name="width"
-                                               value="{{ $ad_width ?? null }}">
+                                               value="{{ $ad->width }}">
                                     </div>
                                     <div class="mt-3">
                                         <label for="height" class="form-label">Altezza (px)</label>
                                         <input type="number" class="form-control" id="height" name="height"
-                                               value="{{ $ad_height ?? null }}">
+                                               value="{{ $ad->height }}">
                                     </div>
                                     <div class="form-check mt-3">
                                         <input class="form-check-input" type="checkbox" id="advads-wrapper-add-sizes"
@@ -194,16 +193,12 @@
                         </div>
                     </div>
                 </header>
-
-
                 <div class="card meta-boxes">
                     <div class="card-header">
                         <h4 class="card-title">
                             <label for="status" class="form-label required">Status</label>
                         </h4>
                     </div>
-
-
                     <div class=" card-body">
                         <select data-placeholder="Select an option" class="form-control form-select" required="required"
                                 id="status" name="status" aria-required="true">
