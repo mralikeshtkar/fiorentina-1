@@ -26,8 +26,6 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('ads.includes.main-page',function (View $view){
             $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_MAIN_PAGE)->get());
         });
-//        view()->composer('ads.includes.side-page',function (View $view){
-//            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_SIDE_PAGE)->get());
-//        });
+
     }
 }
