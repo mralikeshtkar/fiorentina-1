@@ -74,7 +74,7 @@
 
         @if ($topSidebarContent)
             <div class="col-lg-3">
-                
+
                 <div class="page-sidebar mt-3">
                     <section>
                         <div class="page-content">
@@ -149,5 +149,6 @@
             </div>
         @endif
     </div>
+        @include('ads.includes.main-page')
     </div>
 </section>
