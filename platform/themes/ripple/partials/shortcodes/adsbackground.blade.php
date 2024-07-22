@@ -24,10 +24,16 @@
     </style>
 </head>
 <body>
+@if(isset($ads) && $ads)
 <div class="background-container">
-    <img src="your-image.jpg" alt="Background Image">
-    <!-- Other contents here -->
-    <p>This is other content over the image.</p>
+    @foreach($ads as $ad)
+
+            <a href="" class="d-block w-full">
+                <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-full d-block">
+            </a>
+
+    @endforeach
 </div>
+@endif
 </body>
 </html>
