@@ -56,6 +56,38 @@ app('events')->listen(RouteMatched::class, function () {
         });
 
         Shortcode::setPreviewImage('featured-posts', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
+        Shortcode::register(
+            'ads-background',
+            __('Ads Background'),
+            __('Ads Background'),
+            function (ShortcodeCompiler $shortcode) {
+                $posts = get_featured_posts((int) $shortcode->limit ?: 5, [
+                    'author',
+                ]);
+
+                if ($posts->isEmpty()) {
+                    return null;
+                }
+
+                return Theme::partial('shortcodes.featured-posts', compact('posts', 'shortcode'));
+            }
+        );
+
+        Shortcode::setAdminConfig('ads-background', function (array $attributes) {
+            return ShortcodeForm::createFromArray($attributes)
+                ->withLazyLoading()
+                ->add(
+                    'limit',
+                    NumberField::class,
+                    TextFieldOption::make()->label(__('Limit'))->defaultValue(5)->toArray()
+                )
+                ->add('background_color', ColorField::class, [
+                    'label' => __('Background color'),
+                    'default_value' => '#ecf0f1',
+                ]);
+        });
+
+        Shortcode::setPreviewImage('ads-background', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
 
         Shortcode::register(
             'recent-posts',
