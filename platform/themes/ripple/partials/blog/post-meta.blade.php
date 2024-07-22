@@ -15,4 +15,4 @@
     <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!} <span
             class="text-light">{{ $post->author->name }}</span></span>
 @endif
-{{--@include('ads.includes.blog-page')--}}
+@include('ads.includes.blog-page')
