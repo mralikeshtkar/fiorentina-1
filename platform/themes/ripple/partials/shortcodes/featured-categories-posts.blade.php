@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-
+            @include('ads.includes.main-page')
             @if ($primarySidebarContent)
                 <div class="col-lg-3">
                     <div class="page-sidebar">
