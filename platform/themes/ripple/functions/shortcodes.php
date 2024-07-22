@@ -56,22 +56,28 @@ app('events')->listen(RouteMatched::class, function () {
         });
 
         Shortcode::setPreviewImage('featured-posts', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
+
+
         Shortcode::register(
             'ads-background',
             __('Ads Background'),
             __('Ads Background'),
             function (ShortcodeCompiler $shortcode) {
-                $posts = get_featured_posts((int) $shortcode->limit ?: 5, [
-                    'author',
-                ]);
-
-                if ($posts->isEmpty()) {
+                if (! function_exists('render_galleries')) {
                     return null;
                 }
 
-                return Theme::partial('shortcodes.featured-posts', compact('posts', 'shortcode'));
+                $galleries = render_galleries((int) $shortcode->limit ?: 8);
+
+                if (! $galleries) {
+                    return null;
+                }
+
+                return Theme::partial('shortcodes.adsbackground', compact('galleries', 'shortcode'));
             }
         );
+
+        Shortcode::setPreviewImage('ads-background', Theme::asset()->url('images/ui-blocks/all-galleries.png'));
 
         Shortcode::setAdminConfig('ads-background', function (array $attributes) {
             return ShortcodeForm::createFromArray($attributes)
@@ -79,15 +85,13 @@ app('events')->listen(RouteMatched::class, function () {
                 ->add(
                     'limit',
                     NumberField::class,
-                    TextFieldOption::make()->label(__('Limit'))->defaultValue(5)->toArray()
+                    TextFieldOption::make()->label(__('Limit'))->defaultValue(8)->toArray()
                 )
                 ->add('background_color', ColorField::class, [
                     'label' => __('Background color'),
-                    'default_value' => '#ecf0f1',
+                    'default_value' => '#fff',
                 ]);
         });
-
-        Shortcode::setPreviewImage('ads-background', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
 
         Shortcode::register(
             'recent-posts',
