@@ -30,4 +30,4 @@
         {!! $posts->withQueryString()->links() !!}
     </div>
 @endif
-@include('ads.includes.blog-page')
+{{--@include('ads.includes.blog-page')--}}
