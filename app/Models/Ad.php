@@ -21,12 +21,14 @@ class Ad extends BaseModel
     const GROUP_POPUP_MOBILE = 2;
     const GROUP_MAIN_PAGE = 3;
     const GROUP_BLOG_PAGE = 4;
+    const GROUP_BACKGROUND_PAGE = 5;
 
     const GROUPS = [
         self::GROUP_POPUP_DESKTOP => "Gruppo popup desktop",
         self::GROUP_POPUP_MOBILE => "Gruppo popup mobile",
         self::GROUP_MAIN_PAGE => "Gruppo main page",
         self::GROUP_BLOG_PAGE => "Gruppo blog page",
+        self::GROUP_BACKGROUND_PAGE => "Gruppo background page",
     ];
 
     protected $fillable = [

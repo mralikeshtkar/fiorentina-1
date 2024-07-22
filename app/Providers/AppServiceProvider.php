@@ -29,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('ads.includes.blog-page',function (View $view){
             $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BLOG_PAGE)->get());
         });
+        view()->composer('ads.includes.background-page',function (View $view){
+            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BACKGROUND_PAGE)->get());
+        });
 
     }
 }
