@@ -1,11 +1,29 @@
-@if(isset($ads) && $ads)
-    <div class="row mx-0">
-        @foreach($ads as $ad)
-            <div class="col-12 col-md-6">
-                <a href="" class="d-block w-full">
+@if(isset($ad) && $ad)
+    <style>
+        .fixed-ad-container {
+            background-color: red;
+            position: sticky;
+            top: 95px;
+            display: none;
+        }
+
+        @media only screen and (min-width: 1830px) {
+            .fixed-ad-container {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+            }
+        }
+    </style>
+    <div class="fixed-ad-container justify-content-center">
+        <div class="w-100 d-flex justify-content-center">
+            <div class="position-absolute">
+                <a href="" class="d-flex w-100">
                     <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-full d-block">
                 </a>
             </div>
-        @endforeach
+        </div>
     </div>
 @endif
+

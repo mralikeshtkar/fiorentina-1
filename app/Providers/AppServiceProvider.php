@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BLOG_PAGE)->get());
         });
         view()->composer('ads.includes.background-page',function (View $view){
-            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BACKGROUND_PAGE)->get());
+            $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BACKGROUND_PAGE)->first());
         });
 
     }
