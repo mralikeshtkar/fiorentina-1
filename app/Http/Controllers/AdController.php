@@ -62,7 +62,11 @@ class AdController extends BaseController
         // Handle file upload
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
-            $imageResized = ImageManager::gd()->read($request->image)->resize($request->width, $request->height)->encode();
+            $imageResized = ImageManager::gd()->read($request->image);
+            if($request->width && $request->height){
+                $imageResized=$imageResized->resize($request->width, $request->height);
+            }
+            $imageResized=$imageResized->encode();
             $path = "ads-images/" . $filename;
             Storage::disk('public')->put($path, $imageResized);
             $advertisement->image = $path;
@@ -104,7 +108,11 @@ class AdController extends BaseController
         ];
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
-            $imageResized = ImageManager::gd()->read($request->image)->resize($request->width, $request->height)->encode();
+            $imageResized = ImageManager::gd()->read($request->image);
+            if($request->width && $request->height){
+                $imageResized=$imageResized->resize($request->width, $request->height);
+            }
+            $imageResized=$imageResized->encode();
             $path = "ads-images/" . $filename;
             Storage::disk('public')->put($path, $imageResized);
             $data['image'] = $path;
