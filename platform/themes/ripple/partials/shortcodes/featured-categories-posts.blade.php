@@ -1,4 +1,4 @@
-<section class="section pt-50 pb-50 bg-lightgray" @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
+<section class="section pt-50 pb-50 bg-lightgray" >
     <div class="container">
         <div class="row" style="background-color: white !important;">
             @php
