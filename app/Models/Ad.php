@@ -24,6 +24,7 @@ class Ad extends BaseModel
     const GROUP_BACKGROUND_PAGE = 5;
     const GROUP_DBLOG_TITLE = 6;
     const GROUP_DBLOG_AUTHOR = 7;
+    const GROUP_DBLOG_P1 = 8;
 
     const GROUPS = [
         self::GROUP_POPUP_DESKTOP => "Gruppo popup desktop",
@@ -33,6 +34,7 @@ class Ad extends BaseModel
         self::GROUP_BACKGROUND_PAGE => "Gruppo background page",
         self::GROUP_DBLOG_TITLE => "Gruppo Dblog_title",
         self::GROUP_DBLOG_AUTHOR => "Gruppo Dblog_author",
+        self::GROUP_DBLOG_P1 => "Gruppo Dblog_P1",
     ];
 
     protected $fillable = [

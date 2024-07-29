@@ -23,6 +23,7 @@
 </header>
 <div class='ck-content'>
     {!! BaseHelper::clean($post->content) !!}
+    @include('ads.includes.dblog-p1')
 </div>
 <br />
 {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, null, $post) !!}
