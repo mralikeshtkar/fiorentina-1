@@ -11,10 +11,16 @@
     {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ Theme::formatDate($post->created_at) }}
 </span>
 
+{{--@if ($post->author->name)--}}
+{{--    <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!} <span--}}
+{{--            class="text-light">{{ $post->author->name }}</span></span>--}}
+{{--@endif--}}
 @if ($post->author->name)
-    <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!} <span
-            class="text-light">{{ $post->author->name }}</span></span>
+    <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!}
+        <span class="text-light" style="color: gray;">{{ $post->author->name }}</span>
+    </span>
 @endif
+
 <div class="row">
     @include('ads.includes.blog-page')
 </div>
