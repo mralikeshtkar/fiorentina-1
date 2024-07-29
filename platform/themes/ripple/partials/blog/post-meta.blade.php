@@ -17,7 +17,7 @@
 {{--@endif--}}
 @if ($post->author->name)
     <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!}
-        <span class="text-light" style="color: gray;">{{ $post->author->name }}</span>
+        <span style="color: gray;">{{ $post->author->name }}</span>
     </span>
 @endif
 
