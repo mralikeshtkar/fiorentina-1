@@ -1,6 +1,6 @@
 <section class="section pt-50 pb-50 bg-lightgray" @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
     <div class="container">
-        <div class="row">
+        <div class="row" style="background-color: white !important;">
             @php
                 $primarySidebarContent = $withSidebar ? dynamic_sidebar('primary_sidebar') : null;
             @endphp
