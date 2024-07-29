@@ -1,4 +1,4 @@
-<section class="section pt-50 pb-50 bg-lightgray" >
+<section class="section pt-50 pb-50" >
     <div class="container">
         <div class="row" style="background-color: white !important;">
             @php
