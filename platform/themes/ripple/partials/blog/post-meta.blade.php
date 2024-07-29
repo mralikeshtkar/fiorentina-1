@@ -16,3 +16,6 @@
             class="text-light">{{ $post->author->name }}</span></span>
 @endif
 @include('ads.includes.blog-page')
+<div>
+    {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
+</div>
