@@ -1,2 +1,1 @@
-            @include('ads.includes.background-page')
-            //rw
+@include('ads.includes.background-page')
