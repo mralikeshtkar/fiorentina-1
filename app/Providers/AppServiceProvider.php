@@ -30,7 +30,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BLOG_PAGE)->get());
         });
         view()->composer('ads.includes.dblog-title',function (View $view){
-            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_DBLOG_TITLE_PAGE)->get());
+            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_DBLOG_TITLE)->get());
+        });
+        view()->composer('ads.includes.dblog-author',function (View $view){
+            $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_DBLOG_AUTHOR)->get());
         });
         view()->composer('ads.includes.background-page',function (View $view){
             $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BACKGROUND_PAGE)->first());

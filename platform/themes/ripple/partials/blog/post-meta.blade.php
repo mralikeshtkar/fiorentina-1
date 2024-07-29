@@ -22,7 +22,7 @@
 @endif
 
 <div class="row">
-    @include('ads.includes.blog-page')
+    @include('ads.includes.dblog-author')
 </div>
 
 <div>
