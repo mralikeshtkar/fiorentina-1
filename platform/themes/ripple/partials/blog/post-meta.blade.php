@@ -15,7 +15,10 @@
     <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!} <span
             class="text-light">{{ $post->author->name }}</span></span>
 @endif
-@include('ads.includes.blog-page')
+<div class="row">
+    @include('ads.includes.blog-page')
+</div>
+
 <div>
     {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
 </div>
