@@ -7,7 +7,7 @@
     </span>
 @endif
 
-<span class="created_at text-light">
+<span class="created_at " style="color: gray;">
     {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ Theme::formatDate($post->created_at) }}
 </span>
 
