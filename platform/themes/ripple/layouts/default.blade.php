@@ -6,10 +6,10 @@
     <div class="container">
         <div class="row" style="background-color: white !important;">
 {{--        <div class="row" >--}}
-            <div class="col-lg-9">
+            <div class="col-lg-9" style="background-color: red !important;">
                 <div class="page-content">
                     {!! Theme::content() !!}
-                        @include('ads.includes.dblog-p1')
+
                 </div>
             </div>
             <div class="col-lg-3">
