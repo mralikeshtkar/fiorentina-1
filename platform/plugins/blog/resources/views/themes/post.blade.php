@@ -21,7 +21,7 @@
         @endif
     </div>
 </header>
-<div class='ck-content'>
+<div class='ck-content' style="background-color: green !important;">
 
     {!! BaseHelper::clean($post->content) !!}
 {{--    @include('ads.includes.dblog-p1')--}}
