@@ -4,8 +4,8 @@
 @endif
 <section class="section pt-50 pb-100">
     <div class="container">
-{{--        <div class="row" style="background-color: white !important;">--}}
-        <div class="row" >
+        <div class="row" style="background-color: white !important;">
+{{--        <div class="row" >--}}
             <div class="col-lg-9">
                 <div class="page-content">
                     {!! Theme::content() !!}
