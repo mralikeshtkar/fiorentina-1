@@ -7,7 +7,7 @@
         <div class="row" style="background-color: white !important;">
 {{--        <div class="row" >--}}
             <div class="col-lg-9" style="background-color: red !important;">
-                <div class="page-content">
+                <div class="page-content" style="background-color: blue !important;">
                     {!! Theme::content() !!}
 
                 </div>
