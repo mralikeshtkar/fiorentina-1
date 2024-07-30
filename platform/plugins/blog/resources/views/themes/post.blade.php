@@ -22,7 +22,7 @@
     </div>
 </header>
 <div class='ck-content'>
-    siaaaaaaaaaaaaa
+
     {!! BaseHelper::clean($post->content) !!}
 {{--    @include('ads.includes.dblog-p1')--}}
 </div>

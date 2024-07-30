@@ -9,6 +9,7 @@
             <div class="col-lg-9">
                 <div class="page-content">
                     {!! Theme::content() !!}
+                        @include('ads.includes.dblog-p1')
                 </div>
             </div>
             <div class="col-lg-3">
