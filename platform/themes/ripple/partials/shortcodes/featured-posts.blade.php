@@ -60,9 +60,9 @@
                                 <header class="post__header">
                                     <h3 class="post__title text-truncate"><a
                                             href="{{ $post->url }}">{{ $post->name }}</a></h3>
-                                    <div class="post__meta">
-                                        {!! Theme::partial('blog.post-meta', compact('post')) !!}
-                                    </div>
+{{--                                    <div class="post__meta">--}}
+{{--                                        {!! Theme::partial('blog.post-meta', compact('post')) !!}--}}
+{{--                                    </div>--}}
                                 </header>
                             </article>
                         </div>
