@@ -23,7 +23,7 @@
 </header>
 <div class='ck-content' style="background-color: green !important;">
 
-    {!! BaseHelper::clean($post->content) !!}
+{{--    {!! BaseHelper::clean($post->content) !!}--}}
 {{--    @include('ads.includes.dblog-p1')--}}
 </div>
 <br />
