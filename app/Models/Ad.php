@@ -102,4 +102,30 @@ class Ad extends BaseModel
     {
         return $query->where('status', self::TYPE_GOOGLE_ADS);
     }
+    public static function addAdsToContent($content)
+    {
+        $ads = self::query()
+            ->typeAnnuncioImmagine()
+            ->whereIn('group', [self::GROUP_DBLOG_P1])
+            ->get()
+            ->unique('group')
+            ->mapWithKeys(function ($item, $key) {
+                return [$item->group => $item];
+            });
+        preg_match_all('/<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);
+        if (count($contentMatches)) {
+            $contentMatches = collect(collect($contentMatches)->first());
+            if ($contentMatches->count()) {
+                $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
+                $content = $chunk->map(function ($item, $key) use ($ads) {
+                    if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->has(self::GROUP_DBLOG_P1)])->render();
+                    }
+                    return $item;
+                })->flatten()->implode("");
+            }
+        }
+        return $content;
+    }
+
 }

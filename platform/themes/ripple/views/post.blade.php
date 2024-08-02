@@ -5,6 +5,8 @@
     if ($bannerImage = $post->getMetaData('banner_image', true)) {
         Theme::set('breadcrumbBannerImage', RvMedia::getImageUrl($bannerImage));
     }
+    $content = \App\Models\Ad::addAdsToContent($post->content);
+
 @endphp
 
 <article class="post post--single">
