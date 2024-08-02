@@ -112,7 +112,9 @@ class Ad extends BaseModel
             ->mapWithKeys(function ($item, $key) {
                 return [$item->group => $item];
             });
+
         preg_match_all('/<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);
+        dd($contentMatches);
         if (count($contentMatches)) {
             $contentMatches = collect(collect($contentMatches)->first());
             if ($contentMatches->count()) {
