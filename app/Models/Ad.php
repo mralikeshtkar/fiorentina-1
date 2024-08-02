@@ -135,7 +135,7 @@ class Ad extends BaseModel
                 })->flatten()->implode("");
             }
         }
-//        dd($content,$ads);
+        dd($content,$ads);
         return $content;
     }
 
