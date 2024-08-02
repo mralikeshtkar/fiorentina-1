@@ -57,7 +57,16 @@ app('events')->listen(RouteMatched::class, function () {
 
         Shortcode::setPreviewImage('featured-posts', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
 
+        Shortcode::register(
+            'ads-p1',
+            __('Ads P1'),
+            __('Ads P1'),
+            function (ShortcodeCompiler $shortcode) {
 
+
+                return Theme::partial('shortcodes.ads-p1');
+            }
+        );
         Shortcode::register(
             'ads-background',
             __('Ads Background'),
