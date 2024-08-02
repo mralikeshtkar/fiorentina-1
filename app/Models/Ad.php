@@ -25,6 +25,8 @@ class Ad extends BaseModel
     const GROUP_DBLOG_TITLE = 6;
     const GROUP_DBLOG_AUTHOR = 7;
     const GROUP_DBLOG_P1 = 8;
+    const GROUP_DBLOG_P2 = 9;
+    const GROUP_DBLOG_P3 = 10;
 
     const GROUPS = [
         self::GROUP_POPUP_DESKTOP => "Gruppo popup desktop",
@@ -35,6 +37,8 @@ class Ad extends BaseModel
         self::GROUP_DBLOG_TITLE => "Gruppo Dblog_title",
         self::GROUP_DBLOG_AUTHOR => "Gruppo Dblog_author",
         self::GROUP_DBLOG_P1 => "Gruppo Dblog_P1",
+        self::GROUP_DBLOG_P2 => "Gruppo Dblog_P2",
+        self::GROUP_DBLOG_P3 => "Gruppo Dblog_P3",
     ];
 
     protected $fillable = [
@@ -122,6 +126,10 @@ class Ad extends BaseModel
                 $content = $chunk->map(function ($item, $key) use ($ads) {
                     if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
                         $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P1)])->render();
+                    }else if ($key == 1 && $ads->has(self::GROUP_DBLOG_P2)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P2)])->render();
+                    }else if ($key == 2 && $ads->has(self::GROUP_DBLOG_P3)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P3)])->render();
                     }
                     return $item;
                 })->flatten()->implode("");
