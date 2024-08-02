@@ -114,7 +114,7 @@ class Ad extends BaseModel
             });
 
         preg_match_all('/<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);
-        dd($contentMatches);
+//        dd($contentMatches);
         if (count($contentMatches)) {
             $contentMatches = collect(collect($contentMatches)->first());
             if ($contentMatches->count()) {
@@ -127,6 +127,7 @@ class Ad extends BaseModel
                 })->flatten()->implode("");
             }
         }
+        dd($content,$ads);
         return $content;
     }
 
