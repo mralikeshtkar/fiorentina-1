@@ -121,7 +121,7 @@ class Ad extends BaseModel
                 $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
                 $content = $chunk->map(function ($item, $key) use ($ads) {
                     if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
-                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->has(self::GROUP_DBLOG_P1)])->render();
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P1)])->render();
                     }
                     return $item;
                 })->flatten()->implode("");
