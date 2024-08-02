@@ -110,7 +110,7 @@ class Ad extends BaseModel
     {
         $ads = self::query()
             ->typeAnnuncioImmagine()
-            ->whereIn('group', [self::GROUP_DBLOG_P1])
+            ->whereIn('group', [self::GROUP_DBLOG_P1,self::GROUP_DBLOG_P2,self::GROUP_DBLOG_P3])
             ->get()
             ->unique('group')
             ->mapWithKeys(function ($item, $key) {
@@ -135,7 +135,7 @@ class Ad extends BaseModel
                 })->flatten()->implode("");
             }
         }
-        dd($content,$ads);
+//        dd($content,$ads);
         return $content;
     }
 
