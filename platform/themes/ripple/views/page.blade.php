@@ -1,5 +1,6 @@
 @php
     $shortCodeKey = '<shortcode>[ads-background][/ads-background]</shortcode>';
+    dd($page->content);
     $content = str_replace($shortCodeKey,'',$page->content)
 @endphp
 @if(str_contains($page->content,$shortCodeKey))
