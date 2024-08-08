@@ -3,6 +3,10 @@
     {!! Theme::partial('breadcrumbs') !!}
 @endif
 <section class="section pt-50 pb-100">
+    @if(Theme::get('has-ads-background'))
+        {!! BaseHelper::clean(Theme::get('has-ads-background')) !!}
+    @endif
+
     <div class="container">
         <div class="row" style="background-color: white !important;">
 {{--        <div class="row" >--}}

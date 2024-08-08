@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Botble\Base\Models\BaseModel;
+use Botble\Theme\Facades\Theme;
 use Illuminate\Support\Facades\Storage;
 
 class Ad extends BaseModel
@@ -110,6 +111,7 @@ class Ad extends BaseModel
     {
         return $query->where('status', self::TYPE_GOOGLE_ADS);
     }
+
     public static function addAdsToContent($content)
     {
         $ads = self::query()
@@ -120,12 +122,13 @@ class Ad extends BaseModel
             ->mapWithKeys(function ($item, $key) {
                 return [$item->group => $item];
             });
-
-        preg_match_all('/<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);
-//        dd($contentMatches);
+        $shortCodePattern = '/<shortcode>(.*?)<\/shortcode>/';
+        preg_match_all('/<shortcode>(.*?)<\/shortcode>|<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);
         if (count($contentMatches)) {
             $contentMatches = collect(collect($contentMatches)->first());
             if ($contentMatches->count()) {
+                $shortCodes = $contentMatches->filter(fn($item) => preg_match($shortCodePattern, $item));
+                $contentMatches = $contentMatches->forget($shortCodes->keys())->values();
                 $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
                 $content = $chunk->map(function ($item, $key) use ($ads) {
                     if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
@@ -136,11 +139,22 @@ class Ad extends BaseModel
                         $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P3)])->render();
                     }
                     return $item;
-                })->flatten()->implode("");
+                })->flatten();
+                if ($shortCodes->count()) {
+                    $adsBackground = $shortCodes->first(function ($item) {
+                        return str_contains($item, '<shortcode>[ads-background][/ads-background]</shortcode>');
+                    });
+                    if ($adsBackground) {
+                        Theme::set('has-ads-background', $adsBackground);
+                        $shortCodes = $shortCodes->filter(function ($item) {
+                            return !str_contains($item, '<shortcode>[ads-background][/ads-background]</shortcode>');
+                        });
+                    }
+                }
+                $content = $shortCodes->merge($content)->implode("");
             }
         }
-//        dd($content,$ads);
         return $content;
     }
-
 }
+
