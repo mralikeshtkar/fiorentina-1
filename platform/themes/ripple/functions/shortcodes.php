@@ -72,17 +72,7 @@ app('events')->listen(RouteMatched::class, function () {
             __('Ads Background'),
             __('Ads Background'),
             function (ShortcodeCompiler $shortcode) {
-                if (! function_exists('render_galleries')) {
-                    return null;
-                }
-
-                $galleries = render_galleries((int) $shortcode->limit ?: 8);
-
-                if (! $galleries) {
-                    return null;
-                }
-
-                return Theme::partial('shortcodes.adsbackground', compact('galleries', 'shortcode'));
+                return Theme::partial('shortcodes.adsbackground');
             }
         );
 
