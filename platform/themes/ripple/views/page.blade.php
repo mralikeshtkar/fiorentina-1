@@ -1,10 +1,10 @@
 @php
-@dd("salam");
     $adsBackgroundShortCodeRegex = '/<shortcode>\[ads-background.*?\](.*?)\[\/ads-background.*?\]<\/shortcode>/';
     $content = preg_replace($adsBackgroundShortCodeRegex,'',$page->content)
 @endphp
 @if(preg_match($adsBackgroundShortCodeRegex,$page->content,$match) && count($match))
     @php
+    dd($match);
         Theme::set('has-ads-background', $match[0])
     @endphp
 @endif
