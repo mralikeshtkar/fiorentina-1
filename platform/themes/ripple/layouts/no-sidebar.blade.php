@@ -1,6 +1,8 @@
 {!! Theme::partial('header') !!}
+@if(Theme::get('has-ads-background'))
+    {!! BaseHelper::clean(Theme::get('has-ads-background')) !!}
+@endif
 @if (Theme::get('section-name'))
-    @dd("سشنشد")
     {!! Theme::partial('breadcrumbs') !!}
 @endif
 {!! Theme::content() !!}
