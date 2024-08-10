@@ -3,7 +3,6 @@
     {!! Theme::partial('breadcrumbs') !!}
 @endif
 <section class="section pt-50 pb-100">
-    @php dd("salam"); @endphp
     @if(Theme::get('has-ads-background'))
         {!! BaseHelper::clean(Theme::get('has-ads-background')) !!}
     @endif
