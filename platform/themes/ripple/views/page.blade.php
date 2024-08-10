@@ -1,4 +1,5 @@
 @php
+@dd("salam");
     $adsBackgroundShortCodeRegex = '/<shortcode>\[ads-background.*?\](.*?)\[\/ads-background.*?\]<\/shortcode>/';
     $content = preg_replace($adsBackgroundShortCodeRegex,'',$page->content)
 @endphp
