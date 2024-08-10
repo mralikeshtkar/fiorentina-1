@@ -4,7 +4,6 @@
 @endphp
 @if(preg_match($adsBackgroundShortCodeRegex,$page->content,$match) && count($match))
     @php
-    dd( $match[0]);
         Theme::set('has-ads-background', $match[0])
     @endphp
 @endif
