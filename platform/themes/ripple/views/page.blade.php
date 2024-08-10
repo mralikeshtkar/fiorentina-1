@@ -1,8 +1,3 @@
-{{--@php--}}
-{{--    $shortCodeKey = '<shortcode>[ads-background][/ads-background]</shortcode>';--}}
-{{--    dd($page->content);--}}
-{{--    $content = str_replace($shortCodeKey,'',$page->content)--}}
-{{--@endphp--}}
 @php
     $adsBackgroundShortCodeRegex = '/<shortcode>\[ads-background.*?\](.*?)\[\/ads-background.*?\]<\/shortcode>/';
     $content = preg_replace($adsBackgroundShortCodeRegex,'',$page->content)
@@ -12,7 +7,6 @@
         Theme::set('has-ads-background', $match[0])
     @endphp
 @endif
-
 
 
 @if (!BaseHelper::isHomepage($page->id))

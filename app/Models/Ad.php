@@ -112,55 +112,13 @@ class Ad extends BaseModel
         return $query->where('status', self::TYPE_GOOGLE_ADS);
     }
 
-//    public static function addAdsToContent($content)
-//    {
-//        $ads = self::query()
-//            ->typeAnnuncioImmagine()
-//            ->whereIn('group', [self::GROUP_DBLOG_P1,self::GROUP_DBLOG_P2,self::GROUP_DBLOG_P3])
-//            ->get()
-//            ->unique('group')
-//            ->mapWithKeys(function ($item, $key) {
-//                return [$item->group => $item];
-//            });
-//        $shortCodePattern = '/<shortcode>(.*?)<\/shortcode>/';
-/*        preg_match_all('/<shortcode>(.*?)<\/shortcode>|<p[^>]*?>([\s\S]*?)<\/p>/', $content, $contentMatches);*/
-//        if (count($contentMatches)) {
-//            $contentMatches = collect(collect($contentMatches)->first());
-//            if ($contentMatches->count()) {
-//                $shortCodes = $contentMatches->filter(fn($item) => preg_match($shortCodePattern, $item));
-//                $contentMatches = $contentMatches->forget($shortCodes->keys())->values();
-//                $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
-//                $content = $chunk->map(function ($item, $key) use ($ads) {
-//                    if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
-//                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P1)])->render();
-//                    }else if ($key == 1 && $ads->has(self::GROUP_DBLOG_P2)) {
-//                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P2)])->render();
-//                    }else if ($key == 2 && $ads->has(self::GROUP_DBLOG_P3)) {
-//                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P3)])->render();
-//                    }
-//                    return $item;
-//                })->flatten();
-//                if ($shortCodes->count()) {
-//                    $adsBackground = $shortCodes->first(function ($item) {
-//                        return str_contains($item, '<shortcode>[ads-background][/ads-background]</shortcode>');
-//                    });
-//                    if ($adsBackground) {
-//                        Theme::set('has-ads-background', $adsBackground);
-//                        $shortCodes = $shortCodes->filter(function ($item) {
-//                            return !str_contains($item, '<shortcode>[ads-background][/ads-background]</shortcode>');
-//                        });
-//                    }
-//                }
-//                $content = $shortCodes->merge($content)->implode("");
-//            }
-//        }
-//        return $content;
-//    }
+
+
     public static function addAdsToContent($content)
     {
         $ads = self::query()
             ->typeAnnuncioImmagine()
-            ->whereIn('group', [self::GROUP_DBLOG_P1])
+            ->whereIn('group', [self::GROUP_DBLOG_P1,self::GROUP_DBLOG_P2,self::GROUP_DBLOG_P3])
             ->get()
             ->unique('group')
             ->mapWithKeys(function ($item, $key) {
@@ -177,7 +135,11 @@ class Ad extends BaseModel
                 $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
                 $content = $chunk->map(function ($item, $key) use ($ads) {
                     if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
-                        $item[] = view('ads.includes.dblog', ['ad' => $ads->has(self::GROUP_DBLOG_P1)])->render();
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P1)])->render();
+                    }else if ($key == 1 && $ads->has(self::GROUP_DBLOG_P2)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P2)])->render();
+                    }else if ($key == 2 && $ads->has(self::GROUP_DBLOG_P3)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P3)])->render();
                     }
                     return $item;
                 })->flatten();
