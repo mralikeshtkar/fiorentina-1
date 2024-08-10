@@ -13,11 +13,7 @@
     @endphp
 @endif
 
-@if(str_contains($page->content,$shortCodeKey))
-    @php
-        Theme::set('has-ads-background', $shortCodeKey)
-    @endphp
-@endif
+
 
 @if (!BaseHelper::isHomepage($page->id))
     @php
