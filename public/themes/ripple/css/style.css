@@ -4120,7 +4120,7 @@ body,
     position: relative;
 }
 
-.container.bg-white .form-label{
+.container.bg-white .form-label,.container.bg-white .form-check-label{
     color:#111111
 }
 
