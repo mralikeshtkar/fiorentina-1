@@ -7,22 +7,18 @@
                     {{ Theme::getLogoImage(['height' => 50]) }}
                 </a>
             </div>
-        </div>
-    </div>
-    <ul class="footer__options">
-        <li class="footer__option">
-            <a href="" class="flex">
-                {!! BaseHelper::renderIcon('ti ti-home') !!}
-            </a>
-        </li>
-        <li class="footer__option">
-            <a href="" class="flex">
-                {!! BaseHelper::renderIcon('ti ti-home') !!}
-            </a>
-        </li>
-    </ul>
-    <div class="container">
-        <div class="row">
+            <ul class="footer__options">
+                <li class="footer__option">
+                    <a href="" class="flex">
+                        {!! BaseHelper::renderIcon('ti ti-home') !!}
+                    </a>
+                </li>
+                <li class="footer__option">
+                    <a href="" class="flex">
+                        {!! BaseHelper::renderIcon('ti ti-home') !!}
+                    </a>
+                </li>
+            </ul>
             <div class="col-12">
                 <p class="mb-1 text-center">Pubblicazione iscritta nel registro della stampa del Tribunale di Firenze con il n. 5050/01 del 27 apr 2001. Partita IVA 06783020966.</p>
                 <p class="mb-1 text-center">Direttore responsabile: Niccolò Misul.</p>
