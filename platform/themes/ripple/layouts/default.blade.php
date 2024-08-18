@@ -10,8 +10,8 @@
     <div class="container bg-white">
         <div class="row">
 {{--        <div class="row" >--}}
-            <div class="col-lg-9" style="background-color: red !important;">
-                <div class="page-content" style="background-color: blue !important;">
+            <div class="col-lg-9">
+                <div class="page-content">
                     {!! Theme::content() !!}
 
                 </div>
