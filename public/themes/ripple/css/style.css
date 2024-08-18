@@ -4120,6 +4120,10 @@ body,
     position: relative;
 }
 
+.container.bg-white .form-label{
+    color:#111111
+}
+
 .container.bg-white .post-group .post-group__title{
     color: #111111;
 }
