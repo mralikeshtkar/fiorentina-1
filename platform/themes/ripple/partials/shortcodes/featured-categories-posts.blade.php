@@ -1,6 +1,6 @@
 <section class="section pt-50 pb-50" >
-    <div class="container">
-        <div class="row" style="background-color: white !important;">
+    <div class="container bg-white">
+        <div class="row">
             @php
                 $primarySidebarContent = $withSidebar ? dynamic_sidebar('primary_sidebar') : null;
             @endphp
