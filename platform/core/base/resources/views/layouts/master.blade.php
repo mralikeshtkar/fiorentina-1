@@ -2,13 +2,13 @@
     <div class="page">
         @include('core/base::layouts.' . AdminAppearance::getCurrentLayout() . '.partials.navbar')
 
-{{--        <div--}}
-{{--            @class([--}}
-{{--                'page-wrapper',--}}
-{{--                'rv-media-integrate-wrapper' => Route::currentRouteName() === 'media.index',--}}
-{{--            ])>--}}
-{{--            @include('core/base::layouts.partials.page-header')--}}
-        <div>
+        <div
+            @class([
+                'page-wrapper',
+                'rv-media-integrate-wrapper' => Route::currentRouteName() === 'media.index',
+            ])>
+            @include('core/base::layouts.partials.page-header')
+
             <div class="page-body page-content">
                 <div class="{{ AdminAppearance::getContainerWidth() }}">
                     {!! apply_filters('core_layout_before_content', null) !!}
