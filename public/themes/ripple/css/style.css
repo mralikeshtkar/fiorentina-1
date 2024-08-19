@@ -2089,7 +2089,7 @@ p:empty {
 
 .page-header--light {
     background-color: #fff;
-    border-bottom: 1px solid #eee
+    /*border-bottom: 1px solid #eee*/
 }
 
 .page-header--light .search-btn i {
@@ -4205,4 +4205,8 @@ body,
 span.menu-title{
     font-size: 11px !important;
     font-weight: 600 !important;
+}
+
+header > .container{
+    border-bottom: 1px solid #00000040;
 }
