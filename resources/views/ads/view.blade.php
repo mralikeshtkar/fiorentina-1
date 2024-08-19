@@ -24,9 +24,9 @@
 {{--                    @php--}}
 {{--                        dd($ad->image);--}}
 {{--                    @endphp--}}
-                    <td class="align-middle">
-                        <img src="{{ asset($ad->image) }}" alt="Ad Image" style="max-width: 150px; height: auto;">
-                    </td>
+{{--                    <td class="align-middle">--}}
+{{--                        <img src="{{ asset($ad->image) }}" alt="Ad Image" style="max-width: 150px; height: auto;">--}}
+{{--                    </td>--}}
 
 
 
