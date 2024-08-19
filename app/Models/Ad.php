@@ -18,34 +18,34 @@ class Ad extends BaseModel
         self::TYPE_GOOGLE_ADS => "Google Ad Manager",
     ];
 
-    const GROUP_POPUP_DESKTOP = 1;
-    const GROUP_POPUP_MOBILE = 2;
-    const GROUP_MAIN_PAGE = 3;
-    const GROUP_BLOG_PAGE = 4;
-    const GROUP_BACKGROUND_PAGE = 5;
-    const GROUP_DBLOG_TITLE = 6;
-    const GROUP_DBLOG_AUTHOR = 7;
-    const GROUP_DBLOG_P1 = 8;
-    const GROUP_DBLOG_P2 = 9;
-    const GROUP_DBLOG_P3 = 10;
-    const GROUP_DBLOG_P4 = 11;
-    const GROUP_DBLOG_P5 = 12;
-    const GROUP_diretta_1 = 13;
+    const DESKTOP_POPUP_DESKTOP = 1;
+    const DESKTOP_POPUP_MOBILE = 2;
+    const DESKTOP_MAIN_PAGE = 3;
+    const DESKTOP_BLOG_PAGE = 4;
+    const DESKTOP_BACKGROUND_PAGE = 5;
+    const DESKTOP_DBLOG_TITLE = 6;
+    const DESKTOP_DBLOG_AUTHOR = 7;
+    const DESKTOP_DBLOG_P1 = 8;
+    const DESKTOP_DBLOG_P2 = 9;
+    const DESKTOP_DBLOG_P3 = 10;
+    const DESKTOP_DBLOG_P4 = 11;
+    const DESKTOP_DBLOG_P5 = 12;
+    const DESKTOP_diretta_1 = 13;
 
     const GROUPS = [
-        self::GROUP_POPUP_DESKTOP => "Gruppo popup desktop",
-        self::GROUP_POPUP_MOBILE => "Gruppo popup mobile",
-        self::GROUP_MAIN_PAGE => "Gruppo main page",
-        self::GROUP_BLOG_PAGE => "Gruppo blog page",
-        self::GROUP_BACKGROUND_PAGE => "Gruppo background page",
-        self::GROUP_DBLOG_TITLE => "Gruppo Dblog_title",
-        self::GROUP_DBLOG_AUTHOR => "Gruppo Dblog_author",
-        self::GROUP_DBLOG_P1 => "Gruppo Dblog_P1",
-        self::GROUP_DBLOG_P2 => "Gruppo Dblog_P2",
-        self::GROUP_DBLOG_P3 => "Gruppo Dblog_P3",
-        self::GROUP_DBLOG_P4 => "Gruppo Dblog_P4",
-        self::GROUP_DBLOG_P5 => "Gruppo Dblog_P5",
-        self::GROUP_diretta_1 => "Gruppo Diretta_1",
+        self::DESKTOP_POPUP_DESKTOP => "DESKTOP popup desktop",
+        self::DESKTOP_POPUP_MOBILE => "DESKTOP popup mobile",
+        self::DESKTOP_MAIN_PAGE => "DESKTOP main page",
+        self::DESKTOP_BLOG_PAGE => "DESKTOP blog page",
+        self::DESKTOP_BACKGROUND_PAGE => "DESKTOP background page",
+        self::DESKTOP_DBLOG_TITLE => "DESKTOP Dblog_title",
+        self::DESKTOP_DBLOG_AUTHOR => "DESKTOP Dblog_author",
+        self::DESKTOP_DBLOG_P1 => "DESKTOP Dblog_P1",
+        self::DESKTOP_DBLOG_P2 => "DESKTOP Dblog_P2",
+        self::DESKTOP_DBLOG_P3 => "DESKTOP Dblog_P3",
+        self::DESKTOP_DBLOG_P4 => "DESKTOP Dblog_P4",
+        self::DESKTOP_DBLOG_P5 => "DESKTOP Dblog_P5",
+        self::DESKTOP_diretta_1 => "DESKTOP Diretta_1",
     ];
 
     protected $fillable = [
@@ -120,7 +120,7 @@ class Ad extends BaseModel
     {
         $ads = self::query()
             ->typeAnnuncioImmagine()
-            ->whereIn('group', [self::GROUP_DBLOG_P1,self::GROUP_DBLOG_P2,self::GROUP_DBLOG_P3])
+            ->whereIn('group', [self::DESKTOP_DBLOG_P1,self::DESKTOP_DBLOG_P2,self::DESKTOP_DBLOG_P3])
             ->get()
             ->unique('group')
             ->mapWithKeys(function ($item, $key) {
@@ -136,12 +136,12 @@ class Ad extends BaseModel
                 $contentMatches = $contentMatches->forget($shortCodes->keys())->values();
                 $chunk = $contentMatches->chunk(ceil(count($contentMatches) / 4));
                 $content = $chunk->map(function ($item, $key) use ($ads) {
-                    if ($key == 0 && $ads->has(self::GROUP_DBLOG_P1)) {
-                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P1)])->render();
-                    }else if ($key == 1 && $ads->has(self::GROUP_DBLOG_P2)) {
-                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P2)])->render();
-                    }else if ($key == 2 && $ads->has(self::GROUP_DBLOG_P3)) {
-                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::GROUP_DBLOG_P3)])->render();
+                    if ($key == 0 && $ads->has(self::DESKTOP_DBLOG_P1)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::DESKTOP_DBLOG_P1)])->render();
+                    }else if ($key == 1 && $ads->has(self::DESKTOP_DBLOG_P2)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::DESKTOP_DBLOG_P2)])->render();
+                    }else if ($key == 2 && $ads->has(self::DESKTOP_DBLOG_P3)) {
+                        $item[] = view('ads.includes.dblog-p', ['ad' => $ads->get(self::DESKTOP_DBLOG_P3)])->render();
                     }
                     return $item;
                 })->flatten();
