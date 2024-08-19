@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mx-0">
             @foreach($ads as $ad)
-                <div class="col-12 col-md-8 col-lg-6">
+                <div class="col-12 col-md-8 col-lg-6 mr-auto ml-auto">
                     <a href="" class="d-block w-full">
                         <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-100">
                     </a>
