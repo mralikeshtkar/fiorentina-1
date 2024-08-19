@@ -1,4 +1,4 @@
-<section class="section recent-posts pt-50 pb-50"
+<section class="section recent-posts pt-20 pb-20"
     @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
     <div class="container bg-white">
         <div class="row" >
