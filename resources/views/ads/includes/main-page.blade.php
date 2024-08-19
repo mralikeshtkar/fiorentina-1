@@ -4,7 +4,7 @@
             @foreach($ads as $ad)
                 <div class="col-12">
                     <a href="" class="d-block w-full">
-                        <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-full d-block">
+                        <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-100">
                     </a>
                 </div>
             @endforeach
