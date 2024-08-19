@@ -9,6 +9,7 @@
                 <th>Title</th>
                 <th>type</th>
                 <th>group</th>
+                <th>image</th>
 
                 <th>Actions</th>
             </tr>
@@ -20,6 +21,7 @@
                     <td class="align-middle">{{ $ad->title }}</td>
                     <td class="align-middle">{{ $ad->type }}</td>
                     <td class="align-middle">{{ $ad->group_name }}</td>
+                    <td class="align-middle">{{ $ad->image }}</td>
 
 
                     <td class="align-middle">
