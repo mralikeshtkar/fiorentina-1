@@ -149,6 +149,5 @@
             </div>
         @endif
     </div>
-        @include('ads.includes.main-page')
     </div>
 </section>
