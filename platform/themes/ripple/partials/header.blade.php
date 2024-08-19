@@ -16,13 +16,18 @@
 
 <body {!! Theme::bodyAttributes() !!}>
     {!! apply_filters(THEME_FRONT_BODY, null) !!}
+
     <header class="header" id="header">
-        <div class="header-wrap d-none d-sm-block">
+        <div class="header-wrap d-none d-sm-block h-34px">
+
             <nav class="nav-top">
                 <div class="container">
                     <div class="row">
+
                         @if ($socialLinks = Theme::getSocialLinks())
-                            <div class="col-sm-4 d-flex align-items-center">
+
+
+                            <div class="col-sm-4 d-flex align-items-center h-34px">
                                 <ul class="social social--simple">
                                     @foreach ($socialLinks as $socialLink)
                                         @continue(!($icon = $socialLink->getIconHtml()))
@@ -32,11 +37,12 @@
                                                 {{ $icon }}
                                             </a>
                                         </li>
+
                                     @endforeach
                                 </ul>
                             </div>
                         @endif
-                        <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right">
+                            <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right h-34px">
                             @if (is_plugin_active('member'))
                                 <ul class="d-flex">
                                     @if (auth('member')->check())
@@ -69,7 +75,9 @@
         </div>
     </header>
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
-        class="page-header page-header--light">
+            class="page-header page-header--light py-0">
+
+    class="page-header page-header--light">
         <div class="container">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
