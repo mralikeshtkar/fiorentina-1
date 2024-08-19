@@ -1,5 +1,5 @@
 @if ($posts->isNotEmpty())
-    <section class="section hero-section pt-7 pb-50"
+    <section class="section hero-section pt-50 pb-50"
              @if ($shortcode->background_color) style="background-color: rgb(93, 46, 142) !important;" @endif>
         @php
             $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
@@ -12,7 +12,7 @@
 
         @endphp
 
-        <div class="container mt-3 mb-3">
+        <div class="container mb-3">
             <div class="row align-items-center upcoming-match">
                 <!-- Match Date, Time, and Venue -->
                 <div class="col-md-3">
