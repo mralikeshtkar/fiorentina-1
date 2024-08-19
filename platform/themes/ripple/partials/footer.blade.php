@@ -40,7 +40,7 @@
 </div>
 
 
-<script>
+<!--<script>
     $(document).ready(async function() {
         // Define the images with Bootstrap classes and custom styling
         var leftImage =
@@ -58,7 +58,7 @@
         $('.recent-posts').before(row1);
         $('.page-header').after(row);
     });
-</script>
+</script>-->
 </body>
 
 </html>
