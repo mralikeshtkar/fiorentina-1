@@ -77,7 +77,7 @@
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
 
-    class="page-header page-header--light">
+   
         <div class="container">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
