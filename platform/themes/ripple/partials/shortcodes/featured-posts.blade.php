@@ -1,5 +1,5 @@
 @if ($posts->isNotEmpty())
-    <section class="section hero-section pt-45 pb-50"
+    <section class="section hero-section pt-45 pb-20"
              @if ($shortcode->background_color) style="background-color: rgb(93, 46, 142) !important;" @endif>
         @php
             $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
