@@ -7,6 +7,9 @@
             <tr>
                 <th>ID</th>
                 <th>Title</th>
+                <th>type</th>
+                <th>group</th>
+
                 <th>Actions</th>
             </tr>
             </thead>
@@ -15,6 +18,9 @@
                 <tr>
                     <td class="align-middle">{{ $ad->id }}</td>
                     <td class="align-middle">{{ $ad->title }}</td>
+                    <td class="align-middle">{{ $ad->type }}</td>
+                    <td class="align-middle">{{ $ad->group }}</td>
+
                     <td class="align-middle">
                         <div class="d-flex gap-2">
                             <a href="{{ route('ads.edit',$ad->id) }}" class="btn btn-primary">Edit</a>

@@ -45,7 +45,7 @@ class Ad extends BaseModel
         self::GROUP_DBLOG_P3 => "DESKTOP Dblog_P3",
         self::GROUP_DBLOG_P4 => "DESKTOP  Dblog_P4",
         self::GROUP_DBLOG_P5 => "DESKTOP Dblog_P5",
-        self::GROUP_diretta_1 => "DESKTOP Dblog_P5",
+        self::GROUP_diretta_1 => "DESKTOP Diretta_1",
     ];
 
     protected $fillable = [
