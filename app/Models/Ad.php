@@ -64,7 +64,10 @@ class Ad extends BaseModel
         'starts_at' => 'datetime',
         'expires_at' => 'datetime',
     ];
-
+    public function getGroupNameAttribute()
+    {
+        return self::GROUPS[$this->group] ?? 'Unknown Group';
+    }
     protected static function boot()
     {
         parent::boot();

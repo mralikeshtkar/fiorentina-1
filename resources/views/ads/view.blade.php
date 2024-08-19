@@ -19,7 +19,8 @@
                     <td class="align-middle">{{ $ad->id }}</td>
                     <td class="align-middle">{{ $ad->title }}</td>
                     <td class="align-middle">{{ $ad->type }}</td>
-                    <td class="align-middle">{{ $ad->group }}</td>
+                    <td class="align-middle">{{ $ad->group_name }}</td>
+
 
                     <td class="align-middle">
                         <div class="d-flex gap-2">
