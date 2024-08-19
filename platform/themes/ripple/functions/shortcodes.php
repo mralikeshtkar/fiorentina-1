@@ -40,6 +40,16 @@ app('events')->listen(RouteMatched::class, function () {
                 return Theme::partial('shortcodes.featured-posts', compact('posts', 'shortcode'));
             }
         );
+        Shortcode::register(
+            'main page',
+            __('main page'),
+            __('main page'),
+            function (ShortcodeCompiler $shortcode) {
+              
+
+                return Theme::partial('shortcodes.main-page');
+            }
+        );
 
         Shortcode::setAdminConfig('featured-posts', function (array $attributes) {
             return ShortcodeForm::createFromArray($attributes)
