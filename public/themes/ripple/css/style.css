@@ -4202,3 +4202,6 @@ body,
 .h-34px{
     height: 34px;
 }
+span.menu-title{
+    font-size: 11px !important;
+}
