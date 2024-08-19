@@ -21,9 +21,9 @@
                     <td class="align-middle">{{ $ad->title }}</td>
                     <td class="align-middle">{{ $ad->type }}</td>
                     <td class="align-middle">{{ $ad->group_name }}</td>
-                    @php
-                        dd($ad->image);
-                    @endphp
+{{--                    @php--}}
+{{--                        dd($ad->image);--}}
+{{--                    @endphp--}}
                     <td class="align-middle">
                         <img src="{{ asset($ad->image) }}" alt="Ad Image" style="max-width: 150px; height: auto;">
                     </td>
