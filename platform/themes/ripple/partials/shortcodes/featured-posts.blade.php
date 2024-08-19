@@ -1,7 +1,6 @@
 @if ($posts->isNotEmpty())
     <section class="section hero-section pt-50 pb-50"
              @if ($shortcode->background_color) style="background-color: rgb(93, 46, 142) !important;" @endif>
-        @dd("salam")
         @php
             $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
             $match->home_team = json_decode($match->home_team, true);
