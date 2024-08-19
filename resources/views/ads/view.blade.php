@@ -5,8 +5,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Title</th>
+                <th>type</th>
+                <th>group</th>
+                <th>image</th>
+
                 <th>Actions</th>
             </tr>
             </thead>
@@ -15,6 +19,17 @@
                 <tr>
                     <td class="align-middle">{{ $ad->id }}</td>
                     <td class="align-middle">{{ $ad->title }}</td>
+                    <td class="align-middle">{{ $ad->type }}</td>
+                    <td class="align-middle">{{ $ad->group_name }}</td>
+{{--                    @php--}}
+{{--                        dd($ad->image);--}}
+{{--                    @endphp--}}
+{{--                    <td class="align-middle">--}}
+{{--                        <img src="{{ asset($ad->image) }}" alt="Ad Image" style="max-width: 150px; height: auto;">--}}
+{{--                    </td>--}}
+
+
+
                     <td class="align-middle">
                         <div class="d-flex gap-2">
                             <a href="{{ route('ads.edit',$ad->id) }}" class="btn btn-primary">Edit</a>

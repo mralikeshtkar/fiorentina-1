@@ -38,8 +38,12 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('ads.includes.dblog-P1',function (View $view){
             $view->with('ads',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_DBLOG_P1)->first());
         });
+
         view()->composer('ads.includes.background-page',function (View $view){
             $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_BACKGROUND_PAGE)->first());
+        });
+        view()->composer('ads.includes.adsdiretta',function (View $view){
+            $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::GROUP_diretta_1)->first());
         });
     }
 }

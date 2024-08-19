@@ -91,6 +91,30 @@ app('events')->listen(RouteMatched::class, function () {
                     'default_value' => '#fff',
                 ]);
         });
+        Shortcode::register(
+            'adsdiretta',
+            __('Ads diretta'),
+            __('Ads diretta'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.adsdiretta');
+            }
+        );
+
+        Shortcode::setPreviewImage('ads-diretta', Theme::asset()->url('images/ui-blocks/all-galleries.png'));
+
+        Shortcode::setAdminConfig('ads-diretta', function (array $attributes) {
+            return ShortcodeForm::createFromArray($attributes)
+                ->withLazyLoading()
+                ->add(
+                    'limit',
+                    NumberField::class,
+                    TextFieldOption::make()->label(__('Limit'))->defaultValue(8)->toArray()
+                )
+                ->add('background_color', ColorField::class, [
+                    'label' => __('Background color'),
+                    'default_value' => '#fff',
+                ]);
+        });
 
         Shortcode::register(
             'recent-posts',

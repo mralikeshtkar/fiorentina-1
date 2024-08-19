@@ -30,20 +30,22 @@ class Ad extends BaseModel
     const GROUP_DBLOG_P3 = 10;
     const GROUP_DBLOG_P4 = 11;
     const GROUP_DBLOG_P5 = 12;
+    const GROUP_diretta_1 = 13;
 
     const GROUPS = [
-        self::GROUP_POPUP_DESKTOP => "Gruppo popup desktop",
-        self::GROUP_POPUP_MOBILE => "Gruppo popup mobile",
-        self::GROUP_MAIN_PAGE => "Gruppo main page",
-        self::GROUP_BLOG_PAGE => "Gruppo blog page",
-        self::GROUP_BACKGROUND_PAGE => "Gruppo background page",
-        self::GROUP_DBLOG_TITLE => "Gruppo Dblog_title",
-        self::GROUP_DBLOG_AUTHOR => "Gruppo Dblog_author",
-        self::GROUP_DBLOG_P1 => "Gruppo Dblog_P1",
-        self::GROUP_DBLOG_P2 => "Gruppo Dblog_P2",
-        self::GROUP_DBLOG_P3 => "Gruppo Dblog_P3",
-        self::GROUP_DBLOG_P4 => "Gruppo Dblog_P4",
-        self::GROUP_DBLOG_P5 => "Gruppo Dblog_P5",
+        self::GROUP_POPUP_DESKTOP => "DESKTOP popup desktop",
+
+        self::GROUP_MAIN_PAGE => "DESKTOP main page",
+        self::GROUP_BLOG_PAGE => "DESKTOP blog page",
+        self::GROUP_BACKGROUND_PAGE => "DESKTOP background page",
+        self::GROUP_DBLOG_TITLE => "DESKTOP Dblog_title",
+        self::GROUP_DBLOG_AUTHOR => "DESKTOP Dblog_author",
+        self::GROUP_DBLOG_P1 => "DESKTOP Dblog_P1",
+        self::GROUP_DBLOG_P2 => "DESKTOP Dblog_P2",
+        self::GROUP_DBLOG_P3 => "DESKTOP Dblog_P3",
+        self::GROUP_DBLOG_P4 => "DESKTOP  Dblog_P4",
+        self::GROUP_DBLOG_P5 => "DESKTOP Dblog_P5",
+        self::GROUP_diretta_1 => "DESKTOP Diretta_1",
     ];
 
     protected $fillable = [
@@ -62,7 +64,10 @@ class Ad extends BaseModel
         'starts_at' => 'datetime',
         'expires_at' => 'datetime',
     ];
-
+    public function getGroupNameAttribute()
+    {
+        return self::GROUPS[$this->group] ?? 'Unknown Group';
+    }
     protected static function boot()
     {
         parent::boot();

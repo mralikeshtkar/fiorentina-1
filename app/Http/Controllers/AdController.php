@@ -29,7 +29,7 @@ class AdController extends BaseController
     public function index()
     {
         $this->pageTitle("Ads List");
-        $ads = Ad::query()->latest()->paginate(1);
+        $ads = Ad::query()->latest()->paginate(20);
         return view('ads.view', compact('ads'));
     }
 
