@@ -2089,7 +2089,10 @@ p:empty {
 
 .page-header--light {
     background-color: #fff;
-    border-bottom: 1px solid #eee
+    /*border-bottom: 1px solid #eee*/
+}
+header > .container{
+    border-bottom: 1px solid #00000040;
 }
 
 .page-header--light .search-btn i {
