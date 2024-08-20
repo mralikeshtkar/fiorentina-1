@@ -27,7 +27,7 @@
                             font-weight: 900;
                         ">
                     <tr>
-                        <th style="border-right: 1px solid white;"></th>
+                        <th style="border-right: 1px solid white;">Data</th>
                         <th style="border-right: 1px solid white;">PT</th>
                         <th style="border-right: 1px solid white;">G</th>
                         <th style="border-right: 1px solid white;">V</th>
