@@ -1,5 +1,5 @@
-<section class="section pt-50 pb-50 bg-lightgray" @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
-    <div class="container">
+<section class="section pt-50 pb-50" >
+    <div class="container bg-white">
         <div class="row">
             @php
                 $primarySidebarContent = $withSidebar ? dynamic_sidebar('primary_sidebar') : null;
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-
+{{--            @include('ads.includes.main-page')--}}
             @if ($primarySidebarContent)
                 <div class="col-lg-3">
                     <div class="page-sidebar">

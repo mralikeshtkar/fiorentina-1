@@ -41,6 +41,7 @@ app('events')->listen(RouteMatched::class, function () {
             }
         );
 
+
         Shortcode::setAdminConfig('featured-posts', function (array $attributes) {
             return ShortcodeForm::createFromArray($attributes)
                 ->withLazyLoading()
@@ -56,6 +57,78 @@ app('events')->listen(RouteMatched::class, function () {
         });
 
         Shortcode::setPreviewImage('featured-posts', Theme::asset()->url('images/ui-blocks/featured-posts.png'));
+
+        Shortcode::register(
+            'ads-p1',
+            __('Ads P1'),
+            __('Ads P1'),
+            function (ShortcodeCompiler $shortcode) {
+
+
+                return Theme::partial('shortcodes.ads-p1');
+            }
+        );
+        Shortcode::register(
+            'ads-background',
+            __('Ads Background'),
+            __('Ads Background'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.adsbackground');
+            }
+        );
+
+        Shortcode::setPreviewImage('ads-background', Theme::asset()->url('images/ui-blocks/all-galleries.png'));
+
+        Shortcode::setAdminConfig('ads-background', function (array $attributes) {
+            return ShortcodeForm::createFromArray($attributes)
+                ->withLazyLoading()
+                ->add(
+                    'limit',
+                    NumberField::class,
+                    TextFieldOption::make()->label(__('Limit'))->defaultValue(8)->toArray()
+                )
+                ->add('background_color', ColorField::class, [
+                    'label' => __('Background color'),
+                    'default_value' => '#fff',
+                ]);
+        });
+        Shortcode::register(
+            'adsdiretta',
+            __('Ads diretta'),
+            __('Ads diretta'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.adsdiretta');
+            }
+        );
+
+        Shortcode::setPreviewImage('ads-diretta', Theme::asset()->url('images/ui-blocks/all-galleries.png'));
+
+        Shortcode::setAdminConfig('ads-diretta', function (array $attributes) {
+            return ShortcodeForm::createFromArray($attributes)
+                ->withLazyLoading()
+                ->add(
+                    'limit',
+                    NumberField::class,
+                    TextFieldOption::make()->label(__('Limit'))->defaultValue(8)->toArray()
+                )
+                ->add('background_color', ColorField::class, [
+                    'label' => __('Background color'),
+                    'default_value' => '#fff',
+                ]);
+        });
+
+        Shortcode::register(
+            'main-page',
+            __('main page'),
+            __('main page'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.main-page');
+            }
+        );
+
+
+
+
 
         Shortcode::register(
             'recent-posts',

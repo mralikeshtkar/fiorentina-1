@@ -5,6 +5,8 @@
     if ($bannerImage = $post->getMetaData('banner_image', true)) {
         Theme::set('breadcrumbBannerImage', RvMedia::getImageUrl($bannerImage));
     }
+    $content = \App\Models\Ad::addAdsToContent($post->content);
+
 @endphp
 
 <article class="post post--single">
@@ -32,7 +34,7 @@
         @if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($post)))
             {!! render_object_gallery($galleries, ($post->first_category ? $post->first_category->name : __('Uncategorized'))) !!}
         @endif
-        <div class="ck-content">{!! BaseHelper::clean($post->content) !!}</div>
+        <div class="ck-content">{!! BaseHelper::clean($content) !!}</div>
         <div class="fb-like" data-href="{{ request()->url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
     </div>
     @php $relatedPosts = get_related_posts($post->id, 2); @endphp

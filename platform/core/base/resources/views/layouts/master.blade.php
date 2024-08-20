@@ -2,7 +2,8 @@
     <div class="page">
         @include('core/base::layouts.' . AdminAppearance::getCurrentLayout() . '.partials.navbar')
 
-        <div @class([
+        <div
+            @class([
                 'page-wrapper',
                 'rv-media-integrate-wrapper' => Route::currentRouteName() === 'media.index',
             ])>

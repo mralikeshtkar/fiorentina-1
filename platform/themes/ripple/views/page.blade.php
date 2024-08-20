@@ -1,3 +1,14 @@
+@php
+    $adsBackgroundShortCodeRegex = '/<shortcode>\[ads-background.*?\](.*?)\[\/ads-background.*?\]<\/shortcode>/';
+    $content = preg_replace($adsBackgroundShortCodeRegex,'',$page->content)
+@endphp
+@if(preg_match($adsBackgroundShortCodeRegex,$page->content,$match) && count($match))
+    @php
+        Theme::set('has-ads-background', $match[0])
+    @endphp
+@endif
+
+
 @if (!BaseHelper::isHomepage($page->id))
     @php
         Theme::set('section-name', SeoHelper::getTitle());
@@ -15,12 +26,12 @@
             @if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($page)))
                 {!! render_object_gallery($galleries) !!}
             @endif
-                {!! apply_filters(PAGE_FILTER_FRONT_PAGE_CONTENT, Html::tag('div', BaseHelper::clean($page->content), ['class' => 'ck-content'])->toHtml(), $page) !!}
+                {!! apply_filters(PAGE_FILTER_FRONT_PAGE_CONTENT, Html::tag('div', BaseHelper::clean($content), ['class' => 'ck-content'])->toHtml(), $page) !!}
         </div>
     </article>
 @else
     @if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($page)))
         {!! render_object_gallery($galleries) !!}
     @endif
-    {!! apply_filters(PAGE_FILTER_FRONT_PAGE_CONTENT, Html::tag('div', BaseHelper::clean($page->content), ['class' => 'ck-content'])->toHtml(), $page) !!}
+    {!! apply_filters(PAGE_FILTER_FRONT_PAGE_CONTENT, Html::tag('div', BaseHelper::clean($content), ['class' => 'ck-content'])->toHtml(), $page) !!}
 @endif

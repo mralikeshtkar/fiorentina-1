@@ -16,13 +16,18 @@
 
 <body {!! Theme::bodyAttributes() !!}>
     {!! apply_filters(THEME_FRONT_BODY, null) !!}
+
     <header class="header" id="header">
-        <div class="header-wrap d-none d-sm-block">
+        <div class="header-wrap d-none d-sm-block h-34px">
+
             <nav class="nav-top">
                 <div class="container">
                     <div class="row">
+
                         @if ($socialLinks = Theme::getSocialLinks())
-                            <div class="col-sm-4 d-flex align-items-center">
+
+
+                            <div class="col-sm-4 d-flex align-items-center h-34px">
                                 <ul class="social social--simple">
                                     @foreach ($socialLinks as $socialLink)
                                         @continue(!($icon = $socialLink->getIconHtml()))
@@ -32,11 +37,12 @@
                                                 {{ $icon }}
                                             </a>
                                         </li>
+
                                     @endforeach
                                 </ul>
                             </div>
                         @endif
-                        <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right">
+                            <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right h-34px">
                             @if (is_plugin_active('member'))
                                 <ul class="d-flex">
                                     @if (auth('member')->check())
@@ -69,16 +75,16 @@
         </div>
     </header>
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
-        class="page-header page-header--light">
-        <div class="container">
+            class="page-header page-header--light py-0">
+        <div class="container d-flex">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
                     {{ Theme::getLogoImage(['height' => 50]) }}
                 </a>
             </div>
-            <div class="page-header__right">
+            <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle navigation-toggle--dark" style="display: none"><span></span></div>
-                <div class="float-start">
+                <div class="float-start w-100">
                     <div class="search-btn c-search-toggler">
                         {!! BaseHelper::renderIcon('ti ti-search', attributes: ['class' => 'close-search']) !!}
                     </div>
@@ -94,17 +100,17 @@
                                     <li class="menu-item">
                                         <a href="{{ route('public.member.dashboard') }}" rel="nofollow">
                                             <img src="{{ auth('member')->user()->avatar_thumb_url }}"
-                                                class="img-circle" width="20"
-                                                alt="{{ auth('member')->user()->name }}" loading="lazy">
+                                                 class="img-circle" width="20"
+                                                 alt="{{ auth('member')->user()->name }}" loading="lazy">
                                             &nbsp;<span>{{ auth('member')->user()->name }}</span>
                                         </a>
                                     </li>
                                     <li class="menu-item"><a href="#"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                            rel="nofollow">{!! BaseHelper::renderIcon('ti ti-logout-2') !!} {{ __('Logout') }}</a></li>
+                                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                                             rel="nofollow">{!! BaseHelper::renderIcon('ti ti-logout-2') !!} {{ __('Logout') }}</a></li>
                                 @else
                                     <li class="menu-item"><a href="{{ route('public.member.login') }}"
-                                            rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>
+                                                             rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>
                                 @endif
                             </ul>
                         @endif
@@ -123,11 +129,11 @@
             <div class="super-search hide" data-search-url="{{ route('public.ajax.search') }}">
                 <form class="quick-search" action="{{ route('public.search') }}">
                     <input type="text" name="q" placeholder="{{ __('Type to search...') }}"
-                        class="form-control search-input" autocomplete="off">
+                           class="form-control search-input" autocomplete="off">
                     <span class="close-search">&times;</span>
                 </form>
                 <div class="search-result"></div>
             </div>
         @endif
     </header>
-    <div id="page-wrap">
+
