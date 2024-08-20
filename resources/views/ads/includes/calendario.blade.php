@@ -42,9 +42,33 @@
                             border: 1px solid white;
                         ">
 
-
+                    @foreach (App\Models\Matches::all() as $match)
                         @dd($match)
+                        <tr style="border-bottom:1px solid blueviolet">
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
+                            style="border-right: 1px solid blueviolet;"><img
+                                    src="{{ $standing->crest_url }}" width="15">
+                                {{ $standing->short_name }}</td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="border-right: 1px solid blueviolet;">{{ $standing->points }}</td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="border-right: 1px solid blueviolet;text-align:center">
+                                {{ $standing->played_games }}
+                            </td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="border-right: 1px solid blueviolet;text-align:center">
+                                {{ $standing->won }}</td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="border-right: 1px solid blueviolet;text-align:center">
+                                {{ $standing->draw }}</td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="border-right: 1px solid blueviolet;text-align:center">
+                                {{ $standing->lost }}</td>
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                            style="text-align:center">{{ $standing->goal_difference }}</td>
 
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </section>
