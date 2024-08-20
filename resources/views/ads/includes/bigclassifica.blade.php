@@ -1,4 +1,4 @@
-@if ($topSidebarContent)
+
     <div class="col-lg-3">
 
         <div class="page-sidebar mt-3">
@@ -73,4 +73,4 @@
             </section>
         </div>
     </div>
-@endif
+
