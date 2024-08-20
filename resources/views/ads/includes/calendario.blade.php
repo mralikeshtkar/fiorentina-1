@@ -6,7 +6,7 @@
                 <div class="page-content">
                     <div class="post-group">
                         <div class="post-group__header">
-                            <h3 class="post-group__title">CLASSIFICA SERIE A</h3>
+                            <h3 class="post-group__title">Calendario Fiorentina</h3>
                         </div>
                     </div>
                 </div>
@@ -43,6 +43,7 @@
                         ">
 
                     @foreach (App\Models\Standing::all() as $standing)
+                        @dd($standing)
                         <tr style="border-bottom:1px solid blueviolet">
                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
                             style="border-right: 1px solid blueviolet;"><img
