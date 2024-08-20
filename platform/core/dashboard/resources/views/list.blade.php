@@ -41,13 +41,13 @@
 {{--            {!! apply_filters(DASHBOARD_FILTER_ADMIN_NOTIFICATIONS, null) !!}--}}
 {{--        </div>--}}
 
-        <div class="col-12">
-            <div class="row row-cards">
-                @foreach ($statWidgets as $widget)
-                    {!! $widget !!}
-                @endforeach
-            </div>
-        </div>
+{{--        <div class="col-12">--}}
+{{--            <div class="row row-cards">--}}
+{{--                @foreach ($statWidgets as $widget)--}}
+{{--                    {!! $widget !!}--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 
     <div class="mb-3 col-12">
