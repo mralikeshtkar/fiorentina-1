@@ -1,7 +1,6 @@
 <ul @class(['navbar-nav', $navbarClass ?? null])>
     @foreach (DashboardMenu::getAll() as $menu)
-        @dd($menu['id'])
-        @if ($menu['id'] == 'cms-core-plugins' && $menu['id'] == 'cms-core-system')
+        @if ($menu['id'] == 'cms-core-plugins' || $menu['id'] == 'cms-core-system')
         @else
             @include('core/base::layouts.partials.navbar-nav-item', [
                 'menu' => $menu,
