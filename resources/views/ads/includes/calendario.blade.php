@@ -43,7 +43,7 @@
                         ">
 
                     @foreach (App\Models\Matches::all() as $match)
-                        @dd($match->match_date)
+                        @dd($match)
                         <tr style="border-bottom:1px solid blueviolet">
                             <td>{{ $match->match_date}}</td>
 {{--                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif--}}
