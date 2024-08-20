@@ -1,4 +1,5 @@
 <ul @class(['navbar-nav', $navbarClass ?? null])>
+    @dd(DashboardMenu::getAll());
     @foreach (DashboardMenu::getAll() as $menu)
         @include('core/base::layouts.partials.navbar-nav-item', [
             'menu' => $menu,
