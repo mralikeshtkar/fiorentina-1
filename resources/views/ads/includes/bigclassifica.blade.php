@@ -1,5 +1,5 @@
 
-    <div class="col-lg-9">
+    <div class="col-lg-12">
 
         <div class="page-sidebar mt-3">
             <section>
