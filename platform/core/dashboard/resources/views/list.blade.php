@@ -37,9 +37,9 @@
 {{--            @endif--}}
 {{--        </div>--}}
 
-        <div class="col-12">
-            {!! apply_filters(DASHBOARD_FILTER_ADMIN_NOTIFICATIONS, null) !!}
-        </div>
+{{--        <div class="col-12">--}}
+{{--            {!! apply_filters(DASHBOARD_FILTER_ADMIN_NOTIFICATIONS, null) !!}--}}
+{{--        </div>--}}
 
         <div class="col-12">
             <div class="row row-cards">
