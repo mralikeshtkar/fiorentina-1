@@ -108,6 +108,14 @@ app('events')->listen(RouteMatched::class, function () {
                 return Theme::partial('shortcodes.bigclassifica');
             }
         );
+        Shortcode::register(
+            'calendario',
+            __('calendario'),
+            __('calendario'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.calendario');
+            }
+        );
 
         Shortcode::setPreviewImage('ads-diretta', Theme::asset()->url('images/ui-blocks/all-galleries.png'));
 
