@@ -1,5 +1,5 @@
 @if(isset($ad) && $ad)
-    <div class="row mx-0">
+    <div class="row justify-content-center mx-0">
 
         <div class="col-12 col-md-8 col-lg-6 mx-auto">
             <a href="" class="d-block">
