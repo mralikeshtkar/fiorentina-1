@@ -139,7 +139,8 @@ class StandingController extends Controller
     public static function FetchCalendario()
     {
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
-        if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
+        // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
+        if (1) {
         $response = Http::withHeaders([
             'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         ])->get('https://api.football-data.org/v4/teams/99/matches');
