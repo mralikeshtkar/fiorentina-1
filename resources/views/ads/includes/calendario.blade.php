@@ -68,9 +68,10 @@
                                 @else
                                     @php
                                         $time = Carbon::parse($match->match_date)->format('H:i');
-
+                                        if ($time == '00:00') {
+                                            $time = 'Da Confermare';
+                                        }
                                     @endphp
-
                                     {{ $time }}
                                 @endif
 
