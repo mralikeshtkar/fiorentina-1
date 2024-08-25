@@ -60,6 +60,9 @@
                                 </div>
                             </td>
                             <td>
+                                <img src="{{ $match->competition }}" alt="{{ $match->group }}"
+                                    style="width: 20px; height: auto;">
+                                {{ $match->group }}
                             </td>
                             <td>
                                 @if ($score['fullTime']['home'])
@@ -76,9 +79,7 @@
                                 @endif
 
                             </td>
-                            <td>
 
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
