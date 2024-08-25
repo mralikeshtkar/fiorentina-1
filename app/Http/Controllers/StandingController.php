@@ -53,7 +53,7 @@ class StandingController extends Controller
     public static function fetchScheduledMatches()
     {
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
-    if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
+        if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         $response = Http::withHeaders([
             'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         ])->get('https://api.football-data.org/v4/teams/99/matches', [
@@ -88,8 +88,8 @@ class StandingController extends Controller
             );
             return "First timed match updated successfully.";
         }
-    }
-    return "No update needed or no matches found.";
+        }
+        return "No update needed or no matches found.";
         
     }
 
@@ -132,6 +132,52 @@ class StandingController extends Controller
             return "No update needed.";
         
     }
+
+
+
+
+    public static function FetchCalendario()
+    {
+        $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
+        if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
+        $response = Http::withHeaders([
+            'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
+        ])->get('https://api.football-data.org/v4/teams/99/matches');
+
+        $matches = $response->json()['matches'];
+        dd($matches);
+
+        // Check if there is at least one match and only process the first one
+        if (!empty($matches)) {
+            $match = $matches[0];  // Get the first match
+            $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
+            Calendario::updateOrCreate(
+                ['match_id' => $match['id']],
+                [
+                    'venue' => $match['venue'] ?? null,
+                    'matchday' => $match['matchday'],
+                    'competition' => $match['competition']['emblem'],
+                    'group' => $match['competition']['name'] ?? null,
+                    'match_date' => $matchDate,  // Use the formatted date
+                    'status' => $match['status'],
+                    'home_team' => json_encode($match['homeTeam'] ?? []),
+                    'away_team' => json_encode($match['awayTeam'] ?? []),
+                    'score' => json_encode($match['score'] ?? []),
+                    'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
+                    'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
+                    'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
+                    'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
+                    'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
+                    'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
+                ]
+            );
+            return "First timed match updated successfully.";
+        }
+        }
+        return "No update needed or no matches found.";
+        
+    }
+
 
 }
     
