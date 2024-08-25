@@ -15,76 +15,88 @@
             </div>
 
 
-            <div>
-                @php
-                    $updateScheduledMessage = App\Http\Controllers\StandingController::fetchCalendario();
-                @endphp
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Match</th>
-                        <th>Orario/Risultati</th>
-                        <th>Campionato</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (App\Models\Calendario::all() as $match)
-                        @php
-                            $homeTeam = json_decode($match->home_team, true);
-                            $awayTeam = json_decode($match->away_team, true);
-                            $score = json_decode($match->score, true);
-                            $odds = json_decode($match->odds, true);
-                        @endphp
-                        <tr>
-                            <td>
-                                @php
-                                    Carbon::setLocale('it'); // Set the locale to Italian
-                                    $formattedDate = Carbon::parse($match->match_date)->translatedFormat('d F Y');
-                                @endphp
-                                {{ $formattedDate }}</td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="{{ $homeTeam['crest'] }}" alt="{{ $homeTeam['shortName'] }}"
-                                            style="width: 20px; height: auto;">
-                                        {{ $homeTeam['name'] }}
-                                    </div>
-                                    <div class="col-6">
-                                        <img src="{{ $awayTeam['crest'] }}" alt="{{ $awayTeam['shortName'] }}"
-                                            style="width: 20px; height: auto;">
-                                        {{ $awayTeam['name'] }}
 
-                                    </div>
-                                </div>
-                            </td>
+            @php
+                $updateScheduledMessage = App\Http\Controllers\StandingController::fetchCalendario();
+            @endphp
 
-                            <td>
-                                @if ($score['fullTime']['home'])
-                                    Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
-                                    {{ $score['fullTime']['away'] ?? '-' }}
-                                @else
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Match</th>
+                                    <th>Orario/Risultati</th>
+                                    <th>Campionato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (App\Models\Calendario::all() as $match)
                                     @php
-                                        $time = Carbon::parse($match->match_date)->format('H:i');
-                                        if ($time == '00:00') {
-                                            $time = 'Da Confermare';
-                                        }
+                                        $homeTeam = json_decode($match->home_team, true);
+                                        $awayTeam = json_decode($match->away_team, true);
+                                        $score = json_decode($match->score, true);
+                                        $odds = json_decode($match->odds, true);
                                     @endphp
-                                    {{ $time }}
-                                @endif
+                                    <tr>
+                                        <td>
+                                            @php
+                                                Carbon::setLocale('it'); // Set the locale to Italian
+                                                $formattedDate = Carbon::parse($match->match_date)->translatedFormat(
+                                                    'd F Y',
+                                                );
+                                            @endphp
+                                            {{ $formattedDate }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <img src="{{ $homeTeam['crest'] }}"
+                                                        alt="{{ $homeTeam['shortName'] }}"
+                                                        style="width: 20px; height: auto;">
+                                                    {{ $homeTeam['name'] }}
+                                                </div>
+                                                <div class="col-6">
+                                                    <img src="{{ $awayTeam['crest'] }}"
+                                                        alt="{{ $awayTeam['shortName'] }}"
+                                                        style="width: 20px; height: auto;">
+                                                    {{ $awayTeam['name'] }}
 
-                            </td>
-                            <td>
-                                <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                                    style="width: 30px; height: auto;">
-                                {{ $match->group }}
-                            </td>
+                                                </div>
+                                            </div>
+                                        </td>
 
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                        <td>
+                                            @if ($score['fullTime']['home'])
+                                                Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
+                                                {{ $score['fullTime']['away'] ?? '-' }}
+                                            @else
+                                                @php
+                                                    $time = Carbon::parse($match->match_date)->format('H:i');
+                                                    if ($time == '00:00') {
+                                                        $time = 'Da Confermare';
+                                                    }
+                                                @endphp
+                                                {{ $time }}
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <img src="{{ $match->competition }}" alt="{{ $match->group }}"
+                                                style="width: 30px; height: auto;">
+                                            {{ $match->group }}
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </section>
     </div>
