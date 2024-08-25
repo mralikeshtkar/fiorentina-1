@@ -77,7 +77,7 @@
                             </td>
                             <td>
                                 <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                                    style="width: 40px; height: auto;">
+                                    style="width: 30px; height: auto;">
                                 {{ $match->group }}
                             </td>
 
