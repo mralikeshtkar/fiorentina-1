@@ -34,21 +34,42 @@
                             $odds = json_decode($match->odds, true);
                         @endphp
                         <tr>
-                            <td>{{ $match->match_date }}</td>
-                            <td>{{ $match->status }}</td>
                             <td>
-                                {{ $homeTeam['name'] }}
-                                <img src="{{ $homeTeam['crest'] }}" alt="{{ $homeTeam['shortName'] }}"
-                                    style="width: 30px; height: auto;">
+                                @php
+                                    Carbon::setLocale('it'); // Set the locale to Italian
+                                    $formattedDate = Carbon::parse($match->match_date)->translatedFormat('d F Y');
+                                @endphp
+                                {{ $formattedDate }}</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="{{ $homeTeam['crest'] }}" alt="{{ $homeTeam['shortName'] }}"
+                                            style="width: 20px; height: auto;">
+                                        {{ $homeTeam['name'] }}
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="{{ $awayTeam['crest'] }}" alt="{{ $awayTeam['shortName'] }}"
+                                            style="width: 20px; height: auto;">
+                                        {{ $awayTeam['name'] }}
+
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                {{ $awayTeam['name'] }}
-                                <img src="{{ $awayTeam['crest'] }}" alt="{{ $awayTeam['shortName'] }}"
-                                    style="width: 30px; height: auto;">
                             </td>
                             <td>
-                                Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
-                                {{ $score['fullTime']['away'] ?? '-' }}
+                                @if ($score['fullTime']['home'])
+                                    Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
+                                    {{ $score['fullTime']['away'] ?? '-' }}
+                                @else
+                                    @php
+                                        $time = Carbon::parse($match->match_date)->format('H:i');
+
+                                    @endphp
+
+                                    {{ $time }}
+                                @endif
+
                             </td>
                             <td>
 
