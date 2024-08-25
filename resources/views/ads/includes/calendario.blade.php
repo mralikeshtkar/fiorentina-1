@@ -59,11 +59,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                                    style="width: 20px; height: auto;">
-                                {{ $match->group }}
-                            </td>
+
                             <td>
                                 @if ($score['fullTime']['home'])
                                     Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
@@ -78,6 +74,11 @@
                                     {{ $time }}
                                 @endif
 
+                            </td>
+                            <td>
+                                <img src="{{ $match->competition }}" alt="{{ $match->group }}"
+                                    style="width: 40px; height: auto;">
+                                {{ $match->group }}
                             </td>
 
                         </tr>
