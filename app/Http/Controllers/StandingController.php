@@ -146,7 +146,6 @@ class StandingController extends Controller
         ])->get('https://api.football-data.org/v4/teams/99/matches');
 
         $matches = $response->json()['matches'];
-        dd($matches);
 
         // Check if there is at least one match and only process the first one
         if (!empty($matches)) {
