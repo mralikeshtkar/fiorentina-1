@@ -14,6 +14,12 @@ class Player extends Model
     protected $fillable = [
         'name','league','position','season','image','jersey_number','flag_id'
     ];
+    
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+    
 
     
 }
