@@ -28,4 +28,9 @@ class Calendario extends Model
         'odds' => 'array',
         'referees' => 'array'
     ];
+    
+    public function comments()
+    {
+        return $this->hasMany(DirettaComment::class);
+    }
 }
