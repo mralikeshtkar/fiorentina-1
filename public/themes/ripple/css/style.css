@@ -4302,7 +4302,49 @@ header>.container {
 }
 
 .st {
-    top: 20%;
-    left: 50%;
+    top: 9%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.st1 {
+    top: 9%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+}
+
+.st2 {
+    top: 9%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.st3 {
+    top: 9%;
+    left: 74%;
+    transform: translate(-50%, -50%);
+}
+
+.st4 {
+    top: 19%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.st5 {
+    top: 19%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+}
+
+.st6 {
+    top: 19%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.st7 {
+    top: 19%;
+    left: 74%;
     transform: translate(-50%, -50%);
 }
