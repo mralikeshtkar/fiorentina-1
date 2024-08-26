@@ -25,7 +25,7 @@
                     <td class="align-middle">{{ $vote->player->name }}</td>
                     <td class="align-middle">
                         @if($vote->getImageUrl($vote->player->name))
-                            <img src="{{ $vote->getImageUrl($vote->player->name) }}" width="30" height="30" alt="{{ $vote->title }}">
+                            <img src="{{ $vote->getImageUrl($vote->player->name) }}" width="50" height="50" alt="{{ $vote->title }}">
                         @endif
                     </td>
 
