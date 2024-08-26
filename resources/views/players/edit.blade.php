@@ -48,9 +48,12 @@
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
-                                        @if($player->getImageUrl())
-                                            <img src="{{ $player->getImageUrl() }}" class="image-preview" alt="{{ $player->name }}" style="max-width: 200px;">
+                                        @if($player->getImageUrl($player->name))
+                                            <img src="{{ $player->getImageUrl($player->name) }}" class="image-preview"   width="50" height="50" alt="{{ $player->name }}">
                                         @endif
+{{--                                        @if($player->getImageUrl())--}}
+{{--                                            <img src="{{ $player->getImageUrl() }}" class="image-preview" alt="{{ $player->name }}" style="max-width: 200px;">--}}
+{{--                                        @endif--}}
                                     </div>
                                 </div>
                             </div>
