@@ -28,7 +28,7 @@ use App\Http\Controllers\VoteController;
     Route::get('/admin/players', [PlayerController::class, 'index'])->name('players.index');
     Route::get('/admin/players/create', [PlayerController::class, 'create'])->name('players.create');
     Route::post('/admin/players', [PlayerController::class, 'store'])->name('players.store');
-    Route::get('/admin/players/{vote}/edit', [PlayerController::class, 'edit'])->name('players.edit');
-    Route::put('/admin/players/{vote}', [PlayerController::class, 'update'])->name('players.update');
-    Route::delete('/admin/players/{vote}', [PlayerController::class, 'destroy'])->name('players.destroy');
+    Route::get('/admin/players/{player}/edit', [PlayerController::class, 'edit'])->name('players.edit');
+    Route::put('/admin/players/{player}', [PlayerController::class, 'update'])->name('players.update');
+    Route::delete('/admin/players/{player}', [PlayerController::class, 'destroy'])->name('players.destroy');
 
