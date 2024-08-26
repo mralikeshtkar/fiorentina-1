@@ -43,24 +43,24 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-12">
                                         @else
-                                            <article
-                                                class="post post__horizontal post__horizontal--single mb-20 clearfix">
-                                                <div class="post__thumbnail">
-                                                    {{ RvMedia::image($post->image, $post->name, 'medium') }}
-                                                    <a class="post__overlay" href="{{ $post->url }}"
-                                                        title="{{ $post->name }}"></a>
-                                                </div>
-                                                <div class="post__content-wrap">
-                                                    <header class="post__header">
-                                                        <h3 class="post__title"><a href="{{ $post->url }}"
-                                                                title="{{ $post->name }}">{{ $post->name }}</a>
-                                                        </h3>
-                                                        <div class="post__meta"><span
-                                                                class="post__created-at">{{ Theme::formatDate($post->created_at) }}</span>
-                                                        </div>
-                                                    </header>
-                                                </div>
-                                            </article>
+{{--                                            <article--}}
+{{--                                                class="post post__horizontal post__horizontal--single mb-20 clearfix">--}}
+{{--                                                <div class="post__thumbnail">--}}
+{{--                                                    {{ RvMedia::image($post->image, $post->name, 'medium') }}--}}
+{{--                                                    <a class="post__overlay" href="{{ $post->url }}"--}}
+{{--                                                        title="{{ $post->name }}"></a>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="post__content-wrap">--}}
+{{--                                                    <header class="post__header">--}}
+{{--                                                        <h3 class="post__title"><a href="{{ $post->url }}"--}}
+{{--                                                                title="{{ $post->name }}">{{ $post->name }}</a>--}}
+{{--                                                        </h3>--}}
+{{--                                                        <div class="post__meta"><span--}}
+{{--                                                                class="post__created-at">{{ Theme::formatDate($post->created_at) }}</span>--}}
+{{--                                                        </div>--}}
+{{--                                                    </header>--}}
+{{--                                                </div>--}}
+{{--                                            </article>--}}
                                     @endif
                                     @if ($loop->last)
                             </div>
