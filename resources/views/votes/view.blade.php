@@ -3,7 +3,7 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('ads.create') }}" class="btn btn-primary">Create</a>
+            <a href="{{ route('votes.create') }}" class="btn btn-primary">Crrytate</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -18,15 +18,15 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($ads as $ad)
+            @foreach($votes as $vote)
                 <tr>
-                    <td class="align-middle">{{ $ad->id }}</td>
-                    <td class="align-middle">{{ $ad->title }}</td>
-                    <td class="align-middle">{{ $ad->type }}</td>
-                    <td class="align-middle">{{ $ad->group_name }}</td>
+                    <td class="align-middle">{{ $vote->id }}</td>
+                    <td class="align-middle">{{ $vote->title }}</td>
+                    <td class="align-middle">{{ $vote->type }}</td>
+                    <td class="align-middle">{{ $vote->group_name }}</td>
                     <td class="align-middle">
-                        @if($ad->getImageUrl())
-                            <img src="{{ $ad->getImageUrl() }}" width="140" alt="{{ $ad->title }}">
+                        @if($vote->getImageUrl())
+                            <img src="{{ $vote->getImageUrl() }}" width="140" alt="{{ $vote->title }}">
                         @endif
                     </td>
 
@@ -34,8 +34,8 @@
 
                     <td class="align-middle">
                         <div class="d-flex gap-2">
-                            <a href="{{ route('ads.edit',$ad->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('ads.destroy',$ad->id) }}" method="post">
+                            <a href="{{ route('votes.edit',$vote->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('votes.destroy',$vote->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -47,7 +47,7 @@
             </tbody>
         </table>
         <div class="w-100">
-            {{ $ads->links() }}
+            {{ $votes->links() }}
         </div>
     </div>
 
