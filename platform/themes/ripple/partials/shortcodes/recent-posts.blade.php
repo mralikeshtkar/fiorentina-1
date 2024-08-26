@@ -18,7 +18,7 @@
                             <div class="row">
                                 @foreach ($posts as $post)
                                     @if ($loop->first)
-                                        <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="col-md-12 col-sm-12 col-12">
                                             <article class="post post__vertical post__vertical--single">
                                                 <div class="post__thumbnail">
                                                     {{ RvMedia::image($post->image, $post->name, 'medium') }}
