@@ -24,12 +24,9 @@
                     <td class="align-middle">{{ $player->id }}</td>
                     <td class="align-middle">{{ $player->name }}</td>
                     <td class="align-middle">
-                        @if($player->getImageUrl())
-                            <img src="{{ $player->getImageUrl() }}" width="140" alt="{{ $player->title }}">
+                        @if($player->getImageUrl($player->player->name))
+                            <img src="{{ $player->getImageUrl($player->player->name) }}" width="50" height="50" alt="{{ $player->title }}">
                         @endif
-{{--                        @if($player->getImageUrl($player->name))--}}
-{{--                            <img src="{{ $player->getImageUrl($player->name) }}" width="50" height="50" alt="{{ $player->title }}">--}}
-{{--                        @endif--}}
                     </td>
 
                     <td class="align-middle">{{ $player->vote_number }}</td>
