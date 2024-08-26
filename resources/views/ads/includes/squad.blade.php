@@ -6,14 +6,6 @@
     $Defenders = $players->where('position', 'Difensore');
     $Goalkeepers = $players->where('position', 'Portiere');
 @endphp
-@php
-    use App\Models\Player;
-    $players = Player::all();
-    $forwards = $players->where('position', 'Attaccante');
-    $Midfielders = $players->where('position', 'Centrocampista');
-    $Defenders = $players->where('position', 'Difensore');
-    $Goalkeepers = $players->where('position', 'Portiere');
-@endphp
 <div class="accordion" id="playersAccordion">
     <!-- Forwards -->
     <div class="accordion-item">
