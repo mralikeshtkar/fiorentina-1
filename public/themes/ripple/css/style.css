@@ -4234,11 +4234,12 @@ header>.container {
 }
 
 .player-list ul {
-    list-style: none;
-    padding: 0;
+    list-style: none !important;
+    padding: 0 !important;
 }
 
 .player-list ul li {
+    list-style: none !important;
     color: #441274;
     padding: 10px;
     background-color: #f8f9fa;
