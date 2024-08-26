@@ -8,7 +8,7 @@
             <!-- Main Content Area -->
             <div class="gap-3 col-md-9">
                 <!-- Player Name Input -->
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h4 class="card-title">Player Name</h4>
                     </div>
@@ -17,8 +17,38 @@
                     </div>
                 </div>
 
+                <!-- League Input -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title">League</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="league" name="league" value="{{ old('league') }}" required>
+                    </div>
+                </div>
+
+                <!-- Position Input -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title">Position</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="position" name="position" value="{{ old('position') }}" required>
+                    </div>
+                </div>
+
+                <!-- Season Input -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title">Season</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="season" name="season" value="{{ old('season') }}" required>
+                    </div>
+                </div>
+
                 <!-- Player Image Upload -->
-                <div class="card mt-3">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h4 class="card-title">Player Image</h4>
                     </div>
@@ -28,13 +58,23 @@
                     </div>
                 </div>
 
-                <!-- Vote Number Input -->
-                <div class="card mt-3">
+                <!-- Flag ID Input -->
+                <div class="card mb-3">
                     <div class="card-header">
-                        <h4 class="card-title">Vote Number</h4>
+                        <h4 class="card-title">Flag ID</h4>
                     </div>
                     <div class="card-body">
-                        <input type="number" class="form-control" id="vote_number" name="vote_number" value="{{ old('vote_number') }}" required min="4" max="8">
+                        <input type="number" class="form-control" id="flag_id" name="flag_id" value="{{ old('flag_id') }}" required>
+                    </div>
+                </div>
+
+                <!-- Jersey Number Input -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title">Jersey Number</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="number" class="form-control" id="jersey_number" name="jersey_number" value="{{ old('jersey_number') }}" required>
                     </div>
                 </div>
             </div>
@@ -49,27 +89,9 @@
                     <div class="card-body">
                         <div class="btn-list">
                             <button class="btn btn-primary" type="submit" value="apply" name="submitter">
-                                <svg class="icon icon-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path
-                                        d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
-                                    <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                    <path d="M14 4l0 4l-6 0l0 -4"></path>
-                                </svg>
                                 Save
                             </button>
-
                             <button class="btn" type="submit" name="submitter" value="save">
-                                <svg class="icon icon-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M4 18v3h16v-14l-8 -4l-8 4v3"></path>
-                                    <path d="M4 14h9"></path>
-                                    <path d="M10 11l3 3l-3 3"></path>
-                                </svg>
                                 Save &amp; Exit
                             </button>
                         </div>
