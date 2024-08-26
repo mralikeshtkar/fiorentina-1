@@ -4219,13 +4219,3 @@ span.menu-title {
 header>.container {
     border-bottom: 1px solid #00000040;
 }
-
-.pitch {
-    position: relative;
-    width: 600px;
-    height: 800px;
-    background: url('https://laviola.collaudo.biz/storage/pitch.png') no-repeat center center;
-    background-size: cover;
-    border: 2px solid #fff;
-}
-}
