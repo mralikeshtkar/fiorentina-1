@@ -27,8 +27,7 @@ class Vote extends BaseModel
 
     public function getImageUrl($playername){
 
-        $playerImage=Player::where('name',$playername)->get();
-        dd($playerImage);
+        $playerImage=Player::where('name',$playername)->first();
         return $playerImage->image;
 
     }
