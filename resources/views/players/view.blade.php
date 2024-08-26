@@ -25,7 +25,7 @@
                     <td class="align-middle">{{ $player->name }}</td>
                     <td class="align-middle">
                         @if($player->getImageUrl($player->name))
-                            <img src="{{ $player->getImageUrl($player->name) }}" width="140" alt="{{ $player->name }}">
+                            <img src="{{ $player->getImageUrl($player->name) }}" width="50" height="50" alt="{{ $player->name }}">
                         @endif
 
 {{--                    @if($player->getImageUrl())--}}
