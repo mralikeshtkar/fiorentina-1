@@ -65,7 +65,53 @@ class PlayerController extends BaseController
         // Redirect to the player list with a success message
         return redirect()->route('players.index')->with('success', 'Player created successfully.');
     }
+    public function edit(Player $player)
+    {
+        return view('players.edit', compact('player'));
+    }
+    public function update(Request $request, Player $player)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'league' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'season' => 'required|string|in:2024-2025,2025-2026,2026-2027',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image is optional
+            'flag_id' => 'required|integer',
+            'jersey_number' => 'required|integer',
+            'status' => 'required|string|in:published,draft,pending',
+        ]);
 
+        // Handle the image upload if a new image is provided
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($player->image) {
+                Storage::disk('public')->delete($player->image);
+            }
+
+            // Store the new image
+            $imagePath = $request->file('image')->store('players', 'public');
+            $player->image = $imagePath;
+        }
+
+        // Update the player record
+        $player->update([
+            'name' => $request->name,
+            'league' => $request->league,
+            'position' => $request->position,
+            'season' => $request->season,
+            'flag_id' => $request->flag_id,
+            'jersey_number' => $request->jersey_number,
+            'status' => $request->status,
+        ]);
+
+        // Save the changes
+        $player->save();
+
+        // Redirect to the player list with a success message
+        return redirect()->route('players.index')->with('success', 'Player updated successfully.');
+    }
     public static function fetchSquad(){
 
                 $response = Http::withHeaders([
