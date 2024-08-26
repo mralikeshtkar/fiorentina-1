@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Calendario extends Model
+class Player extends Model
 {
     use HasFactory;
 
-    protected $table = 'squad';
+    protected $table = 'players';
 
     protected $fillable = [
-        'player_id','name','position'
+        'name','leauge','position','position','season','image','jersey_number','flag_id'
     ];
 }
