@@ -17,7 +17,7 @@
                         <div class="post-group__content">
                             <div class="row">
                                 @foreach ($posts as $post)
-                                    @if ($loop->first)
+{{--                                    @if ($loop->first)--}}
                                         <div class="col-md-9 col-sm-9 col-12">
                                             <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center;">
                                                 <!-- Image on the left -->
@@ -83,10 +83,10 @@
 {{--                                                    </header>--}}
 {{--                                                </div>--}}
 {{--                                            </article>--}}
-                                    @endif
-                                    @if ($loop->last)
+{{--                                    @endif--}}
+{{--                                    @if ($loop->last)--}}
 {{--                            </div>--}}
-                            @endif
+{{--                            @endif--}}
                             @endforeach
                         </div>
                     </div>
