@@ -22,10 +22,10 @@
             @foreach($players as $player)
                 <tr>
                     <td class="align-middle">{{ $player->id }}</td>
-                    <td class="align-middle">{{ $player->player->name }}</td>
+                    <td class="align-middle">{{ $player->name }}</td>
                     <td class="align-middle">
-                        @if($player->getImageUrl($player->player->name))
-                            <img src="{{ $player->getImageUrl($player->player->name) }}" width="50" height="50" alt="{{ $player->title }}">
+                        @if($player->getImageUrl($player->name))
+                            <img src="{{ $player->getImageUrl($player->name) }}" width="50" height="50" alt="{{ $player->title }}">
                         @endif
                     </td>
 
