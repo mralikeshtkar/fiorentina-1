@@ -47,7 +47,7 @@ class PlayerController extends BaseController
                 }
     
                 // Dump the filtered data
-                dd($Player::all());
+                dd(Player::all());
     }
 
 
