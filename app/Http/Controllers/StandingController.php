@@ -146,13 +146,12 @@ class StandingController extends Controller
         // $response = Http::withHeaders([
         //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         // ])->get('https://api.football-data.org/v4/teams/99/matches');
-        
+
         $response = Http::withHeaders([
             'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         ])->get('https://api.sportmonks.com/v3/football/teams/109/fixtures');
-        
-        $matches = $response->json()['matches'];
-        dd($matches);
+        dd($response);
+
 
         // Check if there is at least one match and only process the first one
         if (!empty($matches)) {
