@@ -26,7 +26,7 @@ class PlayerController extends BaseController
     public function index()
     {
         $this->pageTitle("Players List");
-        $players = Vote::query()->latest()->paginate(20);
+        $players = Player::query()->latest()->paginate(20);
         return view('players.view', compact('players'));
     }
     public function create()
