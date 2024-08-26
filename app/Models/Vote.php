@@ -24,6 +24,13 @@ class Vote extends BaseModel
     {
         return $this->belongsTo(Player::class);
     }
+
+    public function getImageUrl($playername){
+
+        $playerImage=Player::where('name',$playername)->first();
+        return $playerImage->image;
+
+    }
     protected $casts = [
         'status' => 'bool',
         'starts_at' => 'datetime',

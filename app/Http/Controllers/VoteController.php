@@ -27,6 +27,8 @@ class VoteController extends BaseController
             ->add("Advertisements");
     }
 
+
+
     public function index()
     {
         $this->pageTitle("Votes List");
