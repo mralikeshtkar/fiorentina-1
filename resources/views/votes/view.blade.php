@@ -3,7 +3,7 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('votes.create') }}" class="btn btn-primary">Create</a>
+            <a href="{{ route('votes.create') }}" class="btn btn-primary">Crrytate</a>
         </div>
         <table class="table table-striped">
             <thead>
