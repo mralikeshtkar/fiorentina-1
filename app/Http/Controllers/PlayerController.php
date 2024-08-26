@@ -31,11 +31,10 @@ class PlayerController extends BaseController
                     "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
                     "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
                 ])->get('https://flashlive-sports.p.rapidapi.com/v1/teams/squad?sport_id=1&locale=en_INT&team_id=Q3A3IbXH');
-                // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
-                $playersGroups=$response->json()['DATA'];
 
+                $playersGroups=$response->json()['DATA'];
                 foreach($playersGroups as $playersGroup){
-                    foreach($playerGroup->ITEMS as $player ){
+                    foreach($playersGroup->ITEMS as $player ){
                         Player::where('name', $player->PLAYER_NAME)->update(
                             [
                                 'image' => $player->PLAYER_IMAGE_PATH,
