@@ -40,7 +40,7 @@ class PlayerController extends BaseController
                             [
                                 'image' => $player['PLAYER_IMAGE_PATH'],
                                 'flag_id' => $player['PLAYER_FLAG_ID'],
-                                'jersey_number' => $player['PLAYER_JERSEY_NUMBER'],
+                                'jersey_number' => $player['PLAYER_JERSEY_NUMBER']??'',
                             ]
                         );
 
