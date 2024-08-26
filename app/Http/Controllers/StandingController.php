@@ -143,15 +143,12 @@ class StandingController extends Controller
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
-        // $response = Http::withHeaders([
-        //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
-        // ])->get('https://api.football-data.org/v4/teams/99/matches');
+        $response = Http::withHeaders([
+            'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
+        ])->get('https://api.football-data.org/v4/teams/99/matches');
 
-        $response = Http::get('https://api.sportmonks.com/v2/football/fixtures/109',[
-            'api_token' => 'B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC'
-        ]);
-        dd($response->json());
-
+        
+        $matches = $response->json()['matches'];
 
         // Check if there is at least one match and only process the first one
         if (!empty($matches)) {
