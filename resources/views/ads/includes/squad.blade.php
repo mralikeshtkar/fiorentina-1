@@ -21,10 +21,19 @@
     <div class="forwards">
 
         @foreach ($forwards as $st)
-            <div class="player st{{ $stindex }}">{{ $st->name }}</div>
+            <div class="col player st{{ $stindex }}">
+                {{ $st->name }}
+            </div>
+
             @php
                 $stindex++;
             @endphp
+
+            {{-- Close the current row and start a new one after every 4 players --}}
+            @if ($stindex % 4 == 0)
+    </div>
+    <div class="row">
+        @endif
         @endforeach
     </div>
 </div>

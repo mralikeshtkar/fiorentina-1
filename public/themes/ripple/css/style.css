@@ -4300,3 +4300,16 @@ header>.container {
     left: 80%;
     transform: translate(-50%, -50%);
 }
+
+.forwards .player {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #441274;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 50%;
+    font-weight: bold;
+    display: inline-grid;
+}
