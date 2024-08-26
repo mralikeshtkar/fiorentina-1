@@ -21,7 +21,7 @@
             @foreach($votes as $vote)
                 <tr>
                     <td class="align-middle">{{ $vote->id }}</td>
-{{--                    <td class="align-middle">{{ $vote->player->name }}</td>--}}
+                    <td class="align-middle">{{ $vote->player->name }}</td>
                     <td class="align-middle">{{ $vote->vote_number }}</td>
                     <td class="align-middle">{{ $vote->created_at }}</td>
                     <td class="align-middle">{{ $vote->updated_at }}</td>
