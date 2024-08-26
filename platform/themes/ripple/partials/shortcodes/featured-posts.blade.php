@@ -66,29 +66,29 @@
                                 </header>
                             </article>
                         </div>
-{{--                        <div class="post-group__right">--}}
-{{--                            @else--}}
-{{--                                <div class="post-group__item">--}}
-{{--                                    <article class="post post__inside post__inside--feature post__inside--feature-small">--}}
-{{--                                        <div class="post__thumbnail">--}}
-{{--                                            {{ RvMedia::image($post->image, $post->name, 'medium', attributes: ['loading' => 'eager']) }}--}}
-{{--                                            <a class="post__overlay" href="{{ $post->url }}"--}}
-{{--                                               title="{{ $post->name }}"></a>--}}
-{{--                                        </div>--}}
-{{--                                        <header class="post__header">--}}
-{{--                                            <h3 class="post__title text-truncate"><a--}}
-{{--                                                    href="{{ $post->url }}">{{ $post->name }}</a>--}}
-{{--                                            </h3>--}}
-{{--                                        </header>--}}
-{{--                                    </article>--}}
-{{--                                </div>--}}
-{{--                                @if ($loop->last)--}}
-{{--                        </div>--}}
+                        <div class="post-group__right">
+                            @else
+                                <div class="post-group__item">
+                                    <article class="post post__inside post__inside--feature post__inside--feature-small">
+                                        <div class="post__thumbnail">
+                                            {{ RvMedia::image($post->image, $post->name, 'medium', attributes: ['loading' => 'eager']) }}
+                                            <a class="post__overlay" href="{{ $post->url }}"
+                                               title="{{ $post->name }}"></a>
+                                        </div>
+                                        <header class="post__header">
+                                            <h3 class="post__title text-truncate"><a
+                                                    href="{{ $post->url }}">{{ $post->name }}</a>
+                                            </h3>
+                                        </header>
+                                    </article>
+                                </div>
+                                @if ($loop->last)
+                        </div>
                     @endif
                     @endif
                 @endforeach
             </div>
-{{--            @include('ads.includes.main-page')--}}
+            @include('ads.includes.main-page')
         </div>
     </section>
 @endif
