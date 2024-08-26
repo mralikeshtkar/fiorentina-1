@@ -88,7 +88,7 @@
                     @endif
                 @endforeach
             </div>
-            @include('ads.includes.main-page')
+{{--            @include('ads.includes.main-page')--}}
         </div>
     </section>
 @endif
