@@ -4227,8 +4227,8 @@ header>.container {
 .player-list h3 {
     text-align: center;
     margin-bottom: 20px;
-    color: #fff;
-    background-color: #2c3e50;
+    color: #fff !important;
+    background-color: #441274;
     padding: 10px;
     border-radius: 5px;
 }
@@ -4239,6 +4239,7 @@ header>.container {
 }
 
 .player-list ul li {
+    color: #441274;
     padding: 10px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
