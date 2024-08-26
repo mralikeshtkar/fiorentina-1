@@ -20,7 +20,7 @@
     <div class="player rw">Pulisic</div>
     <div class="forwards">
 
-        @foreach ($forwads as $st)
+        @foreach ($forwards as $st)
             <div class="player st{{ $stindex }}">{{ $st->name }}</div>
             @php
                 $stindex++;
