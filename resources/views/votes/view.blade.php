@@ -23,7 +23,11 @@
                 <tr>
                     <td class="align-middle">{{ $vote->id }}</td>
                     <td class="align-middle">{{ $vote->player->name }}</td>
-                    <td class="align-middle">{{ $vote->player->image }}</td>
+                    <td class="align-middle">
+                        @if($vote->getImageUrl())
+                            <img src="{{ $vote->getImageUrl() }}" width="140" alt="{{ $vote->title }}">
+                        @endif
+                    </td>
                     <td class="align-middle">{{ $vote->vote_number }}</td>
                     <td class="align-middle">{{ $vote->created_at }}</td>
                     <td class="align-middle">{{ $vote->updated_at }}</td>
