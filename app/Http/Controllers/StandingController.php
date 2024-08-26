@@ -148,17 +148,16 @@ class StandingController extends Controller
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
 
-            $response = Http::withHeaders([
-                "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
-                "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
-            ])->get('https://flashlive-sports.p.rapidapi.com/v1/tournaments/list?sport_id=1&locale=en_INT');
-            // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
-            $filteredData = collect($response->json()['DATA'])->filter(function ($item) {
-                return in_array($item['COUNTRY_NAME'], ['Italy', 'Italia']);
-            });
+            // $response = Http::withHeaders([
+            //     "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
+            //     "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
+            // ])->get('https://flashlive-sports.p.rapidapi.com/v1/tournaments/list?sport_id=1&locale=en_INT');
+            // // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
+            // $filteredData = collect($response->json()['DATA'])->filter(function ($item) {
+            //     return in_array($item['COUNTRY_NAME'], ['Italy', 'Italia']);
+            // });
 
             // Dump the filtered data
-            dd($filteredData->values()->all());
         $response = Http::withHeaders([
             'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         ])->get('https://api.football-data.org/v4/teams/99/matches');

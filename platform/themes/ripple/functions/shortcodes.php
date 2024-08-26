@@ -109,6 +109,15 @@ app('events')->listen(RouteMatched::class, function () {
                 return Theme::partial('shortcodes.diretta');
             }
         );
+
+        Shortcode::register(
+            'squad',
+            __('Squadra'),
+            __('Squadra'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.squad');
+            }
+        );
         Shortcode::register(
             'big classifica',
             __('big classifica'),
