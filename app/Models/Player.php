@@ -12,6 +12,6 @@ class Player extends Model
     protected $table = 'players';
 
     protected $fillable = [
-        'name','leauge','position','position','season','image','jersey_number','flag_id'
+        'name','leauge','position','season','image','jersey_number','flag_id'
     ];
 }
