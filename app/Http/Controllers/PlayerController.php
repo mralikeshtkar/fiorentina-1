@@ -132,4 +132,34 @@ class PlayerController extends BaseController
         $ad->delete();
         return redirect()->route('ads.index')->with('success', 'Ad deleted successfully.');
     }
+
+
+
+    public static function fetchSquad(){
+    
+                $response = Http::withHeaders([
+                    "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
+                    "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
+                ])->get('https://flashlive-sports.p.rapidapi.com/v1/teams/squad?sport_id=1&locale=en_INT&team_id=Q3A3IbXH');
+                // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
+                $playersGroups=$response->json()['DATA'];
+
+                foreach($playersGroups as $playersGroup){
+                    foreach($playerGroup->ITEMS as $player ){
+                        Player::where('name', $player->PLAYER_NAME)->update(
+                            [
+                                'image' => $player->PLAYER_IMAGE_PATH,
+                                'flag_id' => $player->PLAYER_FLAG_ID,
+                                'jersey_number' => $player->PLAYER_JERSEY_NUMBER,
+                            ]
+                        );
+
+                    }
+                }
+    
+                // Dump the filtered data
+                dd($Player::all());
+    }
+
+
 }
