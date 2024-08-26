@@ -11,6 +11,7 @@
             <tr>
                 <th>ID</th>
                 <th>Player Name</th>
+                <th>Player Image</th>
                 <th>Vote Number</th>
                 <th>Created At</th>
                 <th>Updated At</th>
@@ -22,6 +23,7 @@
                 <tr>
                     <td class="align-middle">{{ $vote->id }}</td>
                     <td class="align-middle">{{ $vote->player->name }}</td>
+                    <td class="align-middle">{{ $vote->player->image }}</td>
                     <td class="align-middle">{{ $vote->vote_number }}</td>
                     <td class="align-middle">{{ $vote->created_at }}</td>
                     <td class="align-middle">{{ $vote->updated_at }}</td>
