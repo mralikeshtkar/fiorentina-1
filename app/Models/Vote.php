@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 class Vote extends BaseModel
 {
-    protected $table = 'votes';
+    protected $table = 'players';
 
     protected $fillable = [
         'title',
@@ -24,7 +24,10 @@ class Vote extends BaseModel
     {
         return $this->belongsTo(Player::class);
     }
-
+    public function calendario()
+    {
+        return $this->belongsTo(Calendario::class, 'match_id', 'id');
+    }
     public function getImageUrl($playername){
 
         $playerImage=Player::where('name',$playername)->first();

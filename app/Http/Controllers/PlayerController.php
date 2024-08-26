@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\Vote;
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
@@ -22,11 +23,19 @@ use Illuminate\Support\Facades\Http;
 class PlayerController extends BaseController
 {
 
-
-
+    public function index()
+    {
+        $this->pageTitle("Players List");
+        $players = Vote::query()->latest()->paginate(20);
+        return view('players.view', compact('players'));
+    }
+    public function create()
+    {
+        return view('players.create');
+    }
 
     public static function fetchSquad(){
-    
+
                 $response = Http::withHeaders([
                     "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
                     "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
@@ -45,7 +54,7 @@ class PlayerController extends BaseController
                         );
                     }
                 }
-    
+
                 // Dump the filtered data
                 dd(Player::all());
     }

@@ -4,7 +4,7 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('votes.create') }}" class="btn btn-primary">Create</a>
+            <a href="{{ route('players.create') }}" class="btn btn-primary">Create</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -19,23 +19,23 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($votes as $vote)
+            @foreach($players as $player)
                 <tr>
-                    <td class="align-middle">{{ $vote->id }}</td>
-                    <td class="align-middle">{{ $vote->player->name }}</td>
+                    <td class="align-middle">{{ $player->id }}</td>
+                    <td class="align-middle">{{ $player->name }}</td>
                     <td class="align-middle">
-                        @if($vote->getImageUrl($vote->player->name))
-                            <img src="{{ $vote->getImageUrl($vote->player->name) }}" width="50" height="50" alt="{{ $vote->title }}">
+                        @if($player->getImageUrl($player->name))
+                            <img src="{{ $player->getImageUrl($player->name) }}" width="50" height="50" alt="{{ $player->title }}">
                         @endif
                     </td>
 
-                    <td class="align-middle">{{ $vote->vote_number }}</td>
-                    <td class="align-middle">{{ $vote->created_at }}</td>
-                    <td class="align-middle">{{ $vote->updated_at }}</td>
+                    <td class="align-middle">{{ $player->vote_number }}</td>
+                    <td class="align-middle">{{ $player->created_at }}</td>
+                    <td class="align-middle">{{ $player->updated_at }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
-                            <a href="{{ route('votes.edit', $vote->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('votes.destroy', $vote->id) }}" method="post">
+                            <a href="{{ route('players.edit', $player->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('players.destroy', $player->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -47,7 +47,7 @@
             </tbody>
         </table>
         <div class="w-100">
-            {{ $votes->links() }}
+            {{ $players->links() }}
         </div>
     </div>
 
