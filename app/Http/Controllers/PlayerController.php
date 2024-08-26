@@ -35,11 +35,10 @@ class PlayerController extends BaseController
                 $playersGroups=$response->json()['DATA'];
                 foreach($playersGroups as $playersGroup){
                     foreach($playersGroup['ITEMS'] as $player ){
-                        $player1=Player::where('name',$player['PLAYER_NAME'])->get();
-                        dd($player1);
+
                         Player::where('name', $player['PLAYER_NAME'])->update(
                             [
-                                'image' => $player['PLAYER_IMAGE_PATH'],
+                                'image' => $player['PLAYER_IMAGE_PATH']??'',
                                 'flag_id' => $player['PLAYER_FLAG_ID'],
                                 'jersey_number' => $player['PLAYER_JERSEY_NUMBER']??'',
                             ]
