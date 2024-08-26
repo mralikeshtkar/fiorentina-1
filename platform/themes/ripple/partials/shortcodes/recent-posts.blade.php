@@ -64,7 +64,7 @@
 {{--                                            </article>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="col-md-6 col-sm-6 col-12">--}}
-                                        @else
+{{--                                        @else--}}
 {{--                                            <article--}}
 {{--                                                class="post post__horizontal post__horizontal--single mb-20 clearfix">--}}
 {{--                                                <div class="post__thumbnail">--}}
