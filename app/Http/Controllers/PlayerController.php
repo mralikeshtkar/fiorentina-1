@@ -29,7 +29,10 @@ class PlayerController extends BaseController
         $players = Vote::query()->latest()->paginate(20);
         return view('players.view', compact('players'));
     }
-
+    public function create()
+    {
+        return view('players.create');
+    }
 
     public static function fetchSquad(){
 
