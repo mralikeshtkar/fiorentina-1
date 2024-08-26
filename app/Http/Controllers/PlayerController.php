@@ -40,7 +40,7 @@ class PlayerController extends BaseController
             'name' => 'required|string|max:255',
             'league' => 'required|string|max:255',
             'position' => 'required|string|max:255',
-            'season' => 'required|string|max:255',
+            'season' => 'required|string|in:2024-2025,2025-2026,2026-2027', // Validate selected season
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
             'flag_id' => 'required|integer',
             'jersey_number' => 'required|integer',
