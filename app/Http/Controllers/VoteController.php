@@ -27,6 +27,13 @@ class VoteController extends BaseController
             ->add("Advertisements");
     }
 
+    protected function getImageUrl($playername){
+
+        $playerImage=Player::where('name',$playername)->get();
+        return $playerImage->image;
+
+    }
+
     public function index()
     {
         $this->pageTitle("Votes List");
