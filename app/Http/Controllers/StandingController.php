@@ -147,9 +147,9 @@ class StandingController extends Controller
         //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         // ])->get('https://api.football-data.org/v4/teams/99/matches');
 
-        $response = Http::withHeaders([
-            'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
-        ])->get('https://api.sportmonks.com/v3/football/teams/109/fixtures');
+        $response = Http::get('https://api.sportmonks.com/v3/football/teams/109/fixtures',
+        ['query'=>['api_token'=>'B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC']]
+        );
         dd($response);
 
 
