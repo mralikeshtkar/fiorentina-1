@@ -39,7 +39,7 @@ class PlayerController extends BaseController
                             [
                                 'image' => $player['PLAYER_IMAGE_PATH'],
                                 'flag_id' => $player['PLAYER_FLAG_ID'],
-                                'jersey_number' => $player['PLAYER_JERSEY_NUMBER'],
+                                'jersey_number' => $player['PLAYER_JERSEY_NUMBER']??'',
                             ]
                         );
 
@@ -47,7 +47,7 @@ class PlayerController extends BaseController
                 }
     
                 // Dump the filtered data
-                dd($Player::all());
+                dd(Player::all());
     }
 
 
