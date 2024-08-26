@@ -37,13 +37,17 @@
                     </div>
                 </div>
 
-                <!-- Season Input -->
+                <!-- Season Input (Select Dropdown) -->
                 <div class="card mb-3">
                     <div class="card-header">
                         <h4 class="card-title">Season</h4>
                     </div>
                     <div class="card-body">
-                        <input type="text" class="form-control" id="season" name="season" value="{{ old('season') }}" required>
+                        <select class="form-control" id="season" name="season" required>
+                            <option value="2024-2025" {{ old('season') == '2024-2025' ? 'selected' : '' }}>2024-2025</option>
+                            <option value="2025-2026" {{ old('season') == '2025-2026' ? 'selected' : '' }}>2025-2026</option>
+                            <option value="2026-2027" {{ old('season') == '2026-2027' ? 'selected' : '' }}>2026-2027</option>
+                        </select>
                     </div>
                 </div>
 

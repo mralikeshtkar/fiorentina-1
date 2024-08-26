@@ -33,6 +33,38 @@ class PlayerController extends BaseController
     {
         return view('players.create');
     }
+    public function store(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'league' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'season' => 'required|string|in:2024-2025,2025-2026,2026-2027', // Validate selected season
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
+            'flag_id' => 'required|integer',
+            'jersey_number' => 'required|integer',
+            'status' => 'required|string|in:published,draft,pending',
+        ]);
+
+        // Handle the image upload
+        $imagePath = $request->file('image')->store('players', 'public');
+
+        // Create a new player record
+        Player::create([
+            'name' => $request->name,
+            'league' => $request->league,
+            'position' => $request->position,
+            'season' => $request->season,
+            'image' => $imagePath,
+            'flag_id' => $request->flag_id,
+            'jersey_number' => $request->jersey_number,
+            'status' => $request->status,
+        ]);
+
+        // Redirect to the player list with a success message
+        return redirect()->route('players.index')->with('success', 'Player created successfully.');
+    }
 
     public static function fetchSquad(){
 
