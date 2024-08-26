@@ -39,7 +39,7 @@
             data-bs-parent="#playersAccordion">
             <div class="accordion-body">
                 <ul>
-                    @foreach ($midfielders as $midfielder)
+                    @foreach ($Midfielders as $midfielder)
                         <li>{{ $midfielder->name }}</li>
                     @endforeach
                 </ul>
@@ -59,7 +59,7 @@
             data-bs-parent="#playersAccordion">
             <div class="accordion-body">
                 <ul>
-                    @foreach ($defenders as $defender)
+                    @foreach ($Defenders as $defender)
                         <li>{{ $defender->name }}</li>
                     @endforeach
                 </ul>
@@ -79,7 +79,7 @@
             data-bs-parent="#playersAccordion">
             <div class="accordion-body">
                 <ul>
-                    @foreach ($goalkeepers as $goalkeeper)
+                    @foreach ($Goalkeepers as $goalkeeper)
                         <li>{{ $goalkeeper->name }}</li>
                     @endforeach
                 </ul>
