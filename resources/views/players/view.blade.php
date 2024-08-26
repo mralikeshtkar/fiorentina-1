@@ -4,7 +4,7 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('votes.create') }}" class="btn btn-primary">Create</a>
+            <a href="{{ route('players.create') }}" class="btn btn-primary">Create</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -34,8 +34,8 @@
                     <td class="align-middle">{{ $vote->updated_at }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
-                            <a href="{{ route('votes.edit', $vote->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('votes.destroy', $vote->id) }}" method="post">
+                            <a href="{{ route('players.edit', $vote->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('players.destroy', $vote->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>

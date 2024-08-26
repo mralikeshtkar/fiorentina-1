@@ -12,8 +12,8 @@ class Calendario extends Model
     protected $table = 'calendario';
 
     protected $fillable = [
-        'match_id', 'venue', 'matchday', 'competition', 'group', 'match_date', 
-        'status', 'home_team', 'away_team', 'score', 'goals', 'penalties', 
+        'match_id', 'venue', 'matchday', 'competition', 'group', 'match_date',
+        'status', 'home_team', 'away_team', 'score', 'goals', 'penalties',
         'bookings', 'substitutions', 'odds', 'referees'
     ];
 
@@ -28,9 +28,13 @@ class Calendario extends Model
         'odds' => 'array',
         'referees' => 'array'
     ];
-    
+
     public function comments()
     {
         return $this->hasMany(DirettaComment::class);
+    }
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'match_id', 'id');
     }
 }
