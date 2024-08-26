@@ -1,6 +1,6 @@
 @if ($posts->isNotEmpty())
     <section class="section hero-section pt-45 pb-20"
-             @if ($shortcode->background_color) style="background-color: rgb(93, 46, 142) !important;" @endif>
+        @if ($shortcode->background_color) style="background-color: #441274 !important;" @endif>
         @php
             $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
             $match->home_team = json_decode($match->home_team, true);
@@ -26,12 +26,12 @@
                     <div class="row">
                         <div class="col-6">
                             <img src="{{ $match->home_team['crest'] }}" alt="{{ $match->home_team['shortName'] }} Crest"
-                                 style="height: 30px; margin-bottom: 10px;">
+                                style="height: 30px; margin-bottom: 10px;">
                             <h5>{{ $match->home_team['shortName'] }}</h5>
                         </div>
                         <div class="col-6">
                             <img src="{{ $match->away_team['crest'] }}" alt="{{ $match->away_team['shortName'] }} Crest"
-                                 style="height: 30px; margin-bottom: 10px;">
+                                style="height: 30px; margin-bottom: 10px;">
                             <h5>{{ $match->away_team['shortName'] }}</h5>
                         </div>
                     </div>
@@ -55,40 +55,40 @@
                                 <div class="post__thumbnail">
                                     {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
                                     <a class="post__overlay" href="{{ $post->url }}"
-                                       title="{{ $post->name }}"></a>
+                                        title="{{ $post->name }}"></a>
                                 </div>
                                 <header class="post__header">
                                     <h3 class="post__title text-truncate"><a
                                             href="{{ $post->url }}">{{ $post->name }}</a></h3>
-{{--                                    <div class="post__meta">--}}
-{{--                                        {!! Theme::partial('blog.post-meta', compact('post')) !!}--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="post__meta"> --}}
+                                    {{--                                        {!! Theme::partial('blog.post-meta', compact('post')) !!} --}}
+                                    {{--                                    </div> --}}
                                 </header>
                             </article>
                         </div>
                         <div class="post-group__right">
-                            @else
-                                <div class="post-group__item">
-                                    <article class="post post__inside post__inside--feature post__inside--feature-small">
-                                        <div class="post__thumbnail">
-                                            {{ RvMedia::image($post->image, $post->name, 'medium', attributes: ['loading' => 'eager']) }}
-                                            <a class="post__overlay" href="{{ $post->url }}"
-                                               title="{{ $post->name }}"></a>
-                                        </div>
-                                        <header class="post__header">
-                                            <h3 class="post__title text-truncate"><a
-                                                    href="{{ $post->url }}">{{ $post->name }}</a>
-                                            </h3>
-                                        </header>
-                                    </article>
-                                </div>
-                                @if ($loop->last)
+                        @else
+                            <div class="post-group__item">
+                                <article class="post post__inside post__inside--feature post__inside--feature-small">
+                                    <div class="post__thumbnail">
+                                        {{ RvMedia::image($post->image, $post->name, 'medium', attributes: ['loading' => 'eager']) }}
+                                        <a class="post__overlay" href="{{ $post->url }}"
+                                            title="{{ $post->name }}"></a>
+                                    </div>
+                                    <header class="post__header">
+                                        <h3 class="post__title text-truncate"><a
+                                                href="{{ $post->url }}">{{ $post->name }}</a>
+                                        </h3>
+                                    </header>
+                                </article>
+                            </div>
+                            @if ($loop->last)
                         </div>
                     @endif
-                    @endif
-                @endforeach
-            </div>
-{{--            @include('ads.includes.main-page')--}}
-        </div>
-    </section>
+                @endif
+@endforeach
+</div>
+{{--            @include('ads.includes.main-page') --}}
+</div>
+</section>
 @endif
