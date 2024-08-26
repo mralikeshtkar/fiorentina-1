@@ -18,7 +18,7 @@
                             <div class="row">
                                 @foreach ($posts as $post)
                                     @if ($loop->first)
-                                        <div class="col-md-8 col-sm-8 col-12">
+                                        <div class="col-md-9 col-sm-9 col-12">
                                             <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center;">
                                                 <!-- Image on the left -->
                                                 <div class="post__thumbnail" style="flex: 1;">
