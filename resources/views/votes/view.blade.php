@@ -11,6 +11,7 @@
             <tr>
                 <th>ID</th>
                 <th>Player Name</th>
+                <th>Player Image</th>
                 <th>Vote Number</th>
                 <th>Created At</th>
                 <th>Updated At</th>
@@ -21,7 +22,12 @@
             @foreach($votes as $vote)
                 <tr>
                     <td class="align-middle">{{ $vote->id }}</td>
-{{--                    <td class="align-middle">{{ $vote->player->name }}</td>--}}
+                    <td class="align-middle">{{ $vote->player->name }}</td>
+                    <td class="align-middle">
+                        @if($vote->getImageUrl())
+                            <img src="{{ $vote->getImageUrl() }}" width="140" alt="{{ $vote->title }}">
+                        @endif
+                    </td>
                     <td class="align-middle">{{ $vote->vote_number }}</td>
                     <td class="align-middle">{{ $vote->created_at }}</td>
                     <td class="align-middle">{{ $vote->updated_at }}</td>
