@@ -21,7 +21,7 @@
 
                                         <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
                                             <!-- Image on the left -->
-                                            <div class="post__thumbnail" style="flex: 1.5; max-width: 250px;">
+                                            <div class="post__thumbnail" style="flex: 1.5; width: 48%">
                                                 {{ RvMedia::image($post->image, $post->name, 'large') }}
                                                 <a class="post__overlay" href="{{ $post->url }}" title="{{ $post->name }}"></a>
                                             </div>
