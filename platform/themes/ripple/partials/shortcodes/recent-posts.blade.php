@@ -58,7 +58,10 @@
                 text-transform: uppercase;
                 width: 88.4%;
                 cursor: pointer;
-            ">
+                transition: border-color 0.3s ease;
+            "
+                                                        onmouseover="this.style.borderColor='#EE82EE';"
+                                                        onmouseout="this.style.borderColor='#aaa';">
                                                     ALTRE NOTIZIE
                                                 </button>
                                             </div>
