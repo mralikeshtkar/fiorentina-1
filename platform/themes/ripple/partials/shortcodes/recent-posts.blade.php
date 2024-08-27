@@ -19,7 +19,7 @@
                                 <div class="col-md-12 col-sm-12 col-12">
                                 @foreach ($posts as $post)
 
-                                                <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: -67px;">
+                                                <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
                                                 <!-- Image on the left -->
                                                 <div class="post__thumbnail" style="flex: 1;">
                                                     {{ RvMedia::image($post->image, $post->name, 'large') }}
