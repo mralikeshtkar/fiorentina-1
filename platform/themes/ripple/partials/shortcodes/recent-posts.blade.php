@@ -17,11 +17,10 @@
                         <div class="post-group__content">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-12">
-                                @foreach ($posts as $post)
-
+                                    @foreach ($posts as $index => $post)
                                         <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
                                             <!-- Image on the left -->
-                                            <div class="post__thumbnail" style="flex: 1.5; width: 48%">
+                                            <div class="post__thumbnail" style="flex: 1.5; width: 48%;">
                                                 {{ RvMedia::image($post->image, $post->name, 'large') }}
                                                 <a class="post__overlay" href="{{ $post->url }}" title="{{ $post->name }}"></a>
                                             </div>
@@ -39,6 +38,14 @@
                                             </div>
                                         </article>
 
+                                        @if (($index + 1) % 6 == 0)
+                                            <!-- Load More Button after every 6 articles -->
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <button id="load-more-{{ $index + 1 }}" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                                    Load More
+                                                </button>
+                                            </div>
+                                        @endif
 
                                     @endforeach
                                 </div>
@@ -175,3 +182,12 @@
     </div>
     </div>
 </section>
+<script>
+    // Example of AJAX functionality for the Load More buttons
+    document.querySelectorAll('[id^="load-more"]').forEach(button => {
+        button.addEventListener('click', function() {
+            // Implement your AJAX request to load more posts here
+            alert('Load more posts functionality will go here.');
+        });
+    });
+</script>
