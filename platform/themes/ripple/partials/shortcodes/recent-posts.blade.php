@@ -18,9 +18,8 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-12">
                                     @foreach ($posts as $index => $post)
-                                        <article class="post post__vertical post__vertical--single"
-                                                 style="display: flex; align-items: center; margin-bottom: 5px; {{ $index >= 6 ? 'display: none;' : '' }}"
-                                                 class="post-item">
+                                        <article class="post post__vertical post__vertical--single post-item"
+                                                 style="display: flex; align-items: center; margin-bottom: 5px; {{ $index >= 6 ? 'display: none;' : '' }}">
                                             <!-- Image on the left -->
                                             <div class="post__thumbnail" style="flex: 1.5; width: 48%;">
                                                 {{ RvMedia::image($post->image, $post->name, 'large') }}
@@ -186,18 +185,12 @@
 <script>
     document.getElementById('load-more').addEventListener('click', function() {
         const hiddenArticles = document.querySelectorAll('article.post-item[style*="display: none;"]');
-        let count = 0;
 
         hiddenArticles.forEach(article => {
-            if (count < 6) { // Reveal 6 more articles at a time
-                article.style.display = 'flex';
-                count++;
-            }
+            article.style.display = 'flex';
         });
 
-        // Hide the button if no more articles are hidden
-        if (document.querySelectorAll('article.post-item[style*="display: none;"]').length === 0) {
-            this.style.display = 'none';
-        }
+        // Hide the Load More button after revealing all hidden articles
+        this.style.display = 'none';
     });
 </script>
