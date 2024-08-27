@@ -19,27 +19,28 @@
                                 <div class="col-md-12 col-sm-12 col-12">
                                 @foreach ($posts as $post)
 
-                                                <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
-                                                <!-- Image on the left -->
-                                                <div class="post__thumbnail" style="flex: 1;">
-                                                    {{ RvMedia::image($post->image, $post->name, 'large') }}
-                                                    <a class="post__overlay" href="{{ $post->url }}" title="{{ $post->name }}"></a>
-                                                </div>
+                                        <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                            <!-- Image on the left -->
+                                            <div class="post__thumbnail" style="flex: 1.5; max-width: 250px;">
+                                                {{ RvMedia::image($post->image, $post->name, 'large') }}
+                                                <a class="post__overlay" href="{{ $post->url }}" title="{{ $post->name }}"></a>
+                                            </div>
 
-                                                <!-- Content (Title and Description) on the right -->
-                                                <div class="post__content-wrap" style="flex: 2; padding-left: 20px;">
-                                                    <header class="post__header">
-                                                        <h4 class="post__title">
-                                                            <a href="{{ $post->url }}" title="{{ $post->name }}">{{ $post->name }}</a>
-                                                        </h4>
-                                                    </header>
-                                                    <div class="post__content">
-                                                        <p data-number-line="4">{{ $post->description }}</p>
-                                                    </div>
+                                            <!-- Content (Title and Description) on the right -->
+                                            <div class="post__content-wrap" style="flex: 2.5; padding-left: 20px;">
+                                                <header class="post__header">
+                                                    <h4 class="post__title" style="margin: 0;">
+                                                        <a href="{{ $post->url }}" title="{{ $post->name }}" style="text-decoration: none; color: inherit;">{{ $post->name }}</a>
+                                                    </h4>
+                                                </header>
+                                                <div class="post__content">
+                                                    <p style="margin: 10px 0 0;">{{ $post->description }}</p>
                                                 </div>
-                                            </article>
+                                            </div>
+                                        </article>
 
-                                @endforeach
+
+                                    @endforeach
                                 </div>
 {{--                                        <div class="col-md-6 col-sm-6 col-12">--}}
 {{--                                            <article class="post post__vertical post__vertical--single">--}}
