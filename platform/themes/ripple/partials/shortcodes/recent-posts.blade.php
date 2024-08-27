@@ -40,14 +40,29 @@
                                         </article>
                                     @endforeach
 
-                                    <!-- Load More Button -->
-                                    @if (count($posts) > 6)
-                                        <div style="text-align: center; margin-top: 20px;">
-                                            <button id="load-more" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                                Load More
-                                            </button>
-                                        </div>
-                                    @endif
+                                        <!-- Load More Button -->
+                                        @if (count($posts) > 6)
+                                            <div style="text-align: center;">
+                                                <button id="load-more" style="
+                background: #fff;
+                border: 1px solid #aaa;
+                border-radius: 3px;
+                display: inline-block;
+                font-size: .8rem;
+                font-weight: 600;
+                letter-spacing: .02em;
+                line-height: 1;
+                margin-top: 20px;
+                padding: 15px 0;
+                text-align: center;
+                text-transform: uppercase;
+                width: 88.4%;
+                cursor: pointer;
+            ">
+                                                    Load More
+                                                </button>
+                                            </div>
+                                        @endif
                                 </div>
 {{--                                        <div class="col-md-6 col-sm-6 col-12">--}}
 {{--                                            <article class="post post__vertical post__vertical--single">--}}
