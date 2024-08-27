@@ -59,7 +59,7 @@
                 width: 88.4%;
                 cursor: pointer;
             ">
-                                                    Load More
+                                                    ALTRE NOTIZIE
                                                 </button>
                                             </div>
                                         @endif
