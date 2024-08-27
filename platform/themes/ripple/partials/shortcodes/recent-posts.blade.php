@@ -29,9 +29,9 @@
                                                 <!-- Content (Title and Description) on the right -->
                                                 <div class="post__content-wrap" style="flex: 2; padding-left: 20px;">
                                                     <header class="post__header">
-                                                        <h3 class="post__title">
+                                                        <h4 class="post__title">
                                                             <a href="{{ $post->url }}" title="{{ $post->name }}">{{ $post->name }}</a>
-                                                        </h3>
+                                                        </h4>
                                                     </header>
                                                     <div class="post__content">
                                                         <p data-number-line="4">{{ $post->description }}</p>
