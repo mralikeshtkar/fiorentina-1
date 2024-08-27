@@ -16,9 +16,10 @@
                         </div>
                         <div class="post-group__content">
                             <div class="row">
+                                <div class="col-md-9 col-sm-9 col-12">
                                 @foreach ($posts as $post)
 {{--                                    @if ($loop->first)--}}
-                                        <div class="col-md-9 col-sm-9 col-12">
+
                                             <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center;">
                                                 <!-- Image on the left -->
                                                 <div class="post__thumbnail" style="flex: 1;">
@@ -38,8 +39,9 @@
                                                     </div>
                                                 </div>
                                             </article>
-                                        </div>
 
+                                @endforeach
+                                </div>
 {{--                                        <div class="col-md-6 col-sm-6 col-12">--}}
 {{--                                            <article class="post post__vertical post__vertical--single">--}}
 {{--                                                <div class="post__thumbnail">--}}
@@ -87,7 +89,7 @@
 {{--                                    @if ($loop->last)--}}
 {{--                            </div>--}}
 {{--                            @endif--}}
-                            @endforeach
+
                         </div>
                     </div>
                 </div>
