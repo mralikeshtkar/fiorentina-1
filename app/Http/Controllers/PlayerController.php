@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use App\Models\Player;
 use App\Models\Vote;
 use Exception;
@@ -111,6 +112,11 @@ class PlayerController extends BaseController
 
         // Redirect to the player list with a success message
         return redirect()->route('players.index')->with('success', 'Player updated successfully.');
+    }
+    public function destroy(Player $player)
+    {
+        $player->delete();
+        return redirect()->route('players.index')->with('success', 'Player deleted successfully.');
     }
     public static function fetchSquad(){
 
