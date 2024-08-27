@@ -16,7 +16,7 @@
                         </div>
                         <div class="post-group__content">
                             <div class="row">
-                                <div class="col-md-10 col-sm-10 col-12">
+                                <div class="col-md-11 col-sm-11 col-12">
                                 @foreach ($posts as $post)
 
                                                 <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: -67px;">
