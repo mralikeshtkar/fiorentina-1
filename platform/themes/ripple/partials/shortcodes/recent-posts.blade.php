@@ -18,7 +18,9 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-12">
                                     @foreach ($posts as $index => $post)
-                                        <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                        <article class="post post__vertical post__vertical--single"
+                                                 style="display: flex; align-items: center; margin-bottom: 5px; {{ $index >= 6 ? 'display: none;' : '' }}"
+                                                 class="post-item">
                                             <!-- Image on the left -->
                                             <div class="post__thumbnail" style="flex: 1.5; width: 48%;">
                                                 {{ RvMedia::image($post->image, $post->name, 'large') }}
@@ -37,17 +39,16 @@
                                                 </div>
                                             </div>
                                         </article>
-
-                                        @if (($index + 1) % 6 == 0)
-                                            <!-- Load More Button after every 6 articles -->
-                                            <div style="text-align: center; margin-top: 20px;">
-                                                <button id="load-more-{{ $index + 1 }}" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                                    Load More
-                                                </button>
-                                            </div>
-                                        @endif
-
                                     @endforeach
+
+                                    <!-- Load More Button -->
+                                    @if (count($posts) > 6)
+                                        <div style="text-align: center; margin-top: 20px;">
+                                            <button id="load-more" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                                Load More
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
 {{--                                        <div class="col-md-6 col-sm-6 col-12">--}}
 {{--                                            <article class="post post__vertical post__vertical--single">--}}
@@ -183,11 +184,20 @@
     </div>
 </section>
 <script>
-    // Example of AJAX functionality for the Load More buttons
-    document.querySelectorAll('[id^="load-more"]').forEach(button => {
-        button.addEventListener('click', function() {
-            // Implement your AJAX request to load more posts here
-            alert('Load more posts functionality will go here.');
+    document.getElementById('load-more').addEventListener('click', function() {
+        const hiddenArticles = document.querySelectorAll('article.post-item[style*="display: none;"]');
+        let count = 0;
+
+        hiddenArticles.forEach(article => {
+            if (count < 6) { // Reveal 6 more articles at a time
+                article.style.display = 'flex';
+                count++;
+            }
         });
+
+        // Hide the button if no more articles are hidden
+        if (document.querySelectorAll('article.post-item[style*="display: none;"]').length === 0) {
+            this.style.display = 'none';
+        }
     });
 </script>
