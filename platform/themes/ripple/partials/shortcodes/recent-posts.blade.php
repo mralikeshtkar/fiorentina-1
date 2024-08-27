@@ -20,7 +20,8 @@
                                 @foreach ($posts as $post)
 {{--                                    @if ($loop->first)--}}
 
-                                            <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center;">
+{{--                                            <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center;">--}}
+                                                <article class="post post__vertical post__vertical--single" style="display: flex; align-items: center; margin-bottom: 10px;">
                                                 <!-- Image on the left -->
                                                 <div class="post__thumbnail" style="flex: 1;">
                                                     {{ RvMedia::image($post->image, $post->name, 'large') }}
