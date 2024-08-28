@@ -47,63 +47,37 @@
         </div>
     </header>
 
-    <header class="header" id="header">
-        <div class="header-wrap d-none d-sm-block h-34px">
+{{--    <header class="header" id="header">--}}
+{{--        <div class="header-wrap d-none d-sm-block h-34px">--}}
 
-            <nav class="nav-top">
-                <div class="container">
-                    <div class="row">
+{{--            <nav class="nav-top">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="row">--}}
 
-                        @if ($socialLinks = Theme::getSocialLinks())
-
-
-                            <div class="col-sm-4 d-flex align-items-center h-34px">
-                                <ul class="social social--simple">
-                                    @foreach ($socialLinks as $socialLink)
-                                        @continue(!($icon = $socialLink->getIconHtml()))
-
-                                        <li>
-                                            <a {{ $socialLink->getAttributes() }}>
-                                                {{ $icon }}
-                                            </a>
-                                        </li>
-
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                            <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right h-34px">
-                            @if (is_plugin_active('member'))
-                                <ul class="d-flex">
-                                    @if (auth('member')->check())
-                                        <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><img
-                                                    src="{{ auth('member')->user()->avatar_thumb_url }}"
-                                                    class="img-circle" width="20"
-                                                    alt="{{ auth('member')->user()->name }}" loading="lazy">
-                                                &nbsp;<span>{{ auth('member')->user()->name }}</span></a></li>
-                                        <li><a href="#"
-                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                                rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}</a></li>
-                                    @else
-                                        <li><a href="{{ route('public.member.login') }}"
-                                                rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>
-                                    @endif
-                                </ul>
-                                @if (auth('member')->check())
-                                    <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST"
-                                        style="display: none;">
-                                        @csrf
-                                    </form>
-                                @endif
-                            @endif
+{{--                        @if ($socialLinks = Theme::getSocialLinks())--}}
 
 
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+{{--                            <div class="col-sm-4 d-flex align-items-center h-34px">--}}
+{{--                                <ul class="social social--simple">--}}
+{{--                                    @foreach ($socialLinks as $socialLink)--}}
+{{--                                        @continue(!($icon = $socialLink->getIconHtml()))--}}
+
+{{--                                        <li>--}}
+{{--                                            <a {{ $socialLink->getAttributes() }}>--}}
+{{--                                                {{ $icon }}--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </nav>--}}
+{{--        </div>--}}
+{{--    </header>--}}
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
         <div class="container d-flex">
@@ -118,7 +92,33 @@
                             'view' => 'main-menu',
                         ]) !!}
 
+                        <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right h-34px">
+                            @if (is_plugin_active('member'))
+                                <ul class="d-flex">
+                                    @if (auth('member')->check())
+                                        <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><img
+                                                    src="{{ auth('member')->user()->avatar_thumb_url }}"
+                                                    class="img-circle" width="20"
+                                                    alt="{{ auth('member')->user()->name }}" loading="lazy">
+                                                &nbsp;<span>{{ auth('member')->user()->name }}</span></a></li>
+                                        <li><a href="#"
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                               rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}</a></li>
+                                    @else
+                                        <li><a href="{{ route('public.member.login') }}"
+                                               rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>
+                                    @endif
+                                </ul>
+                                @if (auth('member')->check())
+                                    <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                @endif
+                            @endif
 
+
+                        </div>
 
                         <li class="language-wrapper d-block d-sm-none">
                             {!! apply_filters('language_switcher') !!}
