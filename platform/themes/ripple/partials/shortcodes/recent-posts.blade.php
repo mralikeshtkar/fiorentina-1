@@ -58,6 +58,7 @@
                 text-transform: uppercase;
                 width: 88.4%;
                 cursor: pointer;
+                color: #EE82EE; /* Violet text color */
                 transition: border-color 0.3s ease;
             "
                                                         onmouseover="this.style.borderColor='#EE82EE';"
