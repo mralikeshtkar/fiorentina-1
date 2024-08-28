@@ -107,11 +107,7 @@
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
         <div class="container d-flex">
-            <div class="page-header__left">
-                <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
-                    {{ Theme::getLogoImage(['height' => 50]) }}
-                </a>
-            </div>
+         
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle navigation-toggle--dark" style="display: none"><span></span></div>
                 <div class="float-start w-100">
