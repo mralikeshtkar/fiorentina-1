@@ -20,8 +20,8 @@
             class="page-header page-header--light py-0">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-header__left">
-                <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
-                    {{ Theme::getLogoImage(['height' => 80]) }} <!-- Increased height from 50 to 80 -->
+                <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo" style="display: inline-block;">
+                    <img src="{{ Theme::getLogoImage() }}" alt="Logo" style="max-height: 70px; max-width: 230px;">
                 </a>
             </div>
             <div class="page-header__right" style="display: flex; align-items: center;">
