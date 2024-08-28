@@ -47,31 +47,31 @@
         </div>
     </header>
 
-{{--    <header class="header" id="header">--}}
-{{--        <div class="header-wrap d-none d-sm-block h-34px">--}}
+    <header class="header" id="header">
+        <div class="header-wrap d-none d-sm-block h-34px">
 
-{{--            <nav class="nav-top">--}}
-{{--                <div class="container">--}}
-{{--                    <div class="row">--}}
+            <nav class="nav-top">
+                <div class="container">
+                    <div class="row">
 
-{{--                        @if ($socialLinks = Theme::getSocialLinks())--}}
+                        @if ($socialLinks = Theme::getSocialLinks())
 
 
-{{--                            <div class="col-sm-4 d-flex align-items-center h-34px">--}}
-{{--                                <ul class="social social--simple">--}}
-{{--                                    @foreach ($socialLinks as $socialLink)--}}
-{{--                                        @continue(!($icon = $socialLink->getIconHtml()))--}}
+                            <div class="col-sm-4 d-flex align-items-center h-34px">
+                                <ul class="social social--simple">
+                                    @foreach ($socialLinks as $socialLink)
+                                        @continue(!($icon = $socialLink->getIconHtml()))
 
-{{--                                        <li>--}}
-{{--                                            <a {{ $socialLink->getAttributes() }}>--}}
-{{--                                                {{ $icon }}--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
+                                        <li>
+                                            <a {{ $socialLink->getAttributes() }}>
+                                                {{ $icon }}
+                                            </a>
+                                        </li>
 
-{{--                                    @endforeach--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <div class="col-sm-8 d-flex align-items-center justify-content-end nav-top-right h-34px">
                             @if (is_plugin_active('member'))
                                 <ul class="d-flex">
@@ -99,11 +99,11 @@
 
 
                         </div>
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </nav>--}}
-{{--        </div>--}}
-{{--    </header>--}}
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
         <div class="container d-flex">
