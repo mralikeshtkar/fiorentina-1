@@ -2070,7 +2070,7 @@ p:empty {
 .search-btn {
     float: right;
     line-height: 60px;
-    padding: 0 15px
+    /*padding: 0 15px*/
 }
 
 .search-btn i {
