@@ -18,7 +18,7 @@
     {!! apply_filters(THEME_FRONT_BODY, null) !!}
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container headup" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
                     {{ Theme::getLogoImage(['height' => 90,'width' => 230]) }} <!-- Increased height from 50 to 80 -->
