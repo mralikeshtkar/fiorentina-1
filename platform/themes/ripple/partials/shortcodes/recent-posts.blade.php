@@ -45,7 +45,7 @@
                                             <div style="text-align: center;">
                                                 <button id="load-more" style="
                 background: #fff;
-                border: 1px solid #aaa;
+                border: 2px solid #aaa;
                 border-radius: 3px;
                 display: inline-block;
                 font-size: .8rem;
