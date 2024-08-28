@@ -58,10 +58,10 @@
                 text-transform: uppercase;
                 width: 88.4%;
                 cursor: pointer;
-                color: #EE82EE; /* Violet text color */
+                color: #441274; /* Violet text color */
                 transition: border-color 0.3s ease;
             "
-                                                        onmouseover="this.style.borderColor='#EE82EE';"
+                                                        onmouseover="this.style.borderColor='#441274';"
                                                         onmouseout="this.style.borderColor='#aaa';">
                                                     ALTRE NOTIZIE
                                                 </button>
