@@ -107,7 +107,7 @@
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
             class="page-header page-header--light py-0">
         <div class="container d-flex">
-         
+
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle navigation-toggle--dark" style="display: none"><span></span></div>
                 <div class="float-start w-100">
@@ -151,15 +151,6 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        @if (is_plugin_active('blog'))
-            <div class="super-search hide" data-search-url="{{ route('public.ajax.search') }}">
-                <form class="quick-search" action="{{ route('public.search') }}">
-                    <input type="text" name="q" placeholder="{{ __('Type to search...') }}"
-                           class="form-control search-input" autocomplete="off">
-                    <span class="close-search">&times;</span>
-                </form>
-                <div class="search-result"></div>
-            </div>
-        @endif
+
     </header>
 
