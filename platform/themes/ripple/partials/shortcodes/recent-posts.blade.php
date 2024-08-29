@@ -53,6 +53,7 @@
                 letter-spacing: .02em;
                 line-height: 1;
                 margin-top: 20px;
+                margin-bottom: 20px;
                 padding: 15px 0;
                 text-align: center;
                 text-transform: uppercase;
