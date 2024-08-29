@@ -84,50 +84,92 @@
 
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle navigation-toggle--dark" style="display: none"><span></span></div>
-                <div class="float-start w-100">
-
-                    <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
+                <div class="float-start w-100" style="display: flex; align-items: center; justify-content: space-between;">
+                    <nav class="navigation navigation--light navigation--fade navigation--fadeLeft" style="display: flex; align-items: center; flex-grow: 1;">
                         {!! Menu::renderMenuLocation('main-menu', [
-                            'options' => ['class' => 'menu sub-menu--slideLeft'],
+                            'options' => ['class' => 'menu sub-menu--slideLeft', 'style' => 'display: flex; align-items: center; margin: 0; padding: 0; list-style: none;'],
                             'view' => 'main-menu',
                         ]) !!}
 
-
-
-
-
-
-
-                        <li class="language-wrapper d-block d-sm-none">
-                            {!! apply_filters('language_switcher') !!}
-                        </li>
-                        @if (is_plugin_active('member'))
-                            <ul class="d-flex">
+                        <ul class="d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
+                            <li class="language-wrapper d-block d-sm-none" style="margin-left: 20px;">
+                                {!! apply_filters('language_switcher') !!}
+                            </li>
+                            @if (is_plugin_active('member'))
                                 @if (auth('member')->check())
-                                    <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><img
-                                                src="{{ auth('member')->user()->avatar_thumb_url }}"
-                                                class="img-circle" width="20"
-                                                alt="{{ auth('member')->user()->name }}" loading="lazy">
-                                            &nbsp;<span>{{ auth('member')->user()->name }}</span></a></li>
-                                    <li><a href="#"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                           rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}</a></li>
+                                    <li style="margin-left: 20px;">
+                                        <a href="{{ route('public.member.dashboard') }}" rel="nofollow" style="display: flex; align-items: center;">
+                                            <img src="{{ auth('member')->user()->avatar_thumb_url }}" class="img-circle" width="20" alt="{{ auth('member')->user()->name }}" loading="lazy">
+                                            &nbsp;<span>{{ auth('member')->user()->name }}</span>
+                                        </a>
+                                    </li>
+                                    <li style="margin-left: 20px;">
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow" style="display: flex; align-items: center;">
+                                            {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}
+                                        </a>
+                                    </li>
                                 @else
-                                    <li><a href="{{ route('public.member.login') }}"
-                                           rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>
+                                    <li style="margin-left: 20px;">
+                                        <a href="{{ route('public.member.login') }}" rel="nofollow" style="display: flex; align-items: center;">
+                                            {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}
+                                        </a>
+                                    </li>
                                 @endif
-                            </ul>
-                            @if (auth('member')->check())
-                                <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
                             @endif
-                        @endif
-
+                        </ul>
                     </nav>
 
+                    @if (auth('member')->check())
+                        <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
                 </div>
+
+                {{--                <div class="float-start w-100">--}}
+
+{{--                    <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">--}}
+{{--                        {!! Menu::renderMenuLocation('main-menu', [--}}
+{{--                            'options' => ['class' => 'menu sub-menu--slideLeft'],--}}
+{{--                            'view' => 'main-menu',--}}
+{{--                        ]) !!}--}}
+
+
+
+
+
+
+
+{{--                        <li class="language-wrapper d-block d-sm-none">--}}
+{{--                            {!! apply_filters('language_switcher') !!}--}}
+{{--                        </li>--}}
+{{--                        @if (is_plugin_active('member'))--}}
+{{--                            <ul class="d-flex">--}}
+{{--                                @if (auth('member')->check())--}}
+{{--                                    <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><img--}}
+{{--                                                src="{{ auth('member')->user()->avatar_thumb_url }}"--}}
+{{--                                                class="img-circle" width="20"--}}
+{{--                                                alt="{{ auth('member')->user()->name }}" loading="lazy">--}}
+{{--                                            &nbsp;<span>{{ auth('member')->user()->name }}</span></a></li>--}}
+{{--                                    <li><a href="#"--}}
+{{--                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"--}}
+{{--                                           rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}</a></li>--}}
+{{--                                @else--}}
+{{--                                    <li><a href="{{ route('public.member.login') }}"--}}
+{{--                                           rel="nofollow">{!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}</a></li>--}}
+{{--                                @endif--}}
+{{--                            </ul>--}}
+{{--                            @if (auth('member')->check())--}}
+{{--                                <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST"--}}
+{{--                                      style="display: none;">--}}
+{{--                                    @csrf--}}
+{{--                                </form>--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
+
+{{--                    </nav>--}}
+
+{{--                </div>--}}
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
