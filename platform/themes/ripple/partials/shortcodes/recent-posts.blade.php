@@ -202,6 +202,9 @@
     </div>
     </div>
 </section>
+
+@include('ads.includes.adsense', ['adClient' => 'ca-pub-XXXXXXXXXXXXXXXX', 'adSlot' => 'YYYYYYYYYY'])
+
 <script>
     document.getElementById('load-more').addEventListener('click', function() {
         const hiddenArticles = document.querySelectorAll('article.post-item[style*="display: none;"]');
