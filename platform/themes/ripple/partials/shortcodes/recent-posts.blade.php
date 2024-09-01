@@ -203,7 +203,8 @@
     </div>
 </section>
 
-@include('ads.includes.adsense', ['adClient' => 'ca-pub-XXXXXXXXXXXXXXXX', 'adSlot' => 'YYYYYYYYYY'])
+{{--@include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415', 'adSlot' => 'YYYYYYYYYY'])--}}
+@include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415'])
 
 <script>
     document.getElementById('load-more').addEventListener('click', function() {
