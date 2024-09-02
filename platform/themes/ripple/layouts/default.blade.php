@@ -10,11 +10,13 @@
     <div class="container bg-white">
         <div class="row">
             {{--        <div class="row" > --}}
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="page-content">
                     {!! Theme::content() !!}
                 </div>
-
+            </div>
+            <div class="col-4">
+                {!! Theme::partial('sidebar') !!}
             </div>
         </div>
 </section>

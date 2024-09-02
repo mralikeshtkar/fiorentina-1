@@ -1,4 +1,4 @@
-@if(isset($ad) && $ad)
+@if (isset($ad) && $ad)
     <style>
         .fixed-ad-container {
             background-color: red;
@@ -19,11 +19,10 @@
     <div class="fixed-ad-container justify-content-center">
         <div class="w-100 d-flex justify-content-center">
             <div class="position-absolute">
-                <a href="" class="d-flex w-100">
+                <a href="" class="d-flex w-100" style="scale: 1.13 !important;">
                     <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-full d-block">
                 </a>
             </div>
         </div>
     </div>
 @endif
-

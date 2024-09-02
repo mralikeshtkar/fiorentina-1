@@ -3867,7 +3867,7 @@ body {
     width: 12px
 }
 
-@media (min-width:1400px) {
+/* @media (min-width:1400px) {
 
     .container,
     .container-lg,
@@ -3877,7 +3877,7 @@ body {
     .container-xxl {
         width: 1170px
     }
-}
+} */
 
 .post.post--single .post__content ol,
 .post.post--single .post__content ul {
