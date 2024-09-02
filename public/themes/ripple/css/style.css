@@ -4266,3 +4266,8 @@ header>.container {
     font-size: 44px !important;
     letter-spacing: 0 !important;
 }
+
+.category-label {
+    background-color: #8424e3;
+    color: white;
+}

@@ -16,8 +16,7 @@
                 style="display: block;
             width: fit-content;
             margin-bottom: 10px;">
-                {!! BaseHelper::renderIcon('ti ti-cube') !!}
-                <a href="{{ $post->first_category->url }}">{{ $post->first_category->name }}</a>
+                <a class="category-label" href="{{ $post->first_category->url }}">{{ $post->first_category->name }}</a>
             </span>
         @endif
         <h1 class="post__title">{{ $post->name }} Amir</h1>
