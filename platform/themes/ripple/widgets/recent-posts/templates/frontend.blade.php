@@ -20,7 +20,6 @@
     $mostCommentedPosts = collect($mostCommentedPosts)->map(function ($post) {
         return (new \Botble\Blog\Models\Post())->newFromBuilder($post);
     });
-    dd($mostCommentedPosts);
 @endphp
 @if ($mostCommentedPosts->isNotEmpty())
     <div class="widget widget__recent-post">
