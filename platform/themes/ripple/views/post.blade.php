@@ -29,15 +29,6 @@
                         $post->tags->loadMissing('translations');
                     }
                 @endphp
-                <span class="post__tags">
-                    {!! BaseHelper::renderIcon('ti ti-tags') !!}
-                    @foreach ($post->tags as $tag)
-                        <a href="{{ $tag->url }}" class="me-0">{{ $tag->name }}</a>
-                        @if (!$loop->last)
-                            ,
-                        @endif
-                    @endforeach
-                </span>
             @endif
         </div>
     </header>
