@@ -41,10 +41,14 @@
     @include('ads.includes.dblog-author')
 </div>
 
-<div>
-
-    {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
+<div class="row justify-content-center">
+    <div class="col-lg-8 d-flex justify-content-center">
+        <div>
+            {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'lazy']) }}
+        </div>
+    </div>
 </div>
+
 <div class="row">
     @include('ads.includes.dblog-title')
 </div>
