@@ -1,7 +1,16 @@
 @php
     use Botble\Blog\Models\Post;
-    $mostCommentedPosts = Post::withCount('comments')->orderBy('comments_count', 'desc')->limit(5)->get();
-@endphp
+    use Illuminate\Support\Facades\DB;
+
+    $mostCommentedPosts = Post::whereIn('id', function ($query) {
+        $query
+            ->select('reference_id')
+            ->from('fob_comments')
+            ->where('reference_type', Post::class) // Ensure the comments are for posts
+            ->groupBy('reference_id')
+            ->orderBy(DB::raw('COUNT(reference_id)'), 'desc')
+            ->limit(5);
+})->get(); @endphp
 @if ($posts->isNotEmpty())
 
     <div class="widget widget__recent-post">
