@@ -1,34 +1,34 @@
 <?php
 
 return [
-    'cache_management' => 'Cache Management',
-    'cache_management_description' => 'Clear cache to make your site up to date.',
-    'cache_commands' => 'Clear cache commands',
+    'cache_management' => 'Gestione Cache',
+    'cache_management_description' => 'Cancella la cache per aggiornare il tuo sito.',
+    'cache_commands' => 'Comandi per cancellare la cache',
     'commands' => [
         'clear_cms_cache' => [
-            'title' => 'Clear all CMS cache',
-            'description' => 'Clear CMS caching: database caching, static blocks... Run this command when you don\'t see the changes after updating data.',
-            'success_msg' => 'Cache cleaned',
+            'title' => 'Cancella tutta la cache del CMS',
+            'description' => 'Cancella la cache del CMS: cache del database, blocchi statici... Esegui questo comando quando non vedi le modifiche dopo aver aggiornato i dati.',
+            'success_msg' => 'Cache pulita',
         ],
         'refresh_compiled_views' => [
-            'title' => 'Refresh compiled views',
-            'description' => 'Clear compiled views to make views up to date.',
-            'success_msg' => 'Cache view refreshed',
+            'title' => 'Aggiorna viste compilate',
+            'description' => 'Cancella le viste compilate per aggiornare le visualizzazioni.',
+            'success_msg' => 'Cache delle viste aggiornata',
         ],
         'clear_config_cache' => [
-            'title' => 'Clear config cache',
-            'description' => 'You might need to refresh the config caching when you change something on production environment.',
-            'success_msg' => 'Config cache cleaned',
+            'title' => 'Cancella cache della configurazione',
+            'description' => 'Potrebbe essere necessario aggiornare la cache della configurazione quando modifichi qualcosa nell\'ambiente di produzione.',
+            'success_msg' => 'Cache della configurazione pulita',
         ],
         'clear_route_cache' => [
-            'title' => 'Clear route cache',
-            'description' => 'Clear cache routing.',
-            'success_msg' => 'The route cache has been cleaned',
+            'title' => 'Cancella cache delle rotte',
+            'description' => 'Cancella la cache delle rotte.',
+            'success_msg' => 'La cache delle rotte è stata pulita',
         ],
         'clear_log' => [
-            'title' => 'Clear log',
-            'description' => 'Clear system log files',
-            'success_msg' => 'The system log has been cleaned',
+            'title' => 'Cancella log',
+            'description' => 'Cancella i file di log di sistema',
+            'success_msg' => 'Il log di sistema è stato pulito',
         ],
     ],
 ];
