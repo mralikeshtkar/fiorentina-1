@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'name' => 'Request Logs',
-    'description' => 'View and delete your system request logs',
-    'status_code' => 'Status Code',
-    'no_request_error' => 'No request error now!',
-    'widget_request_errors' => 'Request Errors',
-    'count' => 'Count',
-    'delete_all' => 'Delete all records',
-    'empty_logs' => 'Empty logs',
-    'confirm_empty_logs_msg' => 'Do you really want to empty logs?',
+    'name' => 'Log delle Richieste',
+    'description' => 'Visualizza ed elimina i log delle richieste di sistema',
+    'status_code' => 'Codice di Stato',
+    'no_request_error' => 'Nessun errore di richiesta al momento!',
+    'widget_request_errors' => 'Errori di Richiesta',
+    'count' => 'Conteggio',
+    'delete_all' => 'Elimina tutti i record',
+    'empty_logs' => 'Svuota i log',
+    'confirm_empty_logs_msg' => 'Vuoi davvero svuotare i log?',
 ];
+

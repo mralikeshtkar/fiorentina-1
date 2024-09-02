@@ -8,7 +8,7 @@ return [
     ],
 
     'logged_in_user' => 'Utente connesso',
-    'logged_in_user_has_role' => 'Utente connesso ha il ruolo',
+    'logged_in_user_has_role' => 'Utente connesso con ruolo',
     'page_template' => 'Template della pagina',
     'page' => 'Pagina',
     'model_name' => 'Nome del modello',
@@ -21,4 +21,3 @@ return [
     'model_name_category' => 'Categoria (blog)',
     'post_format' => 'Formato del post',
 ];
-

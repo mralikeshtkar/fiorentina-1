@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'Block',
-    'create' => 'New block',
-    'menu' => 'Static Blocks',
-    'static_block_short_code_name' => 'Static block',
-    'static_block_short_code_description' => 'Add a custom static block',
+    'name' => 'Blocco',
+    'create' => 'Nuovo blocco',
+    'menu' => 'Blocchi statici',
+    'static_block_short_code_name' => 'Blocco statico',
+    'static_block_short_code_description' => 'Aggiungi un blocco statico personalizzato',
     'alias' => 'Alias',
 ];

@@ -22,23 +22,23 @@ return [
         'new_field' => 'Nuovo campo',
 
         'field_label' => 'Etichetta',
-        'field_label_helper' => 'Questo è il titolo dell\'elemento del campo. Verrà mostrato nelle pagine di modifica.',
+        'field_label_helper' => 'Questo è il titolo dell\'elemento del campo. Sarà mostrato nelle pagine di modifica.',
         'field_name' => 'Nome del campo',
         'field_name_helper' => 'L\'alias dell\'elemento del campo. Sono accettati numeri, caratteri e underscore.',
         'field_type' => 'Tipo di campo',
         'field_type_helper' => 'Seleziona il tipo di questo campo.',
         'field_instructions' => 'Istruzioni per il campo',
-        'field_instructions_helper' => 'Le istruzioni guidano l\'utente a sapere cosa deve inserire.',
+        'field_instructions_helper' => 'Le istruzioni guidano l\'utente a comprendere meglio cosa deve inserire.',
 
         'default_value' => 'Valore predefinito',
         'default_value_helper' => 'Il valore predefinito del campo quando lasciato vuoto',
-        'placeholder' => 'Segnaposto',
-        'placeholder_helper' => 'Testo segnaposto',
+        'placeholder' => 'Placeholder',
+        'placeholder_helper' => 'Testo del placeholder',
         'rows' => 'Righe',
         'rows_helper' => 'Righe di questa textarea',
         'choices' => 'Scelte',
         'choices_helper' => 'Inserisci ogni scelta su una nuova riga.<br>Per un maggiore controllo, puoi specificare sia un valore che un\'etichetta in questo modo:<br>rosso: Rosso<br>blu: Blu',
-        'button_label' => 'Pulsante per ripetitore',
+        'button_label' => 'Pulsante per il ripetitore',
 
         'groups' => [
             'basic' => 'Base',
@@ -49,7 +49,7 @@ return [
 
         'types' => [
             'text' => 'Campo di testo',
-            'textarea' => 'Area di testo',
+            'textarea' => 'Textarea',
             'number' => 'Numero',
             'email' => 'Email',
             'password' => 'Password',
@@ -67,7 +67,7 @@ return [
             'rules_helper' => 'Mostra questo gruppo di campi se',
             'add_rule_group' => 'Aggiungi gruppo di regole',
             'is_equal_to' => 'Uguale a',
-            'is_not_equal_to' => 'Non uguale a',
+            'is_not_equal_to' => 'Diverso da',
             'and' => 'E',
             'or' => 'O',
         ],
