@@ -5,14 +5,10 @@
 
 @endphp
 <span class="created_at " style="color: gray;">
-    @dd($post->created_at)
     {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ $formattedDate }}
 </span>
 
-{{-- @if ($post->author->name) --}}
-{{--    <span class="post-author text-light">{!! BaseHelper::renderIcon('ti ti-user-circle') !!} <span --}}
-{{--            class="text-light">{{ $post->author->name }}</span></span> --}}
-{{-- @endif --}}
+
 @if ($post->author->name)
 
     @if ($post->author->avatar->url)
