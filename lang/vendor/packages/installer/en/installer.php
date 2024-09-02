@@ -4,81 +4,81 @@ return [
 
     /**
      *
-     * Shared translations.
+     * Traduzioni condivise.
      *
      */
-    'title' => 'Installation',
-    'next' => 'Next Step',
-    'back' => 'Previous',
-    'finish' => 'Install',
-    'installation' => 'Installation',
+    'title' => 'Installazione',
+    'next' => 'Passo Successivo',
+    'back' => 'Precedente',
+    'finish' => 'Installa',
+    'installation' => 'Installazione',
     'forms' => [
-        'errorTitle' => 'The following errors occurred:',
+        'errorTitle' => 'Si sono verificati i seguenti errori:',
     ],
 
     /**
      *
-     * Home page translations.
+     * Traduzioni della pagina iniziale.
      *
      */
     'welcome' => [
-        'title' => 'Welcome',
-        'message' => 'Before getting started, we need some information on the database. You will need to know the following items before proceeding.',
-        'language' => 'Language',
-        'next' => 'Let\'s go',
+        'title' => 'Benvenuto',
+        'message' => 'Prima di iniziare, abbiamo bisogno di alcune informazioni sul database. Dovrai conoscere i seguenti elementi prima di procedere.',
+        'language' => 'Lingua',
+        'next' => 'Andiamo',
     ],
 
     /**
      *
-     * Requirements page translations.
+     * Traduzioni della pagina dei requisiti.
      *
      */
     'requirements' => [
-        'title' => 'Server Requirements',
-        'next' => 'Check Permissions',
+        'title' => 'Requisiti del Server',
+        'next' => 'Verifica Permessi',
     ],
 
     /**
      *
-     * Permissions page translations.
+     * Traduzioni della pagina dei permessi.
      *
      */
     'permissions' => [
-        'next' => 'Configure Environment',
+        'next' => 'Configura Ambiente',
     ],
 
     /**
      *
-     * Environment page translations.
+     * Traduzioni della pagina dell'ambiente.
      *
      */
     'environment' => [
         'wizard' => [
-            'title' => 'Environment Settings',
+            'title' => 'Impostazioni dell\'Ambiente',
             'form' => [
-                'name_required' => 'An environment name is required.',
-                'app_name_label' => 'Site title',
-                'app_name_placeholder' => 'Site title',
+                'name_required' => 'È richiesto un nome per l\'ambiente.',
+                'app_name_label' => 'Titolo del sito',
+                'app_name_placeholder' => 'Titolo del sito',
                 'app_url_label' => 'URL',
                 'app_url_placeholder' => 'URL',
-                'db_connection_label' => 'Database Connection',
+                'db_connection_label' => 'Connessione al Database',
                 'db_connection_label_mysql' => 'MySQL',
                 'db_connection_label_sqlite' => 'SQLite',
                 'db_connection_label_pgsql' => 'PostgreSQL',
-                'db_host_label' => 'Database host',
-                'db_host_placeholder' => 'Database host',
-                'db_port_label' => 'Database port',
-                'db_port_placeholder' => 'Database port',
-                'db_name_label' => 'Database name',
-                'db_name_placeholder' => 'Database name',
-                'db_username_label' => 'Database username',
-                'db_username_placeholder' => 'Database username',
-                'db_password_label' => 'Database password',
-                'db_password_placeholder' => 'Database password',
+                'db_host_label' => 'Host del Database',
+                'db_host_placeholder' => 'Host del Database',
+                'db_port_label' => 'Porta del Database',
+                'db_port_placeholder' => 'Porta del Database',
+                'db_name_label' => 'Nome del Database',
+                'db_name_placeholder' => 'Nome del Database',
+                'db_username_label' => 'Nome Utente del Database',
+                'db_username_placeholder' => 'Nome Utente del Database',
+                'db_password_label' => 'Password del Database',
+                'db_password_placeholder' => 'Password del Database',
                 'buttons' => [
-                    'install' => 'Install',
+                    'install' => 'Installa',
                 ],
-                'db_host_helper' => 'If you use Laravel Sail, just change DB_HOST to DB_HOST=mysql. On some hosting DB_HOST can be localhost instead of 127.0.0.1',
+                'db_host_helper' => 'Se utilizzi Laravel Sail, basta cambiare DB_HOST in DB_HOST=mysql. Su alcuni hosting DB_HOST può essere localhost invece di 127.0.0.1',
                 'db_connections' => [
                     'mysql' => 'MySQL',
                     'sqlite' => 'SQLite',
@@ -86,50 +86,50 @@ return [
                 ],
             ],
         ],
-        'success' => 'Your .env file settings have been saved.',
-        'errors' => 'Unable to save the .env file, Please create it manually.',
+        'success' => 'Le impostazioni del tuo file .env sono state salvate correttamente.',
+        'errors' => 'Impossibile salvare il file .env. Per favore, crealo manualmente.',
     ],
 
     'theme' => [
-        'title' => 'Choose theme',
-        'message' => 'Choose a theme to personalize the appearance of your website. This selection will also import sample data tailored to the chosen theme.',
+        'title' => 'Scegli un tema',
+        'message' => 'Scegli un tema per personalizzare l\'aspetto del tuo sito web. Questa selezione importerà anche dati di esempio adattati al tema scelto.',
     ],
 
     /**
-     * Create account page.
+     * Pagina di creazione account.
      */
     'createAccount' => [
-        'title' => 'Create account',
+        'title' => 'Crea account',
         'form' => [
-            'first_name' => 'First name',
-            'last_name' => 'Last name',
-            'username' => 'Username',
+            'first_name' => 'Nome',
+            'last_name' => 'Cognome',
+            'username' => 'Nome utente',
             'email' => 'Email',
             'password' => 'Password',
-            'password_confirmation' => 'Password confirmation',
-            'create' => 'Create',
+            'password_confirmation' => 'Conferma password',
+            'create' => 'Crea',
         ],
     ],
 
     /**
-     * License page.
+     * Pagina della licenza.
      */
 
     'license' => [
-        'title' => 'Activate License',
-        'skip' => 'Skip for now',
+        'title' => 'Attiva Licenza',
+        'skip' => 'Salta per ora',
     ],
 
-    'install' => 'Install',
+    'install' => 'Installa',
 
     'final' => [
-        'pageTitle' => 'Installation Finished',
-        'title' => 'Done',
-        'message' => 'Application has been successfully installed.',
-        'exit' => 'Go to admin dashboard',
+        'pageTitle' => 'Installazione Completata',
+        'title' => 'Fatto',
+        'message' => 'L\'applicazione è stata installata con successo.',
+        'exit' => 'Vai al pannello di amministrazione',
     ],
 
-    'install_success' => 'Installed successfully!',
+    'install_success' => 'Installato con successo!',
 
-    'install_step_title' => 'Installation - Step :step: :title',
+    'install_step_title' => 'Installazione - Passo :step: :title',
 ];
