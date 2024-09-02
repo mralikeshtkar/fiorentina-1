@@ -41,7 +41,7 @@
     @include('ads.includes.dblog-author')
 </div>
 
-<div class="row justify-content-center">
+<div class="row">
     <div class="col-lg-8 d-flex justify-content-center">
         <div>
             {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'lazy']) }}
