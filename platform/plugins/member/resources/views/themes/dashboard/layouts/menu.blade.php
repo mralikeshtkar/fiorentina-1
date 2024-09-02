@@ -1,6 +1,6 @@
 <ul class="menu">
     @foreach (DashboardMenu::getAll('member') as $item)
-        @dd($item)
+{{--        @dd($item)--}}
         @continue(! $item['name'])
         <li>
             <a
