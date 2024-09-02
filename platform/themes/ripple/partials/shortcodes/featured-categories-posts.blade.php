@@ -1,4 +1,4 @@
-<section class="section pt-50 pb-50" >
+<section class="section pt-50 pb-50">
     <div class="container bg-white">
         <div class="row">
             @php
@@ -20,22 +20,17 @@
                                         @foreach ($chunk as $post)
                                             @if ($loop->first)
                                                 <article
-                                                    class="post post__vertical post__vertical--single post__vertical--simple"
-                                                >
+                                                    class="post post__vertical post__vertical--single post__vertical--simple">
                                                     <div class="post__thumbnail">
                                                         {{ RvMedia::image($post->image, $post->name, 'medium') }}
-                                                        <a
-                                                            class="post__overlay"
-                                                            href="{{ $post->url }}"
-                                                            title="{{ $post->name }}"
-                                                        ></a>
+                                                        <a class="post__overlay" href="{{ $post->url }}"
+                                                            title="{{ $post->name }}"></a>
                                                     </div>
                                                     <div class="post__content-wrap">
                                                         <header class="post__header">
-                                                            <h3 class="post__title"><a
-                                                                    href="{{ $post->url }}"
-                                                                    title="{{ $post->name }}"
-                                                                >{{ $post->name }}</a></h3>
+                                                            <h3 class="post__title"><a href="{{ $post->url }}"
+                                                                    title="{{ $post->name }}">{{ $post->name }}</a>
+                                                            </h3>
                                                             <div class="post__meta">
                                                                 <span
                                                                     class="created__month">{{ $post->created_at->translatedFormat('M') }}</span>
@@ -52,22 +47,17 @@
                                                 </article>
                                             @else
                                                 <article
-                                                    class="post post__horizontal post__horizontal--single mb-20 clearfix"
-                                                >
+                                                    class="post post__horizontal post__horizontal--single mb-20 clearfix">
                                                     <div class="post__thumbnail">
                                                         {{ RvMedia::image($post->image, $post->name, 'medium') }}
-                                                        <a
-                                                            class="post__overlay"
-                                                            href="{{ $post->url }}"
-                                                            title="{{ $post->name }}"
-                                                        ></a>
+                                                        <a class="post__overlay" href="{{ $post->url }}"
+                                                            title="{{ $post->name }}"></a>
                                                     </div>
                                                     <div class="post__content-wrap">
                                                         <header class="post__header">
-                                                            <h3 class="post__title"><a
-                                                                    href="{{ $post->url }}"
-                                                                    title="{{ $post->name }}"
-                                                                >{{ $post->name }}</a></h3>
+                                                            <h3 class="post__title"><a href="{{ $post->url }}"
+                                                                    title="{{ $post->name }}">{{ $post->name }}</a>
+                                                            </h3>
                                                             <div class="post__meta">
                                                                 <span
                                                                     class="post__created-at">{{ Theme::formatDate($post->created_at) }}</span>
@@ -84,14 +74,7 @@
                     </div>
                 </div>
             </div>
-{{--            @include('ads.includes.main-page')--}}
-            @if ($primarySidebarContent)
-                <div class="col-lg-3">
-                    <div class="page-sidebar">
-                        {!! $primarySidebarContent !!}
-                    </div>
-                </div>
-            @endif
+
         </div>
     </div>
 </section>

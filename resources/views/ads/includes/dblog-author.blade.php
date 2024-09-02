@@ -8,9 +8,5 @@
                 </a>
             </div>
         @endforeach
-
-        <div class="col-4">
-            {!! Theme::partial('sidebar') !!}
-        </div>
     </div>
 @endif
