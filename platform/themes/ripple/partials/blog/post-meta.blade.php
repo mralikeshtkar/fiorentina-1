@@ -1,4 +1,5 @@
 <span class="created_at " style="color: gray;">
+    @dd($post->created_at)
     {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ Theme::formatDate($post->created_at) }}
 </span>
 
