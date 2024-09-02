@@ -34,7 +34,7 @@
         @stack('header')
     </head>
 
-    <body @if (BaseHelper::isRtlEnabled()) dir="rtl" @endif>
+    <body @if (BaseHelper::isRtlEnabled()) dir="rtl" @endif style="background-color: violet;">
         @yield('body', view('plugins/member::themes.dashboard.layouts.body'))
 
         @include('plugins/member::themes.dashboard.layouts.footer')
