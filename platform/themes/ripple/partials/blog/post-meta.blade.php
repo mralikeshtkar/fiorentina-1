@@ -7,7 +7,7 @@
 {{--            class="text-light">{{ $post->author->name }}</span></span> --}}
 {{-- @endif --}}
 @if ($post->author->name)
-    @dd($post->author->avatar)
+    @dd($post->author->avatar->url)
     <span class="post-author " style="color: gray;">{!! BaseHelper::renderIcon('ti ti-user-circle') !!}
         <span style="color: blueviolet;">{{ $post->author->name }}</span>
     </span>
