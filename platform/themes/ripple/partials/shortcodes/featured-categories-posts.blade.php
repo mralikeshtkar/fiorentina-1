@@ -1,13 +1,8 @@
 <section class="section pt-50 pb-50">
     <div class="container bg-white">
         <div class="row">
-            @php
-                $primarySidebarContent = $withSidebar ? dynamic_sidebar('primary_sidebar') : null;
-            @endphp
-            <div @class([
-                'col-lg-9' => $primarySidebarContent,
-                'col-12' => !$primarySidebarContent,
-            ])>
+
+            <div class="col-lg-12">
                 <div class="page-content">
                     <div class="post-group post-group--single">
                         <div class="post-group__header">
@@ -16,7 +11,7 @@
                         <div class="post-group__content">
                             <div class="row">
                                 @foreach ($posts->chunk(3) as $chunk)
-                                    <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="col-12">
                                         @foreach ($chunk as $post)
                                             @if ($loop->first)
                                                 <article
