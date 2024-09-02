@@ -1,8 +1,9 @@
+@php
+    use Botble\Blog\Models\Post;
+    $mostCommentedPosts = Post::withCount('comments')->orderBy('comments_count', 'desc')->limit(5)->get();
+@endphp
 @if ($posts->isNotEmpty())
-    @php
-        use Botble\Blog\Models\Post;
-        $mostCommentedPosts = Post::withCount('comments')->orderBy('comments_count', 'desc')->limit(5)->get();
-    @endphp
+
     <div class="widget widget__recent-post">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
             <li class="nav-item" role="presentation">
