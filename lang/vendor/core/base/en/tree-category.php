@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'drag_drop_info' => 'Drag and drop on the left to change the order or parent of the categories.',
-    'expand_all' => 'Expand all',
-    'collapse_all' => 'Collapse all',
-    'empty_text' => 'No categories found.',
-    'delete_button' => 'Delete',
+    'drag_drop_info' => 'Trascina e rilascia a sinistra per cambiare l\'ordine o il genitore delle categorie.',
+    'expand_all' => 'Espandi tutto',
+    'collapse_all' => 'Comprimi tutto',
+    'empty_text' => 'Nessuna categoria trovata.',
+    'delete_button' => 'Elimina',
     'delete_modal' => [
-        'title' => 'Delete Category',
-        'message' => 'Are you sure you want to delete this category?',
+        'title' => 'Elimina Categoria',
+        'message' => 'Sei sicuro di voler eliminare questa categoria?',
     ],
 ];
