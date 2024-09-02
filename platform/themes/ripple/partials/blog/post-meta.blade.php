@@ -18,12 +18,13 @@
             @else
                 <span class="post-author " style="color: gray;">{!! BaseHelper::renderIcon('ti ti-user-circle') !!}
             @endif
+            <span class="author-name">{{ $post->author->name }}</span>
+
         </div>
         <div class="col-6">a</div>
     </div>
 
 
-    <span class="author-name">{{ $post->author->name }}</span>
 
 @endif
 
