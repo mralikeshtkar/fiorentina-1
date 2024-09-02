@@ -1,6 +1,12 @@
+@php
+    use Carbon\Carbon;
+    $date = Carbon::parse($post->created_at);
+    $formattedDate = $date->format('j F Y - H:i');
+
+@endphp
 <span class="created_at " style="color: gray;">
     @dd($post->created_at)
-    {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ Theme::formatDate($post->created_at) }}
+    {!! BaseHelper::renderIcon('ti ti-clock') !!} {{ $formattedDate }}
 </span>
 
 {{-- @if ($post->author->name) --}}
