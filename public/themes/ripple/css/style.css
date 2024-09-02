@@ -4279,8 +4279,50 @@ header>.container {
     font-size: 16px;
     font-weight: 900;
 }
-.post__meta span svg{
+
+.post__meta span svg {
     width: 30px !important;
-    margin-bottom: 3px !important; 
+    margin-bottom: 3px !important;
     margin-right: 0px !important;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+
+.social-btn.facebook {
+    background-color: #3b5998;
+}
+
+.social-btn.twitter {
+    background-color: #55acee;
+}
+
+.social-btn.pinterest {
+    background-color: #cb2027;
+}
+
+.social-btn.email {
+    background-color: #b0b0b0;
+}
+
+.social-btn.comment {
+    background-color: #d3d3d3;
+    color: #696969;
+}
+
+.social-btn i {
+    font-size: 20px;
 }
