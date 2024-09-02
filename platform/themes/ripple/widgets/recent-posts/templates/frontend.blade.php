@@ -2,20 +2,29 @@
     use Botble\Blog\Models\Post;
     use Illuminate\Support\Facades\DB;
 
-    $mostCommentedPosts = Post::select('posts.*')
-        ->join(
-            DB::raw(
-                '(SELECT reference_id, COUNT(reference_id) as comment_count FROM fob_comments WHERE reference_type = "App\\Models\\Post" GROUP BY reference_id ORDER BY comment_count DESC LIMIT 5) as most_commented',
-            ),
-            'posts.id',
-            '=',
-            'most_commented.reference_id',
-        )
-        ->get();
-@endphp
-@if ($posts->isNotEmpty())
+    $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
 
-    <div class="widget widget__recent-post">
+    $mostCommentedPosts = DB::select("
+    SELECT posts.*
+    FROM posts
+    JOIN (
+        SELECT reference_id, COUNT(reference_id) as comment_count
+        FROM fob_comments
+        WHERE reference_type = 'Botble\\\\Blog\\\\Models\\\\Post'
+        GROUP BY reference_id
+        ORDER BY comment_count DESC
+        LIMIT 5
+    ) as most_commented
+    ON posts.id = most_commented.reference_id;
+");
+
+    // If you need to convert the result into a collection of Post models, you can do this:
+    $mostCommentedPosts = collect($mostCommentedPosts)->map(function ($post) {
+        return (new \Botble\Blog\Models\Post())->newFromBuilder($post);
+    });
+@endphp
+@if ($mostCommentedPosts->isNotEmpty())
+    <div class="widget widget__recent-post mt-4">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="recent-posts-tab" data-toggle="tab" href="#recent-posts" role="tab"
@@ -30,7 +39,7 @@
             <div class="tab-pane fade show active" id="recent-posts" role="tabpanel" aria-labelledby="recent-posts-tab">
                 <div class="widget__content">
                     <ul>
-                        @foreach ($posts as $post)
+                        @foreach ($recentPosts as $post)
                             <li>
                                 <article class="post post__widget clearfix">
                                     <div class="post__thumbnail">
@@ -80,3 +89,7 @@
         </div>
     </div>
 @endif
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
