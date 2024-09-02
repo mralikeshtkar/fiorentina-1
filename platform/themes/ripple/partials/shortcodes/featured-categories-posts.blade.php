@@ -1,7 +1,6 @@
 <section class="section pt-50 pb-50">
     <div class="container bg-white">
-        <div class="row">
-
+        <div class="row" style="margin-top: -68px">
             <div class="col-lg-12">
                 <div class="page-content">
                     <div class="post-group post-group--single">
