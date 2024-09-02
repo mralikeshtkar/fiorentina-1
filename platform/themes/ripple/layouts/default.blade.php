@@ -13,15 +13,9 @@
             <div class="col-lg-12">
                 <div class="page-content">
                     {!! Theme::content() !!}
+                </div>
 
-                </div>
             </div>
-            {{-- <div class="col-lg-3">
-                <div class="page-sidebar">
-                    {!! Theme::partial('sidebar') !!}
-                </div>
-            </div> --}}
         </div>
-    </div>
 </section>
 {!! Theme::partial('footer') !!}
