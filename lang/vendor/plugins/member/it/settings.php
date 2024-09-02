@@ -1,11 +1,12 @@
 <?php
 
 return [
-    'title' => 'Member',
-    'description' => 'View and update member settings',
-    'verify_account_email' => "Verify account's email?",
-    'verify_account_email_description' => 'Need to config email in Admin -> Settings -> Email to send email verification.',
-    'enable_recaptcha_in_register_page' => 'Enable reCAPTCHA in the member registration page?',
-    'enable_recaptcha_in_register_page_description' => 'Need to setup Captcha in Admin -> Settings -> General first.',
-    'enable_math_captcha_in_register_page' => 'Enable Math Captcha in the member registration page?',
+    'title' => 'Membro',
+    'description' => 'Visualizza e aggiorna le impostazioni del membro',
+    'verify_account_email' => 'Verificare l\'email dell\'account?',
+    'verify_account_email_description' => 'È necessario configurare l\'email in Admin -> Impostazioni -> Email per inviare la verifica via email.',
+    'enable_recaptcha_in_register_page' => 'Abilitare reCAPTCHA nella pagina di registrazione dei membri?',
+    'enable_recaptcha_in_register_page_description' => 'È necessario configurare Captcha in Admin -> Impostazioni -> Generali prima.',
+    'enable_math_captcha_in_register_page' => 'Abilitare il Captcha Matematico nella pagina di registrazione dei membri?',
 ];
+
