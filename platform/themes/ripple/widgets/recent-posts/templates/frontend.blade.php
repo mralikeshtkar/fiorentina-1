@@ -13,8 +13,7 @@
         )
         ->get();
 @endphp
-@if ($posts->isNotEmpty())
-
+@if ($mostCommentedPosts->isNotEmpty())
     <div class="widget widget__recent-post">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
             <li class="nav-item" role="presentation">
@@ -80,6 +79,7 @@
         </div>
     </div>
 @endif
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
