@@ -13,7 +13,8 @@
 {{--        </li>--}}
 {{--    @endforeach--}}
 {{--</ul>--}}
-<ul class="menu " style="background-color: violet;">
+{{--<ul class="menu " style="background-color: violet;">--}}
+<ul class="menu " >
     @foreach (DashboardMenu::getAll('member') as $item)
         @continue(! $item['name'] || $item['name'] === 'posts')
         <li>
