@@ -13,8 +13,10 @@
 {{--    @endforeach--}}
 {{--</ul>--}}
 <ul class="menu">
+    @dd(DashboardMenu::getAll('member') )
     @foreach (DashboardMenu::getAll('member') as $item)
         @continue(! $item['name'] || $item['name'] === 'posts')
+
         <li>
             <a
                 href="{{ $item['url']  }}"
