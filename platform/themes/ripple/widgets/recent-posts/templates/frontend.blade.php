@@ -24,7 +24,7 @@
     });
 @endphp
 @if ($mostCommentedPosts->isNotEmpty())
-    <div class="widget widget__recent-post">
+    <div class="widget widget__recent-post mt-4">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="recent-posts-tab" data-toggle="tab" href="#recent-posts" role="tab"
