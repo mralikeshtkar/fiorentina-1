@@ -11,7 +11,7 @@
                         <div class="post-group__content">
                             <div class="row">
                                 @foreach ($posts->chunk(3) as $chunk)
-                                    <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="col-12">
                                         @foreach ($chunk as $post)
                                             @if ($loop->first)
                                                 <article
