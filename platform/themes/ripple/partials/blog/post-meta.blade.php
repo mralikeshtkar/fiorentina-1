@@ -21,7 +21,16 @@
             <span class="author-name">{{ $post->author->name }}</span>
 
         </div>
-        <div class="col-6">a</div>
+        <div class="col-6">
+            <div class="social-buttons">
+                <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" class="social-btn email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-btn comment"><i class="fas fa-comment"></i></a>
+            </div>
+
+        </div>
     </div>
 
 
