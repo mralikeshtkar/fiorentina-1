@@ -2,22 +2,23 @@
 
 return [
     'groups' => [
-        'basic' => 'Basic',
-        'other' => 'Other',
+        'basic' => 'Base',
+        'other' => 'Altro',
         'blog' => 'Blog',
     ],
 
-    'logged_in_user' => 'Logged in user',
-    'logged_in_user_has_role' => 'Logged in has role',
-    'page_template' => 'Page template',
-    'page' => 'Page',
-    'model_name' => 'Model name',
+    'logged_in_user' => 'Utente connesso',
+    'logged_in_user_has_role' => 'Utente connesso ha il ruolo',
+    'page_template' => 'Template della pagina',
+    'page' => 'Pagina',
+    'model_name' => 'Nome del modello',
 
-    'model_name_page' => 'Page',
+    'model_name_page' => 'Pagina',
 
-    'category' => 'Category',
-    'post_with_related_category' => 'Post with related category',
+    'category' => 'Categoria',
+    'post_with_related_category' => 'Post con categoria correlata',
     'model_name_post' => 'Post (blog)',
-    'model_name_category' => 'Category (blog)',
-    'post_format' => 'Post format',
+    'model_name_category' => 'Categoria (blog)',
+    'post_format' => 'Formato del post',
 ];
+
