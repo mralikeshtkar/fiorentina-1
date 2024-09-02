@@ -2,8 +2,8 @@
 
 return [
     'shortcode' => 'Shortcode',
-    'use' => 'Use',
-    'ui-blocks' => 'UI Blocks',
-    'search' => 'Search...',
-    'no_shortcode_found' => 'No shortcode found.',
+    'use' => 'Usa',
+    'ui-blocks' => 'Blocchi UI',
+    'search' => 'Cerca...',
+    'no_shortcode_found' => 'Nessuno shortcode trovato.',
 ];
