@@ -9,7 +9,6 @@
 
     <div class="container bg-white">
         <div class="row">
-            {{--        <div class="row" > --}}
             <div class="col-lg-8">
                 <div class="page-content">
                     {!! Theme::content() !!}
