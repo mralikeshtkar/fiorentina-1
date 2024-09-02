@@ -13,8 +13,9 @@
 {{--    @endforeach--}}
 {{--</ul>--}}
 <ul class="menu">
-    @dd(DashboardMenu::getAll('member') )
+
     @foreach (DashboardMenu::getAll('member') as $item)
+        @dd($item)
         @continue(! $item['name'] || $item['name'] === 'posts')
 
         <li>
