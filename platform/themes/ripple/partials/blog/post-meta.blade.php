@@ -43,6 +43,7 @@
 
 <div>
 
+    {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
 </div>
 <div class="row">
     @include('ads.includes.dblog-title')
