@@ -4334,3 +4334,10 @@ header>.container {
     object-fit: cover;
     display: block;
 }
+
+.img-in-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
