@@ -19,7 +19,7 @@
                 <a class="category-label" href="{{ $post->first_category->url }}">{{ $post->first_category->name }}</a>
             </span>
         @endif
-        <h1 class="post__title">{{ $post->name }}</h1>
+        <h1 class="post__title post__title_in">{{ $post->name }}</h1>
         <div class="post__meta">
             {!! Theme::partial('blog.post-meta', compact('post')) !!}
 
