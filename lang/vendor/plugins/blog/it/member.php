@@ -1,10 +1,11 @@
 <?php
 
 return [
-    'dob' => 'Born :date',
-    'draft_posts' => 'Draft Posts',
-    'pending_posts' => 'Pending Posts',
-    'published_posts' => 'Published Posts',
-    'posts' => 'Posts',
-    'write_post' => 'Write a post',
+    'dob' => 'Nato il :date',
+    'draft_posts' => 'Bozze',
+    'pending_posts' => 'Post in attesa',
+    'published_posts' => 'Post pubblicati',
+    'posts' => 'Post',
+    'write_post' => 'Scrivi un post',
 ];
+

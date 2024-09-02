@@ -1,20 +1,20 @@
 <?php
-
 return [
     'settings' => [
         'title' => 'White Label',
-        'description' => 'View and update white label settings',
-        'hide_license_activation_info' => 'Hide license activation info',
-        'hide_license_activation_info_help' => 'Activated license info will be hidden from the settings page. But you must have a valid license key to use this feature.',
-        'hide_theme_management' => 'Hide theme management',
-        'hide_plugin_marketplace' => 'Hide plugin marketplace',
-        'hide_plugin_management' => 'Hide plugin management',
-        'hide_plugin_management_help' => 'If you hide plugin management, the plugin marketplace is also hidden too.',
-        'hide_plugin_author' => 'Hide plugin author',
-        'hide_system_updater' => 'Hide system updater',
-        'hide_system_info' => 'Hide system information',
-        'hide_from_settings' => 'Hide "White Label" from settings panel',
-        'hide_from_settings_alert' => 'When you enable this option, it will hide this plugin setting option from settings page, you should bookmark this page for future access.',
-        'admin_path_alert' => 'If you want to change the admin path, please open your .env file and add this line `ADMIN_DIR=:path` after that your new admin URL is :url.',
+        'description' => 'Visualizza e aggiorna le impostazioni di white label',
+        'hide_license_activation_info' => 'Nascondi le informazioni sull\'attivazione della licenza',
+        'hide_license_activation_info_help' => 'Le informazioni sulla licenza attivata saranno nascoste dalla pagina delle impostazioni. Ma è necessario avere una chiave di licenza valida per utilizzare questa funzione.',
+        'hide_theme_management' => 'Nascondi la gestione del tema',
+        'hide_plugin_marketplace' => 'Nascondi il marketplace dei plugin',
+        'hide_plugin_management' => 'Nascondi la gestione dei plugin',
+        'hide_plugin_management_help' => 'Se nascondi la gestione dei plugin, verrà nascosto anche il marketplace dei plugin.',
+        'hide_plugin_author' => 'Nascondi l\'autore del plugin',
+        'hide_system_updater' => 'Nascondi l\'aggiornamento del sistema',
+        'hide_system_info' => 'Nascondi le informazioni di sistema',
+        'hide_from_settings' => 'Nascondi "White Label" dal pannello delle impostazioni',
+        'hide_from_settings_alert' => 'Quando abiliti questa opzione, questa impostazione del plugin sarà nascosta dalla pagina delle impostazioni. Dovresti aggiungere questa pagina ai segnalibri per un accesso futuro.',
+        'admin_path_alert' => 'Se desideri cambiare il percorso admin, apri il file .env e aggiungi questa riga `ADMIN_DIR=:path` dopodiché il tuo nuovo URL admin sarà :url.',
     ],
 ];
+
