@@ -12,6 +12,7 @@
             'most_commented.reference_id',
         )
         ->get();
+    dd($mostCommentedPosts);
 @endphp
 @if ($mostCommentedPosts->isNotEmpty())
     <div class="widget widget__recent-post">
