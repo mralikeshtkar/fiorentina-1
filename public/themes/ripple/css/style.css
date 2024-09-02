@@ -4261,3 +4261,21 @@ header>.container {
 .post-group .post-group__title {
     font-size: 22px !important;
 }
+
+.post--single .post__title {
+    font-size: 44px !important;
+    letter-spacing: 0 !important;
+}
+
+.category-label {
+    background-color: #8424e3;
+    color: white;
+    font-size: 16px;
+    padding: 10px 25px;
+}
+
+.author-name {
+    color: #8424e3;
+    font-size: 16px;
+    font-weight: 900;
+}
