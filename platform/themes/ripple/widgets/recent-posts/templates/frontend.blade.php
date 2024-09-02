@@ -2,6 +2,8 @@
     use Botble\Blog\Models\Post;
     use Illuminate\Support\Facades\DB;
 
+    $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
+
     $mostCommentedPosts = DB::select("
     SELECT posts.*
     FROM posts
@@ -37,7 +39,7 @@
             <div class="tab-pane fade show active" id="recent-posts" role="tabpanel" aria-labelledby="recent-posts-tab">
                 <div class="widget__content">
                     <ul>
-                        @foreach ($posts as $post)
+                        @foreach ($recentPosts as $post)
                             <li>
                                 <article class="post post__widget clearfix">
                                     <div class="post__thumbnail">
