@@ -4262,7 +4262,7 @@ header>.container {
     font-size: 22px !important;
 }
 
-.post--single .post__title {
+.post--single .post__title_in {
     font-size: 44px !important;
     letter-spacing: 0 !important;
 }
@@ -4275,7 +4275,12 @@ header>.container {
 }
 
 .author-name {
-    color: #8424e3;
+    color: #8424e3 !important;
     font-size: 16px;
     font-weight: 900;
+}
+.post__meta span svg{
+    width: 30px !important;
+    margin-bottom: 3px !important; 
+    margin-right: 0px !important;
 }
