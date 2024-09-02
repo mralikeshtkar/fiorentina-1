@@ -5,7 +5,7 @@
     $mostCommentedPosts = Post::select('posts.*')
         ->join(
             DB::raw(
-                '(SELECT reference_id, COUNT(reference_id) as comment_count FROM fob_comments WHERE reference_type = "App\\Models\\Post" GROUP BY reference_id ORDER BY comment_count DESC LIMIT 5) as most_commented',
+                '(SELECT reference_id, COUNT(reference_id) as comment_count FROM fob_comments WHERE reference_type = "Botble\\Blog\\Models\\Post" GROUP BY reference_id ORDER BY comment_count DESC LIMIT 5) as most_commented',
             ),
             'posts.id',
             '=',
