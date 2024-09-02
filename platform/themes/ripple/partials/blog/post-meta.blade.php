@@ -29,7 +29,6 @@
                 <a href="#" class="social-btn email"><i class="fas fa-envelope"></i></a>
                 <a href="#" class="social-btn comment-btn"><i class="fas fa-comment"></i></a>
             </div>
-
         </div>
     </div>
 
@@ -38,17 +37,16 @@
 @endif
 
 <div class="row">
-    @include('ads.includes.dblog-author')
-</div>
 
-<div class="row">
+    @include('ads.includes.dblog-author')
+
+
+
     <div class="col-lg-8 d-flex justify-content-center">
         <div>
             {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'lazy']) }}
         </div>
     </div>
-</div>
-
-<div class="row">
     @include('ads.includes.dblog-title')
+
 </div>
