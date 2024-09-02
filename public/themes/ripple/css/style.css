@@ -4248,3 +4248,16 @@ header>.container {
     border-radius: 5px;
     text-align: center;
 }
+
+.page-content {
+    padding: 25px 10px !important;
+
+}
+
+#load-more {
+    margin-top: 45px !important;
+}
+
+.post-group .post-group__title {
+    font-size: 22px !important;
+}
