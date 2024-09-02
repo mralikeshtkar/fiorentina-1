@@ -40,9 +40,7 @@
 
     @include('ads.includes.dblog-author')
 
-    <div class="col-4">
-        {!! Theme::partial('sidebar') !!}
-    </div>
+
 
     <div class="col-lg-8 d-flex justify-content-center">
         <div>
