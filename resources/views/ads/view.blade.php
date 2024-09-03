@@ -3,7 +3,7 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('ads.create') }}" class="btn btn-primary">Create/a>
+            <a href="{{ route('ads.create') }}" class="btn btn-primary">Crea</a>
         </div>
         <table class="table table-striped">
             <thead>
