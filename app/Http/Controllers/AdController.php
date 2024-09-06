@@ -36,6 +36,8 @@ class AdController extends BaseController
 
     public function create()
     {
+        $this->pageTitle("Crea Ad");
+
         return view('ads.create');
     }
 

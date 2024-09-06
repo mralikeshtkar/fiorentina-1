@@ -5,17 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Poll;
 use App\Models\PollOption;
 use Illuminate\Http\Request;
+use Botble\Base\Supports\Breadcrumb;
 use Illuminate\Support\Facades\Response;
 
 class PollController extends Controller
 {
+
+    protected function breadcrumb(): Breadcrumb
+    {
+        return parent::breadcrumb()
+            ->add("Polls");
+    }
+
     public function create()
     {
+        $this->pageTitle("Crea");
+
         return view('polls.create');
     }
     
     public function index()
     {
+        $this->pageTitle("Polls List");
+
         $polls = Poll::with('options')->paginate(10);
         return view('polls.index', compact('polls'));
     }
