@@ -4366,6 +4366,7 @@ header>.container {
 }
 
 .vote-btn:hover {
+    color: white !important;
     background-color: #441274 !important;
 }
 
@@ -4399,4 +4400,9 @@ header>.container {
 .vote-btn .option-text-p,
 .vote-btn .percentage-text-p {
     color: #441274 !important;
+}
+
+.vote-btn .percentage-text-p,
+.vote-btn .percentage-text-w {
+    float: right;
 }
