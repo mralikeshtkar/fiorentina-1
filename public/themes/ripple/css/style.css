@@ -4350,3 +4350,51 @@ header>.container {
 .page-logo img {
     max-height: 65px !important;
 }
+
+
+
+.vote-btn {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: #f8f9fa; /* Light background */
+    margin: 5px 0;
+    text-align: left;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.vote-btn:disabled {
+    cursor: not-allowed;
+}
+
+.vote-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #007bff; /* Blue fill color */
+    z-index: 1;
+    transition: width 0.5s ease;
+}
+
+.vote-btn .option-text, .vote-btn .percentage-text {
+    position: relative;
+    z-index: 2;
+}
+
+.vote-btn.filled::before {
+    width: 0; /* Start with no fill */
+}
+
+.vote-btn.voted::before {
+    width: 100%; /* Will change to the percentage width dynamically */
+    color: white;
+}
+
+.vote-btn .percentage-text {
+    float: right;
+}

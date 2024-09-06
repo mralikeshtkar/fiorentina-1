@@ -103,7 +103,8 @@
                         @foreach ($poll->options as $option)
                             <div class="row">
                                 <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
-                                    {{ $option->option }}
+                                    <span class="option-text">{{ $option->option }}</span>
+                                    <span class="percentage-text">0%</span>
                                 </button>
                             </div>
                         @endforeach
@@ -131,11 +132,11 @@
                     fetch(`/poll-options/${optionId}/vote`, {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json', // Make sure this is correct or use 'application/x-www-form-urlencoded'
+                                'Content-Type': 'application/json',
                                 'X-CSRF-TOKEN': csrfToken
                             },
                             body: JSON.stringify({
-                                // If you're sending data, include it here
+                                // Additional data can be added here if needed
                             })
                         })
                         .then(response => {
@@ -146,23 +147,36 @@
                             return response.json();
                         })
                         .then(data => {
-                            updateResults(data.results);
+                            updateResults(data.results, optionId);
                         })
                         .catch(error => console.error('Error:', error));
+                    // Immediately disable the button after it's clicked
+                    this.disabled = true;
+                    this.classList.add('voted'); // Add the voted class
                 };
             });
         });
 
-        function updateResults(results) {
+        function updateResults(results, votedOptionId) {
             results.forEach(result => {
-                const resultDiv = document.getElementById(`result-${result.id}`);
-                const percentageDisplay = resultDiv.querySelector('.percentage');
-                if (percentageDisplay) {
-                    percentageDisplay.textContent = result.percentage + '%';
-                }
-                const voteButton = resultDiv.parentNode.querySelector('.vote-btn[data-id="' + result.id + '"]');
-                if (voteButton) {
-                    voteButton.classList.add('btn-purple');
+                const button = document.querySelector(`.vote-btn[data-id="${result.id}"]`);
+                if (button) {
+                    const percentage = result.percentage;
+                    const optionText = result.option;
+
+                    // Update button width according to percentage
+                    button.querySelector('.percentage-text').textContent = `${percentage}%`;
+
+                    // Apply the percentage width fill
+                    button.style.setProperty('--fill-width', percentage + '%');
+                    button.querySelector('.percentage-text').textContent = `${optionText}: ${percentage}%`;
+
+                    if (result.id.toString() === votedOptionId) {
+                        button.style.setProperty('--fill-width', percentage + '%'); // Set fill width
+                        button.classList.add('voted');
+                    } else {
+                        button.disabled = true; // Disable other buttons
+                    }
                 }
             });
         }
