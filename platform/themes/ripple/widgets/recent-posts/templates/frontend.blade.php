@@ -110,10 +110,12 @@
                     <div id="options-container">
                         @foreach ($poll->options as $option)
                             <div class="row">
-                                <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
+                                <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}"
+                                    style="--fill-width: {{ $option->percentage }}%;">
                                     <span class="option-text">{{ $option->option }}</span>
                                     <span
-                                        class="percentage-text">{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}</span>
+                                        class="percentage-text">{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}
+                                        %</span>
                                 </button>
                             </div>
                         @endforeach
