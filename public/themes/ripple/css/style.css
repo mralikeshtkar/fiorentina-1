@@ -4352,23 +4352,16 @@ header>.container {
 }
 
 
-
 .vote-btn {
-    color: #441274;
     position: relative;
     width: 100%;
     padding: 15px;
     border: none;
     background-color: #f8f9fa;
-    /* Light background */
     margin: 5px 0;
     text-align: left;
     overflow: hidden;
     transition: background-color 0.3s ease;
-}
-
-.vote-btn:disabled {
-    cursor: not-allowed;
 }
 
 .vote-btn::before {
@@ -4378,8 +4371,7 @@ header>.container {
     left: 0;
     height: 100%;
     width: var(--fill-width, 0%);
-    background-color: #441274;
-    /* Blue fill color */
+    background-color: #007bff;
     z-index: 1;
     transition: width 0.5s ease;
 }
@@ -4388,17 +4380,6 @@ header>.container {
 .vote-btn .percentage-text {
     position: relative;
     z-index: 2;
-}
-
-.vote-btn.filled::before {
-    width: 0;
-    /* Start with no fill */
-}
-
-.vote-btn.voted::before {
-    width: 100%;
-    /* Will change to the percentage width dynamically */
-    color: white;
 }
 
 .vote-btn .percentage-text {
