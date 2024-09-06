@@ -5,14 +5,9 @@
 
     $poll = Poll::with('options')->where('active', true)->latest()->first();
     // Check if the poll exists and has options
-    if ($poll && $poll->options->count() > 0) {
-        // Calculate the total votes for all options in the poll
-        $totalVotes = $poll->options->sum('votes');
 
-        // Loop through each option and calculate the percentage
-        foreach ($poll->options as $option) {
-            $option->percentage = $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0;
-        }
+    if ($poll && $poll->options->count() > 0) {
+        $totalVotes = $poll->options->count();
     }
     $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
 
@@ -113,7 +108,8 @@
                             <div class="row">
                                 <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
                                     <span class="option-text">{{ $option->option }}</span>
-                                    <span class="percentage-text">0%</span>
+                                    <span
+                                        class="percentage-text">{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}</span>
                                 </button>
                             </div>
                         @endforeach
