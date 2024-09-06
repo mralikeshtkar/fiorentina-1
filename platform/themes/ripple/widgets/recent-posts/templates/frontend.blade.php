@@ -26,6 +26,8 @@
         return (new \Botble\Blog\Models\Post())->newFromBuilder($post);
     });
 @endphp
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @if ($mostCommentedPosts->isNotEmpty())
     <div class="widget widget__recent-post mt-4 mb-4">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
@@ -121,6 +123,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const buttons = document.querySelectorAll('.vote-btn');
             buttons.forEach(button => {
                 button.onclick = function() {
@@ -128,15 +131,20 @@
                     fetch(`/poll-options/${optionId}/vote`, {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                    .getAttribute('content')
+                                'Content-Type': 'application/json', // Make sure this is correct or use 'application/x-www-form-urlencoded'
+                                'X-CSRF-TOKEN': csrfToken
                             },
                             body: JSON.stringify({
-                                // your data here if needed
+                                // If you're sending data, include it here
                             })
                         })
-                        .then(response => response.json())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok: ' + response
+                                    .statusText);
+                            }
+                            return response.json();
+                        })
                         .then(data => {
                             updateResults(data.results);
                         })
@@ -148,9 +156,14 @@
         function updateResults(results) {
             results.forEach(result => {
                 const resultDiv = document.getElementById(`result-${result.id}`);
-                resultDiv.querySelector('.percentage').textContent = result.percentage + '%';
-                resultDiv.parentNode.querySelector('.vote-btn[data-id="' + result.id + '"]').classList.add(
-                    'btn-purple');
+                const percentageDisplay = resultDiv.querySelector('.percentage');
+                if (percentageDisplay) {
+                    percentageDisplay.textContent = result.percentage + '%';
+                }
+                const voteButton = resultDiv.parentNode.querySelector('.vote-btn[data-id="' + result.id + '"]');
+                if (voteButton) {
+                    voteButton.classList.add('btn-purple');
+                }
             });
         }
     </script>
