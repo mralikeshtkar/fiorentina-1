@@ -112,7 +112,6 @@
                             <div class="row">
                                 <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
                                     <span class="option-text">{{ $option->option }}</span>
-                                    @dd($option->votes, $totalVotes)
                                     <span
                                         class="percentage-text">{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}</span>
                                 </button>
