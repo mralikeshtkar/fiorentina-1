@@ -4377,7 +4377,7 @@ header>.container {
     top: 0;
     left: 0;
     height: 100%;
-    width: 0;
+    width: var(--fill-width, 0%);
     background-color: #441274;
     /* Blue fill color */
     z-index: 1;
