@@ -4353,6 +4353,7 @@ header>.container {
 
 
 .vote-btn {
+    color: #441274;
     position: relative;
     width: 100%;
     padding: 15px;
@@ -4364,6 +4365,10 @@ header>.container {
     transition: background-color 0.3s ease;
 }
 
+.vote-btn {
+    background-color: #441274 !important;
+}
+
 .vote-btn::before {
     content: '';
     position: absolute;
@@ -4371,7 +4376,7 @@ header>.container {
     left: 0;
     height: 100%;
     width: var(--fill-width, 0%);
-    background-color: #007bff;
+    background-color: #441274;
     z-index: 1;
     transition: width 0.5s ease;
 }
@@ -4384,4 +4389,14 @@ header>.container {
 
 .vote-btn .percentage-text {
     float: right;
+}
+
+.vote-btn .option-text-w,
+.vote-btn .percentage-text-w {
+    color: white !important;
+}
+
+.vote-btn .option-text-p,
+.vote-btn .percentage-text-p {
+    color: #441274 !important;
 }
