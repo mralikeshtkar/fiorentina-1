@@ -4365,7 +4365,7 @@ header>.container {
     transition: background-color 0.3s ease;
 }
 
-.vote-btn {
+.vote-btn:hover {
     background-color: #441274 !important;
 }
 
