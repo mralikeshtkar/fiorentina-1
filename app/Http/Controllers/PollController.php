@@ -14,6 +14,29 @@ class PollController extends Controller
         return view('polls.create');
     }
     
+    public function index()
+    {
+        $polls = Poll::with('options')->paginate(10);
+        return view('polls.index', compact('polls'));
+    }
+    
+    public function toggleActive($id)
+    {
+        $poll = Poll::findOrFail($id);
+        $poll->active = !$poll->active;
+        $poll->save();
+    
+        return redirect()->route('polls.index')->with('success', 'Poll status changed successfully');
+    }
+    
+    public function destroy($id)
+    {
+        $poll = Poll::findOrFail($id);
+        $poll->delete();
+    
+        return redirect()->route('polls.index')->with('success', 'Poll deleted successfully');
+    }
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -28,18 +51,11 @@ class PollController extends Controller
             $poll->options()->create(['option' => $option]);
         }
     
-        return redirect()->route('polls.create')->with('success', 'Poll created successfully!');
+        return redirect()->route('polls.index')->with('success', 'Poll created successfully!');
     }
     
 
-    public function toggleActive($id)
-    {
-        $poll = Poll::findOrFail($id);
-        $poll->active = !$poll->active;
-        $poll->save();
 
-        return response()->json(['status' => 'Poll status changed successfully']);
-    }
 
     public function exportResults($id)
     {

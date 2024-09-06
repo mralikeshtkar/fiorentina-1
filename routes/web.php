@@ -36,9 +36,10 @@ use App\Http\Controllers\PollController;
 
     Route::get('/polls/create', [PollController::class, 'create'])->name('polls.create');
     Route::post('/polls', [PollController::class, 'store'])->name('polls.store');
-    Route::post('/polls/{id}/toggle', 'PollController@toggleActive');
-    Route::get('/polls/{id}/export', 'PollController@exportResults');
-    Route::post('/poll-options/{optionId}/vote', 'PollController@vote');
-    Route::post('/poll-options/{optionId}/unvote', 'PollController@unvote');
-    Route::get('/polls/{id}/results', 'PollController@results');
+    Route::get('/polls', [PollController::class, 'index'])->name('polls.index');
+    Route::get('/polls/{id}/toggle', [PollController::class, 'toggleActive'])->name('polls.toggle');
+    Route::get('/polls/{id}/export', [PollController::class, 'exportResults'])->name('polls.export');
+    Route::get('/polls/{id}/edit', [PollController::class, 'edit'])->name('polls.edit'); // Assumes an edit method
+    Route::delete('/polls/{id}', [PollController::class, 'destroy'])->name('polls.destroy');
+    
     

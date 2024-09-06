@@ -39,9 +39,14 @@
         </a>
         <div class="dropdown-menu animate slideIn dropdown-menu-start">
             <a href="{{ route('polls.create') }}" class="dropdown-item nav-priority-1">
-                <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-poll"></i></span>
                 <span class="nav-link-title text-truncate">
                     Crea
+                </span>
+            </a>
+            <a href="{{ route('polls.index') }}" class="dropdown-item nav-priority-2">
+
+                <span class="nav-link-title text-truncate">
+                    View
                 </span>
             </a>
         </div>
