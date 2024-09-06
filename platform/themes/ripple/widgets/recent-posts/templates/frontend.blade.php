@@ -116,12 +116,13 @@
                                         @if ($option->percentage > 16.66) class="option-text-w"
 
                                     @else
-                                        class="option-text-p" @endif>{{ $option->option }}</span>
+                                        class="option-text-p" @endif>
+                                        {{ $option->option }}</span>
                                     <span
-                                        @if ($option->percentage < 88) class="option-text-p"
+                                        @if ($option->percentage < 88) class="percentage-text-p"
 
                                     @else
-                                        class="option-text-w" @endif>{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}
+                                        class="percentage-text-w" @endif>{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}
                                         %</span>
                                 </button>
                             </div>
