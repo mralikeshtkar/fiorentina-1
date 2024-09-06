@@ -14,12 +14,12 @@
                 <input type="text" class="form-control mb-2" name="options[]" required>
                 <input type="text" class="form-control mb-2" name="options[]" required>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 p-2">
                 <button type="button" class="col-6 btn btn-secondary mb-3" onclick="addOption()">Add another
                     option</button>
             </div>
 
-            <div class="row">
+            <div class="row p-2">
                 <button type="submit" class="col-12 btn btn-primary">Create Poll</button>
             </div>
 
