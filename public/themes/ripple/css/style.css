@@ -4353,12 +4353,13 @@ header>.container {
 
 
 .vote-btn {
+    border: 0.5px solid #441274;
     color: #441274;
     position: relative;
     width: 100%;
     padding: 15px;
     border: none;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa2c;
     margin: 5px 0;
     text-align: left;
     overflow: hidden;
@@ -4378,7 +4379,7 @@ header>.container {
     height: 100%;
     width: var(--fill-width, 0%);
     background-color: #441274;
-    z-index: 1;
+    z-index: -2;
     transition: width 0.5s ease;
 }
 
