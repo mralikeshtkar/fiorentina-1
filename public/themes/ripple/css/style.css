@@ -4354,11 +4354,13 @@ header>.container {
 
 
 .vote-btn {
+    color: #441274;
     position: relative;
     width: 100%;
     padding: 15px;
     border: none;
-    background-color: #f8f9fa; /* Light background */
+    background-color: #f8f9fa;
+    /* Light background */
     margin: 5px 0;
     text-align: left;
     overflow: hidden;
@@ -4376,22 +4378,26 @@ header>.container {
     left: 0;
     height: 100%;
     width: 0;
-    background-color: #007bff; /* Blue fill color */
+    background-color: #441274;
+    /* Blue fill color */
     z-index: 1;
     transition: width 0.5s ease;
 }
 
-.vote-btn .option-text, .vote-btn .percentage-text {
+.vote-btn .option-text,
+.vote-btn .percentage-text {
     position: relative;
     z-index: 2;
 }
 
 .vote-btn.filled::before {
-    width: 0; /* Start with no fill */
+    width: 0;
+    /* Start with no fill */
 }
 
 .vote-btn.voted::before {
-    width: 100%; /* Will change to the percentage width dynamically */
+    width: 100%;
+    /* Will change to the percentage width dynamically */
     color: white;
 }
 
