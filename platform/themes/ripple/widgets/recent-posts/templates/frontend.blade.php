@@ -6,9 +6,12 @@
     $poll = Poll::with('options')->where('active', true)->latest()->first();
     // Check if the poll exists and has options
 
-    if ($poll && $poll->options->count() > 0) {
-        $totalVotes = $poll->options->count();
-        dd($totalVotes);
+    if ($poll) {
+        $totalVotes = $poll->options->sum('votes');
+
+        foreach ($poll->options as $option) {
+            $option->percentage = $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100) : 0;
+        }
     }
     $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
 
