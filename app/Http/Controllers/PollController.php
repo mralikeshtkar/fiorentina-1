@@ -84,18 +84,18 @@ class PollController extends BaseController
     }
 
     public function vote(Request $request, $optionId)
-    {
-        $option = PollOption::findOrFail($optionId);
-        if (!$option->poll->active) {
-            return response()->json(['error' => 'This poll is currently inactive.'], 403);
-        }
-        $option->votes += 1;
-        $option->save();
-    
-        $results = $this->getResults($option->poll_id);
-    
-        return response()->json($results);
+{
+    $option = PollOption::findOrFail($optionId);
+    if (!$option->poll->active) {
+        return response()->json(['error' => 'This poll is currently inactive.'], 403);
     }
+    $option->votes += 1;
+    $option->save();
+
+    $results = $this->getResults($option->poll_id);
+
+    return response()->json($results);
+}
     
     private function getResults($pollId)
     {

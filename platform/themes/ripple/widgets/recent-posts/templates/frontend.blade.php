@@ -99,12 +99,13 @@
                     <h1>{{ $poll->question }}</h1>
                     <div id="options-container">
                         @foreach ($poll->options as $option)
-                            <button class="btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
-                                {{ $option->option }}
-                            </button>
+                            <div class="row">
+                                <button class="col-12 btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
+                                    {{ $option->option }}
+                                </button>
+                            </div>
                         @endforeach
                     </div>
-                    <h2>Results:</h2>
                     <div id="results-container">
                         @foreach ($poll->options as $option)
                             <div class="result" id="result-{{ $option->id }}">
@@ -126,8 +127,12 @@
                     fetch(`/poll-options/${optionId}/vote`, {
                             method: 'POST',
                             headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify({
+                                // your data here if needed
+                            })
                         })
                         .then(response => response.json())
                         .then(data => {
