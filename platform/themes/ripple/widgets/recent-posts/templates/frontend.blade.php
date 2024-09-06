@@ -159,9 +159,7 @@
                             updateResults(data.results, optionId);
                         })
                         .catch(error => console.error('Error:', error));
-                    // Immediately disable the button after it's clicked
-                    this.disabled = true;
-                    this.classList.add('voted'); // Add the voted class
+                    this.disabled = true; // Disable the button after vote
                 };
             });
         });
@@ -173,18 +171,13 @@
                     const percentage = result.percentage;
                     const optionText = result.option;
 
-                    // Update button width according to percentage
+                    // Update button width according to the new percentage
+                    button.style.setProperty('--fill-width', `${percentage}%`);
                     button.querySelector('.percentage-text').textContent = `${percentage}%`;
 
-                    // Apply the percentage width fill
-                    button.style.setProperty('--fill-width', percentage + '%');
-                    button.querySelector('.percentage-text').textContent = `${optionText}: ${percentage}%`;
-
-                    if (result.id.toString() === votedOptionId) {
-                        button.style.setProperty('--fill-width', percentage + '%'); // Set fill width
-                        button.classList.add('voted');
-                    } else {
-                        button.disabled = true; // Disable other buttons
+                    // Optionally disable other buttons after voting
+                    if (result.id.toString() !== votedOptionId) {
+                        button.disabled = true;
                     }
                 }
             });
