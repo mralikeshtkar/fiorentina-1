@@ -83,28 +83,34 @@ class PollController extends BaseController
         ]);
     }
 
-    // Methods for user actions
     public function vote(Request $request, $optionId)
     {
         $option = PollOption::findOrFail($optionId);
-        $option->votes++;
+        if (!$option->poll->active) {
+            return response()->json(['error' => 'This poll is currently inactive.'], 403);
+        }
+        $option->votes += 1;
         $option->save();
-
-        return response()->json(['status' => 'Vote recorded']);
+    
+        $results = $this->getResults($option->poll_id);
+    
+        return response()->json($results);
     }
-
-    public function unvote(Request $request, $optionId)
+    
+    private function getResults($pollId)
     {
-        $option = PollOption::findOrFail($optionId);
-        $option->votes = max(0, $option->votes - 1);
-        $option->save();
-
-        return response()->json(['status' => 'Vote removed']);
+        $poll = Poll::with('options')->findOrFail($pollId);
+        $totalVotes = $poll->options->sum('votes');
+        $results = $poll->options->map(function ($option) use ($totalVotes) {
+            return [
+                'id' => $option->id,
+                'option' => $option->option,
+                'votes' => $option->votes,
+                'percentage' => $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0
+            ];
+        });
+    
+        return ['results' => $results];
     }
-
-    public function results($id)
-    {
-        $poll = Poll::with('options')->findOrFail($id);
-        return response()->json($poll);
-    }
+    
 }

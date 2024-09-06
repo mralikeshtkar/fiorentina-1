@@ -1,6 +1,9 @@
 @php
     use Botble\Blog\Models\Post;
     use Illuminate\Support\Facades\DB;
+    use App\Models\Poll;
+
+    $poll = Poll::with('options')->where('active', true)->latest()->first();
 
     $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
 
@@ -24,7 +27,7 @@
     });
 @endphp
 @if ($mostCommentedPosts->isNotEmpty())
-    <div class="widget widget__recent-post mt-4">
+    <div class="widget widget__recent-post mt-4 mb-4">
         <ul class="nav nav-tabs" id="postTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="recent-posts-tab" data-toggle="tab" href="#recent-posts" role="tab"
@@ -88,8 +91,73 @@
             </div>
         </div>
     </div>
-@endif
 
+    @if ($poll)
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <h1>{{ $poll->question }}</h1>
+                    <div id="options-container">
+                        @foreach ($poll->options as $option)
+                            <button class="btn btn-outline-primary vote-btn" data-id="{{ $option->id }}">
+                                {{ $option->option }}
+                            </button>
+                        @endforeach
+                    </div>
+                    <h2>Results:</h2>
+                    <div id="results-container">
+                        @foreach ($poll->options as $option)
+                            <div class="result" id="result-{{ $option->id }}">
+                                {{ $option->option }}: <span class="percentage">0%</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.vote-btn');
+            buttons.forEach(button => {
+                button.onclick = function() {
+                    const optionId = this.getAttribute('data-id');
+                    fetch(`/poll-options/${optionId}/vote`, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            updateResults(data.results);
+                        })
+                        .catch(error => console.error('Error:', error));
+                };
+            });
+        });
+
+        function updateResults(results) {
+            results.forEach(result => {
+                const resultDiv = document.getElementById(`result-${result.id}`);
+                resultDiv.querySelector('.percentage').textContent = result.percentage + '%';
+                resultDiv.parentNode.querySelector('.vote-btn[data-id="' + result.id + '"]').classList.add(
+                    'btn-purple');
+            });
+        }
+    </script>
+@endsection
+
+<style>
+    .btn-purple {
+        background-color: purple;
+        color: white;
+    }
+</style>
+
+
+@endif
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
