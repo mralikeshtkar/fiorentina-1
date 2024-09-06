@@ -4406,3 +4406,7 @@ header>.container {
 .vote-btn .percentage-text-w {
     float: right;
 }
+
+.vote-btn:hover span {
+    color: white !important;
+}
