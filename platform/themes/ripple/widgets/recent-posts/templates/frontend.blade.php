@@ -147,14 +147,13 @@
             });
         }
     </script>
-@endsection
 
-<style>
-    .btn-purple {
-        background-color: purple;
-        color: white;
-    }
-</style>
+    <style>
+        .btn-purple {
+            background-color: purple;
+            color: white;
+        }
+    </style>
 
 
 @endif
