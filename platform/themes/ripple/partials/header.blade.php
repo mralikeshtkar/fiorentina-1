@@ -21,7 +21,7 @@
         <div class="container headup" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
-                    {{ Theme::getLogoImage(['height' => 90,'width' => 230]) }} <!-- Increased height from 50 to 80 -->
+                    {{ Theme::getLogoImage() }} <!-- Increased height from 50 to 80 -->
                 </a>
             </div>
             <div class="page-header__right" style="display: flex; align-items: center;">
