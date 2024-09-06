@@ -4341,3 +4341,12 @@ header>.container {
     display: block;
     object-fit: cover;
 }
+
+
+header>.container {
+    padding: 10px !important;
+}
+
+.page-logo img {
+    max-height: 65px !important;
+}
