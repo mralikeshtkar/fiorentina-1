@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\PollController;
+
 
     Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');
     Route::get('/admin/ads/create', [AdController::class, 'create'])->name('ads.create');
@@ -32,3 +34,11 @@ use App\Http\Controllers\VoteController;
     Route::put('/admin/players/{player}', [PlayerController::class, 'update'])->name('players.update');
     Route::delete('/admin/players/{player}', [PlayerController::class, 'destroy'])->name('players.destroy');
 
+    Route::get('/polls/create', [PollController::class, 'create'])->name('polls.create');
+    Route::post('/polls', [PollController::class, 'store'])->name('polls.store');
+    Route::post('/polls/{id}/toggle', 'PollController@toggleActive');
+    Route::get('/polls/{id}/export', 'PollController@exportResults');
+    Route::post('/poll-options/{optionId}/vote', 'PollController@vote');
+    Route::post('/poll-options/{optionId}/unvote', 'PollController@unvote');
+    Route::get('/polls/{id}/results', 'PollController@results');
+    

@@ -26,7 +26,25 @@
         <a href="{{ route('players.index') }}" class="nav-link dropdown-toggle nav-priority-3000" id="ads"
             data-bs-auto-close="false" role="button" aria-expanded="false" title="Ads">
             <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-link"></i></span>
-            <span class="nav-link-title  text-truncate">players</span>
+            <span class="nav-link-title  text-truncate">I Giocatori</span>
         </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle nav-priority-2000" href="#polls" id="polls" data-bs-toggle="dropdown"
+            data-bs-auto-close="false" role="button" aria-expanded="false" title="Aspetto">
+            <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-poll"></i></span>
+            <span class="nav-link-title text-truncate">
+                Polls
+            </span>
+        </a>
+        <div class="dropdown-menu animate slideIn dropdown-menu-start">
+            <a href="{{ route('polls.create') }}" class="dropdown-item nav-priority-1">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-poll"></i></span>
+                <span class="nav-link-title text-truncate">
+                    Crea
+                </span>
+            </a>
+        </div>
+
     </li>
 </ul>
