@@ -8,6 +8,7 @@
 
     if ($poll && $poll->options->count() > 0) {
         $totalVotes = $poll->options->count();
+        dd($totalVotes);
     }
     $recentPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
 
