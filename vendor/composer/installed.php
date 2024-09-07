@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '88692ccd4a0208b9b2b0052a632af7dd7f21a24d',
+        'reference' => 'af545012e8622728d9e38e93ee4b2ce9b08f0c1b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -363,6 +363,12 @@
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'facebook/webdriver' => array(
+            'dev_requirement' => true,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'fakerphp/faker' => array(
             'pretty_version' => 'v1.23.1',
@@ -766,6 +772,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'laravel/dusk' => array(
+            'pretty_version' => 'v8.2.5',
+            'version' => '8.2.5.0',
+            'reference' => 'e641800393ce4ad39f0a47133f51aae67ceb01ad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/dusk',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v10.48.7',
             'version' => '10.48.7.0',
@@ -778,7 +793,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '88692ccd4a0208b9b2b0052a632af7dd7f21a24d',
+            'reference' => 'af545012e8622728d9e38e93ee4b2ce9b08f0c1b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1149,6 +1164,15 @@
             'provided' => array(
                 0 => '*',
             ),
+        ),
+        'php-webdriver/webdriver' => array(
+            'pretty_version' => '1.15.1',
+            'version' => '1.15.1.0',
+            'reference' => 'cd52d9342c5aa738c2e75a67e47a1b6df97154e8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-webdriver/webdriver',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'phpmyadmin/sql-parser' => array(
             'pretty_version' => '5.9.0',

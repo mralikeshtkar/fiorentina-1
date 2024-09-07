@@ -9,8 +9,8 @@ use App\Models\Matches;
 use App\Models\Calendario;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\DomCrawler\Crawler;
+use Laravel\Dusk\Browser;
+use Laravel\Dusk\Chrome\ChromeOptions;
 // sportmonks B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC
 
 class StandingController extends Controller
@@ -162,30 +162,20 @@ class StandingController extends Controller
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
 
-            // Create an HTTP client
-        $client = HttpClient::create();
-        
-        // Send a GET request to the Flashscore fixtures page
-        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
-
-        // Get the content of the response
-        $content = $response->getContent();
-        
-
-        // Use Symfony's Crawler to parse the HTML content
-        $crawler = new Crawler($content);
-
-        
-
-        // Assuming match data is stored in elements with class '.event__match'
-        $crawler->filter('.event__match')->each(function (Crawler $node) {
-            dd($node->html());
-            $match_id = $node->attr('id'); // Extract match ID
-            $match_date = $node->filter('.event__time')->text(); // Extract match date
-            $home_team = $node->filter('.event__participant--home')->text(); // Extract home team
-            $away_team = $node->filter('.event__participant--away')->text(); // Extract away team
-
-            dd($home_team);
+        // Use Dusk to open a browser and visit the page
+        \Laravel\Dusk\Browser::macro('scrapeMatches', function () {
+            $this->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
+                 ->waitFor('.event__match')
+                 ->with('.event__match', function ($element) {
+                     $matches = $element->each(function ($match) {
+                         return [
+                             'match_id' => $match->attribute('id'),
+                             'home_team' => $match->element('.event__participant--home')->getText(),
+                             'away_team' => $match->element('.event__participant--away')->getText(),
+                         ];
+                     });
+                     dump($matches);
+                 });
         });
         
                     

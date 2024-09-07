@@ -42,6 +42,7 @@
         "botble/git-commit-checker": "^2.1",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^2.6",
+        "laravel/dusk": "^8.2",
         "laravel/pint": "^1.5",
         "laravel/sail": "^1.28",
         "mockery/mockery": "^1.6",
