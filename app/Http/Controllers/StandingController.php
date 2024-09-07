@@ -9,8 +9,6 @@ use App\Models\Matches;
 use App\Models\Calendario;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
-use GuzzleHttp\Client;
-use Laravel\Dusk\Browser;
 // sportmonks B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC
 
 class StandingController extends Controller
@@ -144,80 +142,59 @@ class StandingController extends Controller
 
 
 
-
-
-    private function saveMatchToDb($match_id, $match_date, $home_team, $away_team)
-    {
-        // Convert match_date to appropriate format if needed (e.g., using Carbon)
-        // Adjust database fields accordingly based on your table structure
-        dd($match_id, $match_date, $home_team, $away_team);
-       
-    }
-
-
-
     public static function FetchCalendario()
     {
+        $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
+        // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
+        if (1) {
 
+            $response = Http::withHeaders([
+                "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
+                "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
+            ])->get('https://flashlive-sports.p.rapidapi.com/v1/tournaments/list?sport_id=1&locale=en_INT');
+            // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
+            $filteredData = collect($response->json()['DATA'])->filter(function ($item) {
+                return in_array($item['COUNTRY_NAME'], ['Italy', 'Italia']);
+            });
 
-
-
-
-// Output the matched divs for verification
-print_r("<iframe id='scoreIframe' src='https://www.flashscore.it/squadra/fiorentina/Q3A3IbXH/calendario/' style='width: 100%; height: 100vh; border: none;'Your browser does not support iframes.
-    </iframe>");
-
-
-
-
-        
-
-            // $response = Http::withHeaders([
-            //     "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
-            //     "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
-            // ])->get('https://flashlive-sports.p.rapidapi.com/v1/tournaments/list?sport_id=1&locale=en_INT');
-            // // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
-            // $filteredData = collect($response->json()['DATA'])->filter(function ($item) {
-            //     return in_array($item['COUNTRY_NAME'], ['Italy', 'Italia']);
-            // });
-
-            // Dump the filtered data
+            dd($filteredData);
         // $response = Http::withHeaders([
         //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
         // ])->get('https://api.football-data.org/v4/teams/99/matches');
 
         
-        // $matches = $response->json()['matches'];
+        $matches = $response->json()['matches'];
 
         // Check if there is at least one match and only process the first one
-        // if (!empty($matches)) {
-        //     foreach($matches as $match){
-        //         $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
-        //         Calendario::updateOrCreate(
-        //             ['match_id' => $match['id']],
-        //             [
-        //                 'venue' => $match['venue'] ?? null,
-        //                 'matchday' => $match['matchday'],
-        //                 'competition' => $match['competition']['emblem'],
-        //                 'group' => $match['competition']['name'] ?? null,
-        //                 'match_date' => $matchDate,  // Use the formatted date
-        //                 'status' => $match['status'],
-        //                 'home_team' => json_encode($match['homeTeam'] ?? []),
-        //                 'away_team' => json_encode($match['awayTeam'] ?? []),
-        //                 'score' => json_encode($match['score'] ?? []),
-        //                 'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
-        //                 'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
-        //                 'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
-        //                 'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
-        //                 'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
-        //                 'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
-        //             ]
-        //         );
-        //     } // Get the first match
+        if (!empty($matches)) {
+            foreach($matches as $match){
+                $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
+                Calendario::updateOrCreate(
+                    ['match_id' => $match['id']],
+                    [
+                        'venue' => $match['venue'] ?? null,
+                        'matchday' => $match['matchday'],
+                        'competition' => $match['competition']['emblem'],
+                        'group' => $match['competition']['name'] ?? null,
+                        'match_date' => $matchDate,  // Use the formatted date
+                        'status' => $match['status'],
+                        'home_team' => json_encode($match['homeTeam'] ?? []),
+                        'away_team' => json_encode($match['awayTeam'] ?? []),
+                        'score' => json_encode($match['score'] ?? []),
+                        'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
+                        'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
+                        'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
+                        'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
+                        'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
+                        'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
+                    ]
+                );
+            } // Get the first match
             
-        //     return "First timed match updated successfully.";
-        // }
-
+            return "First timed match updated successfully.";
+        }
+        }
+        return "No update needed or no matches found.";
         
     }
 
