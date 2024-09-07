@@ -187,6 +187,8 @@ class StandingController extends Controller
         // Save the modified HTML
         $customizedHtml = $newDom->saveHTML();
 
+        dd($customizedHtml);
+
         print_r($customizedHtml);
 
 //     return view('custom-webview', ['content' => $customizedHtml]);
