@@ -188,8 +188,8 @@ class StandingController extends Controller
                     [
                         'venue' => null,  // Venue data doesn't seem to be present in your response
                         'matchday' => $match['ROUND'] ?? 'Unknown',
-                        'competition' => $data['TOURNAMENT_IMAGE'],  // Use the tournament image as competition reference
-                        'group' => $data['NAME_PART_2'],  // Example: Serie A
+                        'competition' => $tournament['TOURNAMENT_IMAGE'],  // Use the tournament image as competition reference
+                        'group' => $tournament['NAME_PART_2'],  // Example: Serie A
                         'match_date' => $matchDate,  // Formatted match date
                         'status' => $match['STAGE_TYPE'],
                         'home_team' => json_encode($homeTeam),
