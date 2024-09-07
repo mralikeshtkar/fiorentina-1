@@ -9,6 +9,8 @@ use App\Models\Matches;
 use App\Models\Calendario;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\DomCrawler\Crawler;
 // sportmonks B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC
 
 class StandingController extends Controller
@@ -148,6 +150,26 @@ class StandingController extends Controller
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
 
+
+                    
+
+        $client = HttpClient::create();
+        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+        $content = $response->getContent();
+
+        $crawler = new Crawler($content);
+
+        $crawler->filter('.event__match')->each(function (Crawler $node, $i) {
+            $match_id = $node->attr('id');
+            $match_date = $node->filter('.event__time')->text();
+            $home_team = $node->filter('.event__participant--home')->text();
+            $away_team = $node->filter('.event__participant--away')->text();
+
+            // Save or process the data as needed
+        });
+        dd($match_id, $match_date, $home_team, $away_team);
+        
+
             // $response = Http::withHeaders([
             //     "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
             //     "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
@@ -158,9 +180,9 @@ class StandingController extends Controller
             // });
 
             // Dump the filtered data
-        $response = Http::withHeaders([
-            'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
-        ])->get('https://api.football-data.org/v4/teams/99/matches');
+        // $response = Http::withHeaders([
+        //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
+        // ])->get('https://api.football-data.org/v4/teams/99/matches');
 
         
         $matches = $response->json()['matches'];
