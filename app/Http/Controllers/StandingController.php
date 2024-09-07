@@ -165,9 +165,9 @@ class StandingController extends Controller
             $home_team = $node->filter('.event__participant--home')->text();
             $away_team = $node->filter('.event__participant--away')->text();
 
-            // Save or process the data as needed
+            dd($match_id, $match_date, $home_team, $away_team);
         });
-        dd($match_id, $match_date, $home_team, $away_team);
+        
         
 
             // $response = Http::withHeaders([

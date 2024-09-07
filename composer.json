@@ -32,8 +32,8 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.9",
         "predis/predis": "^2.2",
-        "symfony/dom-crawler": "*",
-        "symfony/http-client": "*",
+        "symfony/dom-crawler": "^6.4",
+        "symfony/http-client": "^6.4",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
