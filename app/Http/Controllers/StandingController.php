@@ -183,11 +183,10 @@ class StandingController extends Controller
             $match_date = $node->filter('.event__time')->text(); // Extract match date
             $home_team = $node->filter('.event__participant--home')->text(); // Extract home team
             $away_team = $node->filter('.event__participant--away')->text(); // Extract away team
-
-            // Call a method to save the match data to the database
-            $this->saveMatchToDb($match_id, $match_date, $home_team, $away_team);
+            
+            dd($home_team);
         });
-        dd($crawler);
+        
                     
 
 
