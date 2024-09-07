@@ -16,29 +16,43 @@
 
 
             <script>
-                document.getElementById('scoreIframe').onload = function() {
-                    var iframeDoc = document.getElementById('scoreIframe').contentWindow.document;
+                document.addEventListener("DOMContentLoaded", function() {
+                    var iframe = document.getElementById('scoreIframe');
 
-                    // Remove specific elements
-                    var elementsToRemove = [
-                        "#rccontent",
-                        "#box-over-content-split",
-                        ".container__heading",
-                        ".otPlaceholder",
-                        ".seoAdWrapper",
-                        ".menuTop--soccer",
-                        ".header",
-                        ".container__myMenu",
-                        "#lsmpb"
-                    ];
+                    // Check if the iframe exists
+                    if (iframe) {
+                        iframe.onload = function() {
+                            try {
+                                var iframeDoc = iframe.contentWindow.document;
 
-                    elementsToRemove.forEach(function(selector) {
-                        var elements = iframeDoc.querySelectorAll(selector);
-                        elements.forEach(function(el) {
-                            el.parentNode.removeChild(el);
-                        });
-                    });
-                };
+                                // Elements to remove
+                                var elementsToRemove = [
+                                    "#rccontent",
+                                    "#box-over-content-split",
+                                    ".container__heading",
+                                    ".otPlaceholder",
+                                    ".seoAdWrapper",
+                                    ".menuTop--soccer",
+                                    ".header",
+                                    ".container__myMenu",
+                                    "#lsmpb"
+                                ];
+
+                                elementsToRemove.forEach(function(selector) {
+                                    var elements = iframeDoc.querySelectorAll(selector);
+                                    elements.forEach(function(el) {
+                                        el.parentNode.removeChild(el);
+                                    });
+                                });
+                            } catch (error) {
+                                console.error("Error accessing iframe content due to cross-origin restrictions:",
+                                error);
+                            }
+                        };
+                    } else {
+                        console.error("Iframe not found with the ID 'scoreIframe'");
+                    }
+                });
             </script>
 
             @php
