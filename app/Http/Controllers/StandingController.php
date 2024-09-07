@@ -9,8 +9,7 @@ use App\Models\Matches;
 use App\Models\Calendario;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
-use Laravel\Dusk\Browser;
-use Laravel\Dusk\Chrome\ChromeOptions;
+use GuzzleHttp\Client;
 // sportmonks B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC
 
 class StandingController extends Controller
@@ -162,22 +161,55 @@ class StandingController extends Controller
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
 
-        // Use Dusk to open a browser and visit the page
-        \Laravel\Dusk\Browser::macro('scrapeMatches', function () {
-            $this->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
-                 ->waitFor('.event__match')
-                 ->with('.event__match', function ($element) {
-                     $matches = $element->each(function ($match) {
-                         return [
-                             'match_id' => $match->attribute('id'),
-                             'home_team' => $match->element('.event__participant--home')->getText(),
-                             'away_team' => $match->element('.event__participant--away')->getText(),
-                         ];
-                     });
-                     dd($matches);
-                 });
-        });
-        
+        // Step 1: Use Guzzle to fetch the raw HTML content
+        $client = new Client();
+        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+
+        // Get the HTML content from the response
+        $htmlContent = $response->getBody()->getContents();
+
+        // Step 2: Load the HTML into DOMDocument and use DOMXPath to search
+        $dom = new \DOMDocument();
+
+        // Suppress warnings related to malformed HTML
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($htmlContent);
+        libxml_clear_errors();
+
+        // Create a new DOMXPath instance to query the DOM
+        $xpath = new \DOMXPath($dom);
+
+        // Step 3: Find all match elements by their CSS class (adjust based on actual HTML)
+        $matchNodes = $xpath->query("//div[contains(@class, 'event__match')]");
+
+        // Initialize an array to store matches
+        $matches = [];
+
+        // Step 4: Iterate through all the match nodes and extract relevant data
+        foreach ($matchNodes as $matchNode) {
+            // Extract match ID (if it's in an attribute, e.g., id="match123")
+            $match_id = $matchNode->getAttribute('id');
+
+            // Extract match date (adjust the XPath expression based on actual HTML)
+            $match_date = $xpath->query(".//div[contains(@class, 'event__time')]", $matchNode)->item(0)->textContent;
+
+            // Extract home team name
+            $home_team = $xpath->query(".//div[contains(@class, 'event__participant--home')]", $matchNode)->item(0)->textContent;
+
+            // Extract away team name
+            $away_team = $xpath->query(".//div[contains(@class, 'event__participant--away')]", $matchNode)->item(0)->textContent;
+
+            // Store the match data in the array
+            $matches[] = [
+                'match_id' => $match_id,
+                'match_date' => $match_date,
+                'home_team' => $home_team,
+                'away_team' => $away_team,
+            ];
+
+            // Optional: Output the home team for debugging
+            dd($home_team);
+        }
                     
 
 
