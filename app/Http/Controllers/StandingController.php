@@ -205,38 +205,38 @@ class StandingController extends Controller
         // ])->get('https://api.football-data.org/v4/teams/99/matches');
 
         
-        $matches = $response->json()['matches'];
+        // $matches = $response->json()['matches'];
 
         // Check if there is at least one match and only process the first one
-        if (!empty($matches)) {
-            foreach($matches as $match){
-                $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
-                Calendario::updateOrCreate(
-                    ['match_id' => $match['id']],
-                    [
-                        'venue' => $match['venue'] ?? null,
-                        'matchday' => $match['matchday'],
-                        'competition' => $match['competition']['emblem'],
-                        'group' => $match['competition']['name'] ?? null,
-                        'match_date' => $matchDate,  // Use the formatted date
-                        'status' => $match['status'],
-                        'home_team' => json_encode($match['homeTeam'] ?? []),
-                        'away_team' => json_encode($match['awayTeam'] ?? []),
-                        'score' => json_encode($match['score'] ?? []),
-                        'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
-                        'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
-                        'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
-                        'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
-                        'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
-                        'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
-                    ]
-                );
-            } // Get the first match
+        // if (!empty($matches)) {
+        //     foreach($matches as $match){
+        //         $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
+        //         Calendario::updateOrCreate(
+        //             ['match_id' => $match['id']],
+        //             [
+        //                 'venue' => $match['venue'] ?? null,
+        //                 'matchday' => $match['matchday'],
+        //                 'competition' => $match['competition']['emblem'],
+        //                 'group' => $match['competition']['name'] ?? null,
+        //                 'match_date' => $matchDate,  // Use the formatted date
+        //                 'status' => $match['status'],
+        //                 'home_team' => json_encode($match['homeTeam'] ?? []),
+        //                 'away_team' => json_encode($match['awayTeam'] ?? []),
+        //                 'score' => json_encode($match['score'] ?? []),
+        //                 'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
+        //                 'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
+        //                 'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
+        //                 'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
+        //                 'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
+        //                 'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
+        //             ]
+        //         );
+        //     } // Get the first match
             
-            return "First timed match updated successfully.";
-        }
-        }
-        return "No update needed or no matches found.";
+        //     return "First timed match updated successfully.";
+        // }
+        // }
+        // return "No update needed or no matches found.";
         
     }
 
