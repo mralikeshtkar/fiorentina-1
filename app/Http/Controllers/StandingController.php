@@ -172,7 +172,6 @@ class StandingController extends Controller
         // Query all elements with the class 'event--fixtures'
         $fixtures = $xpath->query("//div[contains(@class, 'event--fixtures')]");
 
-        dd($fixtures);
     
         // Create a new DOMDocument to store only the desired content
         $newDom = new \DOMDocument();
