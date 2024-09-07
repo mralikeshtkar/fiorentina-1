@@ -181,7 +181,7 @@ class StandingController extends Controller
                  'away_team' => trim($match[4]), // Away Team
              ];
          }
- 
+         dd($matchData);
          // Step 6: Return the extracted match data as JSON
          return response()->json([
              'message' => 'Scraping completed',
