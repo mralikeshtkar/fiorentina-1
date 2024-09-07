@@ -181,13 +181,14 @@ class StandingController extends Controller
 
         // Step 3: Find all match elements by their CSS class (adjust based on actual HTML)
         $matchNodes = $xpath->query("//div[contains(@class, 'event__match')]");
-        dd($matchNodes);
+        
 
         // Initialize an array to store matches
         $matches = [];
 
         // Step 4: Iterate through all the match nodes and extract relevant data
         foreach ($matchNodes as $matchNode) {
+            dd($matchNode);
             // Extract match ID (if it's in an attribute, e.g., id="match123")
             $match_id = $matchNode->getAttribute('id');
 
