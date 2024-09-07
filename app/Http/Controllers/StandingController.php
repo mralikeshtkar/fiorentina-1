@@ -169,13 +169,13 @@ class StandingController extends Controller
         $htmlContent = $response->getBody()->getContents();
 
         // Step 2: Load the HTML into DOMDocument
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         libxml_use_internal_errors(true); // Suppress HTML parsing warnings
         $dom->loadHTML($htmlContent);
         libxml_clear_errors();
 
         // Step 3: Create DOMXPath to query the DOM
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
 
         // Step 4: Find specific elements, for example, a <script> tag with embedded JSON data
         $scriptTags = $xpath->query('//script');
