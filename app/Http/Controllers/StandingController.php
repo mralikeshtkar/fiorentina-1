@@ -161,32 +161,16 @@ class StandingController extends Controller
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
-                // Launch Laravel Dusk to scrape the dynamically-loaded content
-                \Laravel\Dusk\Browser::macro('scrapeGames', function (Browser $browser) {
-                    $browser->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
-                            ->waitFor('.event__match') // Wait until match elements are loaded
-                            ->with('.event__match', function ($matchElements) {
-                                $matches = $matchElements->each(function ($matchElement) {
-                                    $match_id = $matchElement->attribute('id');
-                                    $match_time = $matchElement->element('.event__time')->getText();
-                                    $home_team = $matchElement->element('.event__participant--home')->getText();
-                                    $away_team = $matchElement->element('.event__participant--away')->getText();
-        
-                                    return [
-                                        'match_id' => $match_id,
-                                        'match_time' => $match_time,
-                                        'home_team' => $home_team,
-                                        'away_team' => $away_team,
-                                    ];
-                                });
-        
-                                dd($matches);
-                            });
-                });
-        
-                // Run the Dusk macro
-                \Laravel\Dusk\Browser::scrapeGames();
-                    
+                 // Fetch HTML content
+        $client = new Client();
+        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+        $htmlContent = $response->getBody()->getContents();
+
+        // Manually extract by finding specific sections (very rudimentary)
+        $games = [];
+        $startPos = strpos($htmlContent, 'event__match');
+
+        dd($startPos);
 
 
         
