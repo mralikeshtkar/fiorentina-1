@@ -144,30 +144,50 @@ class StandingController extends Controller
 
 
 
+
+
+    private function saveMatchToDb($match_id, $match_date, $home_team, $away_team)
+    {
+        // Convert match_date to appropriate format if needed (e.g., using Carbon)
+        // Adjust database fields accordingly based on your table structure
+        dd($match_id, $match_date, $home_team, $away_team);
+       
+    }
+
+
+
     public static function FetchCalendario()
     {
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
 
+            // Create an HTTP client
+        $client = HttpClient::create();
+        
+        // Send a GET request to the Flashscore fixtures page
+        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+
+        // Get the content of the response
+        $content = $response->getContent();
+
+        // Use Symfony's Crawler to parse the HTML content
+        $crawler = new Crawler($content);
+
+        // Assuming match data is stored in elements with class '.event__match'
+        $crawler->filter('.event__match')->each(function (Crawler $node) {
+            $match_id = $node->attr('id'); // Extract match ID
+            $match_date = $node->filter('.event__time')->text(); // Extract match date
+            $home_team = $node->filter('.event__participant--home')->text(); // Extract home team
+            $away_team = $node->filter('.event__participant--away')->text(); // Extract away team
+
+            // Call a method to save the match data to the database
+            $this->saveMatchToDb($match_id, $match_date, $home_team, $away_team);
+        });
 
                     
 
-        $client = HttpClient::create();
-        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
-        $content = $response->getContent();
 
-        $crawler = new Crawler($content);
-
-        $crawler->filter('.event__match')->each(function (Crawler $node, $i) {
-            $match_id = $node->attr('id');
-            $match_date = $node->filter('.event__time')->text();
-            $home_team = $node->filter('.event__participant--home')->text();
-            $away_team = $node->filter('.event__participant--away')->text();
-
-            dd($match_id, $match_date, $home_team, $away_team);
-        });
-        
         
 
             // $response = Http::withHeaders([
