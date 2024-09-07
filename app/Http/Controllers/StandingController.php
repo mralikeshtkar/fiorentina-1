@@ -160,30 +160,20 @@ class StandingController extends Controller
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
-            $htmlContent = $dom->saveHTML(); // Load your actual HTML content here
+        // Step 1: Fetch HTML content using Guzzle
+        $client = new Client();
+        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+        $htmlContent = $response->getBody()->getContents();
 
-            // Step 2: Load the HTML into DOMDocument
-            $dom = new DOMDocument();
-            libxml_use_internal_errors(true); // Suppress parsing errors for invalid HTML
-            $dom->loadHTML($htmlContent);
-            libxml_clear_errors(); // Clear any parsing errors
-    
-            // Step 3: Create a DOMXPath instance for querying the HTML
-            $xpath = new DOMXPath($dom);
-    
-            // Step 4: Query for the specific div element by its id
-            // You can use the XPath query to target the div with the id "g_1_zFWqD4KM"
-            $divNode = $xpath->query("//div[@id='g_1_zFWqD4KM']");
-    
-            // Step 5: Extract the content of the matched div element
-            if ($divNode->length > 0) {
-                $divHtml = $dom->saveHTML($divNode->item(0)); // Get the HTML content of the div
-    
-                // Output the extracted div for debugging (you can process or store it as needed)
-                dd($divHtml); // Dump the extracted div content for inspection
-            } else {
-                dd('Div not found'); // Div with the specified id was not found
-            }
+        // Step 2: Use regular expressions to extract matches from the HTML string
+
+        // This regular expression assumes that match data is in div elements with the class "event__match"
+        // Modify the regular expression to match the actual structure of the HTML
+        $pattern = '/<div[^>]*class="[^"]*event__match[^"]*"[^>]*id="([^"]*)"[^>]*>.*?<div[^>]*class="[^"]*event__time[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--home[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--away[^"]*">([^<]*)<\/div>/s';
+
+        // Perform the regular expression match
+        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
+        dd($matches);
 
         // Step 4: Iterate through all the match nodes and extract relevant data
         foreach ($matchNodes as $matchNode) {
