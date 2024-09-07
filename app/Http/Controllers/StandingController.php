@@ -158,13 +158,11 @@ class StandingController extends Controller
 
     public static function FetchCalendario()
     {
-        // Use Dusk to visit the website and scrape the data
-         // Step 1: Get the URL (can be passed via the request or hardcoded)
-         $url = $request->input('url', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+
         
          // Step 2: Fetch the HTML content using Guzzle
          $client = new Client();
-         $response = $client->request('GET', $url);
+         $response = $client->request('GET', "https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/");
          $htmlContent = $response->getBody()->getContents();
  
          // Step 3: Define a Regular Expression pattern to extract match information
