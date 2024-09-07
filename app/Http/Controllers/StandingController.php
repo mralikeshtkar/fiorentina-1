@@ -179,11 +179,12 @@ class StandingController extends Controller
 
         // Assuming match data is stored in elements with class '.event__match'
         $crawler->filter('.event__match')->each(function (Crawler $node) {
+            dd($node->html());
             $match_id = $node->attr('id'); // Extract match ID
             $match_date = $node->filter('.event__time')->text(); // Extract match date
             $home_team = $node->filter('.event__participant--home')->text(); // Extract home team
             $away_team = $node->filter('.event__participant--away')->text(); // Extract away team
-            
+
             dd($home_team);
         });
         
