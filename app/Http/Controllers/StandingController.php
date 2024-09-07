@@ -170,7 +170,7 @@ class StandingController extends Controller
  
          // Step 4: Use preg_match_all to extract all matches
          preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
- 
+        dd($matches);
          // Step 5: Process the matches and structure the data
          $matchData = [];
          foreach ($matches as $match) {
