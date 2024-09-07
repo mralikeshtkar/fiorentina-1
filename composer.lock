@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91ce66e754eaf2cef4384423e9b5cac8",
+    "content-hash": "f7ceb58ff0c74ed9afac2c0750b83fbb",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -7577,16 +7577,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v6.4.4",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "f0e7ec3fa17000e2d0cb4557b4b47c88a6a63531"
+                "reference": "105b56a0305d219349edeb60a800082eca864e4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/f0e7ec3fa17000e2d0cb4557b4b47c88a6a63531",
-                "reference": "f0e7ec3fa17000e2d0cb4557b4b47c88a6a63531",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/105b56a0305d219349edeb60a800082eca864e4b",
+                "reference": "105b56a0305d219349edeb60a800082eca864e4b",
                 "shasum": ""
             },
             "require": {
@@ -7624,7 +7624,7 @@
             "description": "Eases DOM navigation for HTML and XML documents",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dom-crawler/tree/v6.4.4"
+                "source": "https://github.com/symfony/dom-crawler/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -7640,7 +7640,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-07T09:17:57+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -7939,16 +7939,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v6.4.6",
+            "version": "v6.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "6a46c0ea9b099f9a5132d560a51833ffcbd5b0d9"
+                "reference": "4c92046bb788648ff1098cc66da69aa7eac8cb65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/6a46c0ea9b099f9a5132d560a51833ffcbd5b0d9",
-                "reference": "6a46c0ea9b099f9a5132d560a51833ffcbd5b0d9",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/4c92046bb788648ff1098cc66da69aa7eac8cb65",
+                "reference": "4c92046bb788648ff1098cc66da69aa7eac8cb65",
                 "shasum": ""
             },
             "require": {
@@ -8012,7 +8012,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v6.4.6"
+                "source": "https://github.com/symfony/http-client/tree/v6.4.11"
             },
             "funding": [
                 {
@@ -8028,7 +8028,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-01T20:35:50+00:00"
+            "time": "2024-08-26T06:30:21+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -13495,9 +13495,9 @@
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-json": "*",
-        "ext-zip": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-zip": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
