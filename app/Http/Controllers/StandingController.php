@@ -160,48 +160,31 @@ class StandingController extends Controller
         $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
         // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
         if (1) {
-        // Step 1: Fetch HTML content using Guzzle
-        $client = new Client();
-        $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
-        $htmlContent = $response->getBody()->getContents();
-        dd($htmlContent);
-
-        // Step 2: Use regular expressions to extract matches from the HTML string
-
-        // This regular expression assumes that match data is in div elements with the class "event__match"
-        // Modify the regular expression to match the actual structure of the HTML
-        $pattern = '/<div[^>]*class="[^"]*event__match[^"]*"[^>]*id="([^"]*)"[^>]*>.*?<div[^>]*class="[^"]*event__time[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--home[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--away[^"]*">([^<]*)<\/div>/s';
-
-        // Perform the regular expression match
-        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
-
-        dd($matches);
-
-        // Step 4: Iterate through all the match nodes and extract relevant data
-        foreach ($matchNodes as $matchNode) {
-            // Extract match ID (if it's in an attribute, e.g., id="match123")
-            $match_id = $matchNode->getAttribute('id');
-
-            // Extract match date (adjust the XPath expression based on actual HTML)
-            $match_date = $xpath->query(".//div[contains(@class, 'event__time')]", $matchNode)->item(0)->textContent;
-
-            // Extract home team name
-            $home_team = $xpath->query(".//div[contains(@class, 'event__participant--home')]", $matchNode)->item(0)->textContent;
-
-            // Extract away team name
-            $away_team = $xpath->query(".//div[contains(@class, 'event__participant--away')]", $matchNode)->item(0)->textContent;
-
-            // Store the match data in the array
-            $matches[] = [
-                'match_id' => $match_id,
-                'match_date' => $match_date,
-                'home_team' => $home_team,
-                'away_team' => $away_team,
-            ];
-
-            // Optional: Output the home team for debugging
-            dd($home_team);
-        }
+                // Launch Laravel Dusk to scrape the dynamically-loaded content
+                \Laravel\Dusk\Browser::macro('scrapeGames', function (Browser $browser) {
+                    $browser->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
+                            ->waitFor('.event__match') // Wait until match elements are loaded
+                            ->with('.event__match', function ($matchElements) {
+                                $matches = $matchElements->each(function ($matchElement) {
+                                    $match_id = $matchElement->attribute('id');
+                                    $match_time = $matchElement->element('.event__time')->getText();
+                                    $home_team = $matchElement->element('.event__participant--home')->getText();
+                                    $away_team = $matchElement->element('.event__participant--away')->getText();
+        
+                                    return [
+                                        'match_id' => $match_id,
+                                        'match_time' => $match_time,
+                                        'home_team' => $home_team,
+                                        'away_team' => $away_team,
+                                    ];
+                                });
+        
+                                dd($matches);
+                            });
+                });
+        
+                // Run the Dusk macro
+                \Laravel\Dusk\Browser::scrapeGames();
                     
 
 
