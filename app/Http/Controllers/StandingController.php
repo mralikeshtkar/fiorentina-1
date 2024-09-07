@@ -175,7 +175,7 @@ class StandingController extends Controller
         // Use Symfony's Crawler to parse the HTML content
         $crawler = new Crawler($content);
 
-        dd($crawler);
+        
 
         // Assuming match data is stored in elements with class '.event__match'
         $crawler->filter('.event__match')->each(function (Crawler $node) {
@@ -187,7 +187,7 @@ class StandingController extends Controller
             // Call a method to save the match data to the database
             $this->saveMatchToDb($match_id, $match_date, $home_team, $away_team);
         });
-
+        dd($crawler);
                     
 
 
