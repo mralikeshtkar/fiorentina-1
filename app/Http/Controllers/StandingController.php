@@ -144,57 +144,73 @@ class StandingController extends Controller
 
     public static function FetchCalendario()
     {
-        $latestUpdate = Matches::where('status', 'TIMED')->latest('updated_at')->first();
-        // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(20)) {
-        if (1) {
+        // Fetch the latest update based on match status
+    $latestUpdate = Calendario::where('status', 'TIMED')->latest('updated_at')->first();
 
-            $response = Http::withHeaders([
-                "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
-                "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
-            ])->get('https://flashlive-sports.p.rapidapi.com/v1/tournaments/list?sport_id=1&locale=en_INT');
-            // Filter the response data where COUNTRY_NAME is "Italy" or "Italia"
-            $filteredData = collect($response->json()['DATA'])->filter(function ($item) {
-                return in_array($item['COUNTRY_NAME'], ['Italy', 'Italia']);
-            });
+    // Skip the update check for demonstration purposes, but you can add time-based logic here if needed
+    if (1) {
+        Standing::truncate();
 
-            dd($filteredData);
-        // $response = Http::withHeaders([
-        //     'X-Auth-Token' => 'e1ef65752c2b42c2b8002bccec730215'
-        // ])->get('https://api.football-data.org/v4/teams/99/matches');
+        // Make the API request with necessary headers
+        $response = Http::withHeaders([
+            "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
+            "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
+        ])->get('https://flashlive-sports.p.rapidapi.com/v1/teams/fixtures?locale=it_IT&sport_id=1&team_id=Q3A3IbXH&page=1');
 
-        
-        $matches = $response->json()['matches'];
+        // Extract the data from the response
+        $data = $response->json()['DATA'];
 
-        // Check if there is at least one match and only process the first one
-        if (!empty($matches)) {
-            foreach($matches as $match){
-                $matchDate = Carbon::parse($match['utcDate'])->format('Y-m-d H:i:s');
-                Calendario::updateOrCreate(
-                    ['match_id' => $match['id']],
-                    [
-                        'venue' => $match['venue'] ?? null,
-                        'matchday' => $match['matchday'],
-                        'competition' => $match['competition']['emblem'],
-                        'group' => $match['competition']['name'] ?? null,
-                        'match_date' => $matchDate,  // Use the formatted date
-                        'status' => $match['status'],
-                        'home_team' => json_encode($match['homeTeam'] ?? []),
-                        'away_team' => json_encode($match['awayTeam'] ?? []),
-                        'score' => json_encode($match['score'] ?? []),
-                        'goals' => !empty($match['goals']) ? json_encode($match['goals']) : null,
-                        'penalties' => !empty($match['penalties']) ? json_encode($match['penalties']) : null,
-                        'bookings' => !empty($match['bookings']) ? json_encode($match['bookings']) : null,
-                        'substitutions' => !empty($match['substitutions']) ? json_encode($match['substitutions']) : null,
-                        'odds' => !empty($match['odds']) ? json_encode($match['odds']) : null,
-                        'referees' => !empty($match['referees']) ? json_encode($match['referees']) : null,
-                    ]
-                );
-            } // Get the first match
+        // Loop through the response data to get fixtures and match information
+        foreach ($data['EVENTS'] as $match) {
+            // Parse the match date from the timestamp
+            $matchDate = Carbon::createFromTimestamp($match['START_TIME'])->format('Y-m-d H:i:s');
             
-            return "First timed match updated successfully.";
+            // Prepare the home and away team information
+            $homeTeam = [
+                'id' => $match['HOME_PARTICIPANT_IDS'][0] ?? null,
+                'name' => $match['HOME_NAME'],
+                'shortname' => $match['SHORTNAME_HOME'],
+                'slug' => $match['HOME_SLUG'],
+                'logo' => $match['HOME_IMAGES'][0] ?? null,
+            ];
+
+            $awayTeam = [
+                'id' => $match['AWAY_PARTICIPANT_IDS'][0] ?? null,
+                'name' => $match['AWAY_NAME'],
+                'shortname' => $match['SHORTNAME_AWAY'],
+                'slug' => $match['AWAY_SLUG'],
+                'logo' => $match['AWAY_IMAGES'][0] ?? null,
+            ];
+
+            // Update or create match entry in the 'calendario' table
+            Calendario::updateOrCreate(
+                ['match_id' => $match['EVENT_ID']],  // Use the unique match/event ID
+                [
+                    'venue' => null,  // Venue data doesn't seem to be present in your response
+                    'matchday' => $match['ROUND'] ?? 'Unknown',
+                    'competition' => $data['TOURNAMENT_IMAGE'],  // Use the tournament image as competition reference
+                    'group' => $data['NAME_PART_2'],  // Example: Serie A
+                    'match_date' => $matchDate,  // Formatted match date
+                    'status' => $match['STAGE_TYPE'],
+                    'home_team' => json_encode($homeTeam),
+                    'away_team' => json_encode($awayTeam),
+                    'score' => json_encode([
+                        'home' => $match['HOME_GOAL_VAR'] ?? 0,
+                        'away' => $match['AWAY_GOAL_VAR'] ?? 0,
+                    ]),
+                    'goals' => null,  // The API response does not provide detailed goals
+                    'penalties' => null,  // The API response does not provide penalties
+                    'bookings' => null,  // The API response does not provide bookings
+                    'substitutions' => null,  // The API response does not provide substitutions
+                    'odds' => null,  // Odds can be filled if available
+                    'referees' => null,  // Referee information is missing in this response
+                ]
+            );
         }
-        }
-        return "No update needed or no matches found.";
+
+        // Return a success message
+        return "Fixtures updated.";
+    }
         
     }
 
