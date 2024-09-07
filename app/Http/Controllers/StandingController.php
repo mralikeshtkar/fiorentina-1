@@ -182,12 +182,20 @@ class StandingController extends Controller
 
         // Option 1: Access the XML content
         $htmlContent = $dom->saveHTML();
+// Step 2: Load the HTML into DOMDocument
+$dom = new DOMDocument();
+libxml_use_internal_errors(true); // Suppress parsing errors for invalid HTML
+$dom->loadHTML($htmlContent);
+libxml_clear_errors(); // Clear any parsing errors
 
-        $pattern = '/<div[^>]*class="[^"]*event__match[^"]*"[^>]*id="([^"]*)"[^>]*>.*?<div[^>]*class="[^"]*event__time[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--home[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--away[^"]*">([^<]*)<\/div>/s';
+// Step 3: Create a DOMXPath instance for querying the HTML
+$xpath = new DOMXPath($dom);
 
-        // Perform the regular expression match
-        dd(preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER));      
-        $matches = [];
+// Step 4: Use XPath queries to find the match elements
+// Assuming matches are inside divs with class 'event__match'
+$matches = $xpath->query("//div[contains(@class, 'event__match')]");#
+
+dd($matches);
 
         // Step 4: Iterate through all the match nodes and extract relevant data
         foreach ($matchNodes as $matchNode) {
