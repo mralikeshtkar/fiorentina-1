@@ -184,7 +184,7 @@ class StandingController extends Controller
         $htmlContent = $dom->saveHTML();
 
         $matches = $htmlContent->query("//div[contains(@class, 'event__match')]");
-
+            dd($matches);
         // Initialize an array to store matches
         $matches = [];
 
