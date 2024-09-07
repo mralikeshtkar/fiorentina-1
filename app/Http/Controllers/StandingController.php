@@ -164,6 +164,7 @@ class StandingController extends Controller
         $client = new Client();
         $response = $client->request('GET', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
         $htmlContent = $response->getBody()->getContents();
+        dd($htmlContent);
 
         // Step 2: Use regular expressions to extract matches from the HTML string
 
@@ -173,6 +174,7 @@ class StandingController extends Controller
 
         // Perform the regular expression match
         preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
+
         dd($matches);
 
         // Step 4: Iterate through all the match nodes and extract relevant data
