@@ -166,7 +166,7 @@ class StandingController extends Controller
          $htmlContent = $response->getBody()->getContents();
  
          // Step 3: Define a Regular Expression pattern to extract match information
-         $pattern = '/<div class="event__match[^>]*">.*';
+         $pattern = '/<div class="event__match[^>]*">.*/';
  
          // Step 4: Use preg_match_all to extract all matches
          preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
