@@ -186,8 +186,7 @@ class StandingController extends Controller
         $pattern = '/<div[^>]*class="[^"]*event__match[^"]*"[^>]*id="([^"]*)"[^>]*>.*?<div[^>]*class="[^"]*event__time[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--home[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--away[^"]*">([^<]*)<\/div>/s';
 
         // Perform the regular expression match
-        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);      
-        dd($matches);  // Initialize an array to store matches
+        dd(preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER));      
         $matches = [];
 
         // Step 4: Iterate through all the match nodes and extract relevant data
