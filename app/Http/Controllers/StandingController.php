@@ -162,25 +162,33 @@ class StandingController extends Controller
         
 
         
-        // Step 2: Fetch the HTML content using Guzzle
-        $client = new Client();
-        $response = $client->request('GET', "https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/");
-        $htmlContent = $response->getBody()->getContents();
+        $htmlContent = file_get_contents('your_html_source_url');
 
-        // Step 3: Define a Regular Expression pattern to extract all <div class="event__match"> elements
-        // This pattern will match the <div> with class "event__match" and capture all its contents until the closing </div>
-        
-        $pattern = '/<div[^>]*class="event__match[^>]*">(.*?)<\/div>/s';
+// Load the HTML content into DOMDocument
+$dom = new DOMDocument();
+libxml_use_internal_errors(true); // Prevent HTML parsing errors from being output
+$dom->loadHTML($htmlContent);
+libxml_clear_errors();
 
-        // Step 4: Use preg_match_all to extract all matches
-        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
-        dd('matches',$htmlContent);
-        // Step 5: Store the matched <div> elements in an array
-        $divs = [];
-        foreach ($matches as $match) {
-            // Each match contains the full <div> with class event__match
-            $divs[] = $match[0]; // The entire matched <div>
-        }
+// Create a new DOMXPath instance to search for the desired elements
+$xpath = new DOMXPath($dom);
+
+// Use XPath to find all divs with the class 'event__match'
+$divs = $xpath->query("//div[contains(@class, 'event__match')]");
+
+// Initialize an empty array to store the matched divs
+$matchedDivs = [];
+
+// Loop through the matched divs and extract the outer HTML
+foreach ($divs as $div) {
+    // Save each div as a string
+    $matchedDivs[] = $dom->saveHTML($div);
+}
+
+// Output the matched divs for verification
+echo "<pre>";
+print_r($matchedDivs);
+echo "</pre>";
 
 
 
