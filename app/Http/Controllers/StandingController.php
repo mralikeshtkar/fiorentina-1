@@ -180,7 +180,7 @@ class StandingController extends Controller
         // Step 4: Find specific elements, for example, a <script> tag with embedded JSON data
         $scriptTags = $xpath->query('//script');
 
-        dd($scriptTags);
+        dd($xpath);
 
         // Initialize an array to store matches
         $matches = [];
