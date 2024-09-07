@@ -55,49 +55,49 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <img src="{{ $homeTeam['logo'] }}"
-                                                        alt="{{ $homeTeam['shortName'] }}"
+                                                        alt="{{ $homeTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
                                                     {{ $homeTeam['name'] }}
                                                 </div>
                                                 <div class="col-6">
                                                     <img src="{{ $awayTeam['logo'] }}"
-                                                        alt="{{ $awayTeam['shortName'] }}"
+                                                        alt="{{ $awayTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
-                                                {{ $awayTeam['name'] }}
+                                                    {{ $awayTeam['name'] }}
 
+                                                </div>
                                             </div>
+                                        </td>
+
+                                        <td>
+                                            @if ($status != 'SCHEDULED')
+                                                Full Time: {{ $score['home'] ?? '-' }} -
+                                                {{ $score['away'] ?? '-' }}
+                                            @else
+                                                @php
+                                                    $time = Carbon::parse($match->match_date)->format('H:i');
+                                                    if ($time == '00:00') {
+                                                        $time = 'Da Confermare';
+                                                    }
+                                                @endphp
+                                                {{ $time }}
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <img src="{{ $match->competition }}" alt="{{ $match->group }}"
+                                                style="width: 30px; height: auto;">
+                                            {{ $match->group }}
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    </td>
-
-                    <td>
-                        @if ($status!="SCHEDULED")
-                            Full Time: {{ $score['home'] ?? '-' }} -
-                            {{ $score['away'] ?? '-' }}
-                        @else
-                            @php
-                                $time = Carbon::parse($match->match_date)->format('H:i');
-                                if ($time == '00:00') {
-                                    $time = 'Da Confermare';
-                                }
-                            @endphp
-                            {{ $time }}
-                        @endif
-
-                    </td>
-                    <td>
-                        <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                            style="width: 30px; height: auto;">
-                        {{ $match->group }}
-                    </td>
-
-                    </tr>
-                    @endforeach
-                    </tbody>
-                    </table>
                 </div>
             </div>
-    </div>
 
-    </section>
-</div>
+        </section>
+    </div>
 </div>
