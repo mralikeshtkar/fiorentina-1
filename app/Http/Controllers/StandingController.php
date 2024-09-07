@@ -183,9 +183,11 @@ class StandingController extends Controller
         // Option 1: Access the XML content
         $htmlContent = $dom->saveHTML();
 
-        $matches = $htmlContent->query("//div[contains(@class, 'event__match')]");
-            dd($matches);
-        // Initialize an array to store matches
+        $pattern = '/<div[^>]*class="[^"]*event__match[^"]*"[^>]*id="([^"]*)"[^>]*>.*?<div[^>]*class="[^"]*event__time[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--home[^"]*">([^<]*)<\/div>.*?<div[^>]*class="[^"]*event__participant--away[^"]*">([^<]*)<\/div>/s';
+
+        // Perform the regular expression match
+        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);      
+        dd($matches);  // Initialize an array to store matches
         $matches = [];
 
         // Step 4: Iterate through all the match nodes and extract relevant data
