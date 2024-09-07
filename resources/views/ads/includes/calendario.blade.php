@@ -54,50 +54,50 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <img src="{{ $homeTeam['crest'] }}"
+                                                    {{-- <img src="{{ $homeTeam['crest'] }}"
                                                         alt="{{ $homeTeam['shortName'] }}"
-                                                        style="width: 20px; height: auto;">
+                                                        style="width: 20px; height: auto;"> --}}
                                                     {{ $homeTeam['name'] }}
                                                 </div>
-                                                <div class="col-6">
+                                                {{-- <div class="col-6">
                                                     <img src="{{ $awayTeam['crest'] }}"
                                                         alt="{{ $awayTeam['shortName'] }}"
-                                                        style="width: 20px; height: auto;">
-                                                    {{ $awayTeam['name'] }}
+                                                        style="width: 20px; height: auto;"> --}}
+                                                {{ $awayTeam['name'] }}
 
-                                                </div>
                                             </div>
-                                        </td>
-
-                                        <td>
-                                            @if ($score['fullTime']['home'])
-                                                Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
-                                                {{ $score['fullTime']['away'] ?? '-' }}
-                                            @else
-                                                @php
-                                                    $time = Carbon::parse($match->match_date)->format('H:i');
-                                                    if ($time == '00:00') {
-                                                        $time = 'Da Confermare';
-                                                    }
-                                                @endphp
-                                                {{ $time }}
-                                            @endif
-
-                                        </td>
-                                        <td>
-                                            <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                                                style="width: 30px; height: auto;">
-                                            {{ $match->group }}
-                                        </td>
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
+                    </td>
+
+                    <td>
+                        @if ($score['fullTime']['home'])
+                            Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
+                            {{ $score['fullTime']['away'] ?? '-' }}
+                        @else
+                            @php
+                                $time = Carbon::parse($match->match_date)->format('H:i');
+                                if ($time == '00:00') {
+                                    $time = 'Da Confermare';
+                                }
+                            @endphp
+                            {{ $time }}
+                        @endif
+
+                    </td>
+                    <td>
+                        <img src="{{ $match->competition }}" alt="{{ $match->group }}"
+                            style="width: 30px; height: auto;">
+                        {{ $match->group }}
+                    </td>
+
+                    </tr>
+                    @endforeach
+                    </tbody>
+                    </table>
                 </div>
             </div>
-
-        </section>
     </div>
+
+    </section>
+</div>
 </div>
