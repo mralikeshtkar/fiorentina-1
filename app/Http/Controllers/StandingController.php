@@ -174,7 +174,7 @@ class StandingController extends Controller
                              'away_team' => $match->element('.event__participant--away')->getText(),
                          ];
                      });
-                     dump($matches);
+                     dd($matches);
                  });
         });
         
