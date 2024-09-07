@@ -160,6 +160,8 @@ class StandingController extends Controller
         // Extract the data from the response
         $data = $response->json()['DATA'];
 
+        dd($data);
+
         // Loop through the response data to get fixtures and match information
         foreach ($data['EVENTS'] as $match) {
             // Parse the match date from the timestamp
