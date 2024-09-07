@@ -54,15 +54,15 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-6">
-                                                    {{-- <img src="{{ $homeTeam['crest'] }}"
+                                                    <img src="{{ $homeTeam['logo'] }}"
                                                         alt="{{ $homeTeam['shortName'] }}"
-                                                        style="width: 20px; height: auto;"> --}}
+                                                        style="width: 20px; height: auto;">
                                                     {{ $homeTeam['name'] }}
                                                 </div>
-                                                {{-- <div class="col-6">
-                                                    <img src="{{ $awayTeam['crest'] }}"
+                                                <div class="col-6">
+                                                    <img src="{{ $awayTeam['logo'] }}"
                                                         alt="{{ $awayTeam['shortName'] }}"
-                                                        style="width: 20px; height: auto;"> --}}
+                                                        style="width: 20px; height: auto;">
                                                 {{ $awayTeam['name'] }}
 
                                             </div>
@@ -70,9 +70,9 @@
                     </td>
 
                     <td>
-                        @if ($score['fullTime']['home'])
-                            Full Time: {{ $score['fullTime']['home'] ?? '-' }} -
-                            {{ $score['fullTime']['away'] ?? '-' }}
+                        @if ($status!="SCHEDULED")
+                            Full Time: {{ $score['home'] ?? '-' }} -
+                            {{ $score['away'] ?? '-' }}
                         @else
                             @php
                                 $time = Carbon::parse($match->match_date)->format('H:i');
