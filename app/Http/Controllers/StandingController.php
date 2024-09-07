@@ -181,6 +181,7 @@ class StandingController extends Controller
 
         // Step 3: Find all match elements by their CSS class (adjust based on actual HTML)
         $matchNodes = $xpath->query("//div[contains(@class, 'event__match')]");
+        dd($matchNodes);
 
         // Initialize an array to store matches
         $matches = [];
