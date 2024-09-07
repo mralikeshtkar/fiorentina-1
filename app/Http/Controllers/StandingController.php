@@ -161,35 +161,10 @@ class StandingController extends Controller
 
         
 
-        
-        $htmlContent = file_get_contents('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
-
-// Load the HTML content into DOMDocument
-$dom = new \DOMDocument();
-libxml_use_internal_errors(true); // Prevent HTML parsing errors from being output
-$dom->loadHTML($htmlContent);
-libxml_clear_errors();
-
-// Create a new DOMXPath instance to search for the desired elements
-$xpath = new \DOMXPath($dom);
-
-// Use XPath to find all divs with the class 'event__match'
-$divs = $xpath->query("//div[contains(@class, 'event__match')]");
-
-// Initialize an empty array to store the matched divs
-$matchedDivs = [];
-
-// Loop through the matched divs and extract the outer HTML
-foreach ($divs as $div) {
-    // Save each div as a string
-    dd($dom->saveHTML($div));
-    $matchedDivs[] = $dom->saveHTML($div);
-}
-
 // Output the matched divs for verification
-echo "<pre>";
-print_r($matchedDivs);
-echo "</pre>";
+print_r("iframe src='https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/' style='width: 100%; height: 100vh; border: none;'Your browser does not support iframes.
+    </iframe>");
+
 
 
 
