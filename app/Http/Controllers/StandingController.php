@@ -162,7 +162,7 @@ class StandingController extends Controller
         
 
         
-        $htmlContent = file_get_contents('your_html_source_url');
+        $htmlContent = file_get_contents('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
 
 // Load the HTML content into DOMDocument
 $dom = new DOMDocument();
