@@ -145,10 +145,10 @@ class StandingController extends Controller
     public static function FetchCalendario()
     {
         // Fetch the latest update based on match status
-    $latestUpdate = Calendario::where('status', 'TIMED')->latest('updated_at')->first();
+        $latestUpdate = Calendario::where('status', 'TIMED')->latest('updated_at')->first();
 
-    // Skip the update check for demonstration purposes, but you can add time-based logic here if needed
-    if (1) {
+        // Check if the last update was more than 10 hours ago
+        if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(10)) {
         Standing::truncate();
 
         // Make the API request with necessary headers
