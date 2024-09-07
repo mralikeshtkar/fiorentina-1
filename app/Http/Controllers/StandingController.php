@@ -173,7 +173,7 @@ class StandingController extends Controller
 
         // Step 4: Use preg_match_all to extract all matches
         preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
-
+        dd('matches',$matches);
         // Step 5: Store the matched <div> elements in an array
         $divs = [];
         foreach ($matches as $match) {
@@ -181,9 +181,6 @@ class StandingController extends Controller
             $divs[] = $match[0]; // The entire matched <div>
         }
 
-        // Step 6: Return or save the matched divs
-        // For now, just output the captured divs for inspection
-        dd($divs);
 
 
         
