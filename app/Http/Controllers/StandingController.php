@@ -170,10 +170,12 @@ class StandingController extends Controller
 
         // Get the content of the response
         $content = $response->getContent();
-        dd($content);
+        
 
         // Use Symfony's Crawler to parse the HTML content
         $crawler = new Crawler($content);
+
+        dd($crawler);
 
         // Assuming match data is stored in elements with class '.event__match'
         $crawler->filter('.event__match')->each(function (Crawler $node) {
