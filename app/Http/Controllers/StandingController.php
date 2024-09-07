@@ -235,8 +235,8 @@ class StandingController extends Controller
             
         //     return "First timed match updated successfully.";
         // }
-        // }
-        // return "No update needed or no matches found.";
+        }
+        return "No update needed or no matches found.";
         
     }
 
