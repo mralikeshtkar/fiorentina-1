@@ -183,6 +183,7 @@ $matchedDivs = [];
 // Loop through the matched divs and extract the outer HTML
 foreach ($divs as $div) {
     // Save each div as a string
+    dd($dom->saveHTML($div));
     $matchedDivs[] = $dom->saveHTML($div);
 }
 
