@@ -176,6 +176,7 @@ $xpath = new \DOMXPath($dom);
 // Use XPath to find all divs with the class 'event__match'
 $divs = $xpath->query("//div[contains(@class, 'event__match')]");
 
+dd($divs);
 // Initialize an empty array to store the matched divs
 $matchedDivs = [];
 
