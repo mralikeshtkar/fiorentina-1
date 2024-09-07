@@ -70,7 +70,7 @@
                                         </td>
 
                                         <td>
-                                            @if ($status != 'SCHEDULED')
+                                            @if ($match->status != 'SCHEDULED')
                                                 Full Time: {{ $score['home'] ?? '-' }} -
                                                 {{ $score['away'] ?? '-' }}
                                             @else
