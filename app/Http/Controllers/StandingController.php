@@ -184,7 +184,7 @@ class StandingController extends Controller
 
         // Check if any matches were found
 
-            dd($dom->xml);
+            dd($dom);
 
         
 
