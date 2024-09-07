@@ -182,8 +182,8 @@ class StandingController extends Controller
 
         // Option 1: Access the XML content
         $htmlContent = $dom->saveHTML();
-        $xmlContent = $dom->saveXML();
-        dd($xmlContent,$htmlContent); // Dump the XML content
+
+        $matches = $htmlContent->query("//div[contains(@class, 'event__match')]");
 
         // Initialize an array to store matches
         $matches = [];
