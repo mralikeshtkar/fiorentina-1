@@ -161,54 +161,56 @@ class StandingController extends Controller
         $data = $response->json()['DATA'];
 
         dd($data);
-
-        // Loop through the response data to get fixtures and match information
-        foreach ($data['EVENTS'] as $match) {
-            // Parse the match date from the timestamp
-            $matchDate = Carbon::createFromTimestamp($match['START_TIME'])->format('Y-m-d H:i:s');
-            
-            // Prepare the home and away team information
-            $homeTeam = [
-                'id' => $match['HOME_PARTICIPANT_IDS'][0] ?? null,
-                'name' => $match['HOME_NAME'],
-                'shortname' => $match['SHORTNAME_HOME'],
-                'slug' => $match['HOME_SLUG'],
-                'logo' => $match['HOME_IMAGES'][0] ?? null,
-            ];
-
-            $awayTeam = [
-                'id' => $match['AWAY_PARTICIPANT_IDS'][0] ?? null,
-                'name' => $match['AWAY_NAME'],
-                'shortname' => $match['SHORTNAME_AWAY'],
-                'slug' => $match['AWAY_SLUG'],
-                'logo' => $match['AWAY_IMAGES'][0] ?? null,
-            ];
-
-            // Update or create match entry in the 'calendario' table
-            Calendario::updateOrCreate(
-                ['match_id' => $match['EVENT_ID']],  // Use the unique match/event ID
-                [
-                    'venue' => null,  // Venue data doesn't seem to be present in your response
-                    'matchday' => $match['ROUND'] ?? 'Unknown',
-                    'competition' => $data['TOURNAMENT_IMAGE'],  // Use the tournament image as competition reference
-                    'group' => $data['NAME_PART_2'],  // Example: Serie A
-                    'match_date' => $matchDate,  // Formatted match date
-                    'status' => $match['STAGE_TYPE'],
-                    'home_team' => json_encode($homeTeam),
-                    'away_team' => json_encode($awayTeam),
-                    'score' => json_encode([
-                        'home' => $match['HOME_GOAL_VAR'] ?? 0,
-                        'away' => $match['AWAY_GOAL_VAR'] ?? 0,
-                    ]),
-                    'goals' => null,  // The API response does not provide detailed goals
-                    'penalties' => null,  // The API response does not provide penalties
-                    'bookings' => null,  // The API response does not provide bookings
-                    'substitutions' => null,  // The API response does not provide substitutions
-                    'odds' => null,  // Odds can be filled if available
-                    'referees' => null,  // Referee information is missing in this response
-                ]
-            );
+        foreach($data as $tournament){
+            foreach ($tournament['EVENTS'] as $match) {
+                // Parse the match date from the timestamp
+                $matchDate = Carbon::createFromTimestamp($match['START_TIME'])->format('Y-m-d H:i:s');
+                
+                // Prepare the home and away team information
+                $homeTeam = [
+                    'id' => $match['HOME_PARTICIPANT_IDS'][0] ?? null,
+                    'name' => $match['HOME_NAME'],
+                    'shortname' => $match['SHORTNAME_HOME'],
+                    'slug' => $match['HOME_SLUG'],
+                    'logo' => $match['HOME_IMAGES'][0] ?? null,
+                ];
+    
+                $awayTeam = [
+                    'id' => $match['AWAY_PARTICIPANT_IDS'][0] ?? null,
+                    'name' => $match['AWAY_NAME'],
+                    'shortname' => $match['SHORTNAME_AWAY'],
+                    'slug' => $match['AWAY_SLUG'],
+                    'logo' => $match['AWAY_IMAGES'][0] ?? null,
+                ];
+    
+                // Update or create match entry in the 'calendario' table
+                Calendario::updateOrCreate(
+                    ['match_id' => $match['EVENT_ID']],  // Use the unique match/event ID
+                    [
+                        'venue' => null,  // Venue data doesn't seem to be present in your response
+                        'matchday' => $match['ROUND'] ?? 'Unknown',
+                        'competition' => $data['TOURNAMENT_IMAGE'],  // Use the tournament image as competition reference
+                        'group' => $data['NAME_PART_2'],  // Example: Serie A
+                        'match_date' => $matchDate,  // Formatted match date
+                        'status' => $match['STAGE_TYPE'],
+                        'home_team' => json_encode($homeTeam),
+                        'away_team' => json_encode($awayTeam),
+                        'score' => json_encode([
+                            'home' => $match['HOME_GOAL_VAR'] ?? 0,
+                            'away' => $match['AWAY_GOAL_VAR'] ?? 0,
+                        ]),
+                        'goals' => null,  // The API response does not provide detailed goals
+                        'penalties' => null,  // The API response does not provide penalties
+                        'bookings' => null,  // The API response does not provide bookings
+                        'substitutions' => null,  // The API response does not provide substitutions
+                        'odds' => null,  // Odds can be filled if available
+                        'referees' => null,  // Referee information is missing in this response
+                    ]
+                );
+            }
         }
+        // Loop through the response data to get fixtures and match information
+        
 
         // Return a success message
         return "Fixtures updated.";
