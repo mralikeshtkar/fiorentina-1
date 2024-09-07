@@ -158,34 +158,34 @@ class StandingController extends Controller
 
     public static function FetchCalendario()
     {
-
         $client = new Client();
-    $response = $client->get('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
-    $html = $response->getBody()->getContents();
+        $response = $client->get('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+        $html = $response->getBody()->getContents();
+    
+        // Load HTML into DOMDocument
+        $dom = new \DOMDocument();
+        @$dom->loadHTML($html);  // Suppress warnings
+    
+        // Use XPath to find elements with the class 'event--fixtures'
+        $xpath = new \DOMXPath($dom);
+    
+        // Query all elements with the class 'event--fixtures'
+        $fixtures = $xpath->query("//div[contains(@class, 'event--fixtures')]");
+    
+        // Create a new DOMDocument to store only the desired content
+        $newDom = new \DOMDocument();
+        $newDom->formatOutput = true;
+    
+        // Import and append the fixtures to the new DOM
+        foreach ($fixtures as $fixture) {
+            $importedNode = $newDom->importNode($fixture, true);
+            $newDom->appendChild($importedNode);
+        }
+    
+        // Save the modified HTML
+        $customizedHtml = $newDom->saveHTML();
 
-    // Load HTML into DOMDocument
-    $dom = new \DOMDocument();
-    @$dom->loadHTML($html);  // Suppress warnings
-
-    // Remove header and sidebar by their ID or class names
-    $xpath = new \DOMXPath($dom);
-
-    // Remove the header (assume header has a class like .header)
-    $header = $xpath->query("//div[contains(@class, 'header')]");
-    foreach ($header as $node) {
-        $node->parentNode->removeChild($node);
-    }
-
-    // Remove sidebars (assume sidebar has a class like .sidebar)
-    $sidebars = $xpath->query("//div[contains(@class, 'sidebar')]");
-    foreach ($sidebars as $node) {
-        $node->parentNode->removeChild($node);
-    }
-
-    // Save modified HTML
-    $customizedHtml = $dom->saveHTML();
-
-    print_r($customizedHtml);
+        print_r($customizedHtml);
 
 //     return view('custom-webview', ['content' => $customizedHtml]);
 
