@@ -168,25 +168,19 @@ class StandingController extends Controller
         // Get the HTML content from the response
         $htmlContent = $response->getBody()->getContents();
 
-        // Step 2: Load the HTML into DOMDocument and use DOMXPath to search
-        $dom = new \DOMDocument();
-
-        // Suppress warnings related to malformed HTML
-        libxml_use_internal_errors(true);
+        // Step 2: Load the HTML into DOMDocument
+        $dom = new DOMDocument();
+        libxml_use_internal_errors(true); // Suppress HTML parsing warnings
         $dom->loadHTML($htmlContent);
         libxml_clear_errors();
 
-        // Create a new DOMXPath instance to query the DOM
-        $xpath = new \DOMXPath($dom);
+        // Step 3: Create DOMXPath to query the DOM
+        $xpath = new DOMXPath($dom);
 
-        // Step 3: Find all match elements by their CSS class (adjust based on actual HTML)
-        $matchNodes = $xpath->query("//div[contains(@class, 'event__match')]");
+        // Step 4: Find specific elements, for example, a <script> tag with embedded JSON data
+        $scriptTags = $xpath->query('//script');
 
-        // Check if any matches were found
-
-            dd($dom);
-
-        
+        dd($scriptTags);
 
         // Initialize an array to store matches
         $matches = [];
