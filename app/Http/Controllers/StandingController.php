@@ -160,33 +160,30 @@ class StandingController extends Controller
     {
 
         
-         // Step 2: Fetch the HTML content using Guzzle
-         $client = new Client();
-         $response = $client->request('GET', "https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/");
-         $htmlContent = $response->getBody()->getContents();
- 
-         // Step 3: Define a Regular Expression pattern to extract match information
-         $pattern = '/<div class="event__match[^>]*">.*/';
- 
-         // Step 4: Use preg_match_all to extract all matches
-         preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
-        dd($matches);
-         // Step 5: Process the matches and structure the data
-         $matchData = [];
-         foreach ($matches as $match) {
-             $matchData[] = [
-                 'match_id' => $match[1],       // Match ID
-                 'match_time' => $match[2],     // Match Time
-                 'home_team' => trim($match[3]), // Home Team
-                 'away_team' => trim($match[4]), // Away Team
-             ];
-         }
-         dd($matchData);
-         // Step 6: Return the extracted match data as JSON
-         return response()->json([
-             'message' => 'Scraping completed',
-             'matches' => $matchData,
-         ]);
+
+        
+        // Step 2: Fetch the HTML content using Guzzle
+        $client = new Client();
+        $response = $client->request('GET', "https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/");
+        $htmlContent = $response->getBody()->getContents();
+
+        // Step 3: Define a Regular Expression pattern to extract all <div class="event__match"> elements
+        // This pattern will match the <div> with class "event__match" and capture all its contents until the closing </div>
+        $pattern = '/<div[^>]*class="event__match[^>]*">(.*?)<\/div>/s';
+
+        // Step 4: Use preg_match_all to extract all matches
+        preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
+
+        // Step 5: Store the matched <div> elements in an array
+        $divs = [];
+        foreach ($matches as $match) {
+            // Each match contains the full <div> with class event__match
+            $divs[] = $match[0]; // The entire matched <div>
+        }
+
+        // Step 6: Return or save the matched divs
+        // For now, just output the captured divs for inspection
+        dd($divs);
 
 
         
