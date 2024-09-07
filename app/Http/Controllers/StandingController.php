@@ -164,7 +164,7 @@ class StandingController extends Controller
 
 
 // Output the matched divs for verification
-print_r("<iframe src='https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/' style='width: 100%; height: 100vh; border: none;'Your browser does not support iframes.
+print_r("<iframe id='scoreIframe' src='https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/' style='width: 100%; height: 100vh; border: none;'Your browser does not support iframes.
     </iframe>");
 
 
