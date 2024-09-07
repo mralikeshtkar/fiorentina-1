@@ -180,7 +180,10 @@ class StandingController extends Controller
         // Step 4: Find specific elements, for example, a <script> tag with embedded JSON data
         $scriptTags = $xpath->query('//script');
 
-        dd($dom);
+        // Option 1: Access the XML content
+        $htmlContent = $dom->saveHTML();
+        $xmlContent = $dom->saveXML();
+        dd($xmlContent,$htmlContent); // Dump the XML content
 
         // Initialize an array to store matches
         $matches = [];
