@@ -170,6 +170,7 @@ class StandingController extends Controller
 
         // Get the content of the response
         $content = $response->getContent();
+        dd($content);
 
         // Use Symfony's Crawler to parse the HTML content
         $crawler = new Crawler($content);
