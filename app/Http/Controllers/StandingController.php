@@ -183,9 +183,9 @@ class StandingController extends Controller
         $matchNodes = $xpath->query("//div[contains(@class, 'event__match')]");
 
         // Check if any matches were found
-        if ($matchNodes->length === 0) {
-            dd($xpath,$dom,'No match elements found!');
-        }
+
+            dd($dom->xml);
+
         
 
         // Initialize an array to store matches
