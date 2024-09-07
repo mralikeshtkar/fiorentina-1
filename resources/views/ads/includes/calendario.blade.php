@@ -15,6 +15,31 @@
             </div>
 
 
+            <script>
+                document.getElementById('scoreIframe').onload = function() {
+                    var iframeDoc = document.getElementById('scoreIframe').contentWindow.document;
+
+                    // Remove specific elements
+                    var elementsToRemove = [
+                        "#rccontent",
+                        "#box-over-content-split",
+                        ".container__heading",
+                        ".otPlaceholder",
+                        ".seoAdWrapper",
+                        ".menuTop--soccer",
+                        ".header",
+                        ".container__myMenu",
+                        "#lsmpb"
+                    ];
+
+                    elementsToRemove.forEach(function(selector) {
+                        var elements = iframeDoc.querySelectorAll(selector);
+                        elements.forEach(function(el) {
+                            el.parentNode.removeChild(el);
+                        });
+                    });
+                };
+            </script>
 
             @php
                 $updateScheduledMessage = App\Http\Controllers\StandingController::fetchCalendario();
@@ -101,29 +126,3 @@
         </section>
     </div>
 </div>
-
-<script>
-    document.getElementById('scoreIframe').onload = function() {
-        var iframeDoc = document.getElementById('scoreIframe').contentWindow.document;
-
-        // Remove specific elements
-        var elementsToRemove = [
-            "#rccontent",
-            "#box-over-content-split",
-            ".container__heading",
-            ".otPlaceholder",
-            ".seoAdWrapper",
-            ".menuTop--soccer",
-            ".header",
-            ".container__myMenu",
-            "#lsmpb"
-        ];
-
-        elementsToRemove.forEach(function(selector) {
-            var elements = iframeDoc.querySelectorAll(selector);
-            elements.forEach(function(el) {
-                el.parentNode.removeChild(el);
-            });
-        });
-    };
-</script>
