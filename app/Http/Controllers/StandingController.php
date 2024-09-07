@@ -169,11 +169,12 @@ class StandingController extends Controller
 
         // Step 3: Define a Regular Expression pattern to extract all <div class="event__match"> elements
         // This pattern will match the <div> with class "event__match" and capture all its contents until the closing </div>
+        
         $pattern = '/<div[^>]*class="event__match[^>]*">(.*?)<\/div>/s';
 
         // Step 4: Use preg_match_all to extract all matches
         preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
-        dd('matches',$matches);
+        dd('matches',$htmlContent);
         // Step 5: Store the matched <div> elements in an array
         $divs = [];
         foreach ($matches as $match) {
