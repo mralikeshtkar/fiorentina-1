@@ -159,28 +159,36 @@ class StandingController extends Controller
     public static function FetchCalendario()
     {
         // Use Dusk to visit the website and scrape the data
-        \Laravel\Dusk\Browser::browse(function (Browser $browser) {
-            $browser->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
-                    ->waitFor('.event__match') // Wait until match elements load
-                    ->with('.event__match', function ($matchElements) {
-                        $matches = $matchElements->each(function ($matchElement) {
-                            $match_id = $matchElement->attribute('id');
-                            $match_time = $matchElement->element('.event__time')->getText();
-                            $home_team = $matchElement->element('.event__participant--home')->getText();
-                            $away_team = $matchElement->element('.event__participant--away')->getText();
-
-                            return [
-                                'match_id' => $match_id,
-                                'match_time' => $match_time,
-                                'home_team' => $home_team,
-                                'away_team' => $away_team,
-                            ];
-                        });
-
-                        // Output the scraped match data for debugging
-                        dd($matches);
-                    });
-        });
+         // Step 1: Get the URL (can be passed via the request or hardcoded)
+         $url = $request->input('url', 'https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/');
+        
+         // Step 2: Fetch the HTML content using Guzzle
+         $client = new Client();
+         $response = $client->request('GET', $url);
+         $htmlContent = $response->getBody()->getContents();
+ 
+         // Step 3: Define a Regular Expression pattern to extract match information
+         $pattern = '/<div id="(g_1_[^"]+)" class="event__match[^>]*">.*?<div class="event__time">([^<]*)<\/div>.*?<div[^>]*class="event__participant--home[^>]*">[^>]*>([^<]*)<\/div>.*?<div[^>]*class="event__participant--away[^>]*">[^>]*>([^<]*)<\/div>/s';
+ 
+         // Step 4: Use preg_match_all to extract all matches
+         preg_match_all($pattern, $htmlContent, $matches, PREG_SET_ORDER);
+ 
+         // Step 5: Process the matches and structure the data
+         $matchData = [];
+         foreach ($matches as $match) {
+             $matchData[] = [
+                 'match_id' => $match[1],       // Match ID
+                 'match_time' => $match[2],     // Match Time
+                 'home_team' => trim($match[3]), // Home Team
+                 'away_team' => trim($match[4]), // Away Team
+             ];
+         }
+ 
+         // Step 6: Return the extracted match data as JSON
+         return response()->json([
+             'message' => 'Scraping completed',
+             'matches' => $matchData,
+         ]);
 
 
         
