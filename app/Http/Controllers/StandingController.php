@@ -158,10 +158,10 @@ class StandingController extends Controller
 
     public static function FetchCalendario()
     {
-        // Launch the browser with Dusk to scrape dynamic content
-        \Laravel\Dusk\Browser::macro('scrapePage', function ($browser) {
+        // Use Dusk to visit the website and scrape the data
+        \Laravel\Dusk\Browser::browse(function (Browser $browser) {
             $browser->visit('https://www.flashscore.com/team/fiorentina/Q3A3IbXH/fixtures/')
-                    ->waitFor('.event__match') // Wait until match elements are loaded
+                    ->waitFor('.event__match') // Wait until match elements load
                     ->with('.event__match', function ($matchElements) {
                         $matches = $matchElements->each(function ($matchElement) {
                             $match_id = $matchElement->attribute('id');
@@ -177,12 +177,10 @@ class StandingController extends Controller
                             ];
                         });
 
-                        dd($matches); // Output the extracted matches
+                        // Output the scraped match data for debugging
+                        dd($matches);
                     });
         });
-
-        // Run the scraping macro
-        \Laravel\Dusk\Browser::scrapePage();
 
 
         
