@@ -183,13 +183,13 @@ class StandingController extends Controller
         // Option 1: Access the XML content
         $htmlContent = $dom->saveHTML();
 // Step 2: Load the HTML into DOMDocument
-$dom = new DOMDocument();
+$dom = new \DOMDocument();
 libxml_use_internal_errors(true); // Suppress parsing errors for invalid HTML
 $dom->loadHTML($htmlContent);
 libxml_clear_errors(); // Clear any parsing errors
 
 // Step 3: Create a DOMXPath instance for querying the HTML
-$xpath = new DOMXPath($dom);
+$xpath = new \DOMXPath($dom);
 
 // Step 4: Use XPath queries to find the match elements
 // Assuming matches are inside divs with class 'event__match'
