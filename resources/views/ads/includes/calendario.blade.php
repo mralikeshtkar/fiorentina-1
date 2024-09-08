@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Calendario::all() as $match)
+                                @foreach ($matches = Calendario::orderBy('match_date', 'asc')->get() as $match)
                                     @php
                                         $homeTeam = json_decode($match->home_team, true);
                                         $awayTeam = json_decode($match->away_team, true);
