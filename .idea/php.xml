@@ -212,6 +212,8 @@
       <path value="$PROJECT_DIR$/platform/plugins/vig-seo/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/platform/plugins/vig-seo/vendor/symfony/dom-crawler" />
       <path value="$PROJECT_DIR$/platform/plugins/vig-seo/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/laravel/dusk" />
+      <path value="$PROJECT_DIR$/vendor/php-webdriver/webdriver" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
