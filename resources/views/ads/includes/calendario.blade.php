@@ -2,7 +2,8 @@
     use Carbon\Carbon;
 @endphp
 <div class="col-lg-12 mx-auto">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <div class="page-sidebar mt-3">
         <section>
@@ -89,11 +90,11 @@
                                                             V </span>
                                                     @elseif ($score['home'] == $score['away'])
                                                         <span
-                                                            class="badge badge-pill badge-success p-1 font-weight-bold">
+                                                            class="badge badge-pill badge-warning p-1 font-weight-bold">
                                                             N </span>
                                                     @else
                                                         <span
-                                                            class="badge badge-pill badge-success p-1 font-weight-bold">
+                                                            class="badge badge-pill badge-danger p-1 font-weight-bold">
                                                             P </span>
                                                     @endif
                                                 </span>
