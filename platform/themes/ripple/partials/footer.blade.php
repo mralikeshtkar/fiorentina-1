@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-md-3 mx-auto mb-3">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
-                    {{ Theme::getLogoImage(['height' => 50]) }}
+                    {{ Theme::getLogoImage(['height' => 70]) }}
                 </a>
             </div>
             <ul class="footer__options">
