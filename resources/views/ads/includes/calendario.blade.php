@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($matches = App\Models\Calendario::where('match_date', '>', '2024-08-17 18:29:00')->orderBy('match_date', 'asc')->get() as $match)
+                                @foreach ($matches = App\Models\Calendario::orderBy('match_date', 'asc')->get() as $match)
                                     @php
                                         $homeTeam = json_decode($match->home_team, true);
                                         $awayTeam = json_decode($match->away_team, true);
@@ -77,8 +77,26 @@
 
                                         <td>
                                             @if ($match->status != 'SCHEDULED')
-                                                Full Time: {{ $score['home'] ?? '-' }} -
-                                                {{ $score['away'] ?? '-' }}
+                                                <span>
+                                                    {{ $score['home'] ?? '-' }} -
+                                                    {{ $score['away'] ?? '-' }}
+                                                </span>
+
+                                                <span>
+                                                    @if (($homeTeam['name'] == 'Fiorentina' || $awayTeam['name'] == 'Fiorentina (Ita)') && $score['home'] > $score['away'])
+                                                        <span
+                                                            class="badge badge-pill badge-success p-1 font-weight-bold">
+                                                            V </span>
+                                                    @elseif ($score['home'] == $score['away'])
+                                                        <span
+                                                            class="badge badge-pill badge-success p-1 font-weight-bold">
+                                                            N </span>
+                                                    @else
+                                                        <span
+                                                            class="badge badge-pill badge-success p-1 font-weight-bold">
+                                                            P </span>
+                                                    @endif
+                                                </span>
                                             @else
                                                 @php
                                                     $time = Carbon::parse($match->match_date)->format('H:i');
