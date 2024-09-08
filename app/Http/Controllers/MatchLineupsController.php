@@ -35,6 +35,10 @@ class MatchLineupsController extends Controller
             $initialData=$data[0]['FORMATIONS'][1];
         }
 
+        $coachData['FORMATION_NAME']='Allenatori';
+        $initialData['FORMATION_NAME']='Formazioni iniziali';
+        $subsData['FORMATION_NAME']='Panchina';
+
         return [
             'Coach'=>$coachData,
             'Sub'=>$subsData,
@@ -50,7 +54,7 @@ class MatchLineupsController extends Controller
         if(!$match){
             $data=MatchLineupsController::getLineup($matchId);
             foreach ($data as $category) {
-                dd($category);
+                dd($category); 
                 foreach ($category['MEMBERS'] as $player) {
                     MatchLineups::updateOrCreate(
                         [
