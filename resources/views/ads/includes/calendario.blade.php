@@ -26,10 +26,14 @@
                         <table class="table table-striped" id="sortableTable">
                             <thead>
                                 <tr>
-                                    <th data-column="data" onclick="sortTable('data')">Data</th>
-                                    <th data-column="match" onclick="sortTable('match')">Match</th>
-                                    <th data-column="orario" onclick="sortTable('orario')">Orario/Risultati</th>
-                                    <th data-column="campionato" onclick="sortTable('campionato')">Campionato</th>
+                                    <th data-column="data" onclick="sortTable('data')">Data <span
+                                            class="sort-arrow"></span></th>
+                                    <th data-column="match" onclick="sortTable('match')">Match <span
+                                            class="sort-arrow"></span></th>
+                                    <th data-column="orario" onclick="sortTable('orario')">Orario/Risultati <span
+                                            class="sort-arrow"></span></th>
+                                    <th data-column="campionato" onclick="sortTable('campionato')">Campionato <span
+                                            class="sort-arrow"></span></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +52,11 @@
                                                     'd F Y',
                                                 );
                                             @endphp
-                                            {{ $formattedDate }}</td>
+                                            <span data-nf={{ $match->match_date }}>
+                                                {{ $formattedDate }}
+                                        </td>
+
+                                        </span>
                                         <td>
                                             <div class="row">
                                                 <div class="col-6">
@@ -140,7 +148,7 @@
 
             function sortTable(column) {
                 const table = document.getElementById('sortableTable');
-                const tbody = table.tBodies[0]; // Only consider the first tbody (you can adapt this if needed)
+                const tbody = table.tBodies[0]; // Only consider the first tbody
                 const rows = Array.from(tbody.rows);
 
                 // Toggle sort order for this column
@@ -154,8 +162,18 @@
                 const columnIndex = Array.from(table.querySelectorAll('th')).findIndex(th => th.dataset.column === column);
 
                 rows.sort((rowA, rowB) => {
-                    const cellA = rowA.cells[columnIndex].innerText.trim();
-                    const cellB = rowB.cells[columnIndex].innerText.trim();
+                    let cellA = rowA.cells[columnIndex].innerText.trim();
+                    let cellB = rowB.cells[columnIndex].innerText.trim();
+
+                    // For the 'data' column, compare by the 'data-nf' attribute
+                    if (column === 'data') {
+                        const spanA = rowA.cells[columnIndex].querySelector('span');
+                        const spanB = rowB.cells[columnIndex].querySelector('span');
+                        if (spanA && spanB) {
+                            cellA = spanA.getAttribute('data-nf');
+                            cellB = spanB.getAttribute('data-nf');
+                        }
+                    }
 
                     if (sortOrder[column] === 'asc') {
                         return cellA.localeCompare(cellB, undefined, {
@@ -170,6 +188,28 @@
 
                 // Rebuild the table body with the sorted rows
                 rows.forEach(row => tbody.appendChild(row)); // Appending rows will automatically move them
+
+                updateSortArrows(column);
+
+            }
+
+            function updateSortArrows(column) {
+                const table = document.getElementById('sortableTable');
+                const headers = table.querySelectorAll('th');
+
+                // Clear all arrow indicators
+                headers.forEach(header => {
+                    const arrow = header.querySelector('.sort-arrow');
+                    arrow.innerHTML = ''; // Remove the arrow text
+                });
+
+                // Add arrow to the currently sorted column
+                const currentHeader = table.querySelector(`th[data-column="${column}"] .sort-arrow`);
+                if (sortOrder[column] === 'asc') {
+                    currentHeader.innerHTML = '▲'; // Ascending arrow
+                } else {
+                    currentHeader.innerHTML = '▼'; // Descending arrow
+                }
             }
         </script>
     </div>
