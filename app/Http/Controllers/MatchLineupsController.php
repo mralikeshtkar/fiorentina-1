@@ -42,7 +42,7 @@ class MatchLineupsController extends Controller
 
     }
 
-    public function storeLineups($matchId)
+    public static function storeLineups($matchId)
     {
         $match=MatchLineups::where('match_id',$matchId)->first();
         if(!$match){
