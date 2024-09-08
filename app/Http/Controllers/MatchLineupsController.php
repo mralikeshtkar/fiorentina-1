@@ -69,7 +69,7 @@ class MatchLineupsController extends Controller
                             'player_country' => $player['PLAYER_COUNTRY'],
                             'player_rating' => $player['LPR'] ?? null,
                             'short_name' => $player['SHORT_NAME'],
-                            'player_image' => "https://static.flashscore.com/res/image/data/{$player['LPI']}"
+                            'player_image' =>  $player['LPI'] ? "https://static.flashscore.com/res/image/data/{$player['LPI']}" : null
                         ]
                     );
                 }
