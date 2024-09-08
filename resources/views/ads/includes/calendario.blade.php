@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($matches = App\Models\Calendario::orderBy('match_date', 'asc')->get() as $match)
+                                @foreach ($matches = App\Models\Calendario::where('match_date', '>', '2024-08-17 18:29:00')->orderBy('match_date', 'asc')->get() as $match)
                                     @php
                                         $homeTeam = json_decode($match->home_team, true);
                                         $awayTeam = json_decode($match->away_team, true);
