@@ -81,7 +81,11 @@
                                                 </span>
 
                                                 <span>
-                                                    @if (($homeTeam['name'] == 'Fiorentina' || $awayTeam['name'] == 'Fiorentina (Ita)') && $score['home'] > $score['away'])
+                                                    @if (
+                                                        (($homeTeam['name'] == 'Fiorentina' || $homeTeam['name'] == 'Fiorentina (Ita)') &&
+                                                            $score['home'] > $score['away']) ||
+                                                            (($awayTeam['name'] == 'Fiorentina' || $awayTeam['name'] == 'Fiorentina (Ita)') &&
+                                                                $score['away'] > $score['home']))
                                                         <span
                                                             class="badge badge-pill badge-success ml-1 p-1 font-weight-bold">
                                                             V </span>
