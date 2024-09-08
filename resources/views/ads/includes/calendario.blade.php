@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="sortableTable">
                             <thead>
                                 <tr>
                                     <th data-column="data" onclick="sortTable('data')">Data</th>
