@@ -256,8 +256,8 @@ foreach($data as $tournament){
                 'home_team' => json_encode($homeTeam),
                 'away_team' => json_encode($awayTeam),
                 'score' => json_encode([
-                    'home' => $match['HOME_GOAL_VAR'] ?? 0,
-                    'away' => $match['AWAY_GOAL_VAR'] ?? 0,
+                    'home' => $match['HOME_SCORE_CURRENT'] ?? 0,
+                    'away' => $match['AWAY_SCORE_CURRENT'] ?? 0,
                 ]),
                 'goals' => null,  // The API response does not provide detailed goals
                 'penalties' => null,  // The API response does not provide penalties
