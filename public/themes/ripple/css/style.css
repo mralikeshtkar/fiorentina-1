@@ -4471,3 +4471,14 @@ header>.container {
     color: #fff;
     background-color: #dc3545;
 }
+
+.btn-p {
+    background-color: #441274 !important;
+    color: white !important;
+    padding: 3px 8px !important;
+}
+
+.btn-p-outline {
+    border: 1px solid #441274 !important;
+    padding: 3px 8px !important;
+}

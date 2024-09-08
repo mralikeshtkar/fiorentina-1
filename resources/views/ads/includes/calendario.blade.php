@@ -137,7 +137,12 @@
                                             {{ $match->group }}
                                         </td>
                                         <td>
-                                            <a class="btn btn-p" href="/Diretta/{{ $match->match_id }}"></a>
+                                            @if ($match->status != 'SCHEDULED')
+                                                <a class="btn btn-p" href="/Diretta/{{ $match->match_id }}">Diretta</a>
+                                            @else
+                                                <a class="btn btn-p-outline" href="/Diretta/{{ $match->match_id }}"><i
+                                                        class="fa-regular fa-bell mr-1"></i> Notifica</a>
+                                            @endif
                                         </td>
 
                                     </tr>
