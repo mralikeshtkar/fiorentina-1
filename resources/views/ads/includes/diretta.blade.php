@@ -9,7 +9,6 @@
         MatchLineupsController::storeLineups($matchId);
         // Filter the lineups by formation_name
         $lineups = MatchLineups::where('match_id', $matchId)->get();
-        $groupedLineups = $lineups->groupBy('formation_name')->only(['Panchina', 'Allenatori', 'Formazioni iniziali']);
         $groupedLineups = $lineups
             ->filter(function ($lineup) {
                 return in_array($lineup->formation_name, ['Panchina', 'Allenatori', 'Formazioni iniziali']);
