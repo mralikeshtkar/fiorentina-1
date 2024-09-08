@@ -4,15 +4,15 @@
     use App\Models\MatchLineups;
     use App\Http\Controllers\MatchLineupsController;
     $matchId = request()->query('match_id');
-    if (isset($matchId)) {
+    if ($matchId) {
         $match = Matches::where('match_id', $matchId)->first();
         MatchLineupsController::storeLineups($matchId);
         // Filter the lineups by formation_name
         $filteredLineups = $lineups->filter(function ($lineup) {
             return in_array($lineup->formation_name, ['Panchina', 'Allenatori', 'Formazioni iniziali']);
         });
+        dd($filteredLineups);
     }
-    dd($filteredLineups);
 @endphp
 
 {{-- Diretta History blade --}}
