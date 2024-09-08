@@ -148,7 +148,8 @@ class StandingController extends Controller
         $latestUpdate = Calendario::where('status', 'TIMED')->latest('updated_at')->first();
 
         // Check if the last update was more than 10 hours ago
-        if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(10)) {
+        // if (!$latestUpdate || $latestUpdate->updated_at <= Carbon::now()->subHours(10)) {
+        if (1) {
         Standing::truncate();
 
         // Make the API request with necessary headers
