@@ -26,10 +26,10 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Data</th>
-                                    <th>Match</th>
-                                    <th>Orario/Risultati</th>
-                                    <th>Campionato</th>
+                                    <th data-column="data" onclick="sortTable('data')">Data</th>
+                                    <th data-column="match" onclick="sortTable('match')">Match</th>
+                                    <th data-column="orario" onclick="sortTable('orario')">Orario/Risultati</th>
+                                    <th data-column="campionato" onclick="sortTable('campionato')">Campionato</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -135,5 +135,42 @@
             </div>
 
         </section>
+        <script>
+            let sortOrder = {}; // Keeps track of the sort order for each column
+
+            function sortTable(column) {
+                const table = document.getElementById('sortableTable');
+                const tbody = table.tBodies[0]; // Only consider the first tbody (you can adapt this if needed)
+                const rows = Array.from(tbody.rows);
+
+                // Toggle sort order for this column
+                if (!sortOrder[column]) {
+                    sortOrder[column] = 'asc'; // Set default sort order to ascending
+                } else {
+                    sortOrder[column] = sortOrder[column] === 'asc' ? 'desc' : 'asc'; // Toggle sort order
+                }
+
+                // Determine the index of the column to sort
+                const columnIndex = Array.from(table.querySelectorAll('th')).findIndex(th => th.dataset.column === column);
+
+                rows.sort((rowA, rowB) => {
+                    const cellA = rowA.cells[columnIndex].innerText.trim();
+                    const cellB = rowB.cells[columnIndex].innerText.trim();
+
+                    if (sortOrder[column] === 'asc') {
+                        return cellA.localeCompare(cellB, undefined, {
+                            numeric: true
+                        });
+                    } else {
+                        return cellB.localeCompare(cellA, undefined, {
+                            numeric: true
+                        });
+                    }
+                });
+
+                // Rebuild the table body with the sorted rows
+                rows.forEach(row => tbody.appendChild(row)); // Appending rows will automatically move them
+            }
+        </script>
     </div>
 </div>
