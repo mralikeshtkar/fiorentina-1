@@ -57,13 +57,19 @@
                                                     <img src="{{ $homeTeam['logo'] }}"
                                                         alt="{{ $homeTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
-                                                    {{ $homeTeam['name'] }}
+                                                    <span
+                                                        @if ($score['away'] < $score['home']) style='font-weight:bold' @endif>
+                                                        {{ $homeTeam['name'] }}
+                                                    </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <img src="{{ $awayTeam['logo'] }}"
                                                         alt="{{ $awayTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
-                                                    {{ $awayTeam['name'] }}
+                                                    <span
+                                                        @if ($score['away'] > $score['home']) style='font-weight:bold' @endif>
+                                                        {{ $awayTeam['name'] }}
+                                                    </span>
 
                                                 </div>
                                             </div>
