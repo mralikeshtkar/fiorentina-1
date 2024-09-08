@@ -1,2 +1,1 @@
-@include('ads.includes.liveDiretta')
-@include('ads.includes.direttaHistory')
+@include('ads.includes.diretta')
