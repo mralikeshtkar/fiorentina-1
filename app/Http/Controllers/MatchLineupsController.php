@@ -54,7 +54,6 @@ class MatchLineupsController extends Controller
         if(!$match){
             $data=MatchLineupsController::getLineup($matchId);
             foreach ($data as $category) {
-                dd($category); 
                 foreach ($category['MEMBERS'] as $player) {
                     MatchLineups::updateOrCreate(
                         [
