@@ -2,14 +2,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\MatchLineups;
-use App\Models\Matches;
+use App\Models\Calendario;
 use Illuminate\Http\Request;
 
 class MatchLineupsController extends Controller
 {
     private static  function getLineup($matchId){
 
-        $match=Matches::where('match_id',$matchId)->first();
+        $match=Calendario::where('match_id',$matchId)->first();
         $homeTeam = json_decode($match->home_team, true);
         $isHomeFiorentina =
         $homeTeam['name'] == 'Fiorentina' ||
