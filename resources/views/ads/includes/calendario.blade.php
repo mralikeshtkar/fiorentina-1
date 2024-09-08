@@ -33,7 +33,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($matches = App\Models\Calendario::orderBy('match_date', 'asc')->get() as $match)
+                                @foreach ($matches = App\Models\Calendario::where('match_date', '>', '2024-08-16 23:00:00 ')->orderBy('match_date', 'asc')->get() as $match)
                                     @php
                                         $homeTeam = json_decode($match->home_team, true);
                                         $awayTeam = json_decode($match->away_team, true);
@@ -81,22 +81,32 @@
                                                 </span>
 
                                                 <span>
-                                                    @if (
-                                                        (($homeTeam['name'] == 'Fiorentina' || $homeTeam['name'] == 'Fiorentina (Ita)') &&
-                                                            $score['home'] > $score['away']) ||
-                                                            (($awayTeam['name'] == 'Fiorentina' || $awayTeam['name'] == 'Fiorentina (Ita)') &&
-                                                                $score['away'] > $score['home']))
+                                                    @php
+                                                        $isHomeFiorentina =
+                                                            $homeTeam['name'] == 'Fiorentina' ||
+                                                            $homeTeam['name'] == 'Fiorentina (Ita)' ||
+                                                            $homeTeam['name'] == 'Fiorentina (Ita) *';
+                                                        $isAwayFiorentina =
+                                                            $awayTeam['name'] == 'Fiorentina' ||
+                                                            $awayTeam['name'] == 'Fiorentina (Ita)' ||
+                                                            $awayTeam['name'] == 'Fiorentina (Ita) *';
+                                                    @endphp
+
+                                                    @if (($isHomeFiorentina && $score['home'] > $score['away']) || ($isAwayFiorentina && $score['away'] > $score['home']))
                                                         <span
                                                             class="badge badge-pill badge-success ml-1 p-1 font-weight-bold">
-                                                            V </span>
+                                                            V
+                                                        </span>
                                                     @elseif ($score['home'] == $score['away'])
                                                         <span
                                                             class="badge badge-pill badge-warning ml-1 p-1 font-weight-bold">
-                                                            N </span>
+                                                            N
+                                                        </span>
                                                     @else
                                                         <span
                                                             class="badge badge-pill badge-danger ml-1 p-1 font-weight-bold">
-                                                            P </span>
+                                                            P
+                                                        </span>
                                                     @endif
                                                 </span>
                                             @else
