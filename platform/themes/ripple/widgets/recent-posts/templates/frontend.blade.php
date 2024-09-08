@@ -105,7 +105,7 @@
     @if ($poll)
         <div class="row">
             <div class="col-12">
-                <div class="container">
+                <div>
                     <h1>{{ $poll->question }}</h1>
                     <div id="options-container">
                         @foreach ($poll->options as $option)
