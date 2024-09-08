@@ -34,6 +34,9 @@
                                             class="sort-arrow"></span></th>
                                     <th data-column="campionato" onclick="sortTable('campionato')">Campionato <span
                                             class="sort-arrow"></span></th>
+                                    <th>
+                                        Diretta
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,6 +135,9 @@
                                             <img src="{{ $match->competition }}" alt="{{ $match->group }}"
                                                 style="width: 30px; height: auto;">
                                             {{ $match->group }}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-p" href="/Diretta/{{ $match->match_id }}"></a>
                                         </td>
 
                                     </tr>
