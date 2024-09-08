@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MatchLineupsController extends Controller
 {
-    private function getLineup($matchId){
+    private static  function getLineup($matchId){
 
         $match=Matches::where('match_id',$matchId)->first();
         $homeTeam = json_decode($match->home_team, true);
