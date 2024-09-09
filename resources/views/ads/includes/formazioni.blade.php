@@ -74,25 +74,26 @@
         $panchina = $groupedLineups['Panchina'];
     @endphp
 
-    @foreach ($panchina as $panchinaPlayer)
-        <div class="row justify-content-around mb-4">
-            <div class="col-12">
-                <div class="player-container">
-                    <div class="player-lineup">
-                        <img class="player-lineup-img" src="{{ $panchinaPlayer->player_image }}"
-                            alt="{{ $panchinaPlayer->player_full_name }}" width="50">
-                        <div class="rating"
-                            @if ($panchinaPlayer->player_rating >= 7.0) style='background-color: #1dc231;'
-                        @elseif ($panchinaPlayer->player_rating <= 6.1)
-                            style='background-color: #c21d1d;' @endif>
 
-                            {{ $panchinaPlayer->player_rating }}</div>
-                        <p class="player-name">{{ $panchinaPlayer->short_name }}</p>
-
-                    </div>
-                </div>
-
-            </div>
-    @endforeach
 </div>
+@foreach ($panchina as $panchinaPlayer)
+    <div class="row justify-content-around mb-4">
+        <div class="col-12">
+            <div class="player-container">
+                <div class="player-lineup">
+                    <img class="player-lineup-img" src="{{ $panchinaPlayer->player_image }}"
+                        alt="{{ $panchinaPlayer->player_full_name }}" width="50">
+                    <div class="rating"
+                        @if ($panchinaPlayer->player_rating >= 7.0) style='background-color: #1dc231;'
+                @elseif ($panchinaPlayer->player_rating <= 6.1)
+                    style='background-color: #c21d1d;' @endif>
+
+                        {{ $panchinaPlayer->player_rating }}</div>
+                    <p class="player-name">{{ $panchinaPlayer->short_name }}</p>
+
+                </div>
+            </div>
+
+        </div>
+@endforeach
 </div>
