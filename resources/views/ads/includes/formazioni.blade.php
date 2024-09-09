@@ -85,11 +85,11 @@
                 <td><img src="{{ $panchinaPlayer->player_image }}" alt="{{ $panchinaPlayer->player_full_name }}"
                         width="50" class="mr-20">{{ $panchinaPlayer->short_name }}
 
-                    <div class="rating"
+                    <span class="rating"
                         @if ($panchinaPlayer->player_rating >= 7.0) style="background-color: #1dc231;"
                          @elseif ($panchinaPlayer->player_rating <= 6.1) style="background-color: #c21d1d;" @endif>
                         {{ $panchinaPlayer->player_rating }}
-                    </div>
+                    </span>
                 </td>
             </tr>
         @endforeach
