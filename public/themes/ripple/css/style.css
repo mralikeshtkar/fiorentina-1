@@ -4801,9 +4801,7 @@ header>.container {
         /* Remove border for a cleaner look */
     }
 
-    .team-container {
-        display: inline-flex !important;
-    }
+
 
     .table thead {
         display: none;
