@@ -1177,10 +1177,11 @@ p:empty {
     /*}*/
     .navigation {
         animation: none; /* Remove default animation for mobile */
+        background-color: violet;
     }
     .navigation--fadeRight {
         animation: fadeRight 0.5s ease-in-out;
-        background-color: violet;
+
     }
 
 }
