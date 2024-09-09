@@ -76,6 +76,10 @@
 
 
 </div>
+
+</div>
+
+
 @foreach ($panchina as $panchinaPlayer)
     <div class="row justify-content-around mb-4">
         <div class="col-12">
@@ -96,4 +100,3 @@
 
         </div>
 @endforeach
-</div>
