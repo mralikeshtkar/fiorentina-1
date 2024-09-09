@@ -2261,8 +2261,9 @@ p:empty {
 }
 
 .post-group .post-group__header {
-    margin-bottom: 25px;
-    position: relative
+    margin-top: 30px;
+    position: relative;
+    margin-bottom: 10px;
 }
 
 .post-group .post-group__title {
@@ -4342,7 +4343,7 @@ header>.container {
 }
 
 .page-content {
-    padding: 25px 10px !important;
+    padding: 0px 10px !important;
 
 }
 
@@ -4771,7 +4772,6 @@ header>.container {
 
 .table td,
 .table th {
-    padding: 8px 12px;
     border: 1px solid #dee2e6;
     vertical-align: middle;
 }
@@ -4797,9 +4797,7 @@ header>.container {
         /* Remove border for a cleaner look */
     }
 
-    .team-container {
-        display: inline-flex !important;
-    }
+
 
     .table thead {
         display: none;
@@ -4825,9 +4823,4 @@ header>.container {
 .table .team-container {
     display: flex;
     align-items: center;
-}
-
-/* Better spacing for badges */
-.badge {
-    margin-left: 5px;
 }
