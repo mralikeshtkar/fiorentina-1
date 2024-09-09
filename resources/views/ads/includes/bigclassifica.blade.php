@@ -34,7 +34,7 @@
                             // Assign special styles or labels based on the position
                             $rank = $index + 1;
                             $labelClass = '';
-                            if ($rank >= 4) {
+                            if ($rank <= 4) {
                                 $labelClass = 'badge badge-success'; // First place
                             } elseif ($rank == 5) {
                                 $labelClass = 'badge badge-danger'; // Top 4
