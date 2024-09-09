@@ -1996,40 +1996,7 @@ p:empty {
     }
 }
 
-/* Navigation Container for Mobile */
-.navigation--mobile {
-    display: none; /* Initially hidden, can be shown with a media query or toggle */
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-}
 
-.navigation--mobile.active {
-    display: block; /* Toggle this with JavaScript to show the menu */
-}
-
-/* Menu Items */
-.navigation--mobile .menu-item {
-    list-style: none;
-    margin: 10px 0;
-}
-
-/* Links within Menu Items */
-.navigation--mobile .menu-item > a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    display: block; /* Makes the entire link area clickable */
-    background-color: #444;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-/* Hover effect for links */
-.navigation--mobile .menu-item > a:hover {
-    background-color: #555;
-}
 
 .navigation--mobile {
     background-color: rgb(68, 18, 116);
