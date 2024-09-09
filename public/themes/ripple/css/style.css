@@ -2016,7 +2016,6 @@ p:empty {
 }
 
 .navigation--mobile .menu-item {
-    background-color: red;
     border-bottom: 1px dashed rgba(34, 25, 25, .2);
     float: none;
     /* Disable floating */
