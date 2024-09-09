@@ -1896,7 +1896,11 @@ p:empty {
 .page-intro .social {
     margin-top: 10px
 }
-
+.navigation{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
 .navigation .menu:after {
     clear: both;
     content: "";
@@ -2005,19 +2009,29 @@ p:empty {
 
 .navigation--mobile .menu-item {
     border-bottom: 1px dashed rgba(34, 25, 25, .2);
-    float: none; /* Ensure the items do not float */
-    display: block; /* Make each item take up full width */
-    width: 100%; /* Full width for each item */
+    float: none; /* Disable floating */
+    display: block; /* Ensure block-level display */
+    width: 100%; /* Full width to stack them vertically */
+    clear: both; /* Ensure that each item starts on a new line */
 }
 
 .navigation--mobile .menu-item>a {
     color: #666;
-    display: block; /* Make each link a block element to fill the width */
+    display: block; /* Ensure the link fills the container */
     font-size: 13px;
     padding: 15px;
     position: relative;
     text-align: left; /* Left-align the text */
+    width: 100%; /* Make sure the link spans the full width */
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
+
+.navigation--mobile .menu-item {
+    display: block; /* Make sure each menu item is a block element */
+    width: 100%; /* Ensure full width of each item */
+    margin-bottom: 10px; /* Add space between menu items if needed */
+}
+
 
 .navigation--mobile .menu-item:last-child {
     border-bottom: 0;
