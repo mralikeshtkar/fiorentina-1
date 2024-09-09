@@ -72,7 +72,7 @@
 
     @php
         $panchina = $groupedLineups['Panchina'];
-        $Allenatori = $groupedLineups['Allentaori'];
+        $Allenatori = $groupedLineups['Allenatori'];
     @endphp
 
 
