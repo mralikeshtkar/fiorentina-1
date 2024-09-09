@@ -4600,6 +4600,8 @@ header>.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    /* Makes the formation vertical */
 }
 
 .pitch-lines {
@@ -4647,42 +4649,4 @@ header>.container {
     background-color: white;
     top: 50%;
     left: 0;
-}
-
-/* Penalty area (both sides) */
-.penalty-area {
-    position: absolute;
-    width: 20%;
-    height: 20%;
-    border: 2px solid white;
-    box-sizing: border-box;
-}
-
-.penalty-area.left {
-    top: 20%;
-    left: 0;
-}
-
-.penalty-area.right {
-    top: 20%;
-    right: 0;
-}
-
-/* Goal area (both sides) */
-.goal-area {
-    position: absolute;
-    width: 10%;
-    height: 10%;
-    border: 2px solid white;
-    box-sizing: border-box;
-}
-
-.goal-area.left {
-    top: 40%;
-    left: 0;
-}
-
-.goal-area.right {
-    top: 40%;
-    right: 0;
 }
