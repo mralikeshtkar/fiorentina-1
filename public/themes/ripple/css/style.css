@@ -2058,40 +2058,40 @@ p:empty {
     visibility: visible;
 }
 
-/*.navigation--mobile>.menu>.menu-item.menu-item--active {*/
-/*    background-color: var(--color-1st);*/
-/*    border-bottom: none;*/
-/*}*/
+.navigation--mobile>.menu>.menu-item.menu-item--active {
+    background-color: var(--color-1st);
+    border-bottom: none;
+}
 
-/*.navigation--mobile>.menu .menu-item.menu-item--active>a {*/
-/*    color: #fff !important;*/
-/*}*/
+.navigation--mobile>.menu .menu-item.menu-item--active>a {
+    color: #fff !important;
+}
 
-/*.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {*/
-/*    color: #fff;*/
-/*}*/
+.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {
+    color: #fff;
+}
 
-/*.navigation--mobile .menu-item:hover a {*/
-/*    color: #666;*/
-/*}*/
+.navigation--mobile .menu-item:hover a {
+    color: #666;
+}
 
-/*.navigation--mobile .sub-menu {*/
-/*    border-top: none;*/
-/*    display: none;*/
-/*    position: relative;*/
-/*}*/
+.navigation--mobile .sub-menu {
+    border-top: none;
+    display: none;
+    position: relative;
+}
 
-/*.navigation--mobile .sub-menu--active {*/
-/*    display: block;*/
-/*}*/
+.navigation--mobile .sub-menu--active {
+    display: block;
+}
 
-/*.navigation--mobile--active {*/
-/*    display: block;*/
-/*    opacity: 1;*/
-/*    visibility: visible;*/
-/*    animation: fadeLeft 0.5s ease-in-out;*/
-/*    !* Apply fade-left when active *!*/
-/*}*/
+.navigation--mobile--active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeLeft 0.5s ease-in-out;
+    /* Apply fade-left when active */
+}
 
 
 
