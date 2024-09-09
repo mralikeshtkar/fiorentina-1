@@ -61,8 +61,8 @@
 
                                         </span>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-6">
+                                            <div class="team-container">
+                                                <div>
                                                     <img src="{{ $homeTeam['logo'] }}"
                                                         alt="{{ $homeTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
@@ -71,7 +71,7 @@
                                                         {{ $homeTeam['name'] }}
                                                     </span>
                                                 </div>
-                                                <div class="col-6">
+                                                <div style="margin-left: 20px">
                                                     <img src="{{ $awayTeam['logo'] }}"
                                                         alt="{{ $awayTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">

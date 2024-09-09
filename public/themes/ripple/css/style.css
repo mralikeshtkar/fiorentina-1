@@ -4762,40 +4762,70 @@ header>.container {
     }
 }
 
-
 /* Ensure the table is scrollable on small screens */
 .table-responsive {
     overflow-x: auto;
 }
 
-/* On small screens, hide some columns or stack content */
+/* General Table Adjustments */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table td,
+.table th {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+/* Align the icons and team names */
+.table td img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* For medium and smaller screens, stack content vertically */
 @media (max-width: 767px) {
 
-    /* Stack columns vertically for small screens */
     .table td,
     .table th {
         display: block;
         width: 100%;
         text-align: left;
-    }
-
-    /* Adjust padding and margin for small screens */
-    .table td {
         padding: 10px;
-        margin-bottom: 5px;
+        border: none;
+        /* Remove border for a cleaner look */
     }
 
-    /* Make sure the headers stay aligned with the content */
     .table thead {
         display: none;
-        /* Hide the table header */
+        /* Hide table headers on smaller screens */
     }
 
-    /* Add a label for each data cell */
+    /* Add labels for each data */
     .table td::before {
         content: attr(data-label);
         font-weight: bold;
         display: block;
         margin-bottom: 5px;
     }
+
+    /* Adjust the buttons and spacing */
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Improve alignment for teams */
+.table .team-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Better spacing for badges */
+.badge {
+    margin-left: 5px;
 }
