@@ -1896,7 +1896,11 @@ p:empty {
 .page-intro .social {
     margin-top: 10px
 }
-
+.navigation{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
 .navigation .menu:after {
     clear: both;
     content: "";
