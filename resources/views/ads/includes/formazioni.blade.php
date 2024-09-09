@@ -80,7 +80,7 @@
 
 <h2 class="mt-5 pl-5 text-dark text-bold">Panchina</h2>
 <div class="row">
-    <div class="col-5">
+    <div class="col-3">
         <table class="table table-responsive">
 
             <tbody>
