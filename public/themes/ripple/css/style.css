@@ -4731,6 +4731,17 @@ header>.container {
     border-bottom-right-radius: 5px;
 }
 
+.rating {
+
+    background-color: #f0a500;
+    /* Set the background color for the rating badge */
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 
 .post__thumbnail img {
     width: 100%;
