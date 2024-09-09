@@ -4758,3 +4758,17 @@ header>.container {
         display: inline-block !important;
     }
 }
+
+/* d-sm-block */
+@media (min-width: 576px) {
+    .d-sm-block {
+        display: block !important;
+    }
+}
+
+/* d-sm-none */
+@media (min-width: 576px) {
+    .d-sm-none {
+        display: none !important;
+    }
+}
