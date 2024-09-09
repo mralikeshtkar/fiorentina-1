@@ -32,9 +32,10 @@
                 <span>{{ $homeTeam['name'] }}</span>
             </div>
             <div class="match-score">
-                <span>{{ $score['home'] }} - {{ $score['away'] }}</span>
-                <span>FINALE</span>
-                <span>{{ date('d.m.Y H:i', strtotime($match->match_date)) }}</span>
+                <div>{{ date('d.m.Y H:i', strtotime($match->match_date)) }}</div>
+                <div>{{ $score['home'] }} - {{ $score['away'] }}</div>
+                <div>FINALE</div>
+
             </div>
             <div class="team away-team">
                 <img src="{{ $awayTeam['logo'] }}" alt="{{ $awayTeam['name'] }}">

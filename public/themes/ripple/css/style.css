@@ -4518,6 +4518,7 @@ header>.container {
 }
 
 .match-details {
+    color: #111;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -4525,6 +4526,7 @@ header>.container {
 }
 
 .team-logos {
+
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -4532,12 +4534,14 @@ header>.container {
 
 .home-team,
 .away-team {
+    color: #111;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .match-score {
+    color: #111;
     font-size: 2em;
     font-weight: bold;
 }
