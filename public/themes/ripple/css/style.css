@@ -1995,103 +1995,137 @@ p:empty {
         transform: translateX(0);
     }
 }
-
+/* Navigation Container for Mobile */
 .navigation--mobile {
-    background-color: rgb(68, 18, 116);
-    /* Set background color to white */
-    border-top: 2px solid var(--color-1st);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
-    left: 0;
-    margin: 0;
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    visibility: hidden;
-    width: 100%;
-    z-index: 100;
-    animation: fadeLeft 0.5s ease-in-out;
-    /* Apply fade-left animation */
+    display: none; /* Initially hidden, can be shown with a media query or toggle */
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
 }
 
+.navigation--mobile.active {
+    display: block; /* Toggle this with JavaScript to show the menu */
+}
+
+/* Menu Items */
 .navigation--mobile .menu-item {
-    background-color: red;
-    border-bottom: 1px dashed rgba(34, 25, 25, .2);
-    float: none;
-    /* Disable floating */
-    display: block;
-    /* Ensure block-level display */
-    width: 100%;
-    /* Full width to stack them vertically */
-    clear: both;
-    /* Ensure that each item starts on a ne pleaew line */
+    list-style: none;
+    margin: 10px 0;
 }
 
-.navigation--mobile .menu-item>a {
-    color: #666;
-    display: block;
-    /* Ensure the link fills the container */
-    font-size: 13px;
-    padding: 15px;
-    position: relative;
-    text-align: left;
-    /* Left-align the text */
-    width: 100%;
-    /* Make sure the link spans the full width */
-    box-sizing: border-box;
-    /* Ensure padding is included in the width calculation */
-}
-
-
-
-.navigation--mobile .menu-item:last-child {
-    border-bottom: 0;
-}
-
-.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {
+/* Links within Menu Items */
+.navigation--mobile .menu-item > a {
+    text-decoration: none;
     color: white;
-    position: absolute;
-    right: 15px;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block; /* Makes the entire link area clickable */
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.navigation--mobile .menu-item>.sub-menu {
-    opacity: 1;
-    visibility: visible;
+/* Hover effect for links */
+.navigation--mobile .menu-item > a:hover {
+    background-color: #555;
 }
 
-.navigation--mobile>.menu>.menu-item.menu-item--active {
-    background-color: var(--color-1st);
-    border-bottom: none;
-}
+/*.navigation--mobile {*/
+/*    background-color: rgb(68, 18, 116);*/
+/*    !* Set background color to white *!*/
+/*    border-top: 2px solid var(--color-1st);*/
+/*    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);*/
+/*    left: 0;*/
+/*    margin: 0;*/
+/*    opacity: 0;*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    visibility: hidden;*/
+/*    width: 100%;*/
+/*    z-index: 100;*/
+/*    animation: fadeLeft 0.5s ease-in-out;*/
+/*    !* Apply fade-left animation *!*/
+/*}*/
 
-.navigation--mobile>.menu .menu-item.menu-item--active>a {
-    color: #fff !important;
-}
+/*.navigation--mobile .menu-item {*/
+/*    background-color: red;*/
+/*    border-bottom: 1px dashed rgba(34, 25, 25, .2);*/
+/*    float: none;*/
+/*    !* Disable floating *!*/
+/*    display: block;*/
+/*    !* Ensure block-level display *!*/
+/*    width: 100%;*/
+/*    !* Full width to stack them vertically *!*/
+/*    clear: both;*/
+/*    !* Ensure that each item starts on a ne pleaew line *!*/
+/*}*/
 
-.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {
-    color: #fff;
-}
+/*.navigation--mobile .menu-item>a {*/
+/*    color: #666;*/
+/*    display: block;*/
+/*    !* Ensure the link fills the container *!*/
+/*    font-size: 13px;*/
+/*    padding: 15px;*/
+/*    position: relative;*/
+/*    text-align: left;*/
+/*    !* Left-align the text *!*/
+/*    width: 100%;*/
+/*    !* Make sure the link spans the full width *!*/
+/*    box-sizing: border-box;*/
+/*    !* Ensure padding is included in the width calculation *!*/
+/*}*/
 
-.navigation--mobile .menu-item:hover a {
-    color: #666;
-}
 
-.navigation--mobile .sub-menu {
-    border-top: none;
-    display: none;
-    position: relative;
-}
 
-.navigation--mobile .sub-menu--active {
-    display: block;
-}
+/*.navigation--mobile .menu-item:last-child {*/
+/*    border-bottom: 0;*/
+/*}*/
 
-.navigation--mobile--active {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    animation: fadeLeft 0.5s ease-in-out;
-    /* Apply fade-left when active */
-}
+/*.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {*/
+/*    color: white;*/
+/*    position: absolute;*/
+/*    right: 15px;*/
+/*}*/
+
+/*.navigation--mobile .menu-item>.sub-menu {*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*}*/
+
+/*.navigation--mobile>.menu>.menu-item.menu-item--active {*/
+/*    background-color: var(--color-1st);*/
+/*    border-bottom: none;*/
+/*}*/
+
+/*.navigation--mobile>.menu .menu-item.menu-item--active>a {*/
+/*    color: #fff !important;*/
+/*}*/
+
+/*.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {*/
+/*    color: #fff;*/
+/*}*/
+
+/*.navigation--mobile .menu-item:hover a {*/
+/*    color: #666;*/
+/*}*/
+
+/*.navigation--mobile .sub-menu {*/
+/*    border-top: none;*/
+/*    display: none;*/
+/*    position: relative;*/
+/*}*/
+
+/*.navigation--mobile .sub-menu--active {*/
+/*    display: block;*/
+/*}*/
+
+/*.navigation--mobile--active {*/
+/*    display: block;*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*    animation: fadeLeft 0.5s ease-in-out;*/
+/*    !* Apply fade-left when active *!*/
+/*}*/
 
 
 
