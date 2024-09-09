@@ -84,12 +84,12 @@
 
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle " style="display: none"><span></span></div>
-                <div class="login-sm-part">
+                <div style="margin-top:17px;">
 
                     <ul class="d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
                         @if (is_plugin_active('member'))
                             @if (auth('member')->check())
-                                <li class=" d-lg-none d-md-none d-sm-block" style="margin-left: 20px;">
+                                <li class=" d-lg-none d-md-block d-sm-block" style="margin-left: 20px;">
                                     <a href="{{ route('public.member.dashboard') }}" rel="nofollow"
                                         style="display: flex; align-items: center;">
                                         <img src="{{ auth('member')->user()->avatar_thumb_url }}" class="img-circle"
@@ -97,7 +97,7 @@
                                         &nbsp;<span>{{ auth('member')->user()->name }}</span>
                                     </a>
                                 </li>
-                                <li class=" d-lg-none d-md-none d-sm-block" style="margin-left: 20px;">
+                                <li class=" d-lg-none d-md-block d-sm-block" style="margin-left: 20px;">
                                     <a href="#"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                         rel="nofollow" style="display: flex; align-items: center;">
@@ -105,7 +105,7 @@
                                     </a>
                                 </li>
                             @else
-                                <li class=" d-lg-none d-md-none d-sm-block" style="margin-left: 20px;">
+                                <li class=" d-lg-none d-md-block d-sm-block" style="margin-left: 20px;">
                                     <a href="{{ route('public.member.login') }}" rel="nofollow"
                                         style="display: flex; align-items: center;">
                                         {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}
@@ -131,7 +131,7 @@
                         <ul class="d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
                             @if (is_plugin_active('member'))
                                 @if (auth('member')->check())
-                                    <li class=" d-lg-block d-md-block d-sm-none" style="margin-left: 20px;">
+                                    <li class=" d-lg-block d-md-none d-sm-none" style="margin-left: 20px;">
                                         <a href="{{ route('public.member.dashboard') }}" rel="nofollow"
                                             style="display: flex; align-items: center;">
                                             <img src="{{ auth('member')->user()->avatar_thumb_url }}"
@@ -140,7 +140,7 @@
                                             &nbsp;<span>{{ auth('member')->user()->name }}</span>
                                         </a>
                                     </li>
-                                    <li class=" d-lg-block d-md-block d-sm-none" style="margin-left: 20px;">
+                                    <li class=" d-lg-block d-md-none d-sm-none" style="margin-left: 20px;">
                                         <a href="#"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                             rel="nofollow" style="display: flex; align-items: center;">
@@ -148,7 +148,7 @@
                                         </a>
                                     </li>
                                 @else
-                                    <li class=" d-lg-block d-md-block d-sm-none" style="margin-left: 20px;">
+                                    <li class=" d-lg-block d-md-none d-sm-none" style="margin-left: 20px;">
                                         <a href="{{ route('public.member.login') }}" rel="nofollow"
                                             style="display: flex; align-items: center;">
                                             {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}
