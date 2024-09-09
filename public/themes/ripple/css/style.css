@@ -1896,11 +1896,13 @@ p:empty {
 .page-intro .social {
     margin-top: 10px
 }
-.navigation{
+
+.navigation {
     display: flex;
     align-items: center;
     flex-grow: 1;
 }
+
 .navigation .menu:after {
     clear: both;
     content: "";
@@ -1981,11 +1983,13 @@ p:empty {
     line-height: 1.4em;
     padding: 10px 20px
 }
+
 @keyframes fadeLeft {
     from {
         opacity: 0;
         transform: translateX(-100%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1993,7 +1997,8 @@ p:empty {
 }
 
 .navigation--mobile {
-    background-color: rgb(68, 18, 116); /* Set background color to white */
+    background-color: rgb(68, 18, 116);
+    /* Set background color to white */
     border-top: 2px solid var(--color-1st);
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
     left: 0;
@@ -2004,32 +2009,44 @@ p:empty {
     visibility: hidden;
     width: 100%;
     z-index: 100;
-    animation: fadeLeft 0.5s ease-in-out; /* Apply fade-left animation */
+    animation: fadeLeft 0.5s ease-in-out;
+    /* Apply fade-left animation */
 }
 
 .navigation--mobile .menu-item {
     border-bottom: 1px dashed rgba(34, 25, 25, .2);
-    float: none; /* Disable floating */
-    display: block; /* Ensure block-level display */
-    width: 100%; /* Full width to stack them vertically */
-    clear: both; /* Ensure that each item starts on a new line */
+    float: none;
+    /* Disable floating */
+    display: block;
+    /* Ensure block-level display */
+    width: 100%;
+    /* Full width to stack them vertically */
+    clear: both;
+    /* Ensure that each item starts on a new line */
 }
 
 .navigation--mobile .menu-item>a {
     color: #666;
-    display: block; /* Ensure the link fills the container */
+    display: block;
+    /* Ensure the link fills the container */
     font-size: 13px;
     padding: 15px;
     position: relative;
-    text-align: left; /* Left-align the text */
-    width: 100%; /* Make sure the link spans the full width */
-    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    text-align: left;
+    /* Left-align the text */
+    width: 100%;
+    /* Make sure the link spans the full width */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width calculation */
 }
 
 .navigation--mobile .menu-item {
-    display: block; /* Make sure each menu item is a block element */
-    width: 100%; /* Ensure full width of each item */
-    margin-bottom: 10px; /* Add space between menu items if needed */
+    display: block;
+    /* Make sure each menu item is a block element */
+    width: 100%;
+    /* Ensure full width of each item */
+    margin-bottom: 10px;
+    /* Add space between menu items if needed */
 }
 
 
@@ -2079,7 +2096,8 @@ p:empty {
     display: block;
     opacity: 1;
     visibility: visible;
-    animation: fadeLeft 0.5s ease-in-out; /* Apply fade-left when active */
+    animation: fadeLeft 0.5s ease-in-out;
+    /* Apply fade-left when active */
 }
 
 
@@ -4564,4 +4582,106 @@ header>.container {
     color: #111;
     font-size: 2em;
     font-weight: bold;
+}
+
+
+.football-pitch {
+    background-color: #4caf50;
+    /* Green pitch */
+    position: relative;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    width: 100%;
+    height: 100vh;
+    /* Full height */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pitch-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.pitch-lines::before,
+.pitch-lines::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.pitch-lines::before {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    /* Center circle */
+}
+
+.pitch-lines::after {
+    width: 90%;
+    height: 90%;
+    border-top: 0;
+    /* Outer box */
+    border-radius: 0;
+}
+
+/* Halfway line */
+.halfway-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    top: 50%;
+    left: 0;
+}
+
+/* Penalty area (both sides) */
+.penalty-area {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border: 2px solid white;
+    box-sizing: border-box;
+}
+
+.penalty-area.left {
+    top: 20%;
+    left: 0;
+}
+
+.penalty-area.right {
+    top: 20%;
+    right: 0;
+}
+
+/* Goal area (both sides) */
+.goal-area {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    border: 2px solid white;
+    box-sizing: border-box;
+}
+
+.goal-area.left {
+    top: 40%;
+    left: 0;
+}
+
+.goal-area.right {
+    top: 40%;
+    right: 0;
 }
