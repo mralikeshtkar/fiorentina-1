@@ -11,7 +11,7 @@
             $option->percentage = $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100) : 0;
         }
     }
-    dd($poll);
+
 @endphp
 <section class="section recent-posts pt-20 pb-20"
     @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
@@ -247,7 +247,7 @@
             @endif
 
 
-            @if ($poll)
+            
                 <div class="row">
                     <div class="col-12">
                         <div>
@@ -284,7 +284,6 @@
                         </div>
                     </div>
                 </div>
-            @endif
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
             <script>
