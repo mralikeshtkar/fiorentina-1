@@ -25,16 +25,17 @@
         $score = json_decode($match->score, true);
         $odds = json_decode($match->odds, true);
     @endphp
-    <div class="match-details">
+    <div class="match-details mt-5">
         <div class="team-logos">
             <div class="team home-team">
                 <img src="{{ $homeTeam['logo'] }}" alt="{{ $homeTeam['name'] }}">
                 <span>{{ $homeTeam['name'] }}</span>
             </div>
             <div class="match-score">
-                <span>{{ $score['home'] }} - {{ $score['away'] }}</span>
-                <span>FINALE</span>
-                <span>{{ date('d.m.Y H:i', strtotime($match->match_date)) }}</span>
+                <h6>{{ date('d.m.Y H:i', strtotime($match->match_date)) }}</h6>
+                <div>{{ $score['home'] }} - {{ $score['away'] }}</div>
+                <h6>FINALE</h6>
+
             </div>
             <div class="team away-team">
                 <img src="{{ $awayTeam['logo'] }}" alt="{{ $awayTeam['name'] }}">
