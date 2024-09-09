@@ -38,8 +38,8 @@
         <!-- Display Formation Header -->
         <div class="row">
             <div class="col-12">
-                <h2>Formazioni Iniziali</h2>
-                <p>Formation: {{ $formationDisposition }}</p>
+                <h2 class="pl-5 text-dark text-bold">Formazioni Iniziali</h2>
+                <p class="pl-5 text-dark text-bold">Formation: {{ $formationDisposition }}</p>
             </div>
         </div>
 
