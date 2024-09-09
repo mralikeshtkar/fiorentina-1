@@ -192,7 +192,7 @@
                                         @endphp
 
                                         <tr style="border-bottom:1px solid blueviolet">
-                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;font-size: smaller;" @endif
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
                                                 style="border-right: 1px solid blueviolet;">
                                                 <span class="{{ $labelClass }}">{{ $rank }}</span>
                                                 <img src="{{ $standing->crest_url }}" width="15">
