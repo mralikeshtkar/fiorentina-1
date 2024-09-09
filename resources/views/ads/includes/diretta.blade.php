@@ -1,11 +1,11 @@
 {{-- Live One here  --}}
 @php
-    use App\Models\Matches;
+    use App\Models\Calendario;
     use App\Models\MatchLineups;
     use App\Http\Controllers\MatchLineupsController;
     $matchId = request()->query('match_id');
     if ($matchId) {
-        $match = Matches::where('match_id', $matchId)->first();
+        $match = Calendario::where('match_id', $matchId)->first();
         MatchLineupsController::storeLineups($matchId);
         // Filter the lineups by formation_name
         $lineups = MatchLineups::where('match_id', $matchId)->get();
@@ -19,6 +19,12 @@
 
 
 @if ($match)
+    @php
+        $homeTeam = json_decode($match->home_team, true);
+        $awayTeam = json_decode($match->away_team, true);
+        $score = json_decode($match->score, true);
+        $odds = json_decode($match->odds, true);
+    @endphp
     <div class="match-details">
         <div class="team-logos">
             <div class="team home-team">
