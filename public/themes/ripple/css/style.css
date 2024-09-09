@@ -4788,6 +4788,9 @@ header>.container {
 
 /* For medium and smaller screens, stack content vertically */
 @media (max-width: 767px) {
+    .table td {
+        text-align: center;
+    }
 
     .table td,
     .table th {
@@ -4797,6 +4800,10 @@ header>.container {
         padding: 10px;
         border: none;
         /* Remove border for a cleaner look */
+    }
+
+    .team-container {
+        display: inline-flex;
     }
 
     .table thead {
