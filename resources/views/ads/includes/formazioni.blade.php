@@ -1,6 +1,8 @@
 @php
     // Get the initial lineup and the formation disposition
     $formationInitiali = $groupedLineups['Formazioni iniziali']; // The array of players
+    $formationInitiali = $formationInitiali->sortBy('player_position');
+
     $formationDisposition = $formationInitiali->first()->formation_disposition; // Get formation like '1-3-4-2-1'
 
     // Split the formation into an array, e.g. [1, 3, 4, 2, 1]
