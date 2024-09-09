@@ -170,14 +170,36 @@
                             border: 1px solid white;
                         ">
 
-                                    @foreach (App\Models\Standing::all() as $standing)
+                                    @foreach (App\Models\Standing::all() as $index => $standing)
+                                        @php
+                                            // Assign special styles or labels based on the position
+                                            $rank = $index + 1;
+                                            $labelClass = '';
+                                            if ($rank == 1) {
+                                                $labelClass = 'badge badge-success'; // First place
+                                            } elseif ($rank == 2) {
+                                                $labelClass = 'badge badge-secondary'; // Second place
+                                            } elseif ($rank == 3) {
+                                                $labelClass = 'badge badge-danger'; // Third place
+                                            } elseif ($rank >= 4 && $rank <= 6) {
+                                                $labelClass = 'badge badge-warning'; // Top 4 to 6
+                                            } elseif ($rank >= 18) {
+                                                $labelClass = 'badge badge-danger'; // Last three positions
+                                            } else {
+                                                $labelClass = 'badge badge-light'; // Rest of the teams
+                                            }
+                                        @endphp
+
                                         <tr style="border-bottom:1px solid blueviolet">
-                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
-                                                style="border-right: 1px solid blueviolet;"><img
-                                                    src="{{ $standing->crest_url }}" width="15">
-                                                {{ $standing->short_name }}</td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center;" @endif
+                                                style="border-right: 1px solid blueviolet;">
+                                                <span class="{{ $labelClass }}">{{ $rank }}</span>
+                                                <img src="{{ $standing->crest_url }}" width="15">
+                                                {{ $standing->short_name }}
+                                            </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                                style="border-right: 1px solid blueviolet;">{{ $standing->points }}
+                                                style="border-right: 1px solid blueviolet;">
+                                                {{ $standing->points }}
                                             </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
                                                 style="border-right: 1px solid blueviolet;text-align:center">
@@ -185,16 +207,19 @@
                                             </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
                                                 style="border-right: 1px solid blueviolet;text-align:center">
-                                                {{ $standing->won }}</td>
+                                                {{ $standing->won }}
+                                            </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
                                                 style="border-right: 1px solid blueviolet;text-align:center">
-                                                {{ $standing->draw }}</td>
+                                                {{ $standing->draw }}
+                                            </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
                                                 style="border-right: 1px solid blueviolet;text-align:center">
-                                                {{ $standing->lost }}</td>
+                                                {{ $standing->lost }}
+                                            </td>
                                             <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                                style="text-align:center">{{ $standing->goal_difference }}</td>
-
+                                                style="text-align:center">{{ $standing->goal_difference }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
