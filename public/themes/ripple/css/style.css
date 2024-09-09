@@ -4740,7 +4740,7 @@ header>.container {
     height: auto;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 538px) {
     .post__vertical {
         flex-direction: column;
         align-items: flex-start;
