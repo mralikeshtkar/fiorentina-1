@@ -74,9 +74,9 @@
         $panchina = $groupedLineups['Panchina'];
     @endphp
 
-    @foreach ($panchina as $player)
+    @foreach ($panchina as $panchinaPlayer)
         <div class="row justify-content-around mb-4">
-            @foreach ($row as $player)
+            @foreach ($panchinaPlayer as $player)
                 <div class="col-12">
                     <div class="player-container">
                         <div class="player-lineup">
