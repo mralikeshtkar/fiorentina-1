@@ -96,9 +96,6 @@
                         ]) !!}
 
                         <ul class="d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
-                            <li class="language-wrapper d-block d-sm-none" style="margin-left: 20px;">
-                                {!! apply_filters('language_switcher') !!}
-                            </li>
                             @if (is_plugin_active('member'))
                                 @if (auth('member')->check())
                                     <li class=" d-block d-sm-none" style="margin-left: 20px;">
