@@ -68,4 +68,34 @@
             </div>
         @endforeach
     </div>
+
+
+    @php
+        $panchina = $groupedLineups['Panchina'];
+    @endphp
+
+    @foreach ($panchina as $player)
+        <div class="row justify-content-around mb-4">
+            @foreach ($row as $player)
+                <div class="col-12">
+                    <div class="player-container">
+                        <div class="player-lineup">
+                            <img class="player-lineup-img" src="{{ $player->player_image }}"
+                                alt="{{ $player->player_full_name }}" width="50">
+                            <div class="rating"
+                                @if ($player->player_rating >= 7.0) style='background-color: #1dc231;'
+                        @elseif ($player->player_rating <= 6.1)
+                            style='background-color: #c21d1d;' @endif>
+
+                                {{ $player->player_rating }}</div>
+                            <p class="player-name">{{ $player->short_name }}</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            @endforeach
+        </div>
+    @endforeach
+
 </div>
