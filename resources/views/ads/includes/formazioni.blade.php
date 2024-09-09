@@ -26,13 +26,17 @@
     <div class="pitch-lines"></div>
     <div class="halfway-line"></div>
 
-    <!-- Left Penalty and Goal Areas -->
-    <div class="penalty-area left"></div>
-    <div class="goal-area left"></div>
+    <!-- Penalty areas -->
+    <div class="penalty-area-top"></div>
+    <div class="penalty-area-bottom"></div>
 
-    <!-- Right Penalty and Goal Areas -->
-    <div class="penalty-area right"></div>
-    <div class="goal-area right"></div>
+    <!-- Small boxes inside the penalty areas -->
+    <div class="small-box-top"></div>
+    <div class="small-box-bottom"></div>
+
+    <!-- Goal areas -->
+    <div class="goal-area-top"></div>
+    <div class="goal-area-bottom"></div>
 
     <div class="container">
         <!-- Display Formation Header -->
