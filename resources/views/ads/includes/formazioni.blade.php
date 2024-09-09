@@ -88,8 +88,8 @@
                         <img src="{{ $panchinaPlayer->player_image }}" alt="{{ $panchinaPlayer->player_full_name }}"
                             width="50" class="mr-20">
                     @else
-                        <svg class="_icon_1483j_4 _image_1b9ls_29" data-testid="wcl-icon-placeholder-man"
-                            viewBox="0 0 20 20" fill="currentColor">
+                        <svg style="width:50px" class="_icon_1483j_4 _image_1b9ls_29"
+                            data-testid="wcl-icon-placeholder-man" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="m18.4 16.29-5.06-1.52-.43-1.55a7.78 7.78 0 0 0 2.25-5.41c.02-2.69-.78-4.46-1-4.9l.25-1.96H9.95c-1.57 0-2.8.45-3.67 1.34-1.1 1.14-1.6 2.94-1.54 5.52a8.02 8.02 0 0 0 2.34 5.44l-.42 1.52-5.06 1.52-1.6 1.6V20h20v-2.11l-1.6-1.6Z"
                                 fill="#000"></path>
@@ -98,8 +98,7 @@
                                 fill="#000"></path>
                         </svg>
                     @endif
-                    <img src="{{ $panchinaPlayer->player_image }}" alt="{{ $panchinaPlayer->player_full_name }}"
-                        width="50" class="mr-20">
+
 
 
                     {{ $panchinaPlayer->short_name }}
