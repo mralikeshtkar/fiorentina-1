@@ -4747,12 +4747,13 @@ header>.container {
     }
 
     .post__thumbnail {
-        width: 100%;
-        margin-bottom: 10px;
+        width: 100% !important;
+        margin-bottom: -45px;
     }
 
     .post__content-wrap {
         padding-left: 0;
+        margin-bottom: 20px;
     }
 
     .post__title {
