@@ -86,7 +86,7 @@
                 <div class="navigation-toggle " style="display: none"><span></span></div>
                 <div class="float-start w-100" style="display: flex; align-items: center; justify-content: space-between;">
 {{--                    <nav class="navigation navigation--light navigation--fadeRight" style="display: flex; align-items: center; flex-grow: 1; ">--}}
-                    <nav class="navigation navigation--light navigation--fadeRight"  ">
+                    <nav class="navigation navigation--light navigation--fadeRight"  >
 
 
                     {!! Menu::renderMenuLocation('main-menu', [
