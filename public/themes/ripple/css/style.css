@@ -4796,14 +4796,13 @@ header>.container {
     .table th {
         display: block;
         width: 100%;
-        text-align: left;
         padding: 10px;
         border: none;
         /* Remove border for a cleaner look */
     }
 
     .team-container {
-        display: inline-flex;
+        display: inline-flex !important;
     }
 
     .table thead {
