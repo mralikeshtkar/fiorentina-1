@@ -71,7 +71,7 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active text-dark" id="formazioni" role="tabpanel"
             aria-labelledby="formazioni-tab">
-            @include('ads.includes.formazioni')
+            @include('ads.includes.formazioni', ['groupedLineups' => $groupedLineups])
         </div>
         <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
             {{-- @include('ads.includes.riassunto') --}}
