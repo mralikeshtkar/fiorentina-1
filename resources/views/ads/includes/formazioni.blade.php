@@ -58,7 +58,7 @@
                                     style='background-color: #c21d1d;' @endif>
 
                                     {{ $player->player_rating }}</div>
-                                <p>{{ $player->player_full_name }}</p>
+                                <p class="player-name">{{ $player->short_name }}</p>
 
                             </div>
                         </div>
