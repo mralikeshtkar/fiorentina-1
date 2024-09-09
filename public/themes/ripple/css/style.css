@@ -4697,8 +4697,10 @@ header>.container {
 .player-lineup {
     position: relative;
     display: inline-block;
-    width: 60px; /* Adjust the size of the player box */
-    height: 80px; /* Adjust the size of the player box */
+    width: 60px;
+    /* Adjust the size of the player box */
+    height: 80px;
+    /* Adjust the size of the player box */
 }
 
 .player-lineup-img {
@@ -4710,9 +4712,10 @@ header>.container {
 /* Rating badge */
 .rating {
     position: absolute;
-    top: 0;
+    bottom: 23%;
     right: 0;
-    background-color: #f0a500; /* Set the background color for the rating badge */
+    background-color: #f0a500;
+    /* Set the background color for the rating badge */
     color: #fff;
     padding: 2px 5px;
     font-size: 12px;
@@ -4726,7 +4729,8 @@ header>.container {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark background with transparency */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Dark background with transparency */
     color: #fff;
     font-size: 12px;
     padding: 2px 5px;

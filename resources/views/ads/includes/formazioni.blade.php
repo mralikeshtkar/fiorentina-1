@@ -52,7 +52,7 @@
                             <div class="player-lineup">
                                 <img class="player-lineup-img" src="{{ $player->player_image }}"
                                     alt="{{ $player->player_full_name }}" width="50">
-                                <div class="rating">{{ $player->player_rating }}</div>
+                                <div class="rating" >{{ $player->player_rating }}</div>
                                 <p>{{ $player->player_full_name }}</p>
 
                             </div>
