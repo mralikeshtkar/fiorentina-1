@@ -1987,7 +1987,7 @@ p:empty {
 }
 
 .navigation--mobile {
-    background-color: violet; /* Set background color to violet */
+    background-color: rgb(68, 18, 116); /* Set background color to violet */
     border-top: 2px solid var(--color-1st);
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
     left: 0;
