@@ -28,17 +28,17 @@
     <div class="match-details">
         <div class="team-logos">
             <div class="team home-team">
-                <img src="{{ $match->home_team['logo'] }}" alt="{{ $match->home_team['name'] }}">
-                <span>{{ $match->home_team['name'] }}</span>
+                <img src="{{ $homeTeam['logo'] }}" alt="{{ $homeTeam['name'] }}">
+                <span>{{ $homeTeam['name'] }}</span>
             </div>
             <div class="match-score">
-                <span>{{ $match->score['fullTime']['home'] }} - {{ $match->score['fullTime']['away'] }}</span>
+                <span>{{ $score['home'] }} - {{ $score['away'] }}</span>
                 <span>FINALE</span>
                 <span>{{ date('d.m.Y H:i', strtotime($match->match_date)) }}</span>
             </div>
             <div class="team away-team">
-                <img src="{{ $match->away_team['logo'] }}" alt="{{ $match->away_team['name'] }}">
-                <span>{{ $match->away_team['name'] }}</span>
+                <img src="{{ $awayTeam['logo'] }}" alt="{{ $awayTeam['name'] }}">
+                <span>{{ $awayTeam['name'] }}</span>
             </div>
         </div>
     </div>
