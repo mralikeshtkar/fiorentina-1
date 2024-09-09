@@ -2026,20 +2026,20 @@ p:empty {
     /* Ensure that each item starts on a ne pleaew line */
 }
 
-/*.navigation--mobile .menu-item>a {*/
-/*    color: #666;*/
-/*    display: block;*/
-/*    !* Ensure the link fills the container *!*/
-/*    font-size: 13px;*/
-/*    padding: 15px;*/
-/*    position: relative;*/
-/*    text-align: left;*/
-/*    !* Left-align the text *!*/
-/*    width: 100%;*/
-/*    !* Make sure the link spans the full width *!*/
-/*    box-sizing: border-box;*/
-/*    !* Ensure padding is included in the width calculation *!*/
-/*}*/
+.navigation--mobile .menu-item>a {
+    color: #666;
+    display: block;
+    /* Ensure the link fills the container */
+    font-size: 13px;
+    padding: 15px;
+    position: relative;
+    text-align: left;
+    /* Left-align the text */
+    width: 100%;
+    /* Make sure the link spans the full width */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width calculation */
+}
 
 /*.navigation--mobile .menu-item {*/
 /*    display: block;*/
