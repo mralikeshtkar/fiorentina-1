@@ -84,6 +84,39 @@
 
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle " style="display: none"><span></span></div>
+                <div class="login-sm-part">
+
+                    <ul class="d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
+                        @if (is_plugin_active('member'))
+                            @if (auth('member')->check())
+                                <li class=" d-none d-sm-block" style="margin-left: 20px;">
+                                    <a href="{{ route('public.member.dashboard') }}" rel="nofollow"
+                                        style="display: flex; align-items: center;">
+                                        <img src="{{ auth('member')->user()->avatar_thumb_url }}" class="img-circle"
+                                            width="20" alt="{{ auth('member')->user()->name }}" loading="lazy">
+                                        &nbsp;<span>{{ auth('member')->user()->name }}</span>
+                                    </a>
+                                </li>
+                                <li class=" d-none d-sm-block" style="margin-left: 20px;">
+                                    <a href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        rel="nofollow" style="display: flex; align-items: center;">
+                                        {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Logout') }}
+                                    </a>
+                                </li>
+                            @else
+                                <li class=" d-none d-sm-block" style="margin-left: 20px;">
+                                    <a href="{{ route('public.member.login') }}" rel="nofollow"
+                                        style="display: flex; align-items: center;">
+                                        {!! BaseHelper::renderIcon('ti ti-login-2') !!} {{ __('Login') }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endif
+                    </ul>
+
+
+                </div>
                 <div class="float-start w-100"
                     style="display: flex; align-items: center; justify-content: space-between;">
                     {{--                    <nav class="navigation navigation--light navigation--fadeRight" style="display: flex; align-items: center; flex-grow: 1; "> --}}
@@ -101,8 +134,9 @@
                                     <li class=" d-block d-sm-none" style="margin-left: 20px;">
                                         <a href="{{ route('public.member.dashboard') }}" rel="nofollow"
                                             style="display: flex; align-items: center;">
-                                            <img src="{{ auth('member')->user()->avatar_thumb_url }}" class="img-circle"
-                                                width="20" alt="{{ auth('member')->user()->name }}" loading="lazy">
+                                            <img src="{{ auth('member')->user()->avatar_thumb_url }}"
+                                                class="img-circle" width="20"
+                                                alt="{{ auth('member')->user()->name }}" loading="lazy">
                                             &nbsp;<span>{{ auth('member')->user()->name }}</span>
                                         </a>
                                     </li>
