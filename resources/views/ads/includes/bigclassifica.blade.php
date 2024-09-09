@@ -48,7 +48,7 @@
                         @endphp
                         <tr style="border-bottom:1px solid blueviolet">
                             <!-- Show rank number and assign special colors for top teams -->
-                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
+                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center;" @endif
                                 style="border-right: 1px solid blueviolet; text-align: center;">
                                 <span class="{{ $labelClass }}">{{ $rank }}</span>
                             </td>
