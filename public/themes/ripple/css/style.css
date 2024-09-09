@@ -4733,3 +4733,25 @@ header>.container {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+
+.post__thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .post__vertical {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post__thumbnail {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .post__content-wrap {
+        padding-left: 0;
+    }
+}
