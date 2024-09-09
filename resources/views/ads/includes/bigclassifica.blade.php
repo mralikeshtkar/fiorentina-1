@@ -34,12 +34,16 @@
                             // Assign special styles or labels based on the position
                             $rank = $index + 1;
                             $labelClass = '';
-                            if ($rank == 1) {
+                            if ($rank <= 4) {
                                 $labelClass = 'badge badge-success'; // First place
-                            } elseif ($rank == 4) {
-                                $labelClass = 'badge badge-waring'; // Top 4
-                            } elseif ($rank <= 18) {
+                            } elseif ($rank == 5) {
+                                $labelClass = 'badge badge-danger'; // Top 4
+                            } elseif ($rank == 6) {
+                                $labelClass = 'badge badge-warning'; // Top 6
+                            } elseif ($rank >= 18) {
                                 $labelClass = 'badge badge-danger'; // Top 6
+                            } else {
+                                $labelClass = 'text-dark'; // Top 6
                             }
                         @endphp
                         <tr style="border-bottom:1px solid blueviolet">
