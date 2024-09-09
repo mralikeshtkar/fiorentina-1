@@ -19,6 +19,8 @@
         $playerRows[] = $formationInitiali->slice($currentIndex, $numPlayers);
         $currentIndex += $numPlayers;
     }
+    $playerRows = array_reverse($playerRows);
+
 @endphp
 
 <div class="container">
