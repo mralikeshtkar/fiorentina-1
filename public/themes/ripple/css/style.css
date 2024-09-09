@@ -4765,10 +4765,3 @@ header>.container {
         display: block !important;
     }
 }
-
-/* d-sm-none */
-@media (min-width: 576px) {
-    .d-sm-none {
-        display: none !important;
-    }
-}
