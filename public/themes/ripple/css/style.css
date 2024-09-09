@@ -4636,7 +4636,6 @@ header>.container {
 .pitch-lines::after {
     width: 90%;
     height: 90%;
-    border-top: 0;
     /* Outer box */
     border-radius: 0;
 }
@@ -4662,11 +4661,11 @@ header>.container {
 }
 
 .penalty-area-top {
-    top: 0;
+    top: 5%;
 }
 
 .penalty-area-bottom {
-    bottom: 0;
+    bottom: 5%;
 }
 
 /* Penalty box small */
@@ -4680,27 +4679,9 @@ header>.container {
 }
 
 .small-box-top {
-    top: 0;
+    top: 5%;
 }
 
 .small-box-bottom {
-    bottom: 0;
-}
-
-/* Goal area */
-.goal-area-top,
-.goal-area-bottom {
-    position: absolute;
-    width: 8%;
-    height: 5%;
-    border: 2px solid #ffffff41;
-    left: 46%;
-}
-
-.goal-area-top {
-    top: 0;
-}
-
-.goal-area-bottom {
-    bottom: 0;
+    bottom: 5%;
 }

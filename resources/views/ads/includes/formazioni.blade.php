@@ -34,10 +34,6 @@
     <div class="small-box-top"></div>
     <div class="small-box-bottom"></div>
 
-    <!-- Goal areas -->
-    <div class="goal-area-top"></div>
-    <div class="goal-area-bottom"></div>
-
     <div class="container">
         <!-- Display Formation Header -->
         <div class="row">
