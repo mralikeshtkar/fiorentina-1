@@ -4733,35 +4733,3 @@ header>.container {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
-
-/* Bootstrap equivalent CSS for display utilities */
-
-/* Hide elements on small screens (max-width: 576px) */
-@media (max-width: 576px) {
-    .d-sm-none {
-        display: none !important;
-    }
-}
-
-/* Show elements on small screens and hide on larger screens */
-@media (min-width: 576px) {
-    .d-sm-block {
-        display: block !important;
-    }
-
-    .d-sm-inline {
-        display: inline !important;
-    }
-
-    .d-sm-inline-block {
-        display: inline-block !important;
-    }
-}
-
-/* d-sm-block */
-@media (min-width: 576px) {
-    .d-sm-block {
-        display: block !important;
-    }
-}
