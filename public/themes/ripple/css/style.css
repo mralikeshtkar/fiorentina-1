@@ -1152,39 +1152,37 @@ p:empty {
 .post__horizontal .post__content p:after {
     content: "..."
 }
-@keyframes fadeRight {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
-@media screen and (max-width:767px) {
+
+@media screen and (max-width: 767px) {
 
     .post__horizontal .post__content-wrap,
     .post__horizontal .post__thumbnail {
         float: none;
-        width: 100%
+        width: 100%;
     }
 
-    /*.navigation {*/
-    /*    display: none;*/
-    /*    opacity: 0*/
-    /*}*/
     .navigation {
+        background-color: violet; /* Set background color to violet */
         animation: none; /* Remove default animation for mobile */
-        background-color: violet;
     }
+
     .navigation--fadeRight {
         animation: fadeRight 0.5s ease-in-out;
-
     }
 
+    @keyframes fadeRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 }
+
 
 .post__horizontal--single {
     box-shadow: none
