@@ -85,7 +85,7 @@
             <div class="page-header__right flex-grow-1">
                 <div class="navigation-toggle " style="display: none"><span></span></div>
                 <div class="float-start w-100" style="display: flex; align-items: center; justify-content: space-between;">
-                    <nav class="navigation navigation--light navigation--fadeRight" style="display: flex; align-items: center; flex-grow: 1; background-color: violet;">
+                    <nav class="navigation navigation--light navigation--fadeRight" style="display: flex; align-items: center; flex-grow: 1; ">
 
 
                     {!! Menu::renderMenuLocation('main-menu', [

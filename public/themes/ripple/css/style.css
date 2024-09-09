@@ -1164,6 +1164,7 @@ p:empty {
 }
 .navigation--fadeRight {
     animation: fadeRight 0.5s ease-in-out;
+    background-color: violet;
 }
 @media screen and (max-width:767px) {
 
