@@ -22,63 +22,64 @@
     $playerRows = array_reverse($playerRows);
 
 @endphp
-<div class="football-pitch">
-    <div class="pitch-lines"></div>
-    <div class="halfway-line"></div>
 
-    <!-- Penalty areas -->
-    <div class="penalty-area-top"></div>
-    <div class="penalty-area-bottom"></div>
-
-    <!-- Small boxes inside the penalty areas -->
-    <div class="small-box-top"></div>
-    <div class="small-box-bottom"></div>
-
-    <div class="container">
-        <!-- Display Formation Header -->
-        <div class="row">
-            <div class="col-12">
-                <h2 class="pl-5 text-dark text-bold">Formazioni Iniziali</h2>
-                <p class="pl-5 text-dark text-bold">Formation: {{ $formationDisposition }}</p>
-            </div>
-        </div>
-
-        <!-- Loop through each row (group of players) in the formation and display the players -->
-        @foreach ($playerRows as $row)
-            <div class="row justify-content-around mb-4">
-                @foreach ($row as $player)
-                    <div class="col-2 text-center">
-                        <div class="player-container">
-                            <div class="player-lineup">
-                                <img class="player-lineup-img" src="{{ $player->player_image }}"
-                                    alt="{{ $player->player_full_name }}" width="50">
-                                <div class="rating"
-                                    @if ($player->player_rating >= 7.0) style='background-color: #1dc231;'
-                                @elseif ($player->player_rating <= 6.1)
-                                    style='background-color: #c21d1d;' @endif>
-
-                                    {{ $player->player_rating }}</div>
-                                <p class="player-name">{{ $player->short_name }}</p>
-
-                            </div>
-                        </div>
-
-                    </div>
-                @endforeach
-            </div>
-        @endforeach
-    </div>
-
-
-    @php
-        $panchina = $groupedLineups['Panchina'];
-        $Allenatori = $groupedLineups['Allenatori'];
-    @endphp
-
-
-</div>
 
 <div class="row">
+    <div class="col-6 football-pitch">
+        <div class="pitch-lines"></div>
+        <div class="halfway-line"></div>
+
+        <!-- Penalty areas -->
+        <div class="penalty-area-top"></div>
+        <div class="penalty-area-bottom"></div>
+
+        <!-- Small boxes inside the penalty areas -->
+        <div class="small-box-top"></div>
+        <div class="small-box-bottom"></div>
+
+        <div class="container">
+            <!-- Display Formation Header -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="pl-5 text-dark text-bold">Formazioni Iniziali</h2>
+                    <p class="pl-5 text-dark text-bold">Formation: {{ $formationDisposition }}</p>
+                </div>
+            </div>
+
+            <!-- Loop through each row (group of players) in the formation and display the players -->
+            @foreach ($playerRows as $row)
+                <div class="row justify-content-around mb-4">
+                    @foreach ($row as $player)
+                        <div class="col-2 text-center">
+                            <div class="player-container">
+                                <div class="player-lineup">
+                                    <img class="player-lineup-img" src="{{ $player->player_image }}"
+                                        alt="{{ $player->player_full_name }}" width="50">
+                                    <div class="rating"
+                                        @if ($player->player_rating >= 7.0) style='background-color: #1dc231;'
+                                    @elseif ($player->player_rating <= 6.1)
+                                        style='background-color: #c21d1d;' @endif>
+
+                                        {{ $player->player_rating }}</div>
+                                    <p class="player-name">{{ $player->short_name }}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+
+
+        @php
+            $panchina = $groupedLineups['Panchina'];
+            $Allenatori = $groupedLineups['Allenatori'];
+        @endphp
+
+
+    </div>
     <div class="col-3">
         <h5 class="mt-5 pl-5 text-dark text-bold">Panchina</h5>
         <table class="table table-responsive">
