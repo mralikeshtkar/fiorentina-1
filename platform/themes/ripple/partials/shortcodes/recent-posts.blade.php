@@ -175,18 +175,16 @@
                                             // Assign special styles or labels based on the position
                                             $rank = $index + 1;
                                             $labelClass = '';
-                                            if ($rank == 1) {
+                                            if ($rank <= 4) {
                                                 $labelClass = 'badge badge-success'; // First place
-                                            } elseif ($rank == 2) {
-                                                $labelClass = 'badge badge-secondary'; // Second place
-                                            } elseif ($rank == 3) {
-                                                $labelClass = 'badge badge-danger'; // Third place
-                                            } elseif ($rank >= 4 && $rank <= 6) {
-                                                $labelClass = 'badge badge-warning'; // Top 4 to 6
+                                            } elseif ($rank == 5) {
+                                                $labelClass = 'badge badge-danger'; // Top 4
+                                            } elseif ($rank == 6) {
+                                                $labelClass = 'badge badge-warning'; // Top 6
                                             } elseif ($rank >= 18) {
-                                                $labelClass = 'badge badge-danger'; // Last three positions
+                                                $labelClass = 'badge badge-danger'; // Top 6
                                             } else {
-                                                $labelClass = 'badge badge-light'; // Rest of the teams
+                                                $labelClass = 'text-dark'; // Top 6
                                             }
                                         @endphp
 
