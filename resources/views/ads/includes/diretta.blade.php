@@ -46,14 +46,14 @@
 
 
     <!-- Tab Navigation -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="formazioni-tab" data-toggle="tab" href="#formazioni" role="tab"
+            <a class="nav-link active" id="formazioni-tab" data-toggle="tab" href="#formazioni" role="tab"
                 aria-controls="formazioni" aria-selected="false">FORMAZIONI</a>
         </li>
 
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="riassunto-tab" data-toggle="tab" href="#riassunto" role="tab"
+            <a class="nav-link" id="riassunto-tab" data-toggle="tab" href="#riassunto" role="tab"
                 aria-controls="riassunto" aria-selected="true">RIASSUNTO</a>
         </li>
         <li class="nav-item" role="presentation">
@@ -69,8 +69,9 @@
 
     <!-- Tab Content -->
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="formazioni" role="tabpanel" aria-labelledby="formazioni-tab">
-            @include('ads.includes.formazioni')
+        <div class="tab-pane fade show active text-dark" id="formazioni" role="tabpanel"
+            aria-labelledby="formazioni-tab">
+            @include('ads.includes.formazioni', ['groupedLineups' => $groupedLineups])
         </div>
         <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
             {{-- @include('ads.includes.riassunto') --}}

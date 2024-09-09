@@ -1,1 +1,1 @@
-formazioni
+@dd($groupedLineups)
