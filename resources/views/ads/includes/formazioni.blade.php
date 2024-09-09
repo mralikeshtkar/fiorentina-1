@@ -48,9 +48,16 @@
             <div class="row justify-content-around mb-4">
                 @foreach ($row as $player)
                     <div class="col-2 text-center">
-                        <img src="{{ $player->player_image }}" alt="{{ $player->player_full_name }}" width="50">
-                        <p>{{ $player->player_full_name }}</p>
-                        <p>Rating: {{ $player->player_rating }}</p>
+                        <div class="player-container">
+                            <div class="player-lineup">
+                                <img class="player-lineup-img" src="{{ $player->player_image }}"
+                                    alt="{{ $player->player_full_name }}" width="50">
+                                <div class="rating">{{ $player->player_rating }}</div>
+                                <p>{{ $player->player_full_name }}</p>
+
+                            </div>
+                        </div>
+
                     </div>
                 @endforeach
             </div>

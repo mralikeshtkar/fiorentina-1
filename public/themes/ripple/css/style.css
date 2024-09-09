@@ -4685,3 +4685,54 @@ header>.container {
 .small-box-bottom {
     bottom: 5%;
 }
+
+
+.player-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+.player-lineup {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Adjust the size of the player box */
+    height: 80px; /* Adjust the size of the player box */
+}
+
+.player-lineup-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Rating badge */
+.rating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f0a500; /* Set the background color for the rating badge */
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Player name background and truncating */
+.player-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark background with transparency */
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
