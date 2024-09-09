@@ -77,10 +77,6 @@
 
 
 </div>
-
-</div>
-
-
 <table class="table table-responsive">
     <thead>
         <tr>
@@ -108,3 +104,5 @@
         @endforeach
     </tbody>
 </table>
+
+</div>
