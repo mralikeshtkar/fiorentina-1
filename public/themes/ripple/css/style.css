@@ -1995,306 +1995,138 @@ p:empty {
         transform: translateX(0);
     }
 }
-/* Default style for mobile navigation */
+
+/* Navigation Container for Mobile */
 .navigation--mobile {
-    display: none; /* Initially hidden */
-    background-color: #333; /* Default background */
-    position: fixed; /* Fix it to the screen */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full-width navigation */
-    height: 100%; /* Full-height navigation */
-    z-index: 999; /* Ensure it sits above other content */
-    overflow-y: auto; /* Scrollable if needed */
-    transition: transform 0.3s ease; /* Smooth transition for opening/closing */
-    transform: translateY(-100%); /* Initially hidden above the viewport */
-}
-
-/* Style when navigation is active */
-.navigation--mobile--active {
-    display: block; /* Show the mobile navigation */
-    transform: translateY(0); /* Slide it into view */
-}
-
-/* Menu items styling */
-.navigation--mobile ul.menu {
-    list-style-type: none; /* Remove list bullets */
-    padding: 20px; /* Add padding inside the menu */
-    text-align: center; /* Center align the menu items */
-}
-
-.navigation--mobile ul.menu .menu-item > a {
-    display: block;
-    padding: 15px 0;
-    color: white; /* Menu item text color */
-    text-decoration: none; /* Remove underline */
-    font-size: 18px;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-}
-
-.navigation--mobile ul.menu .menu-item > a:hover {
-    background-color: #444; /* Hover effect for menu items */
-}
-
-/* Style for menu items that have children */
-.navigation--mobile .menu-item.menu-item-has-children > a {
-    position: relative; /* To position the toggle icon */
-    padding-right: 40px; /* Add space for the toggle icon */
-}
-
-/* Style for the toggle icon */
-.navigation--mobile .menu-item.menu-item-has-children > a .toggle-icon {
-    position: absolute;
-    right: 10px; /* Position on the right side */
-    top: 50%;
-    transform: translateY(-50%); /* Center the icon vertically */
-    font-size: 16px; /* Adjust icon size */
-    color: #fff; /* Icon color */
-    transition: transform 0.3s ease; /* Animation for the icon */
-}
-
-/* Rotate the icon when the dropdown is active */
-.navigation--mobile .menu-item.menu-item-has-children.active > a .toggle-icon {
-    transform: translateY(-50%) rotate(180deg); /* Rotate 180 degrees */
-}
-
-/* Style for submenu */
-.navigation--mobile .sub-menu {
-    display: none; /* Hide sub-menu by default */
-    background-color: #444; /* Background color for the sub-menu */
-    padding-left: 20px; /* Indent the sub-menu */
-    margin: 10px 0; /* Add space between parent item and submenu */
-    list-style-type: none; /* Remove bullets from the sub-menu */
-}
-
-/* Style submenu items */
-.navigation--mobile .sub-menu .menu-item {
-    margin: 5px 0; /* Space between submenu items */
-}
-
-/* Style submenu links */
-.navigation--mobile .sub-menu .menu-item > a {
-    display: block;
-    padding: 10px; /* Add padding inside submenu items */
-    background-color: #555; /* Background for submenu links */
-    color: #fff; /* Text color for submenu links */
-    border-radius: 5px; /* Optional: rounded corners */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-}
-
-/* Hover effect for submenu links */
-.navigation--mobile .sub-menu .menu-item > a:hover {
-    background-color: #666; /* Slightly lighter background on hover */
-}
-
-/* Show the submenu when the parent menu item is active */
-.navigation--mobile .menu-item.menu-item--active > .sub-menu {
-    display: block; /* Show the sub-menu */
-}
-
-/* Style for the last menu item */
-.navigation--mobile .menu-item:last-child > a {
-    background-color: #222; /* Different background color */
-    font-weight: bold; /* Make the text bold */
-    border-bottom: 2px solid #fff; /* Add a bottom border */
-    color: #f9f9f9; /* Different text color */
-}
-
-/* Hover effect for the last menu item */
-.navigation--mobile .menu-item:last-child > a:hover {
+    display: none; /* Initially hidden, can be shown with a media query or toggle */
     background-color: #333;
-    border-bottom-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
 }
 
-/* Active state for the entire mobile navigation */
-.navigation--mobile > .menu .menu-item.menu-item--active > a {
-    background-color: #008CBA; /* Active background color (example: blue) */
-    color: #fff; /* Text color for the active item */
-    font-weight: bold; /* Make the active item bold */
-    border-left: 4px solid #FFD700; /* Gold border on the left side for emphasis */
-    padding-left: 16px; /* Adjust padding to fit the border */
+.navigation--mobile.active {
+    display: block; /* Toggle this with JavaScript to show the menu */
 }
 
-/* Style for the toggle icon in the active menu item */
-.navigation--mobile > .menu .menu-item.menu-item--active > a .toggle-icon {
-    color: #FFD700; /* Change the icon color (example: gold) for active items */
-    font-size: 18px; /* Slightly increase the size of the icon */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+/* Menu Items */
+.navigation--mobile .menu-item {
+    list-style: none;
+    margin: 10px 0;
 }
 
-/* Hover effect for the anchor inside a hovered menu item */
-.navigation--mobile .menu-item:hover a {
-    background-color: #005f73; /* Change the background color on hover */
-    color: #ffffff; /* Change the text color on hover */
-    padding-left: 20px; /* Add some padding for a slight shift effect */
-    transition: background-color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
-    text-decoration: none; /* Ensure no underline on hover */
+/* Links within Menu Items */
+.navigation--mobile .menu-item > a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block; /* Makes the entire link area clickable */
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/* Active sub-menu */
-.navigation--mobile .sub-menu--active {
-    display: block; /* Ensure the active sub-menu is visible */
-    background-color: #444; /* Background color for the active sub-menu */
-    padding-left: 20px; /* Add padding to indent the submenu */
-    margin: 10px 0; /* Space around the submenu */
-    list-style-type: none; /* Remove default list bullets */
+/* Hover effect for links */
+.navigation--mobile .menu-item > a:hover {
+    background-color: #555;
 }
 
-/* Links inside the active sub-menu */
-.navigation--mobile .sub-menu--active .menu-item > a {
+.navigation--mobile {
+    background-color: rgb(68, 18, 116);
+    /* Set background color to white */
+    border-top: 2px solid var(--color-1st);
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    visibility: hidden;
+    width: 100%;
+    z-index: 100;
+    animation: fadeLeft 0.5s ease-in-out;
+    /* Apply fade-left animation */
+}
+
+.navigation--mobile .menu-item {
+    background-color: red;
+    border-bottom: 1px dashed rgba(34, 25, 25, .2);
+    float: none;
+    /* Disable floating */
     display: block;
-    padding: 10px; /* Padding inside the submenu links */
-    background-color: #555; /* Background for submenu links */
-    color: #fff; /* Text color for submenu links */
-    border-radius: 5px; /* Optional: rounded corners for links */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s ease; /* Smooth hover transition */
+    /* Ensure block-level display */
+    width: 100%;
+    /* Full width to stack them vertically */
+    clear: both;
+    /* Ensure that each item starts on a ne pleaew line */
 }
 
-/* Hover effect for links inside the active sub-menu */
-.navigation--mobile .sub-menu--active .menu-item > a:hover {
-    background-color: #666; /* Slightly lighter background on hover */
+.navigation--mobile .menu-item>a {
+    color: #666;
+    display: block;
+    /* Ensure the link fills the container */
+    font-size: 13px;
+    padding: 15px;
+    position: relative;
+    text-align: left;
+    /* Left-align the text */
+    width: 100%;
+    /* Make sure the link spans the full width */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width calculation */
 }
 
-/* Style for the active sub-menu item */
-.navigation--mobile .sub-menu--active .menu-item.menu-item--active > a {
-    background-color: #333; /* Darker background for the active sub-menu item */
-    font-weight: bold; /* Make the text bold */
-    color: #FFD700; /* Highlight active sub-menu item text with a gold color */
+
+
+.navigation--mobile .menu-item:last-child {
+    border-bottom: 0;
 }
 
-/*!* Navigation Container for Mobile *!*/
-/*.navigation--mobile {*/
-/*    display: none; !* Initially hidden, can be shown with a media query or toggle *!*/
-/*    background-color: #333;*/
-/*    padding: 10px;*/
-/*    text-align: center;*/
-/*}*/
+.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {
+    color: white;
+    position: absolute;
+    right: 15px;
+}
 
-/*.navigation--mobile.active {*/
-/*    display: block; !* Toggle this with JavaScript to show the menu *!*/
-/*}*/
+.navigation--mobile .menu-item>.sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
 
-/*!* Menu Items *!*/
-/*.navigation--mobile .menu-item {*/
-/*    list-style: none;*/
-/*    margin: 10px 0;*/
-/*}*/
+.navigation--mobile>.menu>.menu-item.menu-item--active {
+    background-color: var(--color-1st);
+    border-bottom: none;
+}
 
-/*!* Links within Menu Items *!*/
-/*.navigation--mobile .menu-item > a {*/
-/*    text-decoration: none;*/
-/*    color: white;*/
-/*    font-size: 18px;*/
-/*    padding: 10px 20px;*/
-/*    display: block; !* Makes the entire link area clickable *!*/
-/*    background-color: #444;*/
-/*    border-radius: 5px;*/
-/*    transition: background-color 0.3s ease;*/
-/*}*/
+.navigation--mobile>.menu .menu-item.menu-item--active>a {
+    color: #fff !important;
+}
 
-/*!* Hover effect for links *!*/
-/*.navigation--mobile .menu-item > a:hover {*/
-/*    background-color: #555;*/
-/*}*/
+.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {
+    color: #fff;
+}
 
-/*.navigation--mobile {*/
-/*    background-color: rgb(68, 18, 116);*/
-/*    !* Set background color to white *!*/
-/*    border-top: 2px solid var(--color-1st);*/
-/*    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);*/
-/*    left: 0;*/
-/*    margin: 0;*/
-/*    opacity: 0;*/
-/*    position: absolute;*/
-/*    top: 100%;*/
-/*    visibility: hidden;*/
-/*    width: 100%;*/
-/*    z-index: 100;*/
-/*    animation: fadeLeft 0.5s ease-in-out;*/
-/*    !* Apply fade-left animation *!*/
-/*}*/
+.navigation--mobile .menu-item:hover a {
+    color: #666;
+}
 
-/*.navigation--mobile .menu-item {*/
-/*    background-color: red;*/
-/*    border-bottom: 1px dashed rgba(34, 25, 25, .2);*/
-/*    float: none;*/
-/*    !* Disable floating *!*/
-/*    display: block;*/
-/*    !* Ensure block-level display *!*/
-/*    width: 100%;*/
-/*    !* Full width to stack them vertically *!*/
-/*    clear: both;*/
-/*    !* Ensure that each item starts on a ne pleaew line *!*/
-/*}*/
+.navigation--mobile .sub-menu {
+    border-top: none;
+    display: none;
+    position: relative;
+}
 
-/*.navigation--mobile .menu-item>a {*/
-/*    color: #666;*/
-/*    display: block;*/
-/*    !* Ensure the link fills the container *!*/
-/*    font-size: 13px;*/
-/*    padding: 15px;*/
-/*    position: relative;*/
-/*    text-align: left;*/
-/*    !* Left-align the text *!*/
-/*    width: 100%;*/
-/*    !* Make sure the link spans the full width *!*/
-/*    box-sizing: border-box;*/
-/*    !* Ensure padding is included in the width calculation *!*/
-/*}*/
+.navigation--mobile .sub-menu--active {
+    display: block;
+}
 
-
-
-/*.navigation--mobile .menu-item:last-child {*/
-/*    border-bottom: 0;*/
-/*}*/
-
-/*.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {*/
-/*    color: white;*/
-/*    position: absolute;*/
-/*    right: 15px;*/
-/*}*/
-
-/*.navigation--mobile .menu-item>.sub-menu {*/
-/*    opacity: 1;*/
-/*    visibility: visible;*/
-/*}*/
-
-/*.navigation--mobile>.menu>.menu-item.menu-item--active {*/
-/*    background-color: var(--color-1st);*/
-/*    border-bottom: none;*/
-/*}*/
-
-/*.navigation--mobile>.menu .menu-item.menu-item--active>a {*/
-/*    color: #fff !important;*/
-/*}*/
-
-/*.navigation--mobile>.menu .menu-item.menu-item--active>a .toggle-icon {*/
-/*    color: #fff;*/
-/*}*/
-
-/*.navigation--mobile .menu-item:hover a {*/
-/*    color: #666;*/
-/*}*/
-
-/*.navigation--mobile .sub-menu {*/
-/*    border-top: none;*/
-/*    display: none;*/
-/*    position: relative;*/
-/*}*/
-
-/*.navigation--mobile .sub-menu--active {*/
-/*    display: block;*/
-/*}*/
-
-/*.navigation--mobile--active {*/
-/*    display: block;*/
-/*    opacity: 1;*/
-/*    visibility: visible;*/
-/*    animation: fadeLeft 0.5s ease-in-out;*/
-/*    !* Apply fade-left when active *!*/
-/*}*/
+.navigation--mobile--active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeLeft 0.5s ease-in-out;
+    /* Apply fade-left when active */
+}
 
 
 
