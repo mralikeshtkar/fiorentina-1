@@ -2024,7 +2024,7 @@ p:empty {
 }
 
 .navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {
-    color: #666;
+    color: white;
     position: absolute;
     right: 15px;
 }
