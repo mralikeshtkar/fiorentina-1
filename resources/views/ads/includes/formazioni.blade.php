@@ -52,7 +52,12 @@
                             <div class="player-lineup">
                                 <img class="player-lineup-img" src="{{ $player->player_image }}"
                                     alt="{{ $player->player_full_name }}" width="50">
-                                <div class="rating" >{{ $player->player_rating }}</div>
+                                <div class="rating"
+                                    @if ($player->player_rating >= 7.0) style='background-color: #f0a500;'
+                                @elseif ($player->player_rating <= 6.1)
+                                    style='background-color: #c21d1d;' @endif>
+
+                                    {{ $player->player_rating }}</div>
                                 <p>{{ $player->player_full_name }}</p>
 
                             </div>
