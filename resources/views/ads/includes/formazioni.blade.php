@@ -25,7 +25,7 @@
 
 
 <div class="row">
-    <div class="col-6 football-pitch">
+    <div class="col-6 football-pitch" style="width:unset !important">
         <div class="pitch-lines"></div>
         <div class="halfway-line"></div>
 
