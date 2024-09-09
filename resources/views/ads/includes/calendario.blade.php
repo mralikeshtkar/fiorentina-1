@@ -139,10 +139,10 @@
                                         <td>
                                             @if ($match->status != 'SCHEDULED')
                                                 <a class="btn btn-p"
-                                                    href="/Diretta?match_id={{ $match->match_id }}">Diretta</a>
+                                                    href="/diretta?match_id={{ $match->match_id }}">Diretta</a>
                                             @else
                                                 <a class="btn btn-p-outline"
-                                                    href="/Diretta?match_id={{ $match->match_id }}">Notifica</a>
+                                                    href="/notifica?match_id={{ $match->match_id }}">Notifica</a>
                                             @endif
                                         </td>
 
