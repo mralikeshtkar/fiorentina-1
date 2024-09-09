@@ -11,6 +11,7 @@
             $option->percentage = $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100) : 0;
         }
     }
+    dd($poll);
 @endphp
 <section class="section recent-posts pt-20 pb-20"
     @if ($shortcode->background_color) style="background-color: {{ $shortcode->background_color }} !important;" @endif>
