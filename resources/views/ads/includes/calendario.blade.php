@@ -71,7 +71,7 @@
                                                         {{ $homeTeam['name'] }}
                                                     </span>
                                                 </div>
-                                                <div class='col-6' style="margin-left: 20px">
+                                                <div class='col-6'>
                                                     <img src="{{ $awayTeam['logo'] }}"
                                                         alt="{{ $awayTeam['shortname'] }}"
                                                         style="width: 20px; height: auto;">
