@@ -2005,15 +2005,18 @@ p:empty {
 
 .navigation--mobile .menu-item {
     border-bottom: 1px dashed rgba(34, 25, 25, .2);
-    float: none;
+    float: none; /* Ensure the items do not float */
+    display: block; /* Make each item take up full width */
+    width: 100%; /* Full width for each item */
 }
 
 .navigation--mobile .menu-item>a {
-    color: white;
-    display: block;
+    color: #666;
+    display: block; /* Make each link a block element to fill the width */
     font-size: 13px;
     padding: 15px;
     position: relative;
+    text-align: left; /* Left-align the text */
 }
 
 .navigation--mobile .menu-item:last-child {
