@@ -25,7 +25,7 @@
 
 
 <div class="row">
-    <div class="col-6 football-pitch" style="width:unset !important">
+    <div class="football-pitch">
         <div class="pitch-lines"></div>
         <div class="halfway-line"></div>
 
@@ -80,7 +80,7 @@
 
 
     </div>
-    <div class="col-3">
+    <div class="col-4">
         <h5 class="mt-5 pl-5 text-dark text-bold">Panchina</h5>
         <table class="table table-responsive">
 
@@ -125,7 +125,7 @@
     </div>
 
 
-    <div class="col-3">
+    <div class="col-4">
         <h5 class="mt-5 pl-5 text-dark text-bold">Allenatore</h5>
         <table class="table table-responsive">
 
