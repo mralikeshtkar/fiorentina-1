@@ -78,20 +78,12 @@
 
 </div>
 <table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Rating</th>
-            <th>Name</th>
-        </tr>
-    </thead>
+
     <tbody>
         @foreach ($panchina as $panchinaPlayer)
             <tr>
-                <td>
-                    <img src="{{ $panchinaPlayer->player_image }}" alt="{{ $panchinaPlayer->player_full_name }}"
-                        width="50">
-                </td>
+                <td><img src="{{ $panchinaPlayer->player_image }}" alt="{{ $panchinaPlayer->player_full_name }}"
+                        width="50" class="mr-20">{{ $panchinaPlayer->short_name }}</td>
                 <td>
                     <div class="rating"
                         @if ($panchinaPlayer->player_rating >= 7.0) style="background-color: #1dc231;"
@@ -99,7 +91,7 @@
                         {{ $panchinaPlayer->player_rating }}
                     </div>
                 </td>
-                <td>{{ $panchinaPlayer->short_name }}</td>
+
             </tr>
         @endforeach
     </tbody>
