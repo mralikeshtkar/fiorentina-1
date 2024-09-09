@@ -1163,8 +1163,10 @@ p:empty {
     }
 
     .navigation {
-        background-color: violet; /* Set background color to violet */
-        animation: none; /* Remove default animation for mobile */
+        background-color: violet;
+        /* Set background color to violet */
+        animation: none;
+        /* Remove default animation for mobile */
     }
 
     .navigation--fadeRight {
@@ -1176,6 +1178,7 @@ p:empty {
             opacity: 0;
             transform: translateX(100%);
         }
+
         to {
             opacity: 1;
             transform: translateX(0);
@@ -1980,6 +1983,7 @@ p:empty {
         opacity: 0;
         transform: translateX(100%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1987,7 +1991,8 @@ p:empty {
 }
 
 .navigation--mobile {
-    background-color: rgb(68, 18, 116); /* Set background color to violet */
+    background-color: rgb(68, 18, 116);
+    /* Set background color to violet */
     border-top: 2px solid var(--color-1st);
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
     left: 0;
@@ -1998,7 +2003,8 @@ p:empty {
     visibility: hidden;
     width: 100%;
     z-index: 100;
-    animation: fadeRight 0.5s ease-in-out; /* Apply fade-right animation */
+    animation: fadeRight 0.5s ease-in-out;
+    /* Apply fade-right animation */
 }
 
 .navigation--mobile .menu-item {
@@ -2060,7 +2066,8 @@ p:empty {
     display: block;
     opacity: 1;
     visibility: visible;
-    animation: fadeRight 0.5s ease-in-out; /* Apply fade-right when active */
+    animation: fadeRight 0.5s ease-in-out;
+    /* Apply fade-right when active */
 }
 
 
@@ -4512,4 +4519,29 @@ header>.container {
 .btn-p-outline {
     border: 1px solid #441274 !important;
     padding: 3px 8px !important;
+}
+
+.match-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.team-logos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.home-team,
+.away-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match-score {
+    font-size: 2em;
+    font-weight: bold;
 }
