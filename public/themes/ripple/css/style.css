@@ -1977,13 +1977,11 @@ p:empty {
     line-height: 1.4em;
     padding: 10px 20px
 }
-
-@keyframes fadeRight {
+@keyframes fadeLeft {
     from {
         opacity: 0;
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1991,8 +1989,7 @@ p:empty {
 }
 
 .navigation--mobile {
-    background-color: rgb(68, 18, 116);
-    /* Set background color to violet */
+    background-color: white; /* Set background color to white */
     border-top: 2px solid var(--color-1st);
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .3);
     left: 0;
@@ -2003,8 +2000,7 @@ p:empty {
     visibility: hidden;
     width: 100%;
     z-index: 100;
-    animation: fadeRight 0.5s ease-in-out;
-    /* Apply fade-right animation */
+    animation: fadeLeft 0.5s ease-in-out; /* Apply fade-left animation */
 }
 
 .navigation--mobile .menu-item {
@@ -2066,9 +2062,9 @@ p:empty {
     display: block;
     opacity: 1;
     visibility: visible;
-    animation: fadeRight 0.5s ease-in-out;
-    /* Apply fade-right when active */
+    animation: fadeLeft 0.5s ease-in-out; /* Apply fade-left when active */
 }
+
 
 
 .navigation--light .menu-item>a,
