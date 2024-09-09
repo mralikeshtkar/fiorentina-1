@@ -1162,12 +1162,7 @@ p:empty {
         width: 100%;
     }
 
-    .navigation {
-        background-color: violet;
-        /* Set background color to violet */
-        animation: none;
-        /* Remove default animation for mobile */
-    }
+
 
     .navigation--fadeRight {
         animation: fadeRight 0.5s ease-in-out;
