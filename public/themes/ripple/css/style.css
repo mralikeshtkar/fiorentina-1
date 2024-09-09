@@ -1152,7 +1152,19 @@ p:empty {
 .post__horizontal .post__content p:after {
     content: "..."
 }
-
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.navigation--fadeRight {
+    animation: fadeRight 0.5s ease-in-out;
+}
 @media screen and (max-width:767px) {
 
     .post__horizontal .post__content-wrap,
@@ -1161,9 +1173,15 @@ p:empty {
         width: 100%
     }
 
+    /*.navigation {*/
+    /*    display: none;*/
+    /*    opacity: 0*/
+    /*}*/
     .navigation {
-        display: none;
-        opacity: 0
+        animation: none; /* Remove default animation for mobile */
+    }
+    .navigation--fadeRight {
+        animation: fadeRight 0.5s ease-in-out;
     }
 }
 
