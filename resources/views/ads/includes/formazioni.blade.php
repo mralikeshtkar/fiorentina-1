@@ -77,6 +77,9 @@
 
 
 </div>
+
+<h2 class="mt-5 pl-5 text-dark text-bold">Panchina</h2>
+
 <table class="table table-responsive">
 
     <tbody>
