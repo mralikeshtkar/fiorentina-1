@@ -1,1 +1,1 @@
-@dd(groupedLineups)
+@dd($groupedLineups)
