@@ -4761,3 +4761,41 @@ header>.container {
         /* Adjust title font size for smaller screens */
     }
 }
+
+
+/* Ensure the table is scrollable on small screens */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* On small screens, hide some columns or stack content */
+@media (max-width: 767px) {
+
+    /* Stack columns vertically for small screens */
+    .table td,
+    .table th {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Adjust padding and margin for small screens */
+    .table td {
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    /* Make sure the headers stay aligned with the content */
+    .table thead {
+        display: none;
+        /* Hide the table header */
+    }
+
+    /* Add a label for each data cell */
+    .table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+}
