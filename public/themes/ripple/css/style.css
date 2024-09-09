@@ -2266,8 +2266,9 @@ p:empty {
 }
 
 .post-group .post-group__header {
-    margin-bottom: 25px;
-    position: relative
+    margin-top: 30px;
+    position: relative;
+    margin-bottom: 10px;
 }
 
 .post-group .post-group__title {
