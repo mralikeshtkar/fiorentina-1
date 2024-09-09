@@ -43,6 +43,46 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Tab Navigation -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="formazioni-tab" data-toggle="tab" href="#formazioni" role="tab"
+                aria-controls="formazioni" aria-selected="false">FORMAZIONI</a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="riassunto-tab" data-toggle="tab" href="#riassunto" role="tab"
+                aria-controls="riassunto" aria-selected="true">RIASSUNTO</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="statistiche-tab" data-toggle="tab" href="#statistiche" role="tab"
+                aria-controls="statistiche" aria-selected="false">STATISTICHE</a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="commento-tab" data-toggle="tab" href="#commento" role="tab"
+                aria-controls="commento" aria-selected="false">COMMENTO</a>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="formazioni" role="tabpanel" aria-labelledby="formazioni-tab">
+            @include('ads.includes.formazioni')
+        </div>
+        <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
+            {{-- @include('ads.includes.riassunto') --}}
+        </div>
+        <div class="tab-pane fade" id="statistiche" role="tabpanel" aria-labelledby="statistiche-tab">
+            {{-- @include('ads.includes.statistiche') --}}
+        </div>
+
+        <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
+            {{-- @include('ads.includes.commento') --}}
+        </div>
+    </div>
 @endif
 
 {{-- Diretta History blade --}}
