@@ -19,6 +19,12 @@
 
 
 @if ($match)
+    @php
+        $homeTeam = json_decode($match->home_team, true);
+        $awayTeam = json_decode($match->away_team, true);
+        $score = json_decode($match->score, true);
+        $odds = json_decode($match->odds, true);
+    @endphp
     <div class="match-details">
         <div class="team-logos">
             <div class="team home-team">
