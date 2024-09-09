@@ -2004,7 +2004,7 @@ p:empty {
 }
 
 .navigation--mobile .menu-item {
-    border-bottom: 1px dashed rgba(34, 25, 25, .2);
+    border-bottom: 1px dashed white;
     float: none;
 }
 
