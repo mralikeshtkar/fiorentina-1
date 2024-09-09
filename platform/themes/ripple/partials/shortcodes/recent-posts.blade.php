@@ -32,7 +32,9 @@
                                                 <header class="post__header">
                                                     <h4 class="post__title" style="margin: 0;">
                                                         <a href="{{ $post->url }}" title="{{ $post->name }}"
-                                                            style="text-decoration: none; color: inherit;">{{ $post->name }}</a>
+                                                            style="text-decoration: none; color: inherit;">
+                                                            {{ $post->name }}
+                                                        </a>
                                                     </h4>
                                                 </header>
                                                 <div class="post__content">
@@ -41,6 +43,7 @@
                                             </div>
                                         </article>
                                     @endforeach
+
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
