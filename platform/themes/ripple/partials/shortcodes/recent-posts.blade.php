@@ -245,7 +245,7 @@
                     </div>
 
                     @if ($poll)
-                        <div class="row">
+                        <div class="row container mt-4">
                             <div class="col-12">
                                 <div>
                                     <h1>{{ $poll->question }}</h1>
