@@ -4830,8 +4830,3 @@ header>.container {
     display: flex;
     align-items: center;
 }
-
-/* Better spacing for badges */
-.badge {
-    margin-left: 5px;
-}
