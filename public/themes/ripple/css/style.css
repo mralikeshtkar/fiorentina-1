@@ -2041,30 +2041,22 @@ p:empty {
     /* Ensure padding is included in the width calculation */
 }
 
-/*.navigation--mobile .menu-item {*/
-/*    display: block;*/
-/*    !* Make sure each menu item is a block element *!*/
-/*    width: 100%;*/
-/*    !* Ensure full width of each item *!*/
-/*    margin-bottom: 10px;*/
-/*    !* Add space between menu items if needed *!*/
-/*}*/
 
 
-/*.navigation--mobile .menu-item:last-child {*/
-/*    border-bottom: 0;*/
-/*}*/
+.navigation--mobile .menu-item:last-child {
+    border-bottom: 0;
+}
 
-/*.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {*/
-/*    color: white;*/
-/*    position: absolute;*/
-/*    right: 15px;*/
-/*}*/
+.navigation--mobile .menu-item.menu-item-has-children a .toggle-icon {
+    color: white;
+    position: absolute;
+    right: 15px;
+}
 
-/*.navigation--mobile .menu-item>.sub-menu {*/
-/*    opacity: 1;*/
-/*    visibility: visible;*/
-/*}*/
+.navigation--mobile .menu-item>.sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
 
 /*.navigation--mobile>.menu>.menu-item.menu-item--active {*/
 /*    background-color: var(--color-1st);*/
