@@ -1162,10 +1162,7 @@ p:empty {
         transform: translateX(0);
     }
 }
-.navigation--fadeRight {
-    animation: fadeRight 0.5s ease-in-out;
-    background-color: violet;
-}
+
 @media screen and (max-width:767px) {
 
     .post__horizontal .post__content-wrap,
@@ -1183,7 +1180,9 @@ p:empty {
     }
     .navigation--fadeRight {
         animation: fadeRight 0.5s ease-in-out;
+        background-color: violet;
     }
+
 }
 
 .post__horizontal--single {
