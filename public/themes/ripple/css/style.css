@@ -4587,7 +4587,7 @@ header>.container {
 
 
 .football-pitch {
-    background-color: #4caf50;
+    background-color: #007a0575;
     /* Green pitch */
     position: relative;
     padding: 20px;
@@ -4657,7 +4657,7 @@ header>.container {
     position: absolute;
     width: 40%;
     height: 20%;
-    border: 2px solid white;
+    border: 2px solid #ffffff41;
     left: 30%;
 }
 
@@ -4675,7 +4675,7 @@ header>.container {
     position: absolute;
     width: 18%;
     height: 10%;
-    border: 2px solid white;
+    border: 2px solid #ffffff41;
     left: 41%;
 }
 
@@ -4693,7 +4693,7 @@ header>.container {
     position: absolute;
     width: 8%;
     height: 5%;
-    border: 2px solid white;
+    border: 2px solid #ffffff41;
     left: 46%;
 }
 
