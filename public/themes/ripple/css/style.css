@@ -4844,6 +4844,7 @@ header>.container {
 }
 
 .stat-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -4851,6 +4852,9 @@ header>.container {
 }
 
 .stat-label {
+    position: absolute;
+    top: -9px;
+    left: 50%;
     flex: 1;
     text-align: center;
     color: #f0f6fc;

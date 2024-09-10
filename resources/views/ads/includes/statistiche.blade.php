@@ -3,18 +3,14 @@
 
     @foreach ($statics as $stat)
         @if ($stat['stage_name'] == 'Partita')
-            <div class="stat-row">
+            <div class="stat-row mb-4">
                 <!-- Home Value -->
                 <div class="stat-value">{{ $stat['value_home'] }}</div>
 
                 <!-- Stat Bar -->
                 <div class="stat-bar">
                     @php
-                        if ($stat['incident_name'] == 'Possesso Palla') {
-                            $maxValue = 100;
-                        } else {
-                            $maxValue = $stat['value_home'] + $stat['value_away'];
-                        }
+                        $maxValue = $stat['value_home'] + $stat['value_away'];
                         $homeWidth =
                             is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
                                 ? ($stat['value_home'] / $maxValue) * 100
