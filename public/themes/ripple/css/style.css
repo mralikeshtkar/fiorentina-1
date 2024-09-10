@@ -4901,12 +4901,14 @@ header>.container {
 }
 
 .commentary-row {
-    background-color: #202224;
+    background-color: #212529f0;
     display: flex;
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #444;
     padding-left: 10px;
+    border-left: 5px solid #212529f0;
+
 
 }
 
@@ -4963,5 +4965,5 @@ header>.container {
 .important {
     background-color: #1d2025;
     border-left: 5px solid #d83a56;
-    padding-left: -5px;
+
 }
