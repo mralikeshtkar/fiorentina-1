@@ -3,7 +3,7 @@
 
     @foreach ($statics as $stat)
         @if ($stat['stage_name'] == 'Partita')
-            <div class="stat-row">
+            <div class="stat-row mb-3">
                 <!-- Home Value -->
                 <div class="stat-value">{{ $stat['value_home'] }}</div>
 
