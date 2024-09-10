@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MatchStatistics;
+use App\Models\MatchStatics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class MatchStatisticsController extends Controller
+class MatchStaticsController extends Controller
 {
     public function storeMatchStatistics($matchId)
     {
