@@ -14,7 +14,7 @@
                     {!! Theme::content() !!}
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4">
                 {!! Theme::partial('sidebar') !!}
             </div>
         </div>

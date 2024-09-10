@@ -4616,8 +4616,8 @@ header>.container {
 }
 
 .pitch-lines::before {
-    width: 20%;
-    height: 18%;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     /* Center circle */
 }
