@@ -2,13 +2,20 @@
 @php
     use App\Models\Calendario;
     use App\Models\MatchLineups;
+    use App\Models\MatchStatics;
     use App\Http\Controllers\MatchLineupsController;
+    use App\Http\Controllers\MatchStaticsController;
     $matchId = request()->query('match_id');
     if ($matchId) {
         $match = Calendario::where('match_id', $matchId)->first();
+
+
+        MatchStaticsController::storeMatchStatistics($matchId);
         MatchLineupsController::storeLineups($matchId);
         // Filter the lineups by formation_name
         $lineups = MatchLineups::where('match_id', $matchId)->get();
+        $statics = MatchStatics::where('match_id', $matchId)->get();
+
         $groupedLineups = $lineups
             ->filter(function ($lineup) {
                 return in_array($lineup->formation_name, ['Panchina', 'Allenatori', 'Formazioni iniziali']);
@@ -24,6 +31,18 @@
         $awayTeam = json_decode($match->away_team, true);
         $score = json_decode($match->score, true);
         $odds = json_decode($match->odds, true);
+
+
+    @php
+        $isHomeFiorentina =
+            $homeTeam['name'] == 'Fiorentina' ||
+            $homeTeam['name'] == 'Fiorentina (Ita)' ||
+            $homeTeam['name'] == 'Fiorentina (Ita) *';
+        $isAwayFiorentina =
+            $awayTeam['name'] == 'Fiorentina' ||
+            $awayTeam['name'] == 'Fiorentina (Ita)' ||
+            $awayTeam['name'] == 'Fiorentina (Ita) *';
+    @endphp
     @endphp
     <div class="match-details mt-5">
         <div class="team-logos">
@@ -77,6 +96,7 @@
             {{-- @include('ads.includes.riassunto') --}}
         </div>
         <div class="tab-pane fade" id="statistiche" role="tabpanel" aria-labelledby="statistiche-tab">
+            @include('ads.includes.statistiche', ['statics' => $statics,'isHomeFiorentina',$isHomeFiorentina])
             {{-- @include('ads.includes.statistiche') --}}
         </div>
 
