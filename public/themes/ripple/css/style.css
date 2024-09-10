@@ -4921,6 +4921,7 @@ header>.container {
 .comment-text {
     flex: 4;
     color: #f0f6fc;
+    padding-right: 10px;
 }
 
 .comment-icon {
