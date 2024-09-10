@@ -4901,12 +4901,13 @@ header>.container {
 }
 
 .commentary-row {
-    padding-left: 10px;
     background-color: #202224;
     display: flex;
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #444;
+    padding-left: 10px;
+
 }
 
 .comment-time {
