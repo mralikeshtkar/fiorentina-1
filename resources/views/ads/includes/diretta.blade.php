@@ -3,18 +3,21 @@
     use App\Models\Calendario;
     use App\Models\MatchLineups;
     use App\Models\MatchStatics;
+    use App\Models\MatchCommentary;
     use App\Http\Controllers\MatchLineupsController;
     use App\Http\Controllers\MatchStaticsController;
+    use App\Http\Controllers\MatchCommentaryController;
     $matchId = request()->query('match_id');
     if ($matchId) {
         $match = Calendario::where('match_id', $matchId)->first();
 
-
         MatchStaticsController::storeMatchStatistics($matchId);
         MatchLineupsController::storeLineups($matchId);
+        MatchCommentaryController::storeCommentaries($matchId);
         // Filter the lineups by formation_name
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
+        $commentaries = MatchCommentary::where('match_id', $matchId)->get();
 
         $groupedLineups = $lineups
             ->filter(function ($lineup) {
@@ -31,8 +34,6 @@
         $awayTeam = json_decode($match->away_team, true);
         $score = json_decode($match->score, true);
         $odds = json_decode($match->odds, true);
-
-
 
         $isHomeFiorentina =
             $homeTeam['name'] == 'Fiorentina' ||
@@ -96,11 +97,17 @@
             {{-- @include('ads.includes.riassunto') --}}
         </div>
         <div class="tab-pane fade" id="statistiche" role="tabpanel" aria-labelledby="statistiche-tab">
-            @include('ads.includes.statistiche', ['statics' => $statics,'isHomeFiorentina',$isHomeFiorentina])
+            @include('ads.includes.statistiche', [
+                'statics' => $statics,
+                'isHomeFiorentina',
+                $isHomeFiorentina,
+            ])
             {{-- @include('ads.includes.statistiche') --}}
         </div>
 
         <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
+            @include('ads.includes.commentary', ['commentaries' => $commentaries])
+
             {{-- @include('ads.includes.commento') --}}
         </div>
     </div>
