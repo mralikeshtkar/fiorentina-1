@@ -29,7 +29,7 @@ class MatchStaticsController extends Controller
                     $groupLabel = $group['GROUP_LABEL'];
 
                     foreach ($group['ITEMS'] as $item) {
-                        MatchStatistics::updateOrCreate(
+                        MatchStatics::updateOrCreate(
                             [
                                 'match_id' => $matchId,
                                 'stage_name' => $stageName,
