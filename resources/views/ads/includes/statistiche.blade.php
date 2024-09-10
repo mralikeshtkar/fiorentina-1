@@ -37,7 +37,7 @@
             </div>
 
             <!-- Stat Label -->
-            <div class="stat-label">{{ $stat['incident_name'] }}</div>
+            <div class="stat-label text-dark">{{ $stat['incident_name'] }}</div>
 
             <!-- Away Value -->
             <div class="stat-value">{{ $stat['value_away'] }}</div>
