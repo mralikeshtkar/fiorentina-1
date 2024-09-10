@@ -33,7 +33,7 @@
         $odds = json_decode($match->odds, true);
 
 
-    @php
+
         $isHomeFiorentina =
             $homeTeam['name'] == 'Fiorentina' ||
             $homeTeam['name'] == 'Fiorentina (Ita)' ||
@@ -42,7 +42,7 @@
             $awayTeam['name'] == 'Fiorentina' ||
             $awayTeam['name'] == 'Fiorentina (Ita)' ||
             $awayTeam['name'] == 'Fiorentina (Ita) *';
-    @endphp
+
     @endphp
     <div class="match-details mt-5">
         <div class="team-logos">
