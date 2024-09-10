@@ -4901,6 +4901,7 @@ header>.container {
 }
 
 .commentary-row {
+    padding-left: 10px;
     background-color: #202224;
     display: flex;
     align-items: center;
@@ -4961,5 +4962,4 @@ header>.container {
 .important {
     background-color: #1d2025;
     border-left: 5px solid #d83a56;
-    padding-left: 10px;
 }
