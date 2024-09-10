@@ -10,11 +10,11 @@
                 <!-- Stat Bar -->
                 <div class="stat-bar">
                     @php
-                    if($stat['incident_name']=='Possesso Palla'){
-                        $maxValue = 100;
-                    }else{
-                        $maxValue=$stat['value_home']+$stat['value_away']
-                    }
+                        if ($stat['incident_name'] == 'Possesso Palla') {
+                            $maxValue = 100;
+                        } else {
+                            $maxValue = $stat['value_home'] + $stat['value_away'];
+                        }
                         $homeWidth =
                             is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
                                 ? ($stat['value_home'] / $maxValue) * 100
