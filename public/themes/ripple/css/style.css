@@ -4864,7 +4864,8 @@ header>.container {
 .stat-value {
     width: 50px;
     text-align: center;
-    color: #f0f6fc;
+    color: #202020;
+    font-weight: 700;
 }
 
 .stat-bar {
