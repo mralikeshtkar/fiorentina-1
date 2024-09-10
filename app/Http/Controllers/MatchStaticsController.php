@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class MatchStaticsController extends Controller
 {
-    public function storeMatchStatistics($matchId)
+    public static function storeMatchStatistics($matchId)
     {
         // Simulate fetching data from an API, replace with your actual API request logic
         $url="https://flashlive-sports.p.rapidapi.com/v1/events/statistics?event_id={$matchId}&locale=it_IT";
