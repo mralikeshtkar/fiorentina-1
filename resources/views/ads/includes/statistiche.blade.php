@@ -4,17 +4,21 @@
     @foreach ($statics as $stat)
         <div class="stat-row">
             <!-- Home Value -->
-            <div class="stat-value">{{ $stat['home'] }}</div>
+            <div class="stat-value">{{ $stat['value_home'] }}</div>
 
             <!-- Stat Bar -->
             <div class="stat-bar">
                 @php
                     // Calculate the width for home and away bars
-                    $maxValue = max($stat['home'], $stat['away']);
+                    $maxValue = max($stat['value_home'], $stat['value_away']);
                     $homeWidth =
-                        is_numeric($stat['home']) && is_numeric($stat['away']) ? ($stat['home'] / $maxValue) * 100 : 0;
+                        is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
+                            ? ($stat['value_home'] / $maxValue) * 100
+                            : 0;
                     $awayWidth =
-                        is_numeric($stat['home']) && is_numeric($stat['away']) ? ($stat['away'] / $maxValue) * 100 : 0;
+                        is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
+                            ? ($stat['away'] / $maxValue) * 100
+                            : 0;
                 @endphp
                 <div class="stat-bar-fill 
                 @if ($isHomeFiorentina) fiorentina-fill
@@ -33,10 +37,10 @@
             </div>
 
             <!-- Stat Label -->
-            <div class="stat-label">{{ $stat['label'] }}</div>
+            <div class="stat-label">{{ $stat['incident_name'] }}</div>
 
             <!-- Away Value -->
-            <div class="stat-value">{{ $stat['away'] }}</div>
+            <div class="stat-value">{{ $stat['value_away'] }}</div>
         </div>
     @endforeach
 </div>
