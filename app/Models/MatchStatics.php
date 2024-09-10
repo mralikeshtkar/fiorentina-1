@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MatchStatistics extends Model
+class MatchStatics extends Model
 {
     protected $table = 'match_statistics';
 
