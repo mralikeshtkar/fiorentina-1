@@ -4901,6 +4901,7 @@ header>.container {
 }
 
 .commentary-row {
+    background-color: #202224;
     display: flex;
     align-items: center;
     padding: 10px 0;
