@@ -4963,4 +4963,5 @@ header>.container {
 .important {
     background-color: #1d2025;
     border-left: 5px solid #d83a56;
+    padding-left: -5px;
 }
