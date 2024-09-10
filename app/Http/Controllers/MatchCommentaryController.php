@@ -21,7 +21,7 @@ class MatchCommentaryController extends Controller
             // Assuming the response returns the data in the format provided
             $data = $response->json()['DATA'];
 
-            foreach ($commentariesData as $comment) {
+            foreach ($data as $comment) {
                 MatchCommentary::updateOrCreate(
                     [
                         'match_id' => $matchId,
