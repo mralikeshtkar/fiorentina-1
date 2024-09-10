@@ -28,7 +28,7 @@ class MatchCommentaryController extends Controller
                         'comment_time' => $comment['COMMENT_TIME']?? NULL,
                         'comment_class' => $comment['COMMENT_CLASS']?? NULL,
                         'comment_text' => $comment['COMMENT_TEXT']?? NULL,
-                        'is_bold' => $comment['COMMENT_TEXT'] ?? NULL
+                        'is_bold' => $comment['COMMENT_IS_BOLD'] ?? NULL
                     ],
                     [
                         'is_important' => $comment['COMMENT_IS_IMPORTANT'] ?? 0,
