@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 class Vote extends BaseModel
 {
-    protected $table = 'players';
+    protected $table = 'votes';
 
     protected $fillable = [
         'title',
