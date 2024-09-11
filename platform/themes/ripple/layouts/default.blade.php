@@ -7,7 +7,7 @@
         {!! BaseHelper::clean(Theme::get('has-ads-background')) !!}
     @endif
 
-    <div class="container bg-white">
+    <div class="container bg-white" style="margin-top: -66px;">
         <div class="row">
             <div class="col-lg-8">
                 <div class="page-content">
