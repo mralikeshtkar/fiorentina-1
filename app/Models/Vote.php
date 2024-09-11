@@ -22,7 +22,7 @@ class Vote extends BaseModel
     ];
     public function player()
     {
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(Player::class, 'player_id', 'id');
     }
     public function calendario()
     {
