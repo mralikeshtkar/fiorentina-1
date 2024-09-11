@@ -4970,10 +4970,10 @@ header>.container {
 }
 
 .stage {
+    border-radius: 21px;
     background-color: #1f2b36;
     color: white;
-    margin-bottom: 20px;
-    padding: 10px;
+    padding: 16px 20px;
 }
 
 .incident {
@@ -4994,4 +4994,14 @@ header>.container {
 
 .incident-detail span.GOAL {
     color: yellow;
+}
+
+.stage-tempo {
+
+    background-color: #2b3239;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 14px;
+    text-transform: uppercase;
+    font-size: medium;
 }
