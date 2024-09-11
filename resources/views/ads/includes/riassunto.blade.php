@@ -40,7 +40,7 @@
                             </div>
                             <div class="incident-detail">
                                 @foreach ($participants as $participant)
-                                    @if (participant['incident_type'] == 'ASSISTANCE')
+                                    @if ($participant['incident_type'] == 'ASSISTANCE')
                                         <span>{{ $participant['participant_name'] }}</span>
                                     @else
                                         <strong>{{ $participant['participant_name'] }}</strong>
