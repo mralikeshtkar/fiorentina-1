@@ -46,7 +46,6 @@ class MatchSummaryController extends Controller
                         'stage_name' => $stage['STAGE_NAME'],
                         'incident_team' => $item['INCIDENT_TEAM'],
                         'incident_time' => $item['INCIDENT_TIME'],
-                        'incident_type' => $item['INCIDENT_TYPE'],
                         'incident_participants' => json_encode($incidentParticipants),
                         'result_home' => $stage['RESULT_HOME'] ?? null,
                         'result_away' => $stage['RESULT_AWAY'] ?? null,
