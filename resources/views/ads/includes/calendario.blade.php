@@ -132,8 +132,8 @@
 
                                         </td>
                                         <td>
-                                            <img src="{{ $match->competition }}" alt="{{ $match->group }}"
-                                                style="width: 30px; height: auto;">
+                                            <img class="text-center" src="{{ $match->competition }}"
+                                                alt="{{ $match->group }}" style="width: 30px; height: auto;">
                                         </td>
                                         <td>
                                             @if ($match->status != 'SCHEDULED')
