@@ -134,7 +134,6 @@
                                         <td>
                                             <img src="{{ $match->competition }}" alt="{{ $match->group }}"
                                                 style="width: 30px; height: auto;">
-                                            {{ $match->group }}
                                         </td>
                                         <td>
                                             @if ($match->status != 'SCHEDULED')
