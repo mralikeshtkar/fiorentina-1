@@ -4999,7 +4999,7 @@ header>.container {
 .stage-tempo {
 
     background-color: #2b3239;
-    color: white;
+    color: white !important;
     padding: 7px 16px;
     border-radius: 14px;
     text-transform: uppercase;
