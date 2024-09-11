@@ -19,7 +19,37 @@
                         </button>
                     </h2>
                     <div id="collapse{{ $vote->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $vote->id }}" data-bs-parent="#votesAccordion">
-                        sdgsdg
+                       @foreach()
+                            <div class="accordion-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Player Name</th>
+                                        <th>Player Image</th>
+                                        <th>Vote Number</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="align-middle">{{ $vote->player->name }}</td>
+                                        <td>
+                                            @if($vote->player && $vote->player->image)
+                                                <img src="{{ $vote->player->image }}" width="50" height="50" alt="{{ $vote->player->name }}">
+                                            @else
+                                                <img src="{{ asset('path/to/default/image.jpg') }}" width="50" height="50" alt="No Image">
+                                            @endif
+                                        </td>
+                                        <td>{{ $vote->vote_number }}</td>
+                                        <td>{{ $vote->created_at }}</td>
+                                        <td>{{ $vote->updated_at }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
             @endforeach
