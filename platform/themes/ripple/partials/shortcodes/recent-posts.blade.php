@@ -248,6 +248,7 @@
                                 <span class="badge badge-warning"
                                     style="display: inline-block; width: 15px; height: 15px; background-color: #17a2b8; margin-right: 5px;"></span>
                                 Europa & Conference League
+                                <br>
                                 <span class="badge badge-danger"
                                     style="display: inline-block; width: 15px; height: 15px; background-color: #dc3545; margin-right: 5px;"></span>
                                 Serie B
