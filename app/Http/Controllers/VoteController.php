@@ -32,8 +32,8 @@ class VoteController extends BaseController
     public function index()
     {
         $this->pageTitle("Votes List");
-        $votes = Vote::with('player')->paginate(10);
-//        $votes = Vote::query()->latest()->paginate(20);
+//        $votes = Vote::with('player')->paginate(10);
+        $votes = Vote::query()->latest()->paginate(20);
         return view('votes.view', compact('votes'));
     }
     /**
