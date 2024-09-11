@@ -32,7 +32,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>{{ $vote->player->name ?? 'N/A' }}</td>
+                                    <td class="align-middle">{{ $vote->player->name }}</td>
                                     <td>
                                         @if($vote->player && $vote->player->image)
                                             <img src="{{ $vote->player->image }}" width="50" height="50" alt="{{ $vote->player->name }}">
