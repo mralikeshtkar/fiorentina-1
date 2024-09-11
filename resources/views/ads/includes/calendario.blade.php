@@ -84,7 +84,7 @@
                                             </div>
                                         </td>
 
-                                        <td>
+                                        <td class="text-center">
                                             @if ($match->status != 'SCHEDULED')
                                                 <span>
                                                     {{ $score['home'] ?? '-' }} -
