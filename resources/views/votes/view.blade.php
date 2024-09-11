@@ -34,14 +34,14 @@
                                 <tbody>
                                 <tr>
                                     <td>{{ $vote->player->name ?? 'N/A' }}</td>
-                                    <td>
-                                        @if($image = $vote->getImageUrl($vote->player->name))
-                                            <img src="{{ $image }}" width="50" height="50" alt="{{ $vote->player->name }}">
-                                        @else
-                                            <!-- Optionally display a placeholder or no image at all -->
-                                            <img src="path/to/default/image.jpg" width="50" height="50" alt="No Image">
-                                            @endif
-                                    </td>
+{{--                                    <td>--}}
+{{--                                        @if($image = $vote->getImageUrl($vote->player->name))--}}
+{{--                                            <img src="{{ $image }}" width="50" height="50" alt="{{ $vote->player->name }}">--}}
+{{--                                        @else--}}
+{{--                                            <!-- Optionally display a placeholder or no image at all -->--}}
+{{--                                            <img src="path/to/default/image.jpg" width="50" height="50" alt="No Image">--}}
+{{--                                            @endif--}}
+{{--                                    </td>--}}
                                     <td>{{ $vote->vote_number }}</td>
                                     <td>{{ $vote->created_at }}</td>
                                     <td>{{ $vote->updated_at }}</td>
