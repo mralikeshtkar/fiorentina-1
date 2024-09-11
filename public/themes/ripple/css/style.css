@@ -5005,3 +5005,8 @@ header>.container {
     text-transform: uppercase;
     font-size: medium;
 }
+
+/* Hide the entire parent .col-lg-12 */
+.col-lg-12:has(input[name="website"]) {
+    display: none;
+}
