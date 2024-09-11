@@ -19,7 +19,7 @@
                         </button>
                     </h2>
                     <div id="collapse{{ $vote->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $vote->id }}" data-bs-parent="#votesAccordion">
-                        
+                        sdgsdg
                     </div>
                 </div>
             @endforeach
