@@ -19,7 +19,7 @@
                     @if ($isHomeTeam)
                         <!-- Home Team Incident -->
                         <div class="incident-content d-flex align-items-center">
-                            <div class="incident-time" style="width: 50px;">
+                            <div class="incident-time">
                                 {{ $item->incident_time }}
                             </div>
                             <div class="incident-icon m-2">
@@ -67,19 +67,22 @@
                                 @endif
                             </div>
                             <div class="incident-icon ml-2">
-                                @if ($item->incident_type === 'GOAL')
+                                @if ($participants[0]['incident_type'] === 'GOAL')
                                     <i class="fa fa-futbol"></i>
-                                @elseif ($item->incident_type === 'YELLOW_CARD')
+                                @elseif ($participants[0]['incident_type'] === 'YELLOW_CARD')
                                     <i class="fa fa-square text-warning"></i>
-                                @elseif ($item->incident_type === 'RED_CARD')
+                                    @if (isset($participants[1]))
+                                        @if ($participants[1]['incident_type'] === 'RED_CARD')
+                                            <i class="fa fa-square text-danger"></i>
+                                        @endif
+                                    @endif
+                                @elseif ($participants[0]['incident_type'] === 'RED_CARD')
                                     <i class="fa fa-square text-danger"></i>
-                                @elseif ($item->incident_type === 'SUBSTITUTION')
+                                @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION_OUT')
                                     <i class="fa fa-exchange-alt"></i>
-                                @elseif ($item->incident_type === 'ASSISTANCE')
-                                    <i class="fa fa-hands-helping"></i>
                                 @endif
                             </div>
-                            <div class="incident-time ml-2" style="width: 50px;">
+                            <div class="incident-time">
                                 {{ $item->incident_time }}
                             </div>
                         </div>
