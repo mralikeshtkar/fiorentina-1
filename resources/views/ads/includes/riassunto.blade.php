@@ -66,7 +66,7 @@
                                         {{ $participants[0]['away_score'] }})</span>
                                 @endif
                             </div>
-                            <div class="incident-icon ml-2">
+                            <div class="incident-icon m-2">
                                 @if ($participants[0]['incident_type'] === 'GOAL')
                                     <i class="fa fa-futbol"></i>
                                 @elseif ($participants[0]['incident_type'] === 'YELLOW_CARD')
