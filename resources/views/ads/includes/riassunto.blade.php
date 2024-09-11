@@ -31,6 +31,7 @@
                                     <i class="fa fa-square text-danger"></i>
                                 @elseif ($participants[0]->incident_type === 'SUBSTITUTION')
                                     <i class="fa fa-exchange-alt"></i>
+                                @endif
                             </div>
                             <div class="incident-detail">
                                 @foreach ($participants as $participant)
