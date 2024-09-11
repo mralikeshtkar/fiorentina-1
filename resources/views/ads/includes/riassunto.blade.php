@@ -23,13 +23,13 @@
                                 {{ $item->incident_time }}
                             </div>
                             <div class="incident-icon mr-2">
-                                @if ($participants[0]->incident_type === 'GOAL')
+                                @if ($participants[0]['incident_type'] === 'GOAL')
                                     <i class="fa fa-futbol"></i>
-                                @elseif ($participants[0]->incident_type === 'YELLOW_CARD')
+                                @elseif ($participants[0[']incident_type'] === 'YELLOW_CARD')
                                     <i class="fa fa-square text-warning"></i>
-                                @elseif ($participants[0]->incident_type === 'RED_CARD')
+                                @elseif ($participants[0]['incident_type'] === 'RED_CARD')
                                     <i class="fa fa-square text-danger"></i>
-                                @elseif ($participants[0]->incident_type === 'SUBSTITUTION')
+                                @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION')
                                     <i class="fa fa-exchange-alt"></i>
                                 @endif
                             </div>
