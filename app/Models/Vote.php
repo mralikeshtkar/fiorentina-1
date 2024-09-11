@@ -39,6 +39,8 @@ class Vote extends BaseModel
         'starts_at' => 'datetime',
         'expires_at' => 'datetime',
     ];
+// Vote.php
+
 
 
 }
