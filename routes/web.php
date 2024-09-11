@@ -34,6 +34,13 @@ use App\Http\Controllers\PollController;
     Route::put('/admin/players/{player}', [PlayerController::class, 'update'])->name('players.update');
     Route::delete('/admin/players/{player}', [PlayerController::class, 'destroy'])->name('players.destroy');
 
+    Route::get('/admin/votes', [VoteController::class, 'index'])->name('votes.index');
+    Route::get('/admin/votes/create', [VoteController::class, 'create'])->name('votes.create');
+    Route::post('/admin/votes', [VoteController::class, 'store'])->name('votes.store');
+    Route::get('/admin/votes/{vote}/edit', [VoteController::class, 'edit'])->name('votes.edit');
+    Route::put('/admin/votes/{vote}', [VoteController::class, 'update'])->name('votes.update');
+    Route::delete('/admin/votes/{vote}', [VoteController::class, 'destroy'])->name('votes.destroy');
+
     Route::get('/polls/create', [PollController::class, 'create'])->name('polls.create');
     Route::post('/polls', [PollController::class, 'store'])->name('polls.store');
     Route::get('/polls', [PollController::class, 'index'])->name('polls.index');
@@ -42,5 +49,4 @@ use App\Http\Controllers\PollController;
     Route::get('/polls/{id}/export', [PollController::class, 'exportResults'])->name('polls.export');
     Route::get('/polls/{id}/edit', [PollController::class, 'edit'])->name('polls.edit'); // Assumes an edit method
     Route::delete('/polls/{id}', [PollController::class, 'destroy'])->name('polls.destroy');
-    
-    
+

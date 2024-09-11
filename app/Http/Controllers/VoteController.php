@@ -33,7 +33,7 @@ class VoteController extends BaseController
     {
         $this->pageTitle("Votes List");
         $votes = Vote::query()->latest()->paginate(20);
-        return view('players.view', compact('votes'));
+        return view('votes.view', compact('votes'));
     }
     /**
      * Store a newly created vote in storage.
