@@ -10,8 +10,15 @@ class MatchSummaryController extends Controller
 {
     public static function storeMatchSummary($matchId)
     {
+        $match=MatchSummary::where('match_id',$matchId)->first();
+        if(!$match){
         // Replace this with the actual API call
-        $response = Http::get('your-api-endpoint-for-match-summary');
+        $url="https://flashlive-sports.p.rapidapi.com/v1/events/summary?locale=it_IT&event_id={$matchId}";
+        $response = Http::withHeaders([
+            "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
+            "x-rapidapi-key" => '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb'
+        ])->get($url);        
+        
         $data = $response->json()['DATA'];
 
         foreach ($data as $stage) {
@@ -47,6 +54,7 @@ class MatchSummaryController extends Controller
                 );
             }
         }
+    }
 
         return response()->json(['success' => 'Match summary saved successfully.']);
     }
