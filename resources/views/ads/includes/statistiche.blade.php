@@ -15,14 +15,17 @@
                         } else {
                             $maxValue = $stat['value_home'] + $stat['value_away'];
                         }
-                        $homeWidth =
-                            is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
-                                ? ($stat['value_home'] / $maxValue) * 100
-                                : 0;
-                        $awayWidth =
-                            is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
-                                ? ($stat['away'] / $maxValue) * 100
-                                : 0;
+                        if ($maxValue != 0) {
+                            $homeWidth =
+                                is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
+                                    ? ($stat['value_home'] / $maxValue) * 100
+                                    : 0;
+                            $awayWidth =
+                                is_numeric($stat['value_home']) && is_numeric($stat['value_away'])
+                                    ? ($stat['away'] / $maxValue) * 100
+                                    : 0;
+                        }
+
                     @endphp
                     <div class="stat-bar-fill 
                 @if ($isHomeFiorentina) fiorentina-fill
