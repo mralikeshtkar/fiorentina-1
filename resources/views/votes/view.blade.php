@@ -33,6 +33,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
+                                    <pre>{{ dd($vote->player) }}</pre>
                                     <td>{{ $vote->player->name ?? 'N/A' }}</td>
 {{--                                    <td>--}}
 {{--                                        @if($image = $vote->getImageUrl($vote->player->name))--}}
