@@ -27,10 +27,9 @@
                                     <i class="fa fa-futbol"></i>
                                 @elseif ($participants[0]['incident_type'] === 'YELLOW_CARD')
                                     <i class="fa fa-square text-warning"></i>
-                                    @if ($participants[1]!=NULL)
+                                    @if (isset($participants[1]))
                                         @if ($participants[1]['incident_type'] === 'RED_CARD')
-                                        <i class="fa fa-square text-danger"></i>
-
+                                            <i class="fa fa-square text-danger"></i>
                                         @endif
                                     @endif
                                 @elseif ($participants[0]['incident_type'] === 'RED_CARD')
