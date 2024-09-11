@@ -4,13 +4,13 @@
 
     <div class="w-100">
         <div class="mb-3">
-            <a href="{{ route('players.create') }}" class="btn btn-primary">Crea</a>
+            <a href="{{ route('votes.create') }}" class="btn btn-primary">Crea</a>
         </div>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Player Name</th>
+                <th>game Name</th>
                 <th>Player Image</th>
                 <th>Vote Number</th>
                 <th>Created At</th>
