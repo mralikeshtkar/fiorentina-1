@@ -5010,3 +5010,93 @@ header>.container {
 .col-lg-12:has(input[name="website"]) {
     display: none;
 }
+
+
+
+/* Avatar Styling */
+.comment-item-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    display: block;
+    float: left;
+}
+
+/* Comment Item */
+.comment-item {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+}
+
+.comment-item-inner {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Author and Date */
+.comment-item-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.comment-item-author {
+    font-weight: bold;
+    color: #3498db;
+    margin: 0;
+}
+
+.comment-item-date {
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Comment Body */
+.comment-item-body p {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.comment-item-pending {
+    color: #999;
+    font-style: italic;
+}
+
+/* Footer Section */
+.comment-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+/* Reactions and Reply */
+.comment-reactions i {
+    margin-right: 5px;
+}
+
+.comment-item-reply {
+    display: flex;
+    align-items: center;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.comment-item-reply i {
+    margin-right: 5px;
+}
+
+/* Comment Replies */
+.comment-replies {
+    margin-left: 50px;
+    border-left: 2px solid #ddd;
+    padding-left: 15px;
+}
