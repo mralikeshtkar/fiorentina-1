@@ -40,7 +40,10 @@ class Vote extends BaseModel
         'expires_at' => 'datetime',
     ];
 // Vote.php
-
+    public function match()
+    {
+        return $this->belongsTo(Matches::class, 'match_id', 'id');
+    }
 
 
 }

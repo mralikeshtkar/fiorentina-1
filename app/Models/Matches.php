@@ -10,8 +10,8 @@ class Matches extends Model
     use HasFactory;
 
     protected $fillable = [
-        'match_id', 'venue', 'matchday', 'stage', 'group', 'match_date', 
-        'status', 'home_team', 'away_team', 'score', 'goals', 'penalties', 
+        'match_id', 'venue', 'matchday', 'stage', 'group', 'match_date',
+        'status', 'home_team', 'away_team', 'score', 'goals', 'penalties',
         'bookings', 'substitutions', 'odds', 'referees'
     ];
 
@@ -26,4 +26,10 @@ class Matches extends Model
         'odds' => 'array',
         'referees' => 'array'
     ];
+    // Match.php
+    public function players()
+    {
+        return $this->hasMany(Player::class, 'match_id', 'id');
+    }
+
 }
