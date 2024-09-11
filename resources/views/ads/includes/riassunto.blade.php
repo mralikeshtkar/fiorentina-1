@@ -1,7 +1,7 @@
 <div class="container">
-    @foreach ($matchSummary->groupBy('stage_name') as $stageName => $items)
+    @foreach ($summaries->groupBy('stage_name') as $stageName => $items)
         <div class="stage mb-4">
-            <h4>{{ $stageName }} -
+            <h4>{{ $stageName }}
                 @php
                     $firstIncident = $items->first();
                     $participants = json_decode($firstIncident->incident_participants, true);
