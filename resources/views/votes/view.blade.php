@@ -14,38 +14,42 @@
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $vote->id }}" aria-expanded="false" aria-controls="collapse{{ $vote->id }}">
                             <div class="w-100 d-flex justify-content-between">
                                 <span>ID: {{ $vote->id }}</span>
-                                <span>Game: {{ $vote->match_id }}</span>
+                                <span>Game: {{ $vote->match->name ?? 'N/A' }}</span> <!-- Show 'N/A' if match is null -->
+                                <span>Vote Number: {{ $vote->vote_number }}</span>
                             </div>
                         </button>
                     </h2>
                     <div id="collapse{{ $vote->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $vote->id }}" data-bs-parent="#votesAccordion">
                         <div class="accordion-body">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Player Name</th>
-                                    <th>Player Image</th>
-                                    <th>Vote Number</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>{{ $vote->player->name ?? 'N/A' }}</td>
-                                    <td>
-                                        @if($vote->player && $vote->player->image)
-                                            <img src="{{ $vote->player->image }}" width="50" height="50" alt="{{ $vote->player->name }}">
-                                        @else
-                                            <img src="{{ asset('path/to/default/image.jpg') }}" width="50" height="50" alt="No Image">
-                                        @endif
-                                    </td>
-                                    <td>{{ $vote->vote_number }}</td>
-                                    <td>{{ $vote->created_at }}</td>
-                                    <td>{{ $vote->updated_at }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <!-- Check if match exists before trying to display players -->
+                            @if($vote->match)
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Player Name</th>
+                                        <th>Player Image</th>
+                                        <th>Score</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($vote->match->players as $player) <!-- Load all players in this match -->
+                                    <tr>
+                                        <td>{{ $player->name }}</td>
+                                        <td>
+                                            @if($player->image)
+                                                <img src="{{ $player->image }}" width="50" height="50" alt="{{ $player->name }}">
+                                            @else
+                                                <img src="{{ asset('path/to/default/image.jpg') }}" width="50" height="50" alt="No Image">
+                                            @endif
+                                        </td>
+                                        <td>{{ $player->score ?? 'N/A' }}</td> <!-- Assuming the player model has a score -->
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p>No players available for this game.</p>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 class Vote extends BaseModel
 {
-    protected $table = 'players';
+    protected $table = 'votes';
 
     protected $fillable = [
         'title',
@@ -39,6 +39,11 @@ class Vote extends BaseModel
         'starts_at' => 'datetime',
         'expires_at' => 'datetime',
     ];
+// Vote.php
+    public function match()
+    {
+        return $this->belongsTo(Matches::class, 'match_id', 'id');
+    }
 
 
 }
