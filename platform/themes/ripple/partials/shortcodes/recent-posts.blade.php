@@ -197,7 +197,7 @@
                                             if ($rank <= 4) {
                                                 $labelClass = 'badge badge-success'; // First place
                                             } elseif ($rank == 5) {
-                                                $labelClass = 'badge badge-danger'; // Top 4
+                                                $labelClass = 'badge badge-warning'; // Top 4
                                             } elseif ($rank == 6) {
                                                 $labelClass = 'badge badge-warning'; // Top 6
                                             } elseif ($rank >= 18) {
@@ -241,6 +241,18 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="legend">
+                                <span class="badge badge-success"
+                                    style="display: inline-block; width: 15px; height: 15px; background-color: #28a745; margin-right: 5px;"></span>
+                                Champions League
+                                <span class="badge badge-warning"
+                                    style="display: inline-block; width: 15px; height: 15px; background-color: #17a2b8; margin-right: 5px;"></span>
+                                Europa & Conference League
+                                <span class="badge badge-danger"
+                                    style="display: inline-block; width: 15px; height: 15px; background-color: #dc3545; margin-right: 5px;"></span>
+                                Serie B
+                            </div>
+
                         </section>
                     </div>
 
