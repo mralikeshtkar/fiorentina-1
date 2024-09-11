@@ -19,14 +19,17 @@
                     @if ($isHomeTeam)
                         <!-- Home Team Incident -->
                         <div class="incident-content d-flex align-items-center">
-                            <div class="incident-time m-2" style="width: 50px;">
+                            <div class="incident-time" style="width: 50px;">
                                 {{ $item->incident_time }}
                             </div>
-                            <div class="incident-icon mr-2">
+                            <div class="incident-icon m-2">
                                 @if ($participants[0]['incident_type'] === 'GOAL')
                                     <i class="fa fa-futbol"></i>
                                 @elseif ($participants[0]['incident_type'] === 'YELLOW_CARD')
                                     <i class="fa fa-square text-warning"></i>
+                                    @if ($participants[1]['incident_type' === RED_CARD])
+                                        <i class="fa fa-square text-danger"></i>
+                                    @endif
                                 @elseif ($participants[0]['incident_type'] === 'RED_CARD')
                                     <i class="fa fa-square text-danger"></i>
                                 @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION_OUT')
