@@ -37,9 +37,13 @@
                                 @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION_OUT')
                                     <i class="fa fa-exchange-alt"></i>
                                 @elseif ($participants[0]['incident_type'] === 'PENALTY_MISSED')
-                                    <i class="fa fa-xmark text-danger"></i>
+                                    @if ($participants[1]['incident_type'] === 'PENALTY_MISSED')
+                                        <i class="fa fa-xmark text-danger"></i>
+                                    @endif
                                 @elseif ($participants[0]['incident_type'] === 'PENALTY_SCORED')
-                                    <i class="fa fa-futbol "></i>
+                                    @if ($participants[1]['incident_type'] === 'PENALTY_SCORED')
+                                        <i class="fa fa-futbol "></i>
+                                    @endif
                                 @endif
                             </div>
                             <div class="incident-detail">
