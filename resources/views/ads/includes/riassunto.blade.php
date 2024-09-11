@@ -40,12 +40,16 @@
                             </div>
                             <div class="incident-detail">
                                 @foreach ($participants as $participant)
-                                    <strong>{{ $participant['participant_name'] }}</strong>
+                                    @if (participant['incident_type'] == 'ASSISTANCE')
+                                        <span>{{ $participant['participant_name'] }}</span>
+                                    @else
+                                        <strong>{{ $participant['participant_name'] }}</strong>
+                                    @endif
                                     @if (!$loop->last)
                                         ,
                                     @endif
                                 @endforeach
-                                @if ($item->incident_type === 'GOAL' && isset($participants[0]['home_score']) && isset($participants[0]['away_score']))
+                                @if ($item->incident_type === 'GOAL' && isset($item['home_score']) && isset($item['away_score']))
                                     <span>({{ $participants[0]['home_score'] }} -
                                         {{ $participants[0]['away_score'] }})</span>
                                 @endif
