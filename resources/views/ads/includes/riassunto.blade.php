@@ -19,7 +19,7 @@
                     @if ($isHomeTeam)
                         <!-- Home Team Incident -->
                         <div class="incident-content d-flex align-items-center">
-                            <div class="incident-time mr-2" style="width: 50px;">
+                            <div class="incident-time m-2" style="width: 50px;">
                                 {{ $item->incident_time }}
                             </div>
                             <div class="incident-icon mr-2">
@@ -29,7 +29,7 @@
                                     <i class="fa fa-square text-warning"></i>
                                 @elseif ($participants[0]['incident_type'] === 'RED_CARD')
                                     <i class="fa fa-square text-danger"></i>
-                                @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION')
+                                @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION_OUT')
                                     <i class="fa fa-exchange-alt"></i>
                                 @endif
                             </div>
