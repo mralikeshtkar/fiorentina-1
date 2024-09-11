@@ -15,15 +15,7 @@
                             <div class="w-100 d-flex justify-content-between">
                                 <span>ID: {{ $vote->id }}</span>
                                 <span>Game: {{ $vote->match_id }}</span>
-                                <span>Name: {{ $vote->name }}</span>
-                                <div>
-                                    <a href="{{ route('votes.edit', $vote->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                    <form action="{{ route('votes.destroy', $vote->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </div>
+
                             </div>
                         </button>
                     </h2>
@@ -41,7 +33,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>{{ $vote->name }}</td>
+                                    <td>{{ $vote->player->name }}</td>
                                     <td>
                                         @if( $vote->getImageUrl( $vote->name))
                                             <img src="{{ $vote->getImageUrl( $vote->name) }}" width="50" height="50" alt="{{ $vote->name }}">
