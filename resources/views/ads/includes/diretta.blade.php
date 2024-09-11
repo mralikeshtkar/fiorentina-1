@@ -4,9 +4,11 @@
     use App\Models\MatchLineups;
     use App\Models\MatchStatics;
     use App\Models\MatchCommentary;
+    use App\Models\MatchSummary;
     use App\Http\Controllers\MatchLineupsController;
     use App\Http\Controllers\MatchStaticsController;
     use App\Http\Controllers\MatchCommentaryController;
+    use App\Http\Controllers\MatchSummaryController;
     $matchId = request()->query('match_id');
     if ($matchId) {
         $match = Calendario::where('match_id', $matchId)->first();
@@ -14,10 +16,12 @@
         MatchStaticsController::storeMatchStatistics($matchId);
         MatchLineupsController::storeLineups($matchId);
         MatchCommentaryController::storeCommentaries($matchId);
+        MatchSummaryController::storeMatchSummary($matchId);
         // Filter the lineups by formation_name
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
         $commentaries = MatchCommentary::where('match_id', $matchId)->get();
+        $summaries = MatchSummary::where('match_id', $matchId)->get();
 
         $groupedLineups = $lineups
             ->filter(function ($lineup) {
@@ -94,7 +98,8 @@
             @include('ads.includes.formazioni', ['groupedLineups' => $groupedLineups])
         </div>
         <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
-            {{-- @include('ads.includes.riassunto') --}}
+            @include('ads.includes.riassunto', ['summaries' => $summaries])
+
         </div>
         <div class="tab-pane fade" id="statistiche" role="tabpanel" aria-labelledby="statistiche-tab">
             @include('ads.includes.statistiche', [
@@ -102,7 +107,6 @@
                 'isHomeFiorentina',
                 $isHomeFiorentina,
             ])
-            {{-- @include('ads.includes.statistiche') --}}
         </div>
 
         <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
