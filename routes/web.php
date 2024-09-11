@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\NotificaController;
+
 
 
     Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');
@@ -50,3 +52,8 @@ use App\Http\Controllers\PollController;
     Route::get('/polls/{id}/edit', [PollController::class, 'edit'])->name('polls.edit'); // Assumes an edit method
     Route::delete('/polls/{id}', [PollController::class, 'destroy'])->name('polls.destroy');
 
+
+
+
+
+Route::post('/notifica/store', [NotificaController::class, 'store']);

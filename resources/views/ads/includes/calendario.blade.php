@@ -141,8 +141,8 @@
                                                 <a class="btn btn-p"
                                                     href="/diretta?match_id={{ $match->match_id }}">Diretta</a>
                                             @else
-                                                <a class="btn btn-p-outline"
-                                                    href="/notifica?match_id={{ $match->match_id }}">Notifica</a>
+                                                <a class="btn btn-p-outline notifica-btn"
+                                                    data-match-id="{{ $match->match_id }}">Notifica</a>
                                             @endif
                                         </td>
 
@@ -155,7 +155,71 @@
             </div>
 
         </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.notifica-btn').forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const matchId = this.getAttribute('data-match-id');
+
+                        // Trigger the SweetAlert modal
+                        Swal.fire({
+                            title: 'Inserisci la tua email',
+                            input: 'email',
+                            inputPlaceholder: 'Inserisci il tuo indirizzo email',
+                            showCancelButton: true,
+                            confirmButtonText: 'Invia',
+                            cancelButtonText: 'Annulla',
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return 'Devi inserire una email valida!';
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                const email = result.value;
+
+                                // Send the data via AJAX
+                                fetch('/notifica/store', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for Laravel
+                                        },
+                                        body: JSON.stringify({
+                                            email: email,
+                                            match_id: matchId
+                                        })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Successo!',
+                                                'La tua notifica è stata impostata.',
+                                                'success');
+                                        } else {
+                                            Swal.fire('Errore!',
+                                                'Qualcosa è andato storto.', 'error');
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        Swal.fire('Errore!',
+                                            'Errore di connessione, riprova più tardi.',
+                                            'error');
+                                    });
+                            }
+                        });
+                    });
+                });
+            });
+
+
+
+
+
             let sortOrder = {}; // Keeps track of the sort order for each column
 
             function sortTable(column) {
