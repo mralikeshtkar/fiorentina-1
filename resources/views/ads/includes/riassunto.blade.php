@@ -37,6 +37,7 @@
                                 @elseif ($participants[0]['incident_type'] === 'SUBSTITUTION_OUT')
                                     <i class="fa fa-exchange-alt"></i>
                                 @elseif ($participants[0]['incident_type'] === 'PENALTY_KICK')
+                                    @dd($participants[1]['incident_type'])
                                     @if ($participants[1]['incident_type'] === 'PENALTY_MISSED')
                                         <i class="fa fa-xmark text-danger"></i>
                                     @endif
