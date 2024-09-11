@@ -19,30 +19,30 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($players as $player)
+            @foreach( $votes as $vote)
                 <tr>
-                    <td class="align-middle">{{ $player->id }}</td>
-                    <td class="align-middle">{{ $player->name }}</td>
+                    <td class="align-middle">{{ $vote->id }}</td>
+                    <td class="align-middle">{{ $vote->name }}</td>
                     <td class="align-middle">
-                        @if($player->getImageUrl($player->name))
-                            <img src="{{ $player->getImageUrl($player->name) }}" width="50" height="50" alt="{{ $player->name }}">
+                        @if( $vote->getImageUrl( $vote->name))
+                            <img src="{{ $vote->getImageUrl( $vote->name) }}" width="50" height="50" alt="{{ $vote->name }}">
                         @endif
 
-{{--                    @if($player->getImageUrl())--}}
-{{--                            <img src="{{ $player->getImageUrl() }}" width="140" alt="{{ $player->title }}">--}}
+{{--                    @if( $vote->getImageUrl())--}}
+{{--                            <img src="{{ $vote->getImageUrl() }}" width="140" alt="{{ $vote->title }}">--}}
 {{--                        @endif--}}
-{{--                        @if($player->getImageUrl($player->player->name))--}}
-{{--                            <img src="{{ $player->getImageUrl($player->player->name) }}" width="50" height="50" alt="{{ $player->title }}">--}}
+{{--                        @if( $vote->getImageUrl( $vote->player->name))--}}
+{{--                            <img src="{{ $vote->getImageUrl( $vote->player->name) }}" width="50" height="50" alt="{{ $vote->title }}">--}}
 {{--                        @endif--}}
                     </td>
 
-                    <td class="align-middle">{{ $player->vote_number }}</td>
-                    <td class="align-middle">{{ $player->created_at }}</td>
-                    <td class="align-middle">{{ $player->updated_at }}</td>
+                    <td class="align-middle">{{ $vote->vote_number }}</td>
+                    <td class="align-middle">{{ $vote->created_at }}</td>
+                    <td class="align-middle">{{ $vote->updated_at }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
-                            <a href="{{ route('players.edit', $player->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('players.destroy', $player->id) }}" method="post">
+                            <a href="{{ route('votes.edit', $vote->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('votes.destroy', $vote->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -54,7 +54,7 @@
             </tbody>
         </table>
         <div class="w-100">
-            {{ $players->links() }}
+            {{ $votes->links() }}
         </div>
     </div>
 

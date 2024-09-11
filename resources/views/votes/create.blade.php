@@ -1,7 +1,7 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
-    <form action="{{ route('players.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('votes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
         <div class="row">
