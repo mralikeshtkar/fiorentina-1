@@ -45,10 +45,7 @@
                             <a
                                 href="{{ route('fob-comment.public.comments.reply', $comment) }}"
                                 class="fob-comment-item-reply"
-                                style="
-    background-color: red;
 
-">
                                 data-comment-id="{{ $comment->getKey() }}"
                                 data-reply-to="{{ $replyLabel = trans('plugins/fob-comment::comment.front.list.reply_to', ['name' => $comment->name]) }}"
                                 data-cancel-reply="{{ trans('plugins/fob-comment::comment.front.list.cancel_reply') }}"
