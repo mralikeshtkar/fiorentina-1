@@ -80,14 +80,14 @@
 
 
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
         <h5 class="mt-5 pl-5 text-dark text-bold">Panchina</h5>
         <table class="table table-responsive">
 
             <tbody>
                 @foreach ($panchina as $panchinaPlayer)
                     <tr>
-                        <td>
+                        <td class="text-left">
 
                             @if ($panchinaPlayer->player_image)
                                 <img src="{{ $panchinaPlayer->player_image }}"
@@ -125,14 +125,14 @@
     </div>
 
 
-    <div class="col-4">
+    <div class="col-md-4">
         <h5 class="mt-5 pl-5 text-dark text-bold">Allenatore</h5>
         <table class="table table-responsive">
 
             <tbody>
                 @foreach ($Allenatori as $Allenatore)
                     <tr>
-                        <td>
+                        <td class="text-left">
 
                             @if ($Allenatore->Allenatore)
                                 <img src="{{ $panchinaPlayer->player_image }}"
