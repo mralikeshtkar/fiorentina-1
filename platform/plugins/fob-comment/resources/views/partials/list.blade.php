@@ -50,7 +50,7 @@
                                 data-reply-to="{{ $replyLabel = trans('plugins/fob-comment::comment.front.list.reply_to', ['name' => $comment->name]) }}"
                                 data-cancel-reply="{{ trans('plugins/fob-comment::comment.front.list.cancel_reply') }}"
                                 aria-label="{{ $replyLabel }}"
-                            >
+                            ><i class="fa fa-reply" style="margin-right: 5px; font-size: 14px;"></i>
                                 {{ trans('plugins/fob-comment::comment.front.list.reply') }}
                             </a>
                         @endif
