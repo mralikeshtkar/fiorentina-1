@@ -24,11 +24,17 @@
                 <div class="fob-comment-item-content">
                     <div class="fob-comment-item-footer">
                         <div class="fob-comment-item-info">
+                            <!-- Admin Badge -->
                             @if(\FriendsOfBotble\Comment\Support\CommentHelper::isDisplayAdminBadge() && $comment->is_admin)
-                                <span class="fob-comment-item-admin-badge">
-                                    {{ trans('plugins/fob-comment::comment.front.admin_badge') }}
-                                </span>
+                                <span class="badge badge-admin" style="background-color: #ffc107; padding: 3px 5px; border-radius: 3px; font-size: 12px; color: #fff;">
+                    {{ trans('plugins/fob-comment::comment.front.admin_badge') }}
+                </span>
                             @endif
+{{--                            @if(\FriendsOfBotble\Comment\Support\CommentHelper::isDisplayAdminBadge() && $comment->is_admin)--}}
+{{--                                <span class="fob-comment-item-admin-badge">--}}
+{{--                                    {{ trans('plugins/fob-comment::comment.front.admin_badge') }}--}}
+{{--                                </span>--}}
+{{--                            @endif--}}
                             @if ($comment->website)
                                 <a href="{{ $comment->website }}" class="fob-comment-item-author" target="_blank">
                                     <h4 class="fob-comment-item-author">{{ $comment->name }}</h4>
