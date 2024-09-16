@@ -23,7 +23,7 @@
                 </div>
                 <div class="fob-comment-item-content">
                     <div class="fob-comment-item-footer">
-                        <div class="fob-comment-item-info" style="border: red 1px">
+                        <div class="fob-comment-item-info" >
                             <!-- Admin Badge -->
 
                             @if(\FriendsOfBotble\Comment\Support\CommentHelper::isDisplayAdminBadge() && $comment->is_admin)
