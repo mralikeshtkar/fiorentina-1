@@ -6,6 +6,22 @@
     }
 @endphp
 
+<style>
+
+    .fob-comment-item-reply {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        color: #333;
+        padding: 5px 10px;
+        font-size: 12px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+</style>
+
 <div class="fob-comment-list">
     @foreach($comments as $comment)
         @continue(! $comment->is_approved && $comment->ip_address !== request()->ip())
