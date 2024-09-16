@@ -90,97 +90,99 @@
 {{--    </div>--}}
 {{--@endif--}}
 @php
-    // Default pagination view setup if the theme pagination view is not available.
     $currentIndent ??= 0;
 
-    if (! view()->exists($paginationView = Theme::getThemeNamespace('partials.pagination'))) {
+    if (!view()->exists($paginationView = Theme::getThemeNamespace('partials.pagination'))) {
         $paginationView = 'pagination::bootstrap-5';
     }
 @endphp
 
-<div class="fob-comment-list">
-    @foreach($comments as $comment)
-        @continue(! $comment->is_approved && $comment->ip_address !== request()->ip())
+    <!-- Comment List -->
+<div class="fob-comment-list" style="padding: 20px;">
+    @foreach ($comments as $comment)
+        @continue(!$comment->is_approved && $comment->ip_address !== request()->ip())
 
-        <div id="comment-{{ $comment->getKey() }}" class="comment-item">
-            <div class="comment-item-inner">
-                <!-- Avatar section -->
-                <div class="comment-item-avatar">
+        <!-- Individual Comment -->
+        <div id="comment-{{ $comment->getKey() }}" class="fob-comment-item" style="margin-bottom: 20px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px;">
+
+            <!-- Comment Header (Avatar, Name, and Date) -->
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <!-- Avatar -->
+                <div class="fob-comment-item-avatar" style="margin-right: 15px;">
                     @if ($comment->website)
                         <a href="{{ $comment->website }}" target="_blank">
-                            <img src="{{ $comment->avatar_url }}" alt="{{ $comment->name }}">
+                            <img src="{{ $comment->avatar_url }}" alt="{{ $comment->name }}" style="width: 50px; height: 50px; border-radius: 50%;">
                         </a>
                     @else
-                        <img src="{{ $comment->avatar_url }}" alt="{{ $comment->name }}">
+                        <img src="{{ $comment->avatar_url }}" alt="{{ $comment->name }}" style="width: 50px; height: 50px; border-radius: 50%;">
                     @endif
                 </div>
 
-                <!-- Comment content -->
-                <div class="comment-item-content">
-                    <div class="comment-item-body">
-                        @if (! $comment->is_approved)
-                            <em class="comment-item-pending">
-                                {{ __('Your comment is awaiting approval') }}
-                            </em>
-                        @endif
-
-                        <!-- Comment content -->
-                        @if($comment->is_admin)
-                            {!! clean($comment->formatted_content) !!}
-                        @else
-                            <p>{{ $comment->formatted_content }}</p>
-                        @endif
-                    </div>
-
-                    <!-- Footer with author, date, and reply link -->
-                    <div class="comment-item-footer">
-                        <div class="comment-item-info">
-                            @if($comment->is_admin)
-                                <span class="comment-item-admin-badge">
-                                    {{ __('Admin') }}
-                                </span>
-                            @endif
-                            @if ($comment->website)
-                                <a href="{{ $comment->website }}" class="comment-item-author" target="_blank">
-                                    <h4 class="comment-item-author">{{ $comment->name }}</h4>
-                                </a>
-                            @else
-                                <h4 class="comment-item-author">{{ $comment->name }}</h4>
-                            @endif
-                            <span class="comment-item-date">{{ $comment->created_at->diffForHumans() }}</span>
-                        </div>
-
-                        <!-- Reply button -->
-                        @if ($comment->is_approved)
-                            <a
-                                href="{{ route('comments.reply', $comment) }}"
-                                class="comment-item-reply"
-                                data-comment-id="{{ $comment->getKey() }}"
-                                data-reply-to="{{ __('Reply to :name', ['name' => $comment->name]) }}"
-                                data-cancel-reply="{{ __('Cancel reply') }}"
-                                aria-label="{{ __('Reply to :name', ['name' => $comment->name]) }}"
-                            >
-                                {{ __('Reply') }}
-                            </a>
-                        @endif
-                    </div>
+                <!-- Name and Date -->
+                <div style="flex-grow: 1;">
+                    <span style="font-weight: bold; font-size: 16px;">{{ $comment->name }}</span>
+                    <span style="font-size: 12px; color: #999; display: block;">{{ $comment->created_at->format('d F Y H:i') }}</span>
                 </div>
             </div>
 
-            <!-- Nested replies -->
-            @if ($comment->replies->count())
-                @include('partials.comment-list', [
+            <!-- Comment Content -->
+            <div class="fob-comment-item-content" style="margin-bottom: 10px;">
+                @if (!$comment->is_approved)
+                    <em class="fob-comment-item-pending" style="font-style: italic; color: #999;">
+                        {{ trans('plugins/fob-comment::comment.front.list.waiting_for_approval_message') }}
+                    </em>
+                @endif
+
+                <p style="font-size: 14px; margin-bottom: 0;">{{ $comment->formatted_content }}</p>
+            </div>
+
+            <!-- Comment Footer (Likes, Dislikes, and Reply) -->
+            <div class="fob-comment-item-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <!-- Like and Dislike -->
+                    <span style="margin-right: 10px;">
+                        <i class="fa fa-thumbs-up" style="color: green;"></i> 1
+                    </span>
+                    <span style="margin-right: 10px;">
+                        <i class="fa fa-thumbs-down" style="color: red;"></i> 0
+                    </span>
+
+                    <!-- Reply Button -->
+                    @if ($comment->is_approved)
+                        <a href="{{ route('fob-comment.public.comments.reply', $comment) }}" class="fob-comment-item-reply" style="color: #007bff; text-decoration: none;">
+                            <i class="fa fa-reply" style="margin-right: 5px;"></i>
+                            {{ trans('plugins/fob-comment::comment.front.list.reply') }}
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <!-- Nested Replies -->
+        @if ($comment->replies->count())
+            <div style="margin-left: {{ 20 * $currentIndent }}px;">
+                @include('plugins/fob-comment::partials.list', [
                     'comments' => $comment->replies,
                     'currentIndent' => $currentIndent + 1,
                 ])
-            @endif
-        </div>
+            </div>
+        @endif
     @endforeach
+</div>
+
+<!-- Comment Form -->
+<div class="fob-comment-form" style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
+    <form action="{{ route('post.comment') }}" method="POST">
+        @csrf
+        <textarea class="form-control" name="comment" placeholder="Scrivi un commento..." style="width: 100%; height: 100px; margin-bottom: 10px;"></textarea>
+        <input type="email" class="form-control" name="email" placeholder="Email" style="width: 100%; margin-bottom: 10px;">
+        <button type="submit" class="btn btn-success" style="width: 100%; background-color: #28a745; border-color: #28a745;">Pubblica commento</button>
+    </form>
 </div>
 
 <!-- Pagination -->
 @if ($comments instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator && $comments->hasPages())
-    <div class="comment-pagination">
+    <div class="fob-comment-pagination" style="text-align: center; margin-top: 20px;">
         {{ $comments->appends(request()->except('page'))->links($paginationView) }}
     </div>
 @endif
