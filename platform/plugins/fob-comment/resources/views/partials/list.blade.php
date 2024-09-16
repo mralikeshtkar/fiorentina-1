@@ -44,17 +44,10 @@
                         @if ($comment->is_approved)
                             <a
                                 href="{{ route('fob-comment.public.comments.reply', $comment) }}"
-{{--                                class="fob-comment-item-reply"--}}
+                                class="fob-comment-item-reply"
                                 style="
     background-color: red;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    color: #333;
-    padding: 5px 10px;
-    font-size: 12px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
+
 ">
                                 data-comment-id="{{ $comment->getKey() }}"
                                 data-reply-to="{{ $replyLabel = trans('plugins/fob-comment::comment.front.list.reply_to', ['name' => $comment->name]) }}"
