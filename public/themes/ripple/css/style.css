@@ -4809,7 +4809,10 @@ header>.container {
         /* Remove border for a cleaner look */
     }
 
-
+    .post-group--hero .post-group__left,
+    .post-group__right .post-group__item {
+        margin-bottom: 40px;
+    }
 
     .calendario thead {
         display: none;
