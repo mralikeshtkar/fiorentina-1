@@ -118,7 +118,7 @@
                                 <span class="rating-table" style="background-color: #ffffff00; color:black">
                                     -
                                 </span>
-
+                            @endif
                         </td>
                     </tr>
                 @endforeach
