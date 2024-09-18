@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <table class="table table-striped table-responsive" id="sortableTable">
+                        <table class="calendario table table-striped table-responsive" id="sortableTable">
                             <thead>
                                 <tr>
                                     <th data-column="data" onclick="sortTable('data')">Data <span
