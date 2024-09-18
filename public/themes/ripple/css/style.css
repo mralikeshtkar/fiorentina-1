@@ -4796,12 +4796,12 @@ header>.container {
 
 /* For medium and smaller screens, stack content vertically */
 @media (max-width: 767px) {
-    .table td {
+    .calendario td {
         text-align: center;
     }
 
-    .table td,
-    .table th {
+    .calendario td,
+    .calendario th {
         display: block;
         width: 100%;
         padding: 10px;
@@ -4811,13 +4811,13 @@ header>.container {
 
 
 
-    .table thead {
+    .calendario thead {
         display: none;
         /* Hide table headers on smaller screens */
     }
 
     /* Add labels for each data */
-    .table td::before {
+    .calendario td::before {
         content: attr(data-label);
         font-weight: bold;
         display: block;
