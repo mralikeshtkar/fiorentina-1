@@ -19,7 +19,9 @@
         display: inline-flex;
         align-items: center;
     }
-
+.fob-comment-item-inner{
+border: 1px solid gray;
+}
 </style>
 
 <div class="fob-comment-list">
