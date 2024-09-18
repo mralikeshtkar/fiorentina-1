@@ -5024,7 +5024,7 @@ header>.container {
     border-radius: 3px;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:540px) {
 
     .post-group--hero .post-group__left,
     .post-group__right .post-group__item {
