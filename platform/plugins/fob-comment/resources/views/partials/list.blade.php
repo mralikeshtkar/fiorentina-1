@@ -18,8 +18,12 @@
         text-decoration: none;
         display: inline-flex;
         align-items: center;
+        margin: 10px;
     }
-
+.fob-comment-item-inner{
+border: 1px solid gray;
+    border-radius: 20px;
+}
 </style>
 
 <div class="fob-comment-list">
