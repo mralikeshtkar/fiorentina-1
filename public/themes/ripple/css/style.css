@@ -4809,10 +4809,7 @@ header>.container {
         /* Remove border for a cleaner look */
     }
 
-    .post-group--hero .post-group__left,
-    .post-group__right .post-group__item {
-        margin-bottom: 40px;
-    }
+
 
     .calendario thead {
         display: none;
@@ -5025,4 +5022,12 @@ header>.container {
 .legend span {
     display: inline-block;
     border-radius: 3px;
+}
+
+@media screen and (max-width:480px) {
+
+    .post-group--hero .post-group__left,
+    .post-group__right .post-group__item {
+        margin-bottom: 50px;
+    }
 }
