@@ -241,7 +241,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="legend">
+                            <div class="legend mb-4">
                                 <span class="badge badge-success"
                                     style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
                                 Champions League
