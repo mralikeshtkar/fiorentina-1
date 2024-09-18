@@ -5030,6 +5030,10 @@ header>.container {
     .post-group__right .post-group__item {
         margin-bottom: 50px;
     }
+
+    .stat-label {
+        left: 42%;
+    }
 }
 
 .text-truncate {
