@@ -21,6 +21,7 @@
     }
 .fob-comment-item-inner{
 border: 1px solid gray;
+    border-radius: 20px;
 }
 </style>
 
