@@ -50,7 +50,7 @@
             @foreach ($playerRows as $row)
                 <div class="row justify-content-around mb-4">
                     @foreach ($row as $player)
-                        <div class="col-2 text-center">
+                        <div class="col text-center">
                             <div class="player-container">
                                 <div class="player-lineup">
                                     <img class="player-lineup-img" src="{{ $player->player_image }}"
@@ -87,7 +87,7 @@
             <tbody>
                 @foreach ($panchina as $panchinaPlayer)
                     <tr>
-                        <td class="text-left">
+                        <td style="text-align:left">
 
                             @if ($panchinaPlayer->player_image)
                                 <img src="{{ $panchinaPlayer->player_image }}"
@@ -115,8 +115,10 @@
                                     {{ $panchinaPlayer->player_rating }}
                                 </span>
                             @else
-                                -
-                            @endif
+                                <span class="rating-table" style="background-color: #ffffff00; color:black">
+                                    -
+                                </span>
+
                         </td>
                     </tr>
                 @endforeach
@@ -132,7 +134,7 @@
             <tbody>
                 @foreach ($Allenatori as $Allenatore)
                     <tr>
-                        <td class="text-left">
+                        <td style="text-align: left">
 
                             @if ($Allenatore->Allenatore)
                                 <img src="{{ $panchinaPlayer->player_image }}"
