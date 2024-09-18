@@ -246,7 +246,7 @@
                                     style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
                                 Champions League
                                 <span class="badge badge-warning"
-                                    style="display: inline-block; width: 15px; height: 15px margin-right: 5px;"></span>
+                                    style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
                                 Europa & Conference League
                                 <br>
                                 <span class="badge badge-danger"
