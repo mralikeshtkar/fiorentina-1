@@ -40,7 +40,7 @@
                 <!-- Ticket Buttons -->
                 <div class="col-md-3">
                     <div class="d-grid">
-                        <a href="#" class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: none;">GUARDA
+                        <a href="#" class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: auto;">GUARDA
                             ORA!</a>
                     </div>
                 </div>
