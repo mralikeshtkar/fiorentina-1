@@ -6,6 +6,22 @@
     }
 @endphp
 
+<style>
+
+    .fob-comment-item-reply {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        color: #333;
+        padding: 5px 10px;
+        font-size: 12px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+</style>
+
 <div class="fob-comment-list">
     @foreach($comments as $comment)
         @continue(! $comment->is_approved && $comment->ip_address !== request()->ip())
@@ -23,7 +39,7 @@
                 </div>
                 <div class="fob-comment-item-content">
                     <div class="fob-comment-item-footer">
-                        <div class="fob-comment-item-info">
+                        <div class="fob-comment-item-info bg-blue" >
                             <!-- Admin Badge -->
 
                             @if(\FriendsOfBotble\Comment\Support\CommentHelper::isDisplayAdminBadge() && $comment->is_admin)
@@ -50,7 +66,7 @@
                                 data-reply-to="{{ $replyLabel = trans('plugins/fob-comment::comment.front.list.reply_to', ['name' => $comment->name]) }}"
                                 data-cancel-reply="{{ trans('plugins/fob-comment::comment.front.list.cancel_reply') }}"
                                 aria-label="{{ $replyLabel }}"
-                            >
+                            ><i class="fa fa-reply" style="margin-right: 5px; font-size: 14px;"></i>
                                 {{ trans('plugins/fob-comment::comment.front.list.reply') }}
                             </a>
                         @endif
