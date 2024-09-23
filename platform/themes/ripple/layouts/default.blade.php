@@ -19,7 +19,7 @@
                 <div class="col-lg-4">
                     {!! Theme::partial('sidebar') !!}
                 </div>
-            @elseif (Request::path() !== 'diretta')
+            @elseif (Request::path() == 'diretta')
                 @include('ads.includes.livechat')
             @endif
         </div>
