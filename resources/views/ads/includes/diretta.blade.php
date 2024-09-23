@@ -17,7 +17,7 @@
         MatchLineupsController::storeLineups($matchId);
         MatchCommentaryController::storeCommentaries($matchId);
         MatchSummaryController::storeMatchSummary($matchId);
-        // Filter the lineups by formation_name
+
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
         $commentaries = MatchCommentary::where('match_id', $matchId)->get();
@@ -110,9 +110,12 @@
         </div>
 
         <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
-            @include('ads.includes.commentary', ['commentaries' => $commentaries])
+            @if ($match->status == 'LIVE')
+                @include('ads.includes.livecommentary')
+            @else
+                @include('ads.includes.commentary', ['commentaries' => $commentaries])
+            @endif
 
-            {{-- @include('ads.includes.commento') --}}
         </div>
     </div>
 @endif

@@ -14,9 +14,14 @@
                     {!! Theme::content() !!}
                 </div>
             </div>
-            <div class="col-lg-4">
-                {!! Theme::partial('sidebar') !!}
-            </div>
+            @if (Request::path() !== 'diretta')
+                {{-- Check if the page is not /diretta --}}
+                <div class="col-lg-4">
+                    {!! Theme::partial('sidebar') !!}
+                </div>
+            @elseif (Request::path() !== 'diretta')
+                @include('ads.includes.livechat')
+            @endif
         </div>
 </section>
 {!! Theme::partial('footer') !!}
