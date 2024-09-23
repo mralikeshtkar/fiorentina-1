@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     .chat-container {
         max-width: 600px;
         margin: 0 auto;
@@ -140,4 +140,4 @@
                 console.error('Error fetching messages:', error);
             });
     };
-</script>
+</script> --}}
