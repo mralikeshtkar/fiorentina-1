@@ -47,20 +47,23 @@
     }
 </style>
 
-<div class="chat-container">
-    <!-- Messages Display Section -->
-    <div class="chat-messages" id="chat-messages">
-        <ul id="messages-list">
-            <!-- Messages will be appended here -->
-        </ul>
-    </div>
+<div class="col-lg-4">
+    <div class="chat-container">
+        <!-- Messages Display Section -->
+        <div class="chat-messages" id="chat-messages">
+            <ul id="messages-list">
+                <!-- Messages will be appended here -->
+            </ul>
+        </div>
 
-    <!-- Form to Submit a New Message -->
-    <div class="chat-form">
-        <input type="text" id="message-input" placeholder="Type a message" />
-        <button id="send-message-btn">Send</button>
+        <!-- Form to Submit a New Message -->
+        <div class="chat-form">
+            <input type="text" id="message-input" placeholder="Type a message" />
+            <button id="send-message-btn">Send</button>
+        </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js"></script>
