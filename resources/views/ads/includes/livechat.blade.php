@@ -37,12 +37,12 @@
     }
 
     .message-content {
+        min-width: 30%; 
         max-width: 70%;
-        padding: 10px;
+        padding: 10px 15px;
         color: black;
         border-radius: 10px;
         background-color: #f1f1f1;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     .message-time {
@@ -131,7 +131,7 @@
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
         messageContent.innerHTML = `
-            <p style='font-size:small'>${message.member.first_name} ${message.member.last_name}</p><br>
+            <span style='font-size:small'>${message.member.first_name} ${message.member.last_name}</span><br>
             ${message.message}
             <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
         `;
