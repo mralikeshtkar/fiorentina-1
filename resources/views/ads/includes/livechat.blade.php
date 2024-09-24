@@ -95,6 +95,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js"></script>
 
 <script>
+    function getAvatarColor(firstLetter) {
+        const letter = firstLetter.toUpperCase(); // Ensure the letter is uppercase
+        switch (letter) {
+            case 'A':
+                return '#3498db'; // Blue
+            case 'B':
+                return '#2ecc71'; // Green
+            case 'C':
+                return '#e74c3c'; // Red
+            case 'D':
+                return '#f39c12'; // Orange
+            case 'E':
+                return '#8e44ad'; // Dark Purple
+            case 'F':
+                return '#9b59b6'; // Purple
+            case 'G':
+                return '#16a085'; // Teal
+            case 'H':
+                return '#e67e22'; // Orange
+            case 'I':
+                return '#f1c40f'; // Yellow
+            case 'J':
+                return '#e84393'; // Pink
+            case 'K':
+                return '#34495e'; // Navy Blue
+                // Add more cases as needed
+            default:
+                return '#95a5a6'; // Default Gray
+        }
+    }
+
+
     // Setup CSRF token for axios
     axios.defaults.headers.common['X-CSRF-TOKEN'] = '{{ csrf_token() }}'
 
@@ -133,11 +165,12 @@
         const avatar = document.createElement('div');
         avatar.classList.add('message-avatar');
         avatar.textContent = member.first_name.charAt(0).toUpperCase() || 'A';
+        avatar.style.backgroundColor = getAvatarColor(member.first_name.charAt(0));
 
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
         messageContent.innerHTML = `
-            <span style='font-size:small'>${member.first_name} ${member.last_name}</span><br>
+            <strong style='font-size:small'>${member.first_name} ${member.last_name}</strong><br>
             ${message.message}
             <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
         `;

@@ -90,7 +90,7 @@
 
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="commento-tab" data-toggle="tab" href="#commento" role="tab"
-                aria-controls="commento" aria-selected="false">COMMENTO</a>
+                aria-controls="commento" aria-selected="false">DIRETTA</a>
         </li>
     </ul>
 
@@ -126,7 +126,3 @@
 {{-- Diretta History blade --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
-
