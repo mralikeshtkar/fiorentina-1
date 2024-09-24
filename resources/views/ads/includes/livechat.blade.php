@@ -40,6 +40,7 @@
         min-width: 30%;
         max-width: 70%;
         padding: 10px 15px;
+        color:black;
         font-size: smaller color: black;
         border-radius: 10px;
         background-color: #f1f1f1;
