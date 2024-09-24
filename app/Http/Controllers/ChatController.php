@@ -51,6 +51,8 @@ class ChatController extends Controller
         ]);
         $message->member = Member::find($message->user_id);
 
+        dd($message);
+
         broadcast(new MessageSent($message))->toOthers();
 
         return ['status' => 'Message Sent!'];
