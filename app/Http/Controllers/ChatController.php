@@ -52,7 +52,6 @@ class ChatController extends Controller
         ]);
 
 
-        dd($message);
 
         broadcast(new MessageSent($message))->toOthers();
 
