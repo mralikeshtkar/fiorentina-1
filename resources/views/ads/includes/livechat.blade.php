@@ -58,7 +58,7 @@
 
         <!-- Form to Submit a New Message -->
         <div class="chat-form">
-            @csrf
+            <meta name="csrf-token" content="{{ csrf_token() }}">
             <input type="text" id="message-input" placeholder="Type a message" />
             <button id="send-message-btn">Send</button>
         </div>
@@ -70,9 +70,7 @@
 
 <script>
     // Setup CSRF token for axios
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute(
-        'content');
-
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = '{{ csrf_token() }}'
     // Extract match_id from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const matchId = urlParams.get('match_id'); // Get match_id from the URL
