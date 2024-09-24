@@ -47,7 +47,7 @@
     }
 </style>
 
-<div class="col-lg-4">
+<div class="col-lg-4 mt-50">
     <div class="chat-container">
         <!-- Messages Display Section -->
         <div class="chat-messages" id="chat-messages">
