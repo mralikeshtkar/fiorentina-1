@@ -20,7 +20,7 @@ class ChatController extends Controller
             return response()->json(['error' => 'Chat is finished'], 403);
         }
 
-        return $liveChat->match->messages()->with('member')->get();
+        return $liveChat->match->messages()->with('user')->get();
     }
 
     public function sendMessage(Request $request, $matchId)
@@ -31,7 +31,7 @@ class ChatController extends Controller
             return response()->json(['error' => 'Chat is finished'], 403);
         }
 
-        // Create message directly using the Message model
+    // Create message directly using the Message model
         $message = Message::create([
             'user_id' => auth()->id(),  // Manually set the user ID
             'message' => $request->message,
