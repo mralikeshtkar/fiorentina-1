@@ -40,7 +40,7 @@
         min-width: 30%;
         max-width: 70%;
         padding: 10px 15px;
-        color:black;
+        color: black;
         font-size: smaller color: black;
         border-radius: 10px;
         background-color: #f1f1f1;
@@ -111,12 +111,17 @@
         cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
         encrypted: true
     });
+    // Subscribe to the specific match channel (only once)
+    let channel;
+    if (!channel) {
+        channel = pusher.subscribe(`match.${matchId}`);
+        channel.bind('MessageSent', function(data) {
+            appendMessage(data.message);
+        });
+    }
 
-    // Subscribe to the chat channel
-    const channel = pusher.subscribe(`match.${matchId}`);
-    channel.bind('MessageSent', function(data) {
-        appendMessage(data.message);
-    });
+    Pusher.logToConsole = true;
+
 
     // Function to append a message to the messages list
     function appendMessage(message) {

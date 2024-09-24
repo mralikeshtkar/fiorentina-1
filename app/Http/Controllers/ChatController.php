@@ -45,7 +45,7 @@ class ChatController extends Controller
 
     // Create message directly using the Message model
         $message = Message::create([
-            'user_id' => auth()->id(),  // Manually set the user ID
+            'user_id' => auth('member')->id(),  // Manually set the user ID
             'message' => $request->message,
             'match_id' => $matchId
         ]);
