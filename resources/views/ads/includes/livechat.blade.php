@@ -115,7 +115,7 @@
     let channel;
     if (!channel) {
         channel = pusher.subscribe(`match.${matchId}`);
-        channel.bind('MessageSent', function(data) {
+        channel.bind('App\\Events\\MessageSent', function(data) {
             appendMessage(data.message);
         });
     }
