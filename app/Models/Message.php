@@ -2,6 +2,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 use Botble\Member\Models\Member;
+
 class Message extends Model
 {
     protected $fillable = ['user_id', 'message', 'match_id'];
