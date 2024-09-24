@@ -58,7 +58,6 @@
 
         <!-- Form to Submit a New Message -->
         <div class="chat-form">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
             <input type="text" id="message-input" placeholder="Type a message" />
             <button id="send-message-btn">Send</button>
         </div>
