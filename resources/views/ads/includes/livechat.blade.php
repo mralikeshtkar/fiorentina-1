@@ -95,7 +95,7 @@
 <script>
     // Setup CSRF token for axios
     axios.defaults.headers.common['X-CSRF-TOKEN'] = '{{ csrf_token() }}'
-    
+
     // Extract match_id from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const matchId = urlParams.get('match_id'); // Get match_id from the URL
@@ -119,26 +119,26 @@
     // Function to append a message to the messages list
     function appendMessage(message) {
         const messagesList = document.getElementById('messages-list');
-        
+
         const newMessage = document.createElement('li');
         newMessage.classList.add('message-bubble');
-        
+
         const avatar = document.createElement('div');
         avatar.classList.add('message-avatar');
-        avatar.textContent = message.user.name.charAt(0).toUpperCase() || 'A';
-        
+        avatar.textContent = message.member.first_name.charAt(0).toUpperCase() || 'A';
+
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
         messageContent.innerHTML = `
-            <strong>${message.user.name}</strong><br>
+            <strong>${message.member.first_name} ${message.member.last_name}</strong><br>
             ${message.message}
             <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
         `;
-        
+
         newMessage.appendChild(avatar);
         newMessage.appendChild(messageContent);
         messagesList.appendChild(newMessage);
-        
+
         // Scroll to the bottom of the chat
         const chatMessages = document.getElementById('chat-messages');
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -163,7 +163,9 @@
         }
 
         // Send message to the server
-        axios.post(`/chat/${matchId}`, { message: message })
+        axios.post(`/chat/${matchId}`, {
+                message: message
+            })
             .then(response => {
                 messageInput.value = ''; // Clear input field
             })
