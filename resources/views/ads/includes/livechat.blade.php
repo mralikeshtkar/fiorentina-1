@@ -116,7 +116,7 @@
     if (!channel) {
         channel = pusher.subscribe(`match.${matchId}`);
         channel.bind('App\\Events\\MessageSent', function(data) {
-            appendMessage(data.message);
+            appendMessage(data.message, data.member); // Append both message and member data
         });
     }
 
@@ -124,7 +124,7 @@
 
 
     // Function to append a message to the messages list
-    function appendMessage(message) {
+    function appendMessage(message, member) {
         const messagesList = document.getElementById('messages-list');
 
         const newMessage = document.createElement('li');
@@ -132,12 +132,12 @@
 
         const avatar = document.createElement('div');
         avatar.classList.add('message-avatar');
-        avatar.textContent = message.member.first_name.charAt(0).toUpperCase() || 'A';
+        avatar.textContent = member.first_name.charAt(0).toUpperCase() || 'A';
 
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
         messageContent.innerHTML = `
-            <span style='font-size:small'>${message.member.first_name} ${message.member.last_name}</span><br>
+            <span style='font-size:small'>${member.first_name} ${member.last_name}</span><br>
             ${message.message}
             <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
         `;
@@ -187,7 +187,7 @@
             .then(response => {
                 const messages = response.data;
                 messages.forEach(function(message) {
-                    appendMessage(message);
+                    appendMessage(message, message.member);
                 });
             })
             .catch(error => {

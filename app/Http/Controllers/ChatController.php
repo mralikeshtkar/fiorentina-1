@@ -48,8 +48,8 @@ class ChatController extends Controller
             'user_id' => auth('member')->id(),  // Manually set the user ID
             'message' => $request->message,
             'match_id' => $matchId,
-            'member'=> Member::find(auth('member')->id())
         ]);
+
 
 
 

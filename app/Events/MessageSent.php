@@ -9,21 +9,25 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
+use Botble\Member\Models\Member;
+
 
 class MessageSent implements ShouldBroadcast
 {
     use InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $member;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(Message $message,)
     {
         $this->message = $message;
+        $this->member = Member::find($message->user_id); // Attach member data
     }
 
     /**
@@ -34,5 +38,13 @@ class MessageSent implements ShouldBroadcast
     public function broadcastOn()
     {
         return new Channel('match.' . $this->message->match_id);
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'message' => $this->message,
+            'member' => $this->member, // Send member data with the event
+        ];
     }
 }
