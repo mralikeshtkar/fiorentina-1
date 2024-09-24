@@ -9,6 +9,7 @@
     use App\Http\Controllers\MatchStaticsController;
     use App\Http\Controllers\MatchCommentaryController;
     use App\Http\Controllers\MatchSummaryController;
+    use App\Http\Controllers\ChatController;
     $matchId = request()->query('match_id');
     if ($matchId) {
         $match = Calendario::where('match_id', $matchId)->first();
@@ -28,6 +29,8 @@
                 return in_array($lineup->formation_name, ['Panchina', 'Allenatori', 'Formazioni iniziali']);
             })
             ->groupBy('formation_name');
+
+        //create the chat if it doesn't exist
     }
 @endphp
 

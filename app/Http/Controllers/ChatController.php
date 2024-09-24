@@ -9,6 +9,9 @@ class ChatController extends Controller
 {
     public function fetchMessages($matchId)
     {
+
+        self::createChatIfNotExists($matchId);
+
         $liveChat = LiveChat::where('match_id', $matchId)->first();
 
         if (!$liveChat || $liveChat->isFinished()) {
@@ -47,4 +50,20 @@ class ChatController extends Controller
 
         return response()->json(['error' => 'Live chat not found'], 404);
     }
+
+
+
+        // Static function to create chat if it doesn't exist
+        public static function createChatIfNotExists($matchId)
+        {
+            $liveChat = LiveChat::where('match_id', $matchId)->first();
+    
+            // Create the live chat if it does not exist
+            if (!$liveChat) {
+                LiveChat::create([
+                    'match_id' => $matchId,
+                    'chat_status' => 'live'  // Default status is 'live'
+                ]);
+            }
+        }
 }
