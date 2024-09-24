@@ -58,6 +58,7 @@
 
         <!-- Form to Submit a New Message -->
         <div class="chat-form">
+            @csrf
             <input type="text" id="message-input" placeholder="Type a message" />
             <button id="send-message-btn">Send</button>
         </div>
