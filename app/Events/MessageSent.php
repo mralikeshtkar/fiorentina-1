@@ -33,6 +33,6 @@ class MessageSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new Channel('match.' . $this->message->match_id);
     }
 }

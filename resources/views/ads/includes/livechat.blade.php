@@ -24,8 +24,8 @@
     }
 
     .message-avatar {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         margin-right: 10px;
         background-color: #28a745;
@@ -33,14 +33,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .message-content {
-        min-width: 30%; 
+        min-width: 30%;
         max-width: 70%;
         padding: 10px 15px;
-        color: black;
+        font-size: smaller color: black;
         border-radius: 10px;
         background-color: #f1f1f1;
     }
@@ -112,7 +112,7 @@
     });
 
     // Subscribe to the chat channel
-    const channel = pusher.subscribe('chat');
+    const channel = pusher.subscribe(`match.${matchId}`);
     channel.bind('MessageSent', function(data) {
         appendMessage(data.message);
     });
