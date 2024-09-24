@@ -49,6 +49,7 @@ class ChatController extends Controller
             'message' => $request->message,
             'match_id' => $matchId
         ]);
+        $message->member = Member::find($message->user_id);
 
         broadcast(new MessageSent($message))->toOthers();
 
