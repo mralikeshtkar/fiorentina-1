@@ -22,7 +22,15 @@ class ChatController extends Controller
             return response()->json(['error' => 'Chat is finished'], 403);
         }
 
-        return $liveChat->match->messages()->with('user')->get();
+        // Fetch messages by match_id using the Message model
+        $messages = Message::where('match_id', $matchId)->get();
+
+        // Load associated members (users) for each message
+        foreach ($messages as $message) {
+            $message->member = Member::find($message->user_id);
+        }
+
+        return response()->json($messages);
     }
 
     public function sendMessage(Request $request, $matchId)
