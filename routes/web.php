@@ -19,9 +19,6 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\NotificaController;
-use App\Http\Controllers\ChatController;
-
-
 
 
 
@@ -57,9 +54,6 @@ use App\Http\Controllers\ChatController;
 
 
 
-    Route::get('/chat/{match}', [ChatController::class, 'fetchMessages']);
-    Route::post('/chat/{match}', [ChatController::class, 'sendMessage']);
-    Route::post('/chat/{match}/status/{status}', [ChatController::class, 'updateChatStatus']);
-    
+
 
 Route::post('/notifica/store', [NotificaController::class, 'store']);

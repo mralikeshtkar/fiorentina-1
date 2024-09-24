@@ -38,10 +38,8 @@
         "cropperjs": "^1.6.1",
         "epic-spinners": "^2.0.0",
         "jquery": "^3.7.1",
-        "laravel-echo": "^1.16.1",
         "lodash": "^4.17.21",
         "moment": "^2.30.1",
-        "pusher-js": "^8.4.0-rc2",
         "sanitize-html": "^2.13.0",
         "tiny-emitter": "^2.1.0",
         "vue": "^3.3.4"
