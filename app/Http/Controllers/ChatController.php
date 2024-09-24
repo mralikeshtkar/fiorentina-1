@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LiveChat;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Events\MessageSent;
+
 
 
 class ChatController extends Controller
