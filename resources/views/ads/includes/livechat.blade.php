@@ -238,7 +238,6 @@
         axios.get(`/chat/${matchId}`)
             .then(response => {
                 const messages = response.data.messges;
-                console.log(messages);
                 messages.forEach(function(message) {
                     appendMessage(message, message.member);
                 });
