@@ -100,7 +100,8 @@
             @else
                 <div class="row">
                     <p class="col-12 alert alert-warning">Per inviare un messaggio devi effettuare il login.</p>
-                    <a href="/login" class="btn col-12 btn-purple"><i class="fas fa-right-to-bracket"></i> Login</a>
+                    <a style="background: #441274;color:white" href="/login" class="btn col-12 btn-purple"><i
+                            class="fas fa-right-to-bracket"></i> Login</a>
                 </div>
             @endif
 
