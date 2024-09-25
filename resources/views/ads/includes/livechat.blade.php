@@ -99,6 +99,7 @@
                 <button id="send-message-btn"><i class="fas fa-paper-plane"></i> Invia</button>
             @else
                 <div class="row">
+                    <p class="col-12 text-danger">Per inviare un messaggio devi effettuare il login.</p>
                     <a href="/login" class="btn col-12 btn-purple"><i class="fas fa-right-to-bracket"></i> Login</a>
                 </div>
             @endif
