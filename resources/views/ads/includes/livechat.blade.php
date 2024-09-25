@@ -74,7 +74,7 @@
     .chat-form button {
         position: relative;
         left: -10px;
-        padding: 0px 20px;
+        padding: 0px 10px;
         border: none;
         background-color: #441274;
         color: white;
@@ -84,7 +84,7 @@
 
 <div class="col-lg-4 mt-50">
     <div class="chat-container">
-        <h4><i class="fa-regular fa-comments"></i> Chat dei tifosi</h4>
+        <h4 class="chat-title"><i class="far fa-comments"></i> Chat dei tifosi</h4>
         <!-- Messages Display Section -->
         <div class="chat-messages" id="chat-messages">
             <ul id="messages-list">
@@ -200,11 +200,11 @@
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Send message when button is clicked or enter key is pressed
-    const sendMessageButton = document.getElementById('send-message-btn');
-    const messageInput = document.getElementById('message-input');
-
-    sendMessageButton.addEventListener('click', sendMessage);
+    @if (auth('member')->check())
+        // Send message when button is clicked or enter key is pressed
+        const sendMessageButton = document.getElementById('send-message-btn');
+        const messageInput = document.getElementById('message-input');
+    @endif
     messageInput.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             sendMessage();
