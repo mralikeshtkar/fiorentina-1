@@ -94,8 +94,15 @@
 
         <!-- Form to Submit a New Message -->
         <div class="chat-form">
-            <input type="text" id="message-input" placeholder="Invia il tuo messaggio" />
-            <button id="send-message-btn"><i class="fas fa-paper-plane"></i> Invia</button>
+            @if (auth('member')->check())
+                <input type="text" id="message-input" placeholder="Invia il tuo messaggio" />
+                <button id="send-message-btn"><i class="fas fa-paper-plane"></i> Invia</button>
+            @else
+                <div class="row">
+                    <a href="/login" class="btn col-12 btn-purple"><i class="fas fa-right-to-bracket"></i> Login</a>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
