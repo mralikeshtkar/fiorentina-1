@@ -64,15 +64,17 @@
         width: 80%;
         padding: 10px;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 50px 0px 0px 50px;
     }
 
     .chat-form button {
-        padding: 10px 20px;
+        position: relative;
+        left: -10px;
+        padding: 0px 20px;
         border: none;
-        background-color: #28a745;
+        background-color: #441274;
         color: white;
-        border-radius: 5px;
+        border-radius: 0px 50px 50px 0px;
     }
 </style>
 
