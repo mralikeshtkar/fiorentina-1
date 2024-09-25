@@ -1,5 +1,7 @@
 <style>
     .chat-container {
+        position: sticky;
+        top: 50px;
         max-width: 600px;
         margin: 0 auto;
         border: 1px solid #ccc;
@@ -9,7 +11,7 @@
     }
 
     .chat-messages {
-        height: 400px;
+        height: 700px;
         overflow-y: scroll;
         border: 1px solid #ccc;
         padding: 10px;
