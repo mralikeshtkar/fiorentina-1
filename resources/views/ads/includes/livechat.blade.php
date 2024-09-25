@@ -204,12 +204,13 @@
         // Send message when button is clicked or enter key is pressed
         const sendMessageButton = document.getElementById('send-message-btn');
         const messageInput = document.getElementById('message-input');
+
+        messageInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
     @endif
-    messageInput.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
-    });
 
     function sendMessage() {
         const message = messageInput.value.trim();
