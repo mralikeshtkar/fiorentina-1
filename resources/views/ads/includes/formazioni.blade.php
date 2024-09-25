@@ -62,21 +62,6 @@
                     @foreach ($row as $player)
                         <div class="col text-center">
                             <div class="player-container">
-                                @php
-                                    $playerstats = MatchLineupsController::getPlayerStats($player->match_id, $player);
-                                    $stats = json_decode($playerstats, true);
-                                    // Initialize a variable to store the minutes played
-                                    $minutesPlayed = null;
-
-                                    // Loop through the stats array and find the 'minutes-played' type
-                                    foreach ($stats as $stat) {
-                                        if ($stat['TYPE'] === 'minutes-played') {
-                                            $minutesPlayed = $stat['VALUE'];
-                                            break;
-                                        }
-                                    }
-
-                                @endphp
                                 <div class="player-lineup">
                                     <img class="player-lineup-img" src="{{ $player->player_image }}"
                                         alt="{{ $player->player_full_name }}" width="50">
@@ -86,7 +71,6 @@
                                         style='background-color: #c21d1d;' @endif>
 
                                         {{ $player->player_rating }}
-                                        {{ $minutesPlayed }}
                                     </div>
                                     <p class="player-name">{{ $player->short_name }}</p>
 
@@ -94,9 +78,7 @@
                             </div>
 
                         </div>
-                        @php
-                            $minutesPlayed = null;
-                        @endphp
+
                     @endforeach
                 </div>
             @endforeach
@@ -128,28 +110,10 @@
                                 </svg>
                             @endif
 
-                            @php
-                                $playerstats = MatchLineupsController::getPlayerStats($player->match_id, $player);
-                                $stats = json_decode($playerstats, true);
-                                // Initialize a variable to store the minutes played
-                                $minutesPlayed = null;
-
-                                // Loop through the stats array and find the 'minutes-played' type
-                                foreach ($stats as $stat) {
-                                    if ($stat['TYPE'] === 'minutes-played') {
-                                        $minutesPlayed = $stat['VALUE'];
-                                        break;
-                                    }
-                                }
-                            @endphp
 
                             {{ $panchinaPlayer->short_name }}
 
                             @if ($panchinaPlayer->player_rating)
-                                <span>{{ $minutesPlayed }}</span>
-                                @php
-                                    $minutesPlayed = null;
-                                @endphp
                                 <span class="rating-table"
                                     @if ($panchinaPlayer->player_rating >= 7.0) style="background-color: #1dc231;"
                                  @elseif ($panchinaPlayer->player_rating <= 6.1) style="background-color: #c21d1d;" @endif>
