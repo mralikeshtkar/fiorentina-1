@@ -64,10 +64,10 @@
                             <div class="player-container">
                                 @php
                                     MatchLineupsController::getPlayerStats($player->match_id, $player);
-                                    PlayerStats::where('player_id', $player->player_id)
+                                    $playerstats = PlayerStats::where('player_id', $player->player_id)
                                         ->where('match_id', $player->match_id)
                                         ->first();
-                                    $stats = json_decode($match->home_team, true);
+                                    $stats = json_decode($playerstats->stats, true);
                                     dd($stats);
                                 @endphp
                                 <div class="player-lineup">
