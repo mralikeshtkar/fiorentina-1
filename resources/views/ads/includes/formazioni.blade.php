@@ -1,6 +1,15 @@
 @php
+
+    if ($team == 'fiorentina') {
+        $formationInitiali = $groupedLineups['Fiorentina Initial Lineup']; // The array of players
+        $panchina = $groupedLineups['Fiorentina Subs'];
+        $Allenatori = $groupedLineups['Fiorentina Coach'];
+    } elseif ($team == 'another') {
+        $formationInitiali = $groupedLineups['Another Initial Lineup']; // The array of players
+        $panchina = $groupedLineups['Another Subs'];
+        $Allenatori = $groupedLineups['Another Coach'];
+    }
     // Get the initial lineup and the formation disposition
-    $formationInitiali = $groupedLineups['Formazioni iniziali']; // The array of players
     $formationInitiali = $formationInitiali->sortBy('player_position');
 
     $formationDisposition = $formationInitiali->first()->formation_disposition; // Get formation like '1-3-4-2-1'
@@ -71,12 +80,6 @@
                 </div>
             @endforeach
         </div>
-
-
-        @php
-            $panchina = $groupedLineups['Panchina'];
-            $Allenatori = $groupedLineups['Allenatori'];
-        @endphp
 
 
     </div>
