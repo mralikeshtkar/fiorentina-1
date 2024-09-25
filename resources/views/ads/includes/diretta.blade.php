@@ -119,20 +119,23 @@
                 </li>
 
             </ul>
-            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                @if ($isHomeFiorentina)
-                    @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
-                @else
-                    @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
-                @endif
+            <div class="tab-content" id="teamtabContent">
 
-            </div>
-            <div class="tab-pane fade text-dark" id="away" role="tabpanel" aria-labelledby="away-tab">
-                @if ($isAwayFiorentina)
-                    @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
-                @else
-                    @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
-                @endif
+                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    @if ($isHomeFiorentina)
+                        @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
+                    @else
+                        @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
+                    @endif
+
+                </div>
+                <div class="tab-pane fade text-dark" id="away" role="tabpanel" aria-labelledby="away-tab">
+                    @if ($isAwayFiorentina)
+                        @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
+                    @else
+                        @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
+                    @endif
+                </div>
             </div>
         </div>
         <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
