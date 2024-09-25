@@ -4,10 +4,14 @@
         top: 120px;
         max-width: 600px;
         margin: 0 auto;
-        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
-        background-color: #f9f9f9;
+    }
+
+    .chat-title {
+        background: #441274;
+        color: white;
+        padding: 10px 20px;
     }
 
     .chat-messages {
@@ -80,6 +84,7 @@
 
 <div class="col-lg-4 mt-50">
     <div class="chat-container">
+        <h4><i class="fa-regular fa-comments"></i> Chat dei tifosi</h4>
         <!-- Messages Display Section -->
         <div class="chat-messages" id="chat-messages">
             <ul id="messages-list">
@@ -90,7 +95,7 @@
         <!-- Form to Submit a New Message -->
         <div class="chat-form">
             <input type="text" id="message-input" placeholder="Invia il tuo messaggio" />
-            <button id="send-message-btn">Send</button>
+            <button id="send-message-btn"><i class="fas fa-paper-plane"></i> Invia</button>
         </div>
     </div>
 </div>
