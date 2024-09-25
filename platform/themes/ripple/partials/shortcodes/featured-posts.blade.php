@@ -58,8 +58,8 @@
                                         title="{{ $post->name }}"></a>
                                 </div>
                                 <header class="post__header">
-                                    <h3 class="post__title text-truncate"><a
-                                            href="{{ $post->url }}">{{ $post->name }}</a></h3>
+                                    <h2 class="post__title text-truncate"><a
+                                            href="{{ $post->url }}">{{ $post->name }}</a></h2>
                                     {{--                                    <div class="post__meta"> --}}
                                     {{--                                        {!! Theme::partial('blog.post-meta', compact('post')) !!} --}}
                                     {{--                                    </div> --}}
