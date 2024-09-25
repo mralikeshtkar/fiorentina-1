@@ -237,7 +237,7 @@
     window.onload = function() {
         axios.get(`/chat/${matchId}`)
             .then(response => {
-                const messages = response.data.messges;
+                const messages = response.data.messages;
                 messages.forEach(function(message) {
                     appendMessage(message, message.member);
                 });
