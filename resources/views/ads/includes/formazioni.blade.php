@@ -64,7 +64,7 @@
                             <div class="player-container">
                                 @php
                                 $playerstats =MatchLineupsController::getPlayerStats($player->match_id, $player);
-                                    $stats = json_decode($playerstats->stats, true);
+                                    $stats = json_decode($playerstats, true);
                                     // Initialize a variable to store the minutes played
                                     $minutesPlayed = null;
 
@@ -125,7 +125,7 @@
 
                             @php
                             $playerstats =MatchLineupsController::getPlayerStats($player->match_id, $player);
-                            $stats = json_decode($playerstats->stats, true);
+                            $stats = json_decode($playerstats, true);
                             // Initialize a variable to store the minutes played
                             $minutesPlayed = null;
 
