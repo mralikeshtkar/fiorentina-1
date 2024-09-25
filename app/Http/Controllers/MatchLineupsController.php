@@ -12,7 +12,7 @@ class MatchLineupsController extends Controller
 {
     public static function getPlayerStats($matchId, $player)
     {
-        $playerStats=PlayerStats::where('match_id',$match_id)->where('player_id',$player->player_id)->first();
+        $playerStats=PlayerStats::where('match_id',$matchId)->where('player_id',$player->player_id)->first();
         if(!$playerStats){
         // Replace with your actual API key and endpoint
         $apiKey = '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb';
