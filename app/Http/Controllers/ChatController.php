@@ -15,24 +15,42 @@ class ChatController extends Controller
 {
     public function fetchMessages($matchId)
     {
-
-        self::createChatIfNotExists($matchId);
-
-        $liveChat = LiveChat::where('match_id', $matchId)->first();
-
-        if (!$liveChat || $liveChat->isFinished()) {
+        // Ensure the chat exists or create it if not
+        $liveChat = LiveChat::firstOrCreate(
+            ['match_id' => $matchId],
+            ['chat_status' => 'live'] // Default status to 'live' if creating a new chat
+        );
+    
+        // If the chat is finished, return an error
+        if ($liveChat->isFinished()) {
             return response()->json(['error' => 'Chat is finished'], 403);
         }
-
-        // Fetch messages by match_id using the Message model
+    
+        // If the chat was just created, create a welcome message from user_id = 1
+        if ($liveChat->wasRecentlyCreated) {
+            Message::create([
+                'match_id' => $matchId,
+                'user_id' => 1, // Admin user
+                'message' => 'La chat è iniziata! Si prega di rispettare le regole, essere gentili e cortesi.'
+            ]);
+        }
+    
+        // Fetch all messages by match_id using the Message model
         $messages = Message::where('match_id', $matchId)->get();
-
+    
         // Load associated members (users) for each message
         foreach ($messages as $message) {
             $message->member = Member::find($message->user_id);
         }
-
-        return response()->json($messages);
+    
+        // Return messages and an alert that the chat has started
+        return response()->json([
+            'alert' => [
+                'type' => 'success',
+                'message' => 'La chat è iniziata! Si prega di rispettare le regole, essere gentili e cortesi.'
+            ],
+            'messages' => $messages
+        ]);
     }
 
     public function sendMessage(Request $request, $matchId)
