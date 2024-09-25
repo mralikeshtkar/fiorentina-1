@@ -63,7 +63,7 @@
                         <div class="col text-center">
                             <div class="player-container">
                                 @php
-                                    MatchLineupsController::getPlayerStats($player->match_id, $player->player_id);
+                                    MatchLineupsController::getPlayerStats($player->match_id, $player);
                                     PlayerStats::where('player_id', $player->player_id)
                                         ->where('match_id', $player->match_id)
                                         ->first();
@@ -117,7 +117,7 @@
                             @endif
 
                             @php
-                                MatchLineupsController::getPlayerStats($player->match_id, $player->player_id);
+                                MatchLineupsController::getPlayerStats($player->match_id, $player);
 
                             @endphp
 
