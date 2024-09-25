@@ -12,6 +12,8 @@ class MatchLineupsController extends Controller
 {
     public static function getPlayerStats($matchId, $player)
     {
+        $playerStats=PlayerStats::where('match_id',$match_id)->where('player_id',$player->player_id)->first();
+        if(!$playerStats){
         // Replace with your actual API key and endpoint
         $apiKey = '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb';
         $url = "https://flashlive-sports.p.rapidapi.com/v1/players/alt-events?player_id={$player->player_id}&sport_id=1&locale=it_IT";
@@ -42,12 +44,16 @@ class MatchLineupsController extends Controller
                 $playerStats->rating = $event['RATING'] ?? null; // Optional: Save player rating if available
                 $playerStats->save();
     
-                return response()->json(['message' => 'Player stats saved successfully']);
+                return $playerStats->stats = json_encode($event['STATS']);
             }
         }
     
         // If no matching event is found
         return response()->json(['error' => 'No stats found for the given match'], 404);
+        }else{
+            return $playerStats->stats;
+        }
+
     }
     
 

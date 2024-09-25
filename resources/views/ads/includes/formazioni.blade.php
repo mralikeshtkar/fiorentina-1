@@ -63,12 +63,19 @@
                         <div class="col text-center">
                             <div class="player-container">
                                 @php
-                                    MatchLineupsController::getPlayerStats($player->match_id, $player);
-                                    $playerstats = PlayerStats::where('player_id', $player->player_id)
-                                        ->where('match_id', $player->match_id)
-                                        ->first();
+                                $playerstats =MatchLineupsController::getPlayerStats($player->match_id, $player);
                                     $stats = json_decode($playerstats->stats, true);
-                                    dd($stats);
+                                    // Initialize a variable to store the minutes played
+                                    $minutesPlayed = null;
+
+                                    // Loop through the stats array and find the 'minutes-played' type
+                                    foreach ($stats as $stat) {
+                                        if ($stat['TYPE'] === 'minutes-played') {
+                                            $minutesPlayed = $stat['VALUE'];
+                                            break;
+                                        }
+                                    }
+                                    
                                 @endphp
                                 <div class="player-lineup">
                                     <img class="player-lineup-img" src="{{ $player->player_image }}"
@@ -117,8 +124,18 @@
                             @endif
 
                             @php
-                                MatchLineupsController::getPlayerStats($player->match_id, $player);
+                            $playerstats =MatchLineupsController::getPlayerStats($player->match_id, $player);
+                            $stats = json_decode($playerstats->stats, true);
+                            // Initialize a variable to store the minutes played
+                            $minutesPlayed = null;
 
+                            // Loop through the stats array and find the 'minutes-played' type
+                            foreach ($stats as $stat) {
+                                if ($stat['TYPE'] === 'minutes-played') {
+                                    $minutesPlayed = $stat['VALUE'];
+                                    break;
+                                }
+                            }
                             @endphp
 
                             {{ $panchinaPlayer->short_name }}
