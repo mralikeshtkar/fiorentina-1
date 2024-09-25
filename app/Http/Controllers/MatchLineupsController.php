@@ -3,12 +3,56 @@ namespace App\Http\Controllers;
 
 use App\Models\MatchLineups;
 use App\Models\Calendario;
+use App\Models\PlayerStats;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 
 class MatchLineupsController extends Controller
 {
+    public static function getPlayerStats($matchId, $player)
+    {
+        // Replace with your actual API key and endpoint
+        $apiKey = '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb';
+        $url = "https://flashlive-sports.p.rapidapi.com/v1/players/alt-events?player_id={$player->player_id}&sport_id=1&locale=it_IT";
+    
+        // Send API request to retrieve player's stats
+        $response = Http::withHeaders([
+            "x-rapidapi-host" => "flashlive-sports.p.rapidapi.com",
+            "x-rapidapi-key" => $apiKey
+        ])->get($url);
+    
+        // Ensure a successful response
+        if ($response->failed()) {
+            return response()->json(['error' => 'Unable to fetch player stats'], 500);
+        }
+    
+        // Parse response data
+        $data = $response->json()['DATA'];
+    
+        // Loop through the DATA array to find the relevant match stats
+        foreach ($data as $event) {
+            // Check if the EVENT_ENCODED_ID matches the provided matchId
+            if ($event['EVENT_ENCODED_ID'] === $matchId) {
+                // Extract stats and save them to the PlayerStats model
+                $playerStats = new PlayerStats();
+                $playerStats->match_id = $matchId;
+                $playerStats->player_id = $player->player_id; // Assuming player_id is a field in the player object
+                $playerStats->stats = json_encode($event['STATS']); // Save stats as JSON
+                $playerStats->rating = $event['RATING'] ?? null; // Optional: Save player rating if available
+                $playerStats->save();
+    
+                return response()->json(['message' => 'Player stats saved successfully']);
+            }
+        }
+    
+        // If no matching event is found
+        return response()->json(['error' => 'No stats found for the given match'], 404);
+    }
+    
+
+
+
     private static function getLineup($matchId) {
 
         $match = Calendario::where('match_id', $matchId)->first();

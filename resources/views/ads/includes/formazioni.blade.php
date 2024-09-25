@@ -1,5 +1,6 @@
 @php
-
+    use App\Http\Controllers\MatchLineupsController;
+    use App\Models\PlayerStats;
     if ($team == 'fiorentina') {
         $formationInitiali = $groupedLineups['Fiorentina Initial Lineup']; // The array of players
         $panchina = $groupedLineups['Fiorentina Subs'];
@@ -61,6 +62,14 @@
                     @foreach ($row as $player)
                         <div class="col text-center">
                             <div class="player-container">
+                                @php
+                                    MatchLineupsController::getPlayerStats($player->match_id, $player->player_id);
+                                    PlayerStats::where('player_id', $player->player_id)
+                                        ->where('match_id', $player->match_id)
+                                        ->first();
+                                    $stats = json_decode($match->home_team, true);
+                                    dd($stats);
+                                @endphp
                                 <div class="player-lineup">
                                     <img class="player-lineup-img" src="{{ $player->player_image }}"
                                         alt="{{ $player->player_full_name }}" width="50">
@@ -107,7 +116,10 @@
                                 </svg>
                             @endif
 
+                            @php
+                                MatchLineupsController::getPlayerStats($player->match_id, $player->player_id);
 
+                            @endphp
 
                             {{ $panchinaPlayer->short_name }}
 
