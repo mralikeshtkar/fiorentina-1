@@ -24,9 +24,19 @@
         $commentaries = MatchCommentary::where('match_id', $matchId)->get();
         $summaries = MatchSummary::where('match_id', $matchId)->get();
 
-        $groupedLineups = $lineups
+        $fiorentinaLineups = $lineups
             ->filter(function ($lineup) {
-                return in_array($lineup->formation_name, ['Panchina', 'Allenatori', 'Formazioni iniziali']);
+                return in_array($lineup->formation_name, [
+                    'Fiorentina Subs',
+                    'Fiorentina Coach',
+                    'Fiorentina Initial Lineup',
+                ]);
+            })
+            ->groupBy('formation_name');
+
+        $anotherTeamLineups = $lineups
+            ->filter(function ($lineup) {
+                return in_array($lineup->formation_name, ['Another Subs', 'Another Coach', 'Another Initial Lineup']);
             })
             ->groupBy('formation_name');
 
@@ -110,10 +120,19 @@
 
             </ul>
             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                @include('ads.includes.formazioni', ['groupedLineups' => $groupedLineups])
+                @if ($isHomeFiorentina)
+                    @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups])
+                @else
+                    @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups])
+                @endif
+
             </div>
             <div class="tab-pane fade text-dark" id="away" role="tabpanel" aria-labelledby="away-tab">
-                Away
+                @if ($isAwayFiorentina)
+                    @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups])
+                @else
+                    @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups])
+                @endif
             </div>
         </div>
         <div class="tab-pane fade" id="riassunto" role="tabpanel" aria-labelledby="riassunto-tab">
