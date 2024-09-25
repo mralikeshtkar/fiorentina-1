@@ -110,12 +110,14 @@
             aria-labelledby="formazioni-tab">
             <ul class="nav nav-tabs mt-5" id="teamtab" role="tablist">
                 <li class="nav-item" role="presentation" style="list-style: none;">
-                    <a class="nav-link @if ($isHomeFiorentina) active @endif" id="Home-tab" data-toggle="tab"
-                        href="#home" role="tab" aria-controls="home" aria-selected="false">Home</a>
+                    <a class="nav-link @if ($isHomeFiorentina) show active @endif" id="Home-tab"
+                        data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                        aria-selected="false">Home</a>
                 </li>
                 <li class="nav-item" style="list-style: none;" role="presentation">
-                    <a class="nav-link @if ($isAwayFiorentina) active @endif" id="Away-tab" data-toggle="tab"
-                        href="#away" role="tab" aria-controls="away" aria-selected="false">Away</a>
+                    <a class="nav-link @if ($isAwayFiorentina) show active @endif" id="Away-tab"
+                        data-toggle="tab" href="#away" role="tab" aria-controls="away"
+                        aria-selected="false">Away</a>
                 </li>
 
             </ul>
@@ -123,17 +125,29 @@
 
                 <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                     @if ($isHomeFiorentina)
-                        @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
+                        @include('ads.includes.formazioni', [
+                            'groupedLineups' => $fiorentinaLineups,
+                            'team' => 'fiorentina',
+                        ])
                     @else
-                        @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
+                        @include('ads.includes.formazioni', [
+                            'groupedLineups' => $anotherTeamLineups,
+                            'team' => 'another',
+                        ])
                     @endif
 
                 </div>
                 <div class="tab-pane fade text-dark" id="away" role="tabpanel" aria-labelledby="away-tab">
                     @if ($isAwayFiorentina)
-                        @include('ads.includes.formazioni', ['groupedLineups' => $fiorentinaLineups,'team'=>'fiorentina'])
+                        @include('ads.includes.formazioni', [
+                            'groupedLineups' => $fiorentinaLineups,
+                            'team' => 'fiorentina',
+                        ])
                     @else
-                        @include('ads.includes.formazioni', ['groupedLineups' => $anotherTeamLineups,'team'=>'another'])
+                        @include('ads.includes.formazioni', [
+                            'groupedLineups' => $anotherTeamLineups,
+                            'team' => 'another',
+                        ])
                     @endif
                 </div>
             </div>
