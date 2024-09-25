@@ -1,7 +1,7 @@
 <style>
     .chat-container {
         position: sticky;
-        top: 50px;
+        top: 120px;
         max-width: 600px;
         margin: 0 auto;
         border: 1px solid #ccc;
