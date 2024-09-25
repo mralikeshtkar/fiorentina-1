@@ -100,19 +100,19 @@
             aria-labelledby="formazioni-tab">
             <ul class="nav nav-tabs mt-5" id="teamtab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link @if($isHomeFiorentina) active @endif" id="Home-tab" data-toggle="tab" href="#home" role="tab"
-                        aria-controls="home" aria-selected="false">Home</a>
+                    <a class="nav-link @if ($isHomeFiorentina) active @endif" id="Home-tab" data-toggle="tab"
+                        href="#home" role="tab" aria-controls="home" aria-selected="false">Home</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link @if($isAwayFiorentina) active @endif" id="Away-tab" data-toggle="tab" href="#away" role="tab"
-                        aria-controls="away" aria-selected="false">Home</a>
+                    <a class="nav-link @if ($isAwayFiorentina) active @endif" id="Away-tab" data-toggle="tab"
+                        href="#away" role="tab" aria-controls="away" aria-selected="false">Away</a>
                 </li>
 
             </ul>
             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                 @include('ads.includes.formazioni', ['groupedLineups' => $groupedLineups])
             </div>
-            <div class="tab-pane fade" id="away" role="tabpanel" aria-labelledby="away-tab">
+            <div class="tab-pane fade text-dark" id="away" role="tabpanel" aria-labelledby="away-tab">
                 Away
             </div>
         </div>
