@@ -20,10 +20,20 @@ use App\Http\Controllers\VoteController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\NotificaController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\VideoController;
 
 
 
 
+
+    Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');
+    Route::get('/admin/ads/create', [AdController::class, 'create'])->name('ads.create');
+    Route::post('/admin/ads', [AdController::class, 'store'])->name('ads.store');
+    Route::get('/admin/ads/{ad}/edit', [AdController::class, 'edit'])->name('ads.edit');
+    Route::put('/admin/ads/{ad}', [AdController::class, 'update'])->name('ads.update');
+    Route::delete('/admin/ads/{ad}', [AdController::class, 'destroy'])->name('ads.destroy');
+
+Route::resource('admin/videos', VideoController::class);
 
     Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');
     Route::get('/admin/ads/create', [AdController::class, 'create'])->name('ads.create');
@@ -60,6 +70,6 @@ use App\Http\Controllers\ChatController;
     Route::get('/chat/{match}', [ChatController::class, 'fetchMessages']);
     Route::post('/chat/{match}', [ChatController::class, 'sendMessage']);
     Route::post('/chat/{match}/status/{status}', [ChatController::class, 'updateChatStatus']);
-    
+
 
 Route::post('/notifica/store', [NotificaController::class, 'store']);
