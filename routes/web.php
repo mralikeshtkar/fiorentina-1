@@ -33,7 +33,13 @@ use App\Http\Controllers\VideoController;
     Route::put('/admin/ads/{ad}', [AdController::class, 'update'])->name('ads.update');
     Route::delete('/admin/ads/{ad}', [AdController::class, 'destroy'])->name('ads.destroy');
 
-Route::resource('admin/videos', VideoController::class);
+
+Route::get('/admin/videos', [VideoController::class, 'index'])->name('videos.index');
+Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create');
+Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
+Route::get('/admin/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
+Route::put('/admin/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
+Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
 
     Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');
     Route::get('/admin/ads/create', [AdController::class, 'create'])->name('ads.create');

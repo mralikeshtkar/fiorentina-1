@@ -38,7 +38,7 @@ class VideoController extends BaseController
     {
         $this->pageTitle("Crea Video");
 
-        return view('Videos.create');
+        return view('videos.create');
     }
 
     public function store(Request $request)
