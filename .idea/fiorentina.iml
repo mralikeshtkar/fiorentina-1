@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/platform/core/acl/src" isTestSource="false" packagePrefix="Botble\ACL\" />
       <sourceFolder url="file://$MODULE_DIR$/platform/core/base/src" isTestSource="false" packagePrefix="Botble\Base\" />
       <sourceFolder url="file://$MODULE_DIR$/platform/core/base/src/Ziggy" isTestSource="false" packagePrefix="Tightenco\Ziggy\" />
