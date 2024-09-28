@@ -11,9 +11,7 @@
             <div class="gap-3 col-md-9">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <!-- Form for uploading multiple videos -->
-                        <form action="{{ route('video.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf <!-- CSRF Token -->
+         
 
                             <!-- Title Input -->
                             <div class="mb-3">
