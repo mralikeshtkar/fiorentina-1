@@ -43,45 +43,29 @@ class VideoController extends BaseController
 
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $validated = $request->validate([
-            'post_title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'width' => 'nullable|numeric|min:0',
-            'height' => 'nullable|numeric|min:0',
-            'type' => ['required', Rule::in(array_keys(Video::TYPES))],
-            'group' => ['required', Rule::in(array_keys(Video::GROUPS))],
+        // Validate the input
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'videos.*' => 'required|mimes:mp4,mov,ogg,qt|max:20000', // Validate each video file
+            'status' => 'required|string|in:active,draft,pending',
         ]);
 
-        // Create a new Video instance
-        $advertisement = new Video();
-        $advertisement->title = $validated['post_title'];
-        $advertisement->group = $request->group;
-        $advertisement->type = $request->type;
-        $advertisement->width = $request->width;
-        $advertisement->height = $request->height;
+        // Handle each video file
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $videoFile) {
+                // Store the video file in the 'videos' directory under the 'public' disk
+                $path = $videoFile->store('videos', 'public');
 
-        // Handle file upload
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
-            $imageResized = ImageManager::gd()->read($request->image);
-            if($request->width && $request->height){
-                $imageResized=$imageResized->resize($request->width, $request->height);
+                // Save video information to the database
+                Video::create([
+                    'title' => $request->title,
+                    'video_path' => $path,
+                    'status' => $request->status,
+                ]);
             }
-            $imageResized=$imageResized->encode();
-            $path = "ads-images/" . $filename;
-            Storage::disk('public')->put($path, $imageResized);
-            $advertisement->image = $path;
         }
 
-        try {
-            // Save the advertisement to the database
-            $advertisement->save();
-            return redirect()->route('ads.index')->with('success', 'Advertisement created successfully!');
-        } catch (\Exception $e) {
-            Log::error('Failed to save advertisement: ' . $e->getMessage());
-            return redirect()->back()->withErrors('Failed to save advertisement. Please try again.');
-        }
+        return redirect()->back()->with('success', 'Videos uploaded successfully.');
     }
 
 
