@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Botble\Base\Models\BaseModel;
 use Botble\Theme\Facades\Theme;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;
 
-class Video extends Model
+class Video extends BaseModel
 {
     use HasFactory;
 
@@ -25,5 +24,6 @@ class Video extends Model
      * Optional: Add any custom methods or relationships here.
      * Example: You can define relationships if the video is associated with other models (e.g., User or Category)
      */
+
 }
 
