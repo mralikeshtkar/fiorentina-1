@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Video extends BaseModel
 {
-    use HasFactory;
+   
 
     // Define the table name (optional if the model name matches the table name)
     protected $table = 'videos';
