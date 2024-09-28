@@ -11,55 +11,30 @@
             <div class="gap-3 col-md-9">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="metabox-holder columns-2" id="post-body">
-                            <!-- Title Section -->
-                            <div class="post-body-content">
-                                <div class="mb-3" id="titlediv">
-                                    <label for="title" class="form-label" id="title-prompt-text">Aggiungi titolo</label>
-                                    <input type="text" class="form-control" name="post_title" id="title"
-                                           value="{{ old('post_title') }}" spellcheck="true" autocomplete="off">
-                                </div>
-                            </div>
+                        <!-- Form for uploading multiple videos -->
+                        <form action="{{ route('video.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf <!-- CSRF Token -->
 
-                            <!-- Publish Section -->
-                            <div class="postbox-container" id="postbox-container-1">
-                                <div class="meta-box-sortables ui-sortable" id="side-sortables">
-                                    <div class="postbox" id="submitdiv">
-                                        <div class="postbox-header">
-                                            <h2 class="hndle ui-sortable-handle">Pubblica</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- video Upload Section -->
-                            <div class="row mb-3">
-                                <label for="imageUpload" class="form-label">Aggiungi Video:</label>
-                                <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
-                                <div class="row mx-0 mt-3">
-                                    <div class="col-12">
-                                        <img src="" class="image-preview" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Ad Parameters Section -->
                             <!-- Title Input -->
                             <div class="mb-3">
-                                <label for="title" class="form-label">Video Title</label>
+                                <label for="title" class="form-label">Advertisement Title</label>
                                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" required>
                             </div>
 
-                            <!-- Video Upload Input -->
+                            <!-- Video Upload Input (multiple) -->
                             <div class="mb-3">
-                                <label for="videoUpload" class="form-label">Upload Video</label>
-                                <input type="file" class="form-control" id="videoUpload" name="video" accept="video/*" required>
-                        </div>
+                                <label for="videoUpload" class="form-label">Upload Videos</label>
+                                <input type="file" class="form-control" id="videoUpload" name="videos[]" accept="video/*" multiple required>
+                            </div>
 
-
-                    </div>
-                </div>
+                            <!-- Video Previews -->
+                            <div class="mb-3">
+                                <label for="videoPreview" class="form-label">Video Previews</label>
+                                <div id="videoPreviewContainer" class="d-flex flex-wrap">
+                                    <!-- Video previews will be dynamically added here -->
+                                </div>
+                            </div>
+                   </div>
 
             </div>
             <div class="col-md-3 gap-3 d-flex flex-column-reverse flex-md-column mb-md-0 mb-5">
