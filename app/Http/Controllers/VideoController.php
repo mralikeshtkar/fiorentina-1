@@ -47,8 +47,11 @@ class VideoController extends BaseController
         $request->validate([
             'title' => 'required|string|max:255',
             'videos.*' => 'required|mimes:mp4,mov,ogg,qt|max:20000', // Validate each video file
-            'status' => 'required|string|in:active,draft,pending',
+            'status' => 'sometimes|required|string|in:published,draft,pending', // Default to 'published' if not provided
         ]);
+
+        // Set the default status to 'published' if not provided
+        $status = $request->input('status', 'published');
 
         // Handle each video file
         if ($request->hasFile('videos')) {
@@ -60,7 +63,7 @@ class VideoController extends BaseController
                 Video::create([
                     'title' => $request->title,
                     'video_path' => $path,
-                    'status' => $request->status,
+                    'status' => $status, // Store the status, default to 'published'
                 ]);
             }
         }
