@@ -2,7 +2,7 @@
 
 @section('content')
     {{--    <form action="{{ route('ad.submit') }}" method="POST" enctype="multipart/form-data">--}}
-    <form action="{{ route('ads.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
     @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
 
@@ -32,28 +32,11 @@
                                 </div>
                             </div>
 
-                            <!-- Ad Type Selection -->
-                            <div class="postbox-container" id="postbox-container-2">
-                                <div class="meta-box-sortables ui-sortable" id="normal-sortables">
-                                    <div class="postbox" id="ad-main-box">
-                                        <div class="postbox-header">
-                                            <h2 class="hndle ui-sortable-handle">Tipo Annuncio:</h2>
-                                        </div>
-                                        <div class="inside">
-                                            <select class="form-select" name="type" id="advanced-ad-type">
-                                                @foreach(\App\Models\Ad::TYPES as $key => $title)
-                                                    <option
-                                                        value="{{ $key }}" @selected(old('type') == $key)>{{ $title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           !-- Ad Type Selection -->
 
-                            <!-- Image Upload Section -->
+                            <!-- video Upload Section -->
                             <div class="row mb-3">
-                                <label for="imageUpload" class="form-label">Upload an image:</label>
+                                <label for="imageUpload" class="form-label">Aggiungi Video:</label>
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
@@ -63,37 +46,6 @@
                             </div>
 
                             <!-- Ad Parameters Section -->
-                            <div class="postbox" id="ad-parameters-box">
-                                <div class="postbox-header">
-                                    <h2 class="hndle ui-sortable-handle">Parametri annuncio</h2>
-                                </div>
-                                <div class="inside">
-                                    <label for="advads-group-id" class="form-label">Gruppo annunci</label>
-                                    <select class="form-select" name="group" id="advads-group-id">
-                                        @foreach(\App\Models\Ad::GROUPS as $key => $title)
-                                            <option
-                                                value="{{ $key }}" @selected(old('group') == $key)>{{ $title }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <div class="mt-3">
-                                        <label for="width" class="form-label">Larghezza (px)</label>
-                                        <input type="number" class="form-control" id="width" name="width"
-                                               value="{{ $ad_width ?? null }}">
-                                    </div>
-                                    <div class="mt-3">
-                                        <label for="height" class="form-label">Altezza (px)</label>
-                                        <input type="number" class="form-control" id="height" name="height"
-                                               value="{{ $ad_height ?? null }}">
-                                    </div>
-                                    <div class="form-check mt-3">
-                                        <input class="form-check-input" type="checkbox" id="advads-wrapper-add-sizes"
-                                               name="advanced_ad[output][add_wrapper_sizes]" value="true">
-                                        <label class="form-check-label" for="advads-wrapper-add-sizes">Prenota questo
-                                            spazio</label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
 
