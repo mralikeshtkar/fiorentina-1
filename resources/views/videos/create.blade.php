@@ -32,7 +32,6 @@
                                 </div>
                             </div>
 
-                           !-- Ad Type Selection -->
 
                             <!-- video Upload Section -->
                             <div class="row mb-3">
@@ -46,6 +45,38 @@
                             </div>
 
                             <!-- Ad Parameters Section -->
+                            <div class="image-box image-box-image" action="select-image">
+                                <input class="image-data" name="image" type="hidden" value="">
+
+
+                                <div style="width: 8rem" class="preview-image-wrapper mb-1">
+                                    <div class="preview-image-inner">
+                                        <a data-bb-toggle="image-picker-choose" data-target="popup" class="image-box-actions" data-result="image" data-action="select-image" data-allow-thumb="1" href="#">
+                                            <img class="preview-image default-image" data-default="https://laviola.collaudo.biz/vendor/core/core/base/images/placeholder.png" src="https://laviola.collaudo.biz/vendor/core/core/base/images/placeholder.png" alt="Anteprima immagine">
+                                            <span class="image-picker-backdrop"></span>
+                                        </a>
+                                        <button class="btn btn-pill btn-icon  btn-sm image-picker-remove-button p-0" style="display: none; --bb-btn-font-size: 0.5rem;" type="button" data-bb-toggle="image-picker-remove" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Rimuovi immagine" data-bs-original-title="Rimuovi immagine">
+                                            <svg class="icon icon-sm icon-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M18 6l-12 12"></path>
+                                                <path d="M6 6l12 12"></path>
+                                            </svg>
+
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <a data-bb-toggle="image-picker-choose" data-target="popup" data-result="image" data-action="select-image" data-allow-thumb="1" href="#">
+                                    Scegli immagine
+                                </a>
+
+                                <div data-bb-toggle="upload-from-url">
+                                    <span class="text-muted">o</span>
+                                    <a href="javascript:void(0)" class="mt-1" data-bs-toggle="modal" data-bs-target="#image-picker-add-from-url" data-bb-target=".image-box-image">
+                                        Aggiungi da URL
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
 
