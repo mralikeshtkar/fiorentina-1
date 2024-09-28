@@ -11,8 +11,6 @@
             <div class="gap-3 col-md-9">
                 <div class="card mb-3">
                     <div class="card-body">
-         
-
                             <!-- Title Input -->
                             <div class="mb-3">
                                 <label for="title" class="form-label">Advertisement Title</label>
@@ -32,7 +30,10 @@
                                     <!-- Video previews will be dynamically added here -->
                                 </div>
                             </div>
-                   </div>
+
+
+                    </div>
+                </div>
 
             </div>
             <div class="col-md-3 gap-3 d-flex flex-column-reverse flex-md-column mb-md-0 mb-5">
