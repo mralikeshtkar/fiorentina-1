@@ -93,6 +93,14 @@ app('events')->listen(RouteMatched::class, function () {
                 ]);
         });
         Shortcode::register(
+            'adsvideo',
+            __('Ads video'),
+            __('Ads video'),
+            function (ShortcodeCompiler $shortcode) {
+                return Theme::partial('shortcodes.adsvideo');
+            }
+        );
+        Shortcode::register(
             'adsdiretta',
             __('Ads diretta'),
             __('Ads diretta'),
