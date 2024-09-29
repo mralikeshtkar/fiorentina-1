@@ -12,7 +12,7 @@
                 <th>Title</th>
                 <th>type</th>
                 <th>group</th>
-                <th>image</th>
+                <th>video</th>
 
                 <th>Actions</th>
             </tr>
