@@ -19,6 +19,20 @@ class Video extends BaseModel
         'video_path',
         'status',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        static::updated(function (self $video) {
+            if ($video->wasChanged('image')) {
+                Storage::disk('public')->delete($video->getOriginal('image'));
+            }
+        });
+        static::deleted(function (self $video) {
+            if ($video->hasImage()){
+                Storage::disk('public')->delete($video->image);
+            }
+        });
+    }
 
     /**
      * Optional: Add any custom methods or relationships here.
