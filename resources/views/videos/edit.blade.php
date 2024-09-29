@@ -55,8 +55,8 @@
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
-                                        <img src="{{ $video->getImageUrl() }}" class="image-preview"
-                                             alt="{{ $video->title }}">
+{{--                                        <img src="{{ $video->getImageUrl() }}" class="image-preview"--}}
+{{--                                             alt="{{ $video->title }}">--}}
                                     </div>
                                 </div>
                             </div>
