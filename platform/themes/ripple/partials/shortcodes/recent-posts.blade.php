@@ -254,7 +254,8 @@
                                     style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
                                 Serie B
                             </div>
-                            @include('videos.includes.adsvideo', ['videos' => $videos])
+                            @include('videos.includes.adsvideo')
+{{--                            @include('videos.includes.adsvideo', ['videos' => $videos])--}}
                         </section>
                     </div>
 
