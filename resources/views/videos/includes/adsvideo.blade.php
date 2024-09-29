@@ -1,4 +1,4 @@
-@if(isset($videos) && $videos)
+@if(isset($videos) && $videos->isNotEmpty())
     <div class="container">
         <div class="row mx-0">
             @foreach($videos as $video)
@@ -12,6 +12,12 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+@else
+    <div class="container">
+        <div class="alert alert-warning text-center">
+            No videos available at the moment.
         </div>
     </div>
 @endif
