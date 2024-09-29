@@ -1,4 +1,5 @@
 @if(isset($videos) && $videos->isNotEmpty())
+    @dd($videos)
     <div class="container">
         <div class="row mx-0">
             @foreach($videos as $video)
