@@ -19,7 +19,7 @@
         <a href="{{ route('videos.index') }}" class="nav-link dropdown-toggle nav-priority-3000" id="ads"
             data-bs-auto-close="false" role="button" aria-expanded="false" title="Ads">
             <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-link"></i></span>
-            <span class="nav-link-title  text-truncate">Ads</span>
+            <span class="nav-link-title  text-truncate">Videos</span>
         </a>
     </li>
     <li class="nav-item dropdown">
