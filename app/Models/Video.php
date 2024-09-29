@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Video extends Model
 {
     protected $table = 'videos';
-
+    const TYPE_ANNUNCIO_vidoe = 1;
     // Define video types if needed
     const TYPE_VIDEO_AD = 1; // Example: Video Advertisement
 
