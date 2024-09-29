@@ -25,9 +25,9 @@
                     <td class="align-middle">{{ $video->type }}</td>
                     <td class="align-middle">{{ $video->group_name }}</td>
                     <td class="align-middle">
-                        @if($video->getImageUrl())
-                            <img src="{{ $video->getImageUrl() }}" width="140" alt="{{ $video->title }}">
-                        @endif
+{{--                        @if($video->getImageUrl())--}}
+{{--                            <img src="{{ $video->getImageUrl() }}" width="140" alt="{{ $video->title }}">--}}
+{{--                        @endif--}}
                     </td>
 
 
