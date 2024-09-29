@@ -34,8 +34,8 @@
 
                     <td class="align-middle">
                         <div class="d-flex gap-2">
-                            <a href="{{ route('ads.edit',$video->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('ads.destroy',$video->id) }}" method="post">
+                            <a href="{{ route('videos.edit',$video->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('videos.destroy',$video->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
