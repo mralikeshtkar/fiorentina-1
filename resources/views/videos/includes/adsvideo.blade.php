@@ -1,4 +1,4 @@
-@dd($videos)
+
 @if(isset($videos) && $videos->isNotEmpty())
 
     <div class="container">
