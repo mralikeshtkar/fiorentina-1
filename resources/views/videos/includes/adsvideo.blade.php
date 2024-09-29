@@ -1,11 +1,15 @@
-@if(isset($ads) && $ads)
+@if(isset($videos) && $videos)
     <div class="container">
         <div class="row mx-0">
-            @foreach($ads as $ad)
+            @foreach($videos as $video)
                 <div class="col-12 col-md-8 col-lg-6 mx-auto">
-                    <a href="" class="d-block w-full">
-                        <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="w-100">
-                    </a>
+                    <div class="d-block w-full">
+                        <video width="100%" controls>
+                            <source src="{{ asset('storage/' . $video->video_path) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h5 class="mt-2">{{ $video->title }}</h5>
+                    </div>
                 </div>
             @endforeach
         </div>

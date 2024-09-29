@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Ad;
+use App\Models\Video;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -47,6 +48,9 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('ads.includes.adsense',function (View $view){
             $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::Google_adsense)->first());
+        });
+        view()->composer('videos.includes.adsvideo',function (View $view){
+            $view->with('video',Video::query()->first());
         });
     }
 }

@@ -270,13 +270,13 @@
                                                     style="--fill-width: {{ $option->percentage }}%;">
                                                     <span
                                                         @if ($option->percentage > 16.66) class="option-text-w"
-        
+
                                             @else
                                                 class="option-text-p" @endif>
                                                         {{ $option->option }}</span>
                                                     <span
                                                         @if ($option->percentage < 88) class="percentage-text-p"
-        
+
                                             @else
                                                 class="percentage-text-w" @endif>{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}
                                                         %</span>
@@ -370,7 +370,7 @@
 
 {{-- @include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415', 'adSlot' => 'YYYYYYYYYY']) --}}
 @include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415'])
-
+@include('videos.includes.adsvideo')
 <script>
     document.getElementById('load-more').addEventListener('click', function() {
         const hiddenArticles = document.querySelectorAll('article.post-item[style*="display: none;"]');
