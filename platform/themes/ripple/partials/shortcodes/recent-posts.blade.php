@@ -146,6 +146,7 @@
             </div>
 
             @if ($topSidebarContent)
+
                 <div class="col-lg-4">
 
                     <div class="page-sidebar">
@@ -253,7 +254,7 @@
                                     style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
                                 Serie B
                             </div>
-
+                            @include('videos.includes.adsvideo')
                         </section>
                     </div>
 
@@ -370,7 +371,7 @@
 
 {{-- @include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415', 'adSlot' => 'YYYYYYYYYY']) --}}
 @include('ads.includes.adsense', ['adClient' => 'ca-pub-6741446998584415'])
-@include('videos.includes.adsvideo')
+
 <script>
     document.getElementById('load-more').addEventListener('click', function() {
         const hiddenArticles = document.querySelectorAll('article.post-item[style*="display: none;"]');
