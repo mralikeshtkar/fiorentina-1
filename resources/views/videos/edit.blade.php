@@ -39,10 +39,10 @@
                                         </div>
                                         <div class="inside">
                                             <select class="form-select" name="type" id="advanced-ad-type">
-                                                @foreach(\App\Models\Ad::TYPES as $key => $title)
-                                                    <option
-                                                        value="{{ $key }}" @selected($video->type == $key)>{{ $title }}</option>
-                                                @endforeach
+{{--                                                @foreach(\App\Models\Ad::TYPES as $key => $title)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $key }}" @selected($video->type == $key)>{{ $title }}</option>--}}
+{{--                                                @endforeach--}}
                                             </select>
                                         </div>
                                     </div>
@@ -69,10 +69,10 @@
                                 <div class="inside">
                                     <label for="advads-group-id" class="form-label">Gruppo annunci</label>
                                     <select class="form-select" name="group" id="advads-group-id">
-                                        @foreach(\App\Models\Ad::GROUPS as $key => $title)
-                                            <option
-                                                value="{{ $key }}" @selected($video->group == $key)>{{ $title }}</option>
-                                        @endforeach
+{{--                                        @foreach(\App\Models\Ad::GROUPS as $key => $title)--}}
+{{--                                            <option--}}
+{{--                                                value="{{ $key }}" @selected($video->group == $key)>{{ $title }}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
 
                                     <div class="mt-3">
