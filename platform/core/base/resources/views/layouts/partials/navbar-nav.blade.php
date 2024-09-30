@@ -60,7 +60,7 @@
     </li>
 
     <li class="nav-item dropdown">
-        <a href="{{ route('chat.index') }}" class="nav-link dropdown-toggle nav-priority-3000" id="chat"
+        <a href="{{ route('diretta.index') }}" class="nav-link dropdown-toggle nav-priority-3000" id="chat"
             data-bs-auto-close="false" role="button" aria-expanded="false" title="chat">
             <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-chat"></i></span>
             <span class="nav-link-title  text-truncate">Gestione del chat</span>
