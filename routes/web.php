@@ -82,4 +82,3 @@ Route::post('/notifica/store', [NotificaController::class, 'store']);
 
 
 Route::get('/diretta/management', [ChatController::class, 'management'])->name('diretta.index');
-Route::get('/diretta/management', [ChatController::class, 'management'])->name('diretta.index');
