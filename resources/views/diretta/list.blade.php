@@ -64,7 +64,7 @@
 
                                             </span>
                                             <td>
-                                                <div class="team-container">
+                                                <div class="team-container d-flex">
                                                     <div class="col-6">
                                                         <img src="{{ $homeTeam['logo'] }}"
                                                             alt="{{ $homeTeam['shortname'] }}"
