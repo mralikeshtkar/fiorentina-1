@@ -1,6 +1,9 @@
 @php
     use Carbon\Carbon;
 @endphp
+@extends(BaseHelper::getAdminMasterLayoutTemplate())
+
+@section('content')
 <div class="col-lg-12 mx-auto">
     <div class="page-sidebar mt-3">
         <section>
@@ -285,3 +288,5 @@
         </script>
     </div>
 </div>
+
+@endsection
