@@ -15,7 +15,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <button id="muteButton" onclick="toggleMute()">Unmute</button>
+                   
                 </div>
             @endforeach
         </div>
