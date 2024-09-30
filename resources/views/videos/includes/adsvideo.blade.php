@@ -10,7 +10,7 @@
             @foreach ($videos as $video)
                 <div class="col-12 col-md-12 col-lg-12 mx-auto">
                     <div class="d-block w-full">
-                        <video id="myVideo" width="100%" autoplay muted>
+                        <video width="100%" controls autoplay muted>
                             <source src="{{ asset('storage/' . $video->video_path) }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
