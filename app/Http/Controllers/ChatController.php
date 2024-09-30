@@ -53,6 +53,38 @@ class ChatController extends Controller
         ]);
     }
 
+
+    private function containsBadWords($message)
+{
+    // List of bad words in Italian
+    $badWords = [
+        "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
+        "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
+        "cazzo","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
+        "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
+        "dio","figa","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
+        "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
+        "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
+        "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
+        "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi",
+        "scemo","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
+        "vaffanculo","zoccola","zoccolona"
+    ];
+
+    // Convert message to lowercase for case-insensitive matching
+    $lowercaseMessage = strtolower($message);
+
+    // Check if any bad word exists in the message
+    foreach ($badWords as $badWord) {
+        if (strpos($lowercaseMessage, $badWord) !== false) {
+            return true; // Message contains bad words
+        }
+    }
+
+    return false; // Message does not contain bad words
+}
+
+
     public function sendMessage(Request $request, $matchId)
     {
         $liveChat = LiveChat::where('match_id', $matchId)->first();
@@ -60,8 +92,9 @@ class ChatController extends Controller
         if (!$liveChat || $liveChat->isFinished()) {
             return response()->json(['error' => 'Chat is finished'], 403);
         }
-
-    // Create message directly using the Message model
+        $message=$request->message;
+        if (!$this->containsBadWords($message)) {
+                // Create message directly using the Message model
         $message = Message::create([
             'user_id' => auth('member')->id(),  // Manually set the user ID
             'message' => $request->message,
@@ -73,7 +106,11 @@ class ChatController extends Controller
 
         broadcast(new MessageSent($message))->toOthers();
 
-        return ['status' => 'Message Sent!'];
+            return response()->json(['message' => 'Message is clean'], 200);
+        } else {
+            return response()->json(['error' => 'Il messaggio contiene contenuti inappropriati'], 400);
+        }
+
     }
 
     public static function updateChatStatus($matchId, $status)
