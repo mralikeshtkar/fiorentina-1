@@ -43,6 +43,9 @@ class VideoController extends BaseController
 
     public function store(Request $request)
     {
+        Log::info('Received video upload request', $request->all());
+
+        // Validate the input fields
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'videos' => 'required',
@@ -51,10 +54,15 @@ class VideoController extends BaseController
             'status' => 'required|in:published,draft,pending',  // Validate status
         ]);
 
-        // Proceed with file upload only if validation is successful
         if ($request->hasFile('videos')) {
+            Log::info('Files are present:', ['files' => $request->file('videos')]);
+
             foreach ($request->file('videos') as $videoFile) {
+                Log::info('Storing video file:', ['file_name' => $videoFile->getClientOriginalName()]);
+
+                // Store the video in the 'public/videos' directory
                 $filePath = $videoFile->store('videos', 'public');
+                Log::info('File stored at path:', ['file_path' => $filePath]);
 
                 $video = new Video();
                 $video->title = $request->title;
@@ -62,11 +70,14 @@ class VideoController extends BaseController
                 $video->mode = $request->mode;
                 $video->status = $request->status;
                 $video->save();
+
+                Log::info('Video record saved:', ['video_id' => $video->id]);
             }
 
             return redirect()->back()->with('success', 'Videos uploaded successfully.');
         }
 
+        Log::error('No videos found in request.');
         return redirect()->back()->with('error', 'Failed to upload videos.');
     }
 
