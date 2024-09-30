@@ -7,6 +7,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 use Botble\Member\Models\Member;
+use Botble\Base\Supports\Breadcrumb;
 use Illuminate\Support\Facades\Http;
 
 
@@ -15,6 +16,18 @@ use Illuminate\Support\Facades\Http;
 
 class ChatController extends Controller
 {
+    protected function breadcrumb(): Breadcrumb
+    {
+        return parent::breadcrumb()
+            ->add("Gestione delle dirette");
+    }
+    public function list(){
+
+        return view('diretta.list');
+    }
+        
+
+
     public function fetchMessages($matchId)
     {
         // Ensure the chat exists or create it if not
@@ -66,14 +79,13 @@ class ChatController extends Controller
     $light = [
         "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
         "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
-        "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
+        "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione",
         "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
-        "dio","figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
+        "figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
         "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
         "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
         "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
-        "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi",
-        "scemo","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
+        "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi","stronzo","stronzi","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
         "vaffanculo","zoccola","zoccolona"
     ];
 

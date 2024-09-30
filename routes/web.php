@@ -81,4 +81,4 @@ Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->nam
 Route::post('/notifica/store', [NotificaController::class, 'store']);
 
 
-Route::get('/diretta/management', [ChatController::class, 'management'])->name('diretta.index');
+Route::get('/diretta/list', [ChatController::class, 'list'])->name('diretta.list');
