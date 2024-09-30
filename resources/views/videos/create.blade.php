@@ -27,6 +27,15 @@
                                 <!-- Video previews will be dynamically added here -->
                             </div>
                         </div>
+
+                        <!-- Video Mode Selection -->
+                        <div class="mb-3">
+                            <label for="mode" class="form-label">Playlist Mode</label>
+                            <select class="form-control" id="mode" name="mode" required>
+                                <option value="sequential">Sequential</option>
+                                <option value="random">Random</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,7 +111,7 @@
 
                     const videoSource = document.createElement('source');
                     videoSource.src = URL.createObjectURL(file);
-                    videoSource.type = 'video/mp4';
+                    videoSource.type = file.type;  // Automatically detect video type
 
                     videoPreview.appendChild(videoSource);
                     videoPreviewContainer.appendChild(videoPreview);

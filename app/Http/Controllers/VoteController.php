@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Intervention\Image\ImageManager;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class VoteController extends BaseController
 {
@@ -27,6 +28,23 @@ class VoteController extends BaseController
             ->add("Advertisements");
     }
 
+    public function streamVideo($filename)
+    {
+        $disk = Storage::disk('local'); // Use the appropriate disk if not 'local'
+        if (!$disk->exists('videos/' . $filename)) {
+            abort(404);
+        }
+
+        $stream = $disk->readStream('videos/' . $filename);
+
+        return new StreamedResponse(function () use ($stream) {
+            fpassthru($stream);
+        }, 200, [
+            'Content-Type' => 'video/mp4',
+            'Content-Length' => $disk->size('videos/' . $filename),
+            'Accept-Ranges' => 'bytes',
+        ]);
+    }
 
 
     public function index()

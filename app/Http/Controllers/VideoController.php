@@ -43,32 +43,34 @@ class VideoController extends BaseController
 
     public function store(Request $request)
     {
-        // Validate the input
+        // Validate the input fields
         $request->validate([
             'title' => 'required|string|max:255',
-            'videos.*' => 'required|mimes:mp4,mov,ogg,qt|max:20000', // Validate each video file
-            'status' => 'sometimes|required|string|in:published,draft,pending', // Default to 'published' if not provided
+            'videos' => 'required',
+            'videos.*' => 'mimes:mp4,mov,avi|max:204800',  // Validate each video file
+            'mode' => 'required|in:sequential,random',  // Only allow 'sequential' or 'random' modes
+            'status' => 'required|in:published,draft,pending',  // Validate status
         ]);
 
-        // Set the default status to 'published' if not provided
-        $status = $request->input('status', 'published');
-
-        // Handle each video file
+        // Handle multiple file uploads
         if ($request->hasFile('videos')) {
             foreach ($request->file('videos') as $videoFile) {
-                // Store the video file in the 'videos' directory under the 'public' disk
-                $path = $videoFile->store('videos', 'public');
+                // Store the video in the 'public/videos' directory
+                $filePath = $videoFile->store('videos', 'public');
 
-                // Save video information to the database
-                Video::create([
-                    'title' => $request->title,
-                    'video_path' => $path,
-                    'status' => $status, // Store the status, default to 'published'
-                ]);
+                // Save each video record to the database
+                $video = new Video();
+                $video->title = $request->title;
+                $video->video_path = $filePath;
+                $video->mode = $request->mode;
+                $video->status = $request->status;
+                $video->save();
             }
+
+            return redirect()->back()->with('success', 'Videos uploaded successfully.');
         }
 
-        return redirect()->back()->with('success', 'Videos uploaded successfully.');
+        return redirect()->back()->with('error', 'Failed to upload videos.');
     }
 
 

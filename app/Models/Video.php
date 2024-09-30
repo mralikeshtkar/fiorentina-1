@@ -122,4 +122,8 @@ class Video extends Model
 
         return $content;
     }
+    public function ads()
+    {
+        return $this->hasMany(VideoAd::class, 'video_id');
+    }
 }
