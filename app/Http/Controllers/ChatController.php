@@ -60,9 +60,9 @@ class ChatController extends Controller
     $badWords = [
         "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
         "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
-        "cazzo","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
+        "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
         "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
-        "dio","figa","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
+        "dio","figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
         "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
         "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
         "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
