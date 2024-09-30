@@ -214,6 +214,10 @@
                 sendMessage();
             }
         });
+
+        sendMessageButton.addEventListener('click', function(event) {
+                sendMessage();
+        });
     @endif
 
     function sendMessage() {
@@ -224,25 +228,26 @@
         }
 
         // Send message to the server
-    axios.post(`/chat/${matchId}`, {
-            message: message
-        })
-        .then(response => {
-            // Handle the success response, e.g., clear the input field
-            messageInput.value = ''; // Clear input field
-        })
-        .catch(error => {
-            // Check for 400 error and show SweetAlert
-            if (error.response && error.response.status === 400) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.response.data.error, // Show error message
-                });
-            } else {
-                console.error('Error sending message:', error);
-            }
-        });
+        axios.post(`/chat/${matchId}`, {
+                message: message
+            })
+            .then(response => {
+                // Show the censored message returned from the server
+                const censoredMessage = response.data.censored_message;
+                console.log('Censored message:', censoredMessage);
+                messageInput.value = ''; // Clear input field
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 400) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: error.response.data.error, // Show error message
+                    });
+                } else {
+                    console.error('Error sending message:', error);
+                }
+            });
     }
 
     // Fetch existing messages when the page loads

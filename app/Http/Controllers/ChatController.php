@@ -54,64 +54,81 @@ class ChatController extends Controller
     }
 
 
-    private function containsBadWords($message)
-{
-    // List of bad words in Italian
-    $badWords = [
-        "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
-        "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
-        "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
-        "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
-        "dio","figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
-        "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
-        "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
-        "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
-        "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi",
-        "scemo","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
-        "vaffanculo","zoccola","zoccolona"
-    ];
-
-    // Convert message to lowercase for case-insensitive matching
-    $lowercaseMessage = strtolower($message);
-
-    // Check if any bad word exists in the message
-    foreach ($badWords as $badWord) {
-        if (strpos($lowercaseMessage, $badWord) !== false) {
-            return true; // Message contains bad words
+    private function censorBadWords($message)
+    {
+        $apiUrl = 'https://neutrinoapi.net/bad-word-filter';
+        $apiUser = env('NEUTRINO_API_USER');
+        $apiKey = env('NEUTRINO_API_KEY');
+    
+        // List of light words you want to censor manually
+        $light = [
+            "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
+            "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
+            "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
+            "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
+            "dio","figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
+            "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
+            "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
+            "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
+            "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi",
+            "scemo","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
+            "vaffanculo","zoccola","zoccolona"
+        ];
+    
+        // Censor the "light" words manually
+        $lowercaseMessage = strtolower($message);
+        foreach ($light as $badWord) {
+            // Replace each bad word with asterisks (same length as the bad word)
+            $censoredWord = str_repeat('*', strlen($badWord));
+            $lowercaseMessage = str_replace($badWord, $censoredWord, $lowercaseMessage);
         }
+    
+        // Send the censored message (after manual censoring) to NeutrinoAPI for further processing
+        $response = Http::post($apiUrl, [
+            'user-id' => $apiUser,
+            'api-key' => $apiKey,
+            'content' => $lowercaseMessage, // Pass the already partially censored message
+            'censor-character' => '*' // This will replace any remaining bad words with asterisks
+        ]);
+    
+        if ($response->successful()) {
+            // Return the final censored message (NeutrinoAPI + manual light word censoring)
+            return $response->json()['censored-content'];
+        }
+    
+        // In case of failure, return the manually censored message
+        return $lowercaseMessage;
     }
-
-    return false; // Message does not contain bad words
-}
+    
 
 
     public function sendMessage(Request $request, $matchId)
-    {
-        $liveChat = LiveChat::where('match_id', $matchId)->first();
+{
+    $liveChat = LiveChat::where('match_id', $matchId)->first();
 
-        if (!$liveChat || $liveChat->isFinished()) {
-            return response()->json(['error' => 'Chat is finished'], 403);
-        }
-        $message=$request->message;
-        if (!$this->containsBadWords($message)) {
-                // Create message directly using the Message model
-        $message = Message::create([
-            'user_id' => auth('member')->id(),  // Manually set the user ID
-            'message' => $request->message,
-            'match_id' => $matchId,
-        ]);
-
-
-
-
-        broadcast(new MessageSent($message))->toOthers();
-
-            return response()->json(['message' => 'Message is clean'], 200);
-        } else {
-            return response()->json(['error' => 'Il messaggio contiene contenuti inappropriati'], 400);
-        }
-
+    if (!$liveChat || $liveChat->isFinished()) {
+        return response()->json(['error' => 'Chat is finished'], 403);
     }
+
+    // Get the message from the request
+    $messageContent = $request->message;
+
+    // Censor bad words in the message
+    $censoredMessage = $this->censorBadWords($messageContent);
+
+    // Create the message with the censored content
+    $message = Message::create([
+        'user_id' => auth('member')->id(),  // Manually set the user ID
+        'message' => $censoredMessage,
+        'match_id' => $matchId,
+    ]);
+
+    // Broadcast the message to others
+    broadcast(new MessageSent($message))->toOthers();
+
+    return response()->json(['message' => 'Message sent successfully', 'censored_message' => $censoredMessage], 200);
+}
+
 
     public static function updateChatStatus($matchId, $status)
     {
@@ -139,5 +156,11 @@ class ChatController extends Controller
                     'chat_status' => 'live'  // Default status is 'live'
                 ]);
             }
+        }
+
+
+        public function manage($matchId)
+        {
+            
         }
 }
