@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\LiveChat;
 use App\Models\Message;
+use Exception;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 use Botble\Member\Models\Member;
+use Botble\Base\Supports\Breadcrumb;
 use Illuminate\Support\Facades\Http;
+use Botble\Base\Http\Controllers\BaseController;
 
 
 
 
 
-class ChatController extends Controller
+
+class ChatController extends BaseController
 {
+    protected function breadcrumb(): Breadcrumb
+    {
+        return parent::breadcrumb()
+            ->add("Gestione delle dirette");
+    }
+
+    public function list(){
+
+        $this->pageTitle("Dirette");
+
+        return view('diretta.list');
+    }
+        
+
+
     public function fetchMessages($matchId)
     {
         // Ensure the chat exists or create it if not
@@ -57,50 +76,51 @@ class ChatController extends Controller
 
 
     private function censorBadWords($message)
-    {
-        $apiUrl = 'https://neutrinoapi.net/bad-word-filter';
-        $apiUser = env('NEUTRINO_API_USER');
-        $apiKey = env('NEUTRINO_API_KEY');
-    
-        // List of light words you want to censor manually
-        $light = [
-            "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
-            "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
-            "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione","cristo",
-            "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
-            "dio","figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
-            "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
-            "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
-            "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
-            "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi",
-            "scemo","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
-            "vaffanculo","zoccola","zoccolona"
-        ];
-    
-        // Censor the "light" words manually
-        $lowercaseMessage = strtolower($message);
-        foreach ($light as $badWord) {
-            // Replace each bad word with asterisks (same length as the bad word)
-            $censoredWord = str_repeat('*', strlen($badWord));
-            $lowercaseMessage = str_replace($badWord, $censoredWord, $lowercaseMessage);
-        }
-    
-        // Send the censored message (after manual censoring) to NeutrinoAPI for further processing
-        $response = Http::post($apiUrl, [
-            'user-id' => $apiUser,
-            'api-key' => $apiKey,
-            'content' => $lowercaseMessage, // Pass the already partially censored message
-            'censor-character' => '*' // This will replace any remaining bad words with asterisks
-        ]);
-    
-        if ($response->successful()) {
-            // Return the final censored message (NeutrinoAPI + manual light word censoring)
-            return $response->json()['censored-content'];
-        }
-    
-        // In case of failure, return the manually censored message
-        return $lowercaseMessage;
+{
+    $apiUrl = 'https://neutrinoapi.net/bad-word-filter';
+    $apiUser = env('NEUTRINO_API_USER');
+    $apiKey = env('NEUTRINO_API_KEY');
+
+    // List of light words you want to censor manually
+    $light = [
+        "bastardo","bastardi","bastarda","bastarde","bernarda","bischero","bischera","bocchino",
+        "bordello","cacare","cacarella","cagare","cagata","cagate","caghetta","cagone","cazzata",
+        "cazzo","cazzi","cazzone","cazzoni","cazzona","cesso","ciucciata","cogliona","coglione",
+        "cretina","cretino","culattone","culattona","culo","culone","culona","culoni","deficiente",
+        "figa","fighe","fottuta","fottuto","frocio","frocione","frocetto","gesu","imbecille",
+        "imbecilli","incazzare","incazzato","incazzati","madonna","maronna","merda","merdina",
+        "merdona","merdaccia","mignotta","mignottona","mignottone","mortacci","negro","negra",
+        "pippa","pippona","pippone","pippaccia","pirla","pompino","porco","puttana","puttanona",
+        "puttanone","puttaniere","puttanate","rompiballe","rompipalle","rompicoglioni","scazzi","stronzo","stronzi","scopare","scopata","stronzata","stronzo","stronzone","troia","troione","trombata",
+        "vaffanculo","zoccola","zoccolona"
+    ];
+
+    // Censor the "light" words manually, leaving the first and last letters visible
+    $lowercaseMessage = strtolower($message);
+    foreach ($light as $badWord) {
+        // Censor everything except the first and last letter of the bad word
+        $badWordPattern = '/\b' . $badWord . '\b/i'; // Case-insensitive exact match of the word
+        $censoredWord = substr($badWord, 0, 1) . str_repeat('*', strlen($badWord) - 2) . substr($badWord, -1);
+        $lowercaseMessage = preg_replace($badWordPattern, $censoredWord, $lowercaseMessage);
     }
+
+    // Send the censored message (after manual censoring) to NeutrinoAPI for further processing
+    $response = Http::post($apiUrl, [
+        'user-id' => $apiUser,
+        'api-key' => $apiKey,
+        'content' => $lowercaseMessage, // Pass the already partially censored message
+        'censor-character' => '*' // This will replace any remaining bad words with asterisks
+    ]);
+
+    if ($response->successful()) {
+        // Return the final censored message (NeutrinoAPI + manual light word censoring)
+        return $response->json()['censored-content'];
+    }
+
+    // In case of failure, return the manually censored message
+    return $lowercaseMessage;
+}
+
     
 
 

@@ -177,32 +177,35 @@
 
     // Function to append a message to the messages list
     function appendMessage(message, member) {
-        const messagesList = document.getElementById('messages-list');
+    const messagesList = document.getElementById('messages-list');
 
-        const newMessage = document.createElement('li');
-        newMessage.classList.add('message-bubble');
+    const newMessage = document.createElement('li');
+    newMessage.classList.add('message-bubble');
 
-        const avatar = document.createElement('div');
-        avatar.classList.add('message-avatar');
-        avatar.textContent = member.first_name.charAt(0).toUpperCase() || 'A';
-        avatar.style.backgroundColor = getAvatarColor(member.first_name.charAt(0));
+    const avatar = document.createElement('div');
+    avatar.classList.add('message-avatar');
+    avatar.textContent = member.first_name.charAt(0).toUpperCase() || 'A';
+    avatar.style.backgroundColor = getAvatarColor(member.first_name.charAt(0));
 
-        const messageContent = document.createElement('div');
-        messageContent.classList.add('message-content');
-        messageContent.innerHTML = `
-            <strong style='font-size:small'>${member.first_name} ${member.last_name}</strong><br>
-            ${message.message}
-            <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
-        `;
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+    messageContent.innerHTML = `
+        <strong style='font-size:small'>${member.first_name} ${member.last_name}</strong><br>
+        ${message.message}
+        <div class="message-time">${new Date(message.created_at).toLocaleTimeString()}</div>
+    `;
 
-        newMessage.appendChild(avatar);
-        newMessage.appendChild(messageContent);
-        messagesList.appendChild(newMessage);
+    newMessage.appendChild(avatar);
+    newMessage.appendChild(messageContent);
 
-        // Scroll to the bottom of the chat
-        const chatMessages = document.getElementById('chat-messages');
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+    // Prepend the new message to the top of the messages list
+    messagesList.insertBefore(newMessage, messagesList.firstChild);
+
+    // Scroll to the top of the chat to show the latest message at the top
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.scrollTop = 0;
+}
+
 
     @if (auth('member')->check())
         // Send message when button is clicked or enter key is pressed
