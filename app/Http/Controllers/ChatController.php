@@ -4,24 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\LiveChat;
 use App\Models\Message;
+use Exception;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 use Botble\Member\Models\Member;
 use Botble\Base\Supports\Breadcrumb;
 use Illuminate\Support\Facades\Http;
+use Botble\Base\Http\Controllers\BaseController;
 
 
 
 
 
-class ChatController extends Controller
+
+class ChatController extends BaseController
 {
     protected function breadcrumb(): Breadcrumb
     {
         return parent::breadcrumb()
             ->add("Gestione delle dirette");
     }
+
     public function list(){
+
+        $this->pageTitle("Dirette");
 
         return view('diretta.list');
     }
