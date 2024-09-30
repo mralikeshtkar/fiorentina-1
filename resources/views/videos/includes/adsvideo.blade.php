@@ -1,9 +1,13 @@
+@php
+    use App\Models\Video;
 
-@if(isset($videos) && $videos->isNotEmpty())
+    $videos = Video::all();
+@endphp
+@if (isset($videos) && $videos->isNotEmpty())
 
     <div class="container">
         <div class="row mx-0">
-            @foreach($videos as $video)
+            @foreach ($videos as $video)
                 <div class="col-12 col-md-12 col-lg-12 mx-auto">
                     <div class="d-block w-full">
                         <video width="100%" controls>
