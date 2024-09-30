@@ -43,8 +43,7 @@ class VideoController extends BaseController
 
     public function store(Request $request)
     {
-        // Validate the input fields
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'videos' => 'required',
             'videos.*' => 'mimes:mp4,mov,avi|max:204800',  // Validate each video file
@@ -52,13 +51,11 @@ class VideoController extends BaseController
             'status' => 'required|in:published,draft,pending',  // Validate status
         ]);
 
-        // Handle multiple file uploads
+        // Proceed with file upload only if validation is successful
         if ($request->hasFile('videos')) {
             foreach ($request->file('videos') as $videoFile) {
-                // Store the video in the 'public/videos' directory
                 $filePath = $videoFile->store('videos', 'public');
 
-                // Save each video record to the database
                 $video = new Video();
                 $video->title = $request->title;
                 $video->video_path = $filePath;
@@ -72,6 +69,7 @@ class VideoController extends BaseController
 
         return redirect()->back()->with('error', 'Failed to upload videos.');
     }
+
 
 
     public function edit(Ad $ad)
