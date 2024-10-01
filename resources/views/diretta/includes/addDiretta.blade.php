@@ -1,42 +1,45 @@
-<form action="" method="POST">
+<form action="" method="POST" class="p-3">
     @csrf
-    <!-- Time Input -->
-    <div>
-        <label for="time">Time</label>
-        <input type="number" id="time" name="time" required>
-    </div>
+    <div class="row mb-3">
+        <!-- Time Input -->
+        <div class="col-md-2">
+            <label for="time" class="form-label">Time</label>
+            <input type="number" id="time" name="time" class="form-control" required>
+        </div>
 
-    <!-- Tipo di Event Select -->
-    <div>
-        <label for="tipo_event">Tipo di Event</label>
-        <select id="tipo_event" name="tipo_event" required>
-            <option value="event1">Event 1</option>
-            <option value="event2">Event 2</option>
-            <option value="event3">Event 3</option>
-            <!-- Add more options as needed -->
-        </select>
+        <!-- Tipo di Event Select -->
+        <div class="col-md-4">
+            <label for="tipo_event" class="form-label">Tipo di Event</label>
+            <select id="tipo_event" name="tipo_event" class="form-select" required>
+                <option value="" disabled selected>Select Event</option>
+                <option value="event1">Event 1</option>
+                <option value="event2">Event 2</option>
+                <option value="event3">Event 3</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
     </div>
 
     <!-- Comment Text Area -->
-    <div>
-        <label for="comment_text">Comment Text</label>
-        <textarea id="comment_text" name="comment_text" rows="4" required></textarea>
+    <div class="mb-3">
+        <label for="comment_text" class="form-label">Comment Text</label>
+        <textarea id="comment_text" name="comment_text" rows="4" class="form-control" required></textarea>
     </div>
 
     <!-- Radio Buttons -->
-    <div>
-        <label>
-            <input type="radio" name="style" value="bold" required>
-            Bold
-        </label>
-        <label>
-            <input type="radio" name="style" value="important" required>
-            Important
-        </label>
+    <div class="mb-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="style" id="bold" value="bold" required>
+            <label class="form-check-label" for="bold">Bold</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="style" id="important" value="important" required>
+            <label class="form-check-label" for="important">Important</label>
+        </div>
     </div>
 
     <!-- Submit Button -->
-    <div>
-        <button type="submit">Submit</button>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
