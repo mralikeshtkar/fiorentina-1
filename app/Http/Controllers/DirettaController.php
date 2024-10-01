@@ -15,7 +15,7 @@ use Botble\Base\Http\Controllers\BaseController;
 
 // sportmonks B0lZqWEdqBzEPrLW5gDcm87Svgb5bnEEa807fd7kOiONHbcbetXywqPQafqC
 
-class StandingController extends BaseController
+class DirettaController extends BaseController
 {
     protected function breadcrumb(): Breadcrumb
     {
