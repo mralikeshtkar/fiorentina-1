@@ -35,7 +35,7 @@ class DirettaController extends BaseController
     
         $this->pageTitle("Diretta di $matchId");
 
-        return view('diretta.view','');
+        return view('diretta.view',compact('matchId'));
     }
 
     // Post a new comment
