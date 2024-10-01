@@ -20,8 +20,7 @@
                 @php
                     $updateScheduledMessage = App\Http\Controllers\StandingController::fetchCalendario();
                 @endphp
-
-
+                    
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">

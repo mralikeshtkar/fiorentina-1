@@ -20,6 +20,7 @@ use App\Http\Controllers\VoteController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\NotificaController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DirettaController;
 use App\Http\Controllers\VideoController;
 
 
@@ -82,3 +83,4 @@ Route::post('/notifica/store', [NotificaController::class, 'store']);
 
 
 Route::get('/diretta/list', [ChatController::class, 'list'])->name('diretta.list');
+Route::get('/diretta/view', [DirettaController::class, 'view'])->name('diretta.view');

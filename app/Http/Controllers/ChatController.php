@@ -31,7 +31,7 @@ class ChatController extends BaseController
 
         return view('diretta.list');
     }
-        
+    
 
 
     public function fetchMessages($matchId)
