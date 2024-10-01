@@ -6,6 +6,10 @@
         $commentaries = MatchCommentary::where('match_id', $matchId)->get();
     }
 @endphp
-@include('diretta.includes.addDiretta', [
-    'commentaries' => $commentaries,
-])
+@extends(BaseHelper::getAdminMasterLayoutTemplate())
+
+@section('content')
+    @include('diretta.includes.addDiretta', [
+        'commentaries' => $commentaries,
+    ])
+@endsection
