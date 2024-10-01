@@ -43,4 +43,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+
 @include('ads.includes.commentary', ['commentaries' => $commentaries])
