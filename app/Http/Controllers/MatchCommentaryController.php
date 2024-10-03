@@ -25,7 +25,7 @@ class MatchCommentaryController extends Controller
     // Assuming the response returns the data in the format provided
     $data = $response->json()['DATA'];
     $newCommentaryCount = count($data);
-
+    dd($newCommentaryCount,$existingCommentaryCount);
     // If there are new commentaries (newCommentaryCount > existingCommentaryCount)
     if ($newCommentaryCount > $existingCommentaryCount) {
         // Calculate how many new items to insert
