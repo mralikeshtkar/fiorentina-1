@@ -29,7 +29,7 @@ class MatchCommentaryController extends Controller
     if ($newCommentaryCount > $existingCommentaryCount) {
         // Calculate how many new items to insert
         $newItems = array_slice($data, $existingCommentaryCount); // Get only the new items
-
+        dd($newItems);
         foreach ($newItems as $comment) {
             // Add the new commentary to the database
             MatchCommentary::updateOrCreate(
