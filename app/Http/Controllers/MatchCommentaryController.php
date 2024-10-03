@@ -28,11 +28,12 @@ class MatchCommentaryController extends Controller
     // If there are new commentaries (newCommentaryCount > existingCommentaryCount)
     if ($newCommentaryCount > $existingCommentaryCount) {
         // Calculate how many new items to insert
-        $newItems = array_slice($data, $existingCommentaryCount); // Get only the new items
-        dd($newItems);
+        $newItems = array_slice($data, $existingCommentaryCount);
+        dd($data,$newItems);
+        // Get only the new items
         foreach ($newItems as $comment) {
             // Add the new commentary to the database
-            MatchCommentary::updateOrCreate(
+            MatchCommentary::create(
                 [
                     'match_id' => $matchId,
                     'comment_time' => $comment['COMMENT_TIME'] ?? NULL,
@@ -49,9 +50,10 @@ class MatchCommentaryController extends Controller
         // Update the commentary count in the Match model
         $match->commentary_count = $newCommentaryCount;
         $match->save();
+        return response()->json(['success' => 'New match commentaries saved successfully!']);
+
     }
 
-    return response()->json(['success' => 'New match commentaries saved successfully!']);
 }
 
 
