@@ -9,7 +9,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var matchId = "{{ $matchId }}"; // Pass the match ID from the Blade
-        var interval = 15000; // 15 seconds
+        var interval = 100000; // 15 seconds
 
         // Function to fetch latest commentaries
         function fetchCommentaries() {
