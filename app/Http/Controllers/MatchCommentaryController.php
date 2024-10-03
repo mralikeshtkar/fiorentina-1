@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MatchCommentary;
 use App\Models\Calendario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class MatchCommentaryController extends Controller
