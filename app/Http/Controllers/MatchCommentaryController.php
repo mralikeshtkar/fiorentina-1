@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 class MatchCommentaryController extends Controller
 {
+
+    public function fetchLatestCommentaries($matchId)
+{
+    // Fetch the latest commentaries ordered by time
+    $commentaries = MatchCommentary::where('match_id', $matchId)
+        ->orderByRaw("
+            CAST(SUBSTRING_INDEX(comment_time, \"'\", 1) AS UNSIGNED) + 
+            IF(LOCATE('+', comment_time) > 0, 
+                CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(comment_time, \"'\", 1), '+', -1) AS UNSIGNED), 
+                0
+            )
+        ")
+        ->get();
+
+    // Return JSON response
+    return response()->json($commentaries);
+}
+
     public static function storeCommentaries($matchId)
 {
     // Fetch match commentary count from the database

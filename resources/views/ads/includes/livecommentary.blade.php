@@ -1,26 +1,8 @@
 @php
-    use App\Models\MatchCommentary;
-    use Illuminate\Support\Facades\DB;
-
     use App\Http\Controllers\MatchCommentaryController;
-    MatchCommentaryController::storeCommentaries($matchId); // Store new commentaries every reload
-    $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)
-        ->orderByRaw(
-            "
-            CAST(SUBSTRING_INDEX(comment_time, \"'\", 1) AS UNSIGNED) + 
-            IF(LOCATE('+', comment_time) > 0, 
-                CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(comment_time, \"'\", 1), '+', -1) AS UNSIGNED), 
-                0
-            )
-        ",
-        )
-        ->get();
 @endphp
 
-<!-- Refresh the page every 15 seconds -->
-<meta http-equiv="refresh" content="15">
-
-<div class="container mt-3">
+<div class="container mt-3" id="commentary-container">
     @foreach ($commentaries as $comment)
         <div
             class="commentary-row {{ $comment['comment_class'] }} {{ $comment['is_important'] ? 'important' : '' }}{{ $comment['is_bold'] ? 'comment-is-bold' : '' }}">
@@ -31,3 +13,45 @@
         </div>
     @endforeach
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var matchId = "{{ $matchId }}"; // Pass the match ID from the Blade
+        var interval = 15000; // 15 seconds
+
+        // Function to fetch latest commentaries
+        function fetchCommentaries() {
+            fetch('/match/' + matchId + '/commentaries')
+                .then(response => response.json())
+                .then(data => {
+                    updateCommentaries(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching commentaries:', error);
+                });
+        }
+
+        // Function to update the commentary section with new data
+        function updateCommentaries(commentaries) {
+            var container = document.getElementById('commentary-container');
+            container.innerHTML = ''; // Clear existing commentaries
+
+            commentaries.forEach(function(comment) {
+                var commentRow = `
+                    <div class="commentary-row ${comment.comment_class} ${comment.is_important ? 'important' : ''} ${comment.is_bold ? 'comment-is-bold' : ''}">
+                        <div class="comment-time">${comment.comment_time || ''}</div>
+                        <div class="comment-icon"></div>
+                        <div class="comment-text ${comment.is_bold ? 'comment-bold' : ''}">${comment.comment_text || ''}</div>
+                    </div>
+                `;
+                container.innerHTML += commentRow;
+            });
+        }
+
+        // Initial fetch
+        fetchCommentaries();
+
+        // Periodically fetch new commentaries every 15 seconds
+        setInterval(fetchCommentaries, interval);
+    });
+</script>
