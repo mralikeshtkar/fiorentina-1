@@ -9,9 +9,7 @@
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
             $match->odds = json_decode($match->odds, true);
-            if ($match->home_team['name'] == 'Fiorentina') {
-                $match->venue = 'Artemio Franchi Stadium';
-            }
+
 
         @endphp
 
@@ -21,7 +19,6 @@
                 <div class="col-md-3">
                     <p>{{ ucwords(\Carbon\Carbon::parse($match->match_date)->locale('it')->timezone('Europe/Rome')->isoFormat('dddd D MMMM [ore] H:mm')," \t\r\n\f\v") }}
                     </p>
-                    <p>{{ $match->venue }}</p>
                 </div>
 
                 <!-- Team Logos and Names -->
