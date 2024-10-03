@@ -2,7 +2,7 @@
     <section class="section hero-section pt-45 pb-20"
         @if ($shortcode->background_color) style="background-color: #441274 !important;" @endif>
         @php
-            $match = App\Models\Matches::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
+            $match = App\Models\Calendario::where('status', 'TIMED')->orderBy('match_date', 'desc')->firstOrFail();
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
             $match->odds = json_decode($match->odds, true);
@@ -25,14 +25,14 @@
                 <div class="col-md-6 text-center">
                     <div class="row">
                         <div class="col-6">
-                            <img src="{{ $match->home_team['crest'] }}" alt="{{ $match->home_team['shortName'] }} Crest"
+                            <img src="{{ $match->home_team['logo'] }}" alt="{{ $match->home_team['name'] }} Crest"
                                 style="height: 30px; margin-bottom: 10px;">
-                            <h5>{{ $match->home_team['shortName'] }}</h5>
+                            <h5>{{ $match->home_team['name'] }}</h5>
                         </div>
                         <div class="col-6">
-                            <img src="{{ $match->away_team['crest'] }}" alt="{{ $match->away_team['shortName'] }} Crest"
+                            <img src="{{ $match->away_team['crest'] }}" alt="{{ $match->away_team['name'] }} Crest"
                                 style="height: 30px; margin-bottom: 10px;">
-                            <h5>{{ $match->away_team['shortName'] }}</h5>
+                            <h5>{{ $match->away_team['name'] }}</h5>
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,9 @@
                 <!-- Ticket Buttons -->
                 <div class="col-md-3">
                     <div class="d-grid">
-                        <a href="#" class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: auto;">GUARDA
-                            ORA!</a>
+                        <a href="https://laviola.collaudo.biz/diretta?match_id={{ $match->match_id }}"
+                            class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: auto;">Vai alla
+                            diretta!</a>
                     </div>
                 </div>
             </div>
