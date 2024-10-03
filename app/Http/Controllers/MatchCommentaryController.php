@@ -14,12 +14,12 @@ class MatchCommentaryController extends Controller
     // Fetch match commentary count from the database
     $match = Calendario::where('match_id',$matchId)->first();
     $existingCommentaryCount = $match->commentary_count;
-
+    $apiKey = '1e9b76550emshc710802be81e3fcp1a0226jsn069e6c35a2bb';
     // Simulate fetching data from an API, replace with your actual API request logic
     $url = "https://flashlive-sports.p.rapidapi.com/v1/events/commentary?locale=it_IT&event_id={$matchId}";
     $response = Http::withHeaders([
         "x-rapidapi-host" => 'flashlive-sports.p.rapidapi.com',
-        "x-rapidapi-key" => 'your-api-key'
+        "x-rapidapi-key" => $apiKey
     ])->get($url);
 
     // Assuming the response returns the data in the format provided
