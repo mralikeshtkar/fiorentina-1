@@ -28,6 +28,7 @@ class MatchCommentaryController extends Controller
     // If there are new commentaries (newCommentaryCount > existingCommentaryCount)
     if ($newCommentaryCount > $existingCommentaryCount) {
         // Calculate how many new items to insert
+        $data=array_reverse($data);
         $newItems = array_slice($data, $existingCommentaryCount);
         dd($data,$newItems);
         // Get only the new items
