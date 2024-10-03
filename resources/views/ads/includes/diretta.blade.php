@@ -4,6 +4,7 @@
     use App\Models\MatchLineups;
     use App\Models\MatchStatics;
     use App\Models\MatchCommentary;
+    use Illuminate\Support\Facades\DB;
     use App\Models\MatchSummary;
     use App\Http\Controllers\MatchLineupsController;
     use App\Http\Controllers\MatchStaticsController;
@@ -21,7 +22,9 @@
 
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
-        $commentaries = MatchCommentary::where('match_id', $matchId)->orderBy('comment_time', 'asc') // You can also use 'desc' for reverse order
+    // Use custom SQL logic to sort the comment_time field
+    $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)
+        ->orderByRaw("CAST(SUBSTRING_INDEX(comment_time, '+', 1) AS UNSIGNED) + IFNULL(CAST(SUBSTRING_INDEX(comment_time, '+', -1) AS UNSIGNED), 0)")
         ->get();
         $summaries = MatchSummary::where('match_id', $matchId)->get();
 

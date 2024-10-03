@@ -1,9 +1,13 @@
 @php
     use App\Models\MatchCommentary;
+    use Illuminate\Support\Facades\DB;
+
     use App\Http\Controllers\MatchCommentaryController;
     MatchCommentaryController::storeCommentaries($matchId); // Store new commentaries every reload
-    $commentaries = MatchCommentary::where('match_id', $matchId)
-        ->orderBy('comment_time', 'asc') // You can also use 'desc' for reverse order
+    $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)
+        ->orderByRaw(
+            "CAST(SUBSTRING_INDEX(comment_time, '+', 1) AS UNSIGNED) + IFNULL(CAST(SUBSTRING_INDEX(comment_time, '+', -1) AS UNSIGNED), 0)",
+        )
         ->get();
 @endphp
 
