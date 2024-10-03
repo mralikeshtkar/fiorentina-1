@@ -22,10 +22,18 @@
 
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
-    // Use custom SQL logic to sort the comment_time field
-    $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)
-        ->orderByRaw("CAST(SUBSTRING_INDEX(comment_time, '+', 1) AS UNSIGNED) + IFNULL(CAST(SUBSTRING_INDEX(comment_time, '+', -1) AS UNSIGNED), 0)")
-        ->get();
+        // Use custom SQL logic to sort the comment_time field
+        $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)
+            ->orderByRaw(
+                "
+            CAST(SUBSTRING_INDEX(comment_time, \"'\", 1) AS UNSIGNED) + 
+            IF(LOCATE('+', comment_time) > 0, 
+                CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(comment_time, \"'\", 1), '+', -1) AS UNSIGNED), 
+                0
+            )
+        ",
+            )
+            ->get();
         $summaries = MatchSummary::where('match_id', $matchId)->get();
 
         $fiorentinaLineups = $lineups
