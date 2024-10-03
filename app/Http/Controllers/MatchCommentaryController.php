@@ -17,9 +17,11 @@ $this->storeCommentaries($matchId);
 
     // Fetch the latest commentaries ordered by time
     $commentaries = MatchCommentary::where('match_id', $matchId)
-    ->whereNotNull('comment_time')   // Exclude null comment_time
-    ->whereNotNull('comment_class')  // Exclude null comment_class
-    ->whereNotNull('comment_text')   // Exclude null comment_text
+    ->where(function($query) {
+        $query->whereNotNull('comment_time')
+              ->orWhereNotNull('comment_class')
+              ->orWhereNotNull('comment_text');
+    })
     ->orderByRaw("
         CAST(SUBSTRING_INDEX(comment_time, \"'\", 1) AS UNSIGNED) + 
         IF(LOCATE('+', comment_time) > 0, 
@@ -28,6 +30,7 @@ $this->storeCommentaries($matchId);
         )
     ")
     ->get();
+
 
     // Return JSON response
     return response()->json($commentaries);
