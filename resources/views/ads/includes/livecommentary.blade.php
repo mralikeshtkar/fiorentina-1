@@ -1,7 +1,9 @@
 @php
     use App\Http\Controllers\MatchCommentaryController;
     MatchCommentaryController::storeCommentaries($matchId); // Store new commentaries every reload
-    $commentaries = App\Models\MatchCommentary::where('match_id', $matchId)->get(); // Get latest commentaries
+    $commentaries = MatchCommentary::where('match_id', $matchId)
+        ->orderBy('comment_time', 'asc') // You can also use 'desc' for reverse order
+        ->get();
 @endphp
 
 <!-- Refresh the page every 15 seconds -->

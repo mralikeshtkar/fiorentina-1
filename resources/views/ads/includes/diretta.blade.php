@@ -21,7 +21,8 @@
 
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
-        $commentaries = MatchCommentary::where('match_id', $matchId)->get();
+        $commentaries = MatchCommentary::where('match_id', $matchId)->orderBy('comment_time', 'asc') // You can also use 'desc' for reverse order
+        ->get();
         $summaries = MatchSummary::where('match_id', $matchId)->get();
 
         $fiorentinaLineups = $lineups
