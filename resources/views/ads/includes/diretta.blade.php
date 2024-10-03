@@ -169,7 +169,7 @@
 
         <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
             @if ($match->status == 'LIVE')
-                @include('ads.includes.livecommentary')
+                @include('ads.includes.livecommentary', ['match_id', $matchId]);
             @else
                 @include('ads.includes.commentary', ['commentaries' => $commentaries])
             @endif
