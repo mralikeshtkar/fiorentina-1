@@ -12,6 +12,8 @@ class MatchCommentaryController extends Controller
 
     public function fetchLatestCommentaries($matchId)
 {
+    $this->storeCommentaries($matchId);
+
     // Fetch the latest commentaries ordered by time
     $commentaries = MatchCommentary::where('match_id', $matchId)
         ->orderByRaw("
