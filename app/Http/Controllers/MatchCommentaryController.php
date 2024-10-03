@@ -12,7 +12,7 @@ class MatchCommentaryController extends Controller
     public static function storeCommentaries($matchId)
 {
     // Fetch match commentary count from the database
-    $match = Calendario::find($matchId);
+    $match = Calendario::where('match_id',$matchId)->first();
     $existingCommentaryCount = $match->commentary_count;
 
     // Simulate fetching data from an API, replace with your actual API request logic
