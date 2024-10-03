@@ -54,7 +54,7 @@ $this->storeCommentaries($matchId);
         // Get only the new items
         foreach ($newItems as $comment) {
             // Add the new commentary to the database
-            if(!isset($newItems['END_MATCH'])){
+
                 MatchCommentary::createOrUpdate(
                     [
                         'match_id' => $matchId,
@@ -67,7 +67,6 @@ $this->storeCommentaries($matchId);
                         'is_important' => $comment['COMMENT_IS_IMPORTANT'] ?? 0,
                     ]
                 );
-            }
             
         }
 
