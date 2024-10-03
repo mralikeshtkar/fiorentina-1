@@ -1,4 +1,5 @@
 @php
+    use App\Models\MatchCommentary;
     use App\Http\Controllers\MatchCommentaryController;
     MatchCommentaryController::storeCommentaries($matchId); // Store new commentaries every reload
     $commentaries = MatchCommentary::where('match_id', $matchId)
