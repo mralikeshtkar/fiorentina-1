@@ -2,14 +2,14 @@
     <section class="section hero-section pt-45 pb-20"
         @if ($shortcode->background_color) style="background-color: #441274 !important;" @endif>
         @php
-            $match = App\Models\Calendario::where('status', 'TIMED')
+            $match = App\Models\Calendario::where('status', 'SCHEDULED')
                 ->orWhere('status', 'LIVE')
                 ->orderBy('match_date', 'desc')
                 ->firstOrFail();
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
             $match->odds = json_decode($match->odds, true);
-            if ($match->home_team['shortName'] == 'Fiorentina') {
+            if ($match->home_team['name'] == 'Fiorentina') {
                 $match->venue = 'Artemio Franchi Stadium';
             }
 
