@@ -55,7 +55,7 @@ $this->storeCommentaries($matchId);
         foreach ($newItems as $comment) {
             // Add the new commentary to the database
 
-                MatchCommentary::createOrUpdate(
+                MatchCommentary::updateOrCreate(
                     [
                         'match_id' => $matchId,
                         'comment_time' => $comment['COMMENT_TIME'] ?? NULL,
