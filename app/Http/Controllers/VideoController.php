@@ -4,20 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use App\Rules\ValidateMediaFileIds;
-use Botble\Media\Models\MediaFile;
-use Exception;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Http\Request;
-use Botble\Base\Supports\Breadcrumb;
 use Botble\Base\Http\Controllers\BaseController;
-use App\Http\Forms\AdForms;
+use Botble\Base\Supports\Breadcrumb;
+use Botble\Media\Models\MediaFile;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Intervention\Image\ImageManager;
 use Throwable;
 
 
@@ -32,8 +24,6 @@ class VideoController extends BaseController
 
     public function index()
     {
-
-
         $this->pageTitle("Videos List");
         $videos = Video::query()->withCount('mediaFiles')->latest()->paginate(20);
         return view('videos.view', compact('videos'));
@@ -53,11 +43,12 @@ class VideoController extends BaseController
             'title' => ['required', 'string'],
             'mode' => ['required', Rule::in(Video::PLAYLIST_MODES)],
             'status' => ['required', Rule::in(Video::STATUSES)],
-            'videos' => ['required', new ValidateMediaFileIds()],
+            'videos' => ['nullable', 'array'],
+            'videos.*' => [Rule::exists(MediaFile::class,'id')],
         ]);
         try {
             return DB::transaction(function () use ($request) {
-                $video_ids = json_decode($request->videos, true);
+                $video_ids = $request->videos;
                 $is_random = $request->mode == Video::PLAYLIST_MODE_RANDOM;
                 $is_published = $request->status == Video::STATUS_PUBLISHED;
                 $video = Video::query()->create([
@@ -65,7 +56,7 @@ class VideoController extends BaseController
                     'is_random' => $is_random,
                     'published_at' => $is_published ? now() : null,
                 ]);
-                if (count($video_ids)) {
+                if ($request->filled('videos')) {
                     $mediaFilesData = collect($video_ids)
                         ->mapWithKeys(function ($item, $key) {
                             return [
@@ -101,11 +92,12 @@ class VideoController extends BaseController
             'title' => ['required', 'string'],
             'mode' => ['required', Rule::in(Video::PLAYLIST_MODES)],
             'status' => ['required', Rule::in(Video::STATUSES)],
-            'videos' => ['required', new ValidateMediaFileIds()],
+            'videos' => ['nullable', 'array'],
+            'videos.*' => [Rule::exists(MediaFile::class,'id')],
         ]);
         try {
             return DB::transaction(function () use ($request, $video) {
-                $video_ids = json_decode($request->videos, true);
+                $video_ids = $request->videos;
                 $diffCount = $video->mediaFiles->pluck('id')->diff($video_ids)->count();
                 $is_random = $request->mode == Video::PLAYLIST_MODE_RANDOM;
                 $is_published = $request->status == Video::STATUS_PUBLISHED;
@@ -114,7 +106,7 @@ class VideoController extends BaseController
                     'is_random' => $is_random,
                     'published_at' => $is_published ? now() : null,
                 ]);
-                if ($diffCount && count($video_ids)) {
+                if ($diffCount && $request->filled('videos')) {
                     $mediaFilesData = collect($video_ids)
                         ->mapWithKeys(function ($item, $key) {
                             return [
