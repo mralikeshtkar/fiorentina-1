@@ -2,128 +2,107 @@
 
 namespace App\Models;
 
+use Botble\Media\Models\MediaFile;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
+use JetBrains\PhpStorm\Pure;
 
 class Video extends Model
 {
-    protected $table = 'videos';
-    const TYPE_ANNUNCIO_vidoe = 1;
-    // Define video types if needed
-    const TYPE_VIDEO_AD = 1; // Example: Video Advertisement
-
-    const TYPES = [
-        self::TYPE_VIDEO_AD => 'Video Advertisement',
-    ];
-
-    // Define video groups if needed
-    const GROUP_MAIN_PAGE = 1;
-    const GROUP_BLOG_PAGE = 2;
-
-    const GROUPS = [
-        self::GROUP_MAIN_PAGE => 'Main Page Videos',
-        self::GROUP_BLOG_PAGE => 'Blog Page Videos',
-    ];
-
-    protected $fillable = [
-        'title',
-        'video_path',
-        'group',
-        'status',
-        'created_at',
-        'updated_at',
-    ];
+    /**
+     * @var string[]
+     */
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'status' => 'bool',
+        'is_random' => 'bool',
+        'published_at' => 'datetime',
+    ];
+
+    const PLAYLIST_MODE_SEQUENTIAL = "Sequential";
+    const PLAYLIST_MODE_RANDOM = "Random";
+
+    const PLAYLIST_MODES = [
+        self::PLAYLIST_MODE_SEQUENTIAL,
+        self::PLAYLIST_MODE_RANDOM,
+    ];
+
+    const STATUS_PUBLISHED = "Published";
+    const STATUS_PENDING = "Pending";
+
+    const STATUSES = [
+        self::STATUS_PUBLISHED,
+        self::STATUS_PENDING,
     ];
 
     /**
-     * Get the group name attribute.
+     * @return BelongsToMany
      */
-    public function getGroupNameAttribute()
+    public function mediaFiles(): BelongsToMany
     {
-        return self::GROUPS[$this->group] ?? 'Unknown Group';
+        return $this->belongsToMany(MediaFile::class);
     }
 
     /**
-     * Boot method to handle deletion of video files.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::updated(function (self $video) {
-            if ($video->wasChanged('video_path')) {
-                Storage::disk('public')->delete($video->getOriginal('video_path'));
-            }
-        });
-
-        static::deleted(function (self $video) {
-            if ($video->hasVideo()) {
-                Storage::disk('public')->delete($video->video_path);
-            }
-        });
-    }
-
-    /**
-     * Get the video URL.
-     *
-     * @return string
-     */
-    public function getVideoUrl(): string
-    {
-        return Storage::url($this->video_path);
-    }
-
-    /**
-     * Check if the video exists.
-     *
-     * @return bool
-     */
-    public function hasVideo(): bool
-    {
-        return !is_null($this->video_path) && strlen($this->video_path);
-    }
-
-    /**
-     * Scope to get specific video type (e.g., advertisements).
-     *
-     * @param $query
      * @return mixed
      */
-    public function scopeTypeVideoAd($query): mixed
+    public function isRandom(): mixed
     {
-        return $query->where('status', self::TYPE_VIDEO_AD);
+        return $this->is_random;
     }
 
     /**
-     * Static method to insert videos into content.
+     * @return string
      */
-    public static function addVideosToContent($content)
+    #[Pure] public function getModelLabel(): string
     {
-        $videos = self::query()
-            ->where('status', true)
-            ->whereIn('group', [self::GROUP_MAIN_PAGE, self::GROUP_BLOG_PAGE])
-            ->get()
-            ->unique('group')
-            ->mapWithKeys(function ($item) {
-                return [$item->group => $item];
-            });
-
-        $content = collect(explode("\n", $content))->map(function ($line, $index) use ($videos) {
-            if ($index == 2 && $videos->has(self::GROUP_MAIN_PAGE)) {
-                $line .= view('videos.includes.video', ['video' => $videos->get(self::GROUP_MAIN_PAGE)])->render();
-            } elseif ($index == 4 && $videos->has(self::GROUP_BLOG_PAGE)) {
-                $line .= view('videos.includes.video', ['video' => $videos->get(self::GROUP_BLOG_PAGE)])->render();
-            }
-            return $line;
-        })->implode("\n");
-
-        return $content;
+        return $this->isRandom() ? self::PLAYLIST_MODE_RANDOM : self::PLAYLIST_MODE_SEQUENTIAL;
     }
-    public function ads()
+
+    /**
+     * @return string
+     */
+    public function getStatusLabel(): string
     {
-        return $this->hasMany(VideoAd::class, 'video_id');
+        return $this->published_at ? self::STATUS_PUBLISHED : self::STATUS_PENDING;
+    }
+
+    /**
+     * @param $mode
+     * @return bool
+     */
+    #[Pure] public function checkModelSelect($mode): bool
+    {
+        $result = false;
+
+        if ($mode == self::PLAYLIST_MODE_RANDOM && $this->isRandom()){
+            $result = true;
+        }
+
+        if ($mode == self::PLAYLIST_MODE_SEQUENTIAL && !$this->isRandom()){
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $status
+     * @return bool
+     */
+    public function checkStatusSelect($status): bool
+    {
+        $result = false;
+
+        if ($status == self::STATUS_PUBLISHED && $this->published_at){
+            $result = true;
+        }
+
+        if ($status == self::STATUS_PENDING && is_null($this->published_at)){
+            $result = true;
+        }
+
+        return $result;
     }
 }

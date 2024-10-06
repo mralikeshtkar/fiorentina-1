@@ -32,27 +32,8 @@ class VideoController extends BaseController
 
     public function index()
     {
-        Schema::create('videos', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->boolean('is_random')->default(true);
-            $table->timestamp('published_at')->nullable();
-            $table->timestamps();
-        });
-        Schema::create('media_file_video', function (Blueprint $table) {
-            $table->foreignId('media_file_id')
-                ->references('id')
-                ->on('media_files')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreignId('video_id')
-                ->references('id')
-                ->on('videos')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->unsignedInteger('priority');
-        });
-        
+      
+
         $this->pageTitle("Videos List");
         $videos = Video::query()->withCount('mediaFiles')->latest()->paginate(20);
         return view('videos.view', compact('videos'));
