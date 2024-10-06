@@ -32,7 +32,7 @@ class VideoController extends BaseController
 
     public function index()
     {
-      
+
 
         $this->pageTitle("Videos List");
         $videos = Video::query()->withCount('mediaFiles')->latest()->paginate(20);

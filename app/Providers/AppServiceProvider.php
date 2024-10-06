@@ -49,9 +49,23 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('ads.includes.adsense',function (View $view){
             $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::Google_adsense)->first());
         });
-//
-//        view()->composer('videos.includes.adsvideo',function (View $view){
-//            $view->with('video',Video::query()->typeAnnuncioImmagine()->whereGroup(Ad::Google_adsense)->first());
-//        });
+
+        view()->composer('videos.includes.adsvideo', function (View $view) {
+            /** @var Video $video */
+            $video = Video::query()->published()->first();
+            if ($video) {
+                $ads_videos = $video->mediaFiles()
+                    ->when($video->isRandom(), function ($q) {
+                        $q->inRandomOrder();
+                    }, function ($q) {
+                        $q->orderBy('priority');
+                    })
+                    ->get();
+            } else {
+                $ads_videos = collect();
+            }
+            $view->with('ads_videos', $ads_videos);
+        });
+
     }
 }

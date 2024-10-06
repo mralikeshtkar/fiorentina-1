@@ -1,17 +1,12 @@
-@php
-    use App\Models\Video;
-
-    $videos = Video::all();
-@endphp
-@if (isset($videos) && $videos->isNotEmpty())
+@if (isset($ads_videos) && $ads_videos->count())
 
     <div class="container">
         <div class="row mx-0">
-            @foreach ($videos as $video)
+            @foreach ($ads_videos as $video)
                 <div class="col-12 col-md-12 col-lg-12 mx-auto">
                     <div class="d-block w-full">
                         <video width="100%"  autoplay muted>
-                            <source src="{{ asset('storage/' . $video->video_path) }}" type="video/mp4">
+                            <source src="{{ url('storage/' . $video->url) }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>

@@ -41,7 +41,7 @@ class Video extends Model
      */
     public function mediaFiles(): BelongsToMany
     {
-        return $this->belongsToMany(MediaFile::class);
+        return $this->belongsToMany(MediaFile::class)->withPivot(['priority']);
     }
 
     /**
@@ -104,5 +104,10 @@ class Video extends Model
         }
 
         return $result;
+    }
+
+    public function scopePublished($q)
+    {
+        return $q->whereNotNull('published_at');
     }
 }

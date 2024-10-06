@@ -19,10 +19,9 @@
                         <div class="mb-3">
                             <label for="videoUpload" class="form-label">Upload Videos</label>
                             <span data-bb-toggle="video-picker-choose"
-                                  data-target="popup">
-                                Choose videos
+                                  data-target="popup" class="btn btn-primary">
+                                Choice videos
                             </span>
-                            <input type="hidden" name="videos">
                             @error('videos')
                             <span class="is-invalid text-danger">{{ $message }}</span>
                             @enderror
@@ -31,8 +30,8 @@
                         <!-- Video Previews -->
                         <div class="mb-3">
                             <label for="videoPreview" class="form-label">Video Previews</label>
-                            <div id="videoPreviewContainer" class="d-flex flex-wrap">
-                                <!-- Video previews will be dynamically added here -->
+                            <div id="videoPreviewContainer" class="row">
+
                             </div>
                         </div>
 
@@ -118,9 +117,29 @@
                 multiple: true,
                 filter: "video",
                 onSelectFiles: function (e, t) {
-                    $('input[name="videos"]').val(JSON.stringify(e.map(i => i.id)));
+                    const container = $('#videoPreviewContainer');
+                    e.forEach((i, k) => {
+                        const html = `
+                        <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
+                            <input type="hidden" name="videos[][${i.id}]">
+                            <div class="w-100 p-2 border border-2 rounded-2">
+                                <video src="${i.preview_url}" class="w-100" controls></video>
+                                <div class="mt-1">
+                                    <button type="button" class="btn btn-danger video-preview-item-delete">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        container.append(html);
+                    })
                 }
             })
-        }))
+        }));
+        $(document).on('click', '.video-preview-item-delete', function (e) {
+            e.preventDefault();
+            $(e.target).closest('.video-preview-item').remove();
+        })
     </script>
 @endpush
