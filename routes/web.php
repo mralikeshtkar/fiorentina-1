@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\MatchCommentaryController;
 use Botble\Base\Facades\AdminHelper;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ use App\Http\Controllers\VideoController;
 
 
 
+Route::get('/match/{matchId}/commentaries', [MatchCommentaryController::class, 'fetchLatestCommentaries']);
 
 
     Route::get('/admin/ads', [AdController::class, 'index'])->name('ads.index');

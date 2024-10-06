@@ -4,6 +4,7 @@
     use App\Models\MatchLineups;
     use App\Models\MatchStatics;
     use App\Models\MatchCommentary;
+    use Illuminate\Support\Facades\DB;
     use App\Models\MatchSummary;
     use App\Http\Controllers\MatchLineupsController;
     use App\Http\Controllers\MatchStaticsController;
@@ -21,7 +22,22 @@
 
         $lineups = MatchLineups::where('match_id', $matchId)->get();
         $statics = MatchStatics::where('match_id', $matchId)->get();
-        $commentaries = MatchCommentary::where('match_id', $matchId)->get();
+        // Use custom SQL logic to sort the comment_time field
+        $commentaries = MatchCommentary::where('match_id', $matchId)
+            ->where(function ($query) {
+                $query->whereNotNull('comment_time')->orWhereNotNull('comment_class')->orWhereNotNull('comment_text');
+            })
+            ->orderByRaw(
+                "
+        CAST(SUBSTRING_INDEX(comment_time, \"'\", 1) AS UNSIGNED) + 
+        IF(LOCATE('+', comment_time) > 0, 
+            CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(comment_time, \"'\", 1), '+', -1) AS UNSIGNED), 
+            0
+        )
+    ",
+            )
+            ->get();
+
         $summaries = MatchSummary::where('match_id', $matchId)->get();
 
         $fiorentinaLineups = $lineups
@@ -85,8 +101,8 @@
     <!-- Tab Navigation -->
     <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="formazioni-tab" data-toggle="tab" href="#formazioni" role="tab"
-                aria-controls="formazioni" aria-selected="false">FORMAZIONI</a>
+            <a class="nav-link @if ($match->status != 'LIVE') active @endif" id="formazioni-tab" data-toggle="tab"
+                href="#formazioni" role="tab" aria-controls="formazioni" aria-selected="false">FORMAZIONI</a>
         </li>
 
         <li class="nav-item" role="presentation">
@@ -99,15 +115,15 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="commento-tab" data-toggle="tab" href="#commento" role="tab"
-                aria-controls="commento" aria-selected="false">DIRETTA</a>
+            <a class="nav-link @if ($match->status == 'LIVE') active @endif " id="commento-tab" data-toggle="tab"
+                href="#commento" role="tab" aria-controls="commento" aria-selected="false">DIRETTA</a>
         </li>
     </ul>
 
     <!-- Tab Content -->
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active text-dark" id="formazioni" role="tabpanel"
-            aria-labelledby="formazioni-tab">
+        <div class="tab-pane fade @if ($match->status != 'LIVE') show active @endif text-dark" id="formazioni"
+            role="tabpanel" aria-labelledby="formazioni-tab">
             <ul class="nav nav-tabs mt-5" id="teamtab" role="tablist">
                 <li class="nav-item" role="presentation" style="list-style: none;">
                     <a class="nav-link @if ($isHomeFiorentina) active @endif" id="Home-tab" data-toggle="tab"
@@ -167,9 +183,10 @@
             ])
         </div>
 
-        <div class="tab-pane fade" id="commento" role="tabpanel" aria-labelledby="commento-tab">
+        <div class="tab-pane @if ($match->status == 'LIVE') show active @endif fade" id="commento" role="tabpanel"
+            aria-labelledby="commento-tab">
             @if ($match->status == 'LIVE')
-                @include('ads.includes.livecommentary')
+                @include('ads.includes.livecommentary', ['match_id', $matchId]);
             @else
                 @include('ads.includes.commentary', ['commentaries' => $commentaries])
             @endif
