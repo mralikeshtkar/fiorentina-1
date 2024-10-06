@@ -2,7 +2,7 @@
 
 @section('content')
     <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
+    @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
         <div class="row">
             <div class="gap-3 col-md-9">
@@ -11,13 +11,21 @@
                         <!-- Title Input -->
                         <div class="mb-3">
                             <label for="title" class="form-label">Advertisement Title</label>
-                            <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" required>
+                            <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}"
+                                   required>
                         </div>
 
                         <!-- Video Upload Input (multiple) -->
                         <div class="mb-3">
                             <label for="videoUpload" class="form-label">Upload Videos</label>
-                            <input type="file" class="form-control" id="videoUpload" name="videos[]" accept="video/*" multiple required>
+                            <span data-bb-toggle="video-picker-choose"
+                                  data-target="popup">
+                                Choose videos
+                            </span>
+                            <input type="hidden" name="videos">
+                            @error('videos')
+                            <span class="is-invalid text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Video Previews -->
@@ -32,9 +40,13 @@
                         <div class="mb-3">
                             <label for="mode" class="form-label">Playlist Mode</label>
                             <select class="form-control" id="mode" name="mode" required>
-                                <option value="sequential">Sequential</option>
-                                <option value="random">Random</option>
+                                @foreach(\App\Models\Video::PLAYLIST_MODES as $mode)
+                                    <option value="{{ $mode }}">{{ $mode }}</option>
+                                @endforeach
                             </select>
+                            @error('mode')
+                            <span class="is-invalid text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -52,7 +64,8 @@
                                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                      stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                                    <path
+                                        d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
                                     <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
                                     <path d="M14 4l0 4l-6 0l0 -4"></path>
                                 </svg>
@@ -82,11 +95,15 @@
                     </div>
 
                     <div class="card-body">
-                        <select class="form-control form-select" required="required" id="status" name="status" aria-required="true">
-                            <option value="published">Published</option>
-                            <option value="draft">Draft</option>
-                            <option value="pending">Pending</option>
+                        <select class="form-control form-select" required="required" id="status" name="status"
+                                aria-required="true">
+                            @foreach(\App\Models\Video::STATUSES as $status)
+                                <option value="{{ $status }}">{{ $status }}</option>
+                            @endforeach
                         </select>
+                        @error('status')
+                        <span class="is-invalid text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -96,27 +113,14 @@
 
 @push('footer')
     <script>
-        // Multiple Video Preview functionality
-        document.getElementById('videoUpload').addEventListener('change', function (e) {
-            const input = e.target;
-            const videoPreviewContainer = document.getElementById('videoPreviewContainer');
-            videoPreviewContainer.innerHTML = ''; // Clear previous previews
-
-            if (input.files) {
-                Array.from(input.files).forEach(file => {
-                    const videoPreview = document.createElement('video');
-                    videoPreview.width = 320;
-                    videoPreview.height = 240;
-                    videoPreview.controls = true;
-
-                    const videoSource = document.createElement('source');
-                    videoSource.src = URL.createObjectURL(file);
-                    videoSource.type = file.type;  // Automatically detect video type
-
-                    videoPreview.appendChild(videoSource);
-                    videoPreviewContainer.appendChild(videoPreview);
-                });
-            }
-        });
+        $.each($(document).find('[data-bb-toggle="video-picker-choose"][data-target="popup"]'), (function (e, t) {
+            $(t).rvMedia({
+                multiple: true,
+                filter: "video",
+                onSelectFiles: function (e, t) {
+                    $('input[name="videos"]').val(JSON.stringify(e.map(i => i.id)));
+                }
+            })
+        }))
     </script>
 @endpush

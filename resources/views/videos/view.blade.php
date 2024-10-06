@@ -10,9 +10,9 @@
             <tr>
                 <th>ID</th>
                 <th>Title</th>
-                <th>type</th>
-                <th>group</th>
-                <th>video</th>
+                <th>Mode</th>
+                <th>Status</th>
+                <th>Videos count</th>
 
                 <th>Actions</th>
             </tr>
@@ -22,16 +22,9 @@
                 <tr>
                     <td class="align-middle">{{ $video->id }}</td>
                     <td class="align-middle">{{ $video->title }}</td>
-                    <td class="align-middle">{{ $video->type }}</td>
-                    <td class="align-middle">{{ $video->group_name }}</td>
-                    <td class="align-middle">
-{{--                        @if($video->getImageUrl())--}}
-{{--                            <img src="{{ $video->getImageUrl() }}" width="140" alt="{{ $video->title }}">--}}
-{{--                        @endif--}}
-                    </td>
-
-
-
+                    <td class="align-middle">{{ $video->getModelLabel() }}</td>
+                    <td class="align-middle">{{ $video->getStatusLabel() }}</td>
+                    <td class="align-middle">{{ $video->media_files_count }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
                             <a href="{{ route('videos.edit',$video->id) }}" class="btn btn-primary">Edit</a>
