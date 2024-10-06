@@ -34,7 +34,7 @@
                                 @if($video->mediaFiles->count())
                                     @foreach($video->mediaFiles as $mediaFile)
                                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
-                                            <input type="hidden" name="videos[][{{ $mediaFile->id }}]">
+                                            <input type="hidden" name="videos[{{ $mediaFile->id }}]">
                                             <div class="w-100 p-2 border border-2 rounded-2">
                                                 <video src="{{ $mediaFile->previewUrl }}" class="w-100" controls></video>
                                                 <div class="mt-1">
@@ -137,7 +137,7 @@
                     e.forEach((i, k) => {
                         const html = `
                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
-                            <input type="hidden" name="videos[][${i.id}]">
+                            <input type="hidden" name="videos[${i.id}]">
                             <div class="w-100 p-2 border border-2 rounded-2">
                                 <video src="${i.preview_url}" class="w-100" controls></video>
                                 <div class="mt-1">
