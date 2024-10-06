@@ -54,18 +54,22 @@ class AppServiceProvider extends ServiceProvider
             /** @var Video $video */
             $video = Video::query()->published()->first();
             if ($video) {
-                $ads_videos = $video->mediaFiles()
+                $video_urls = $video->mediaFiles()
                     ->when($video->isRandom(), function ($q) {
                         $q->inRandomOrder();
                     }, function ($q) {
                         $q->orderBy('priority');
                     })
-                    ->get();
+                    ->get()
+                    ->map(function ($item) {
+                        return url('storage/'.$item->url);
+                    });
             } else {
-                $ads_videos = collect();
+                $video_urls = collect();
             }
-            $view->with('ads_videos', $ads_videos);
+            $view->with('video_urls', $video_urls);
         });
+
 
     }
 }
