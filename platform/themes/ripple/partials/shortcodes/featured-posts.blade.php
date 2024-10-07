@@ -7,8 +7,8 @@
                 ->orWhere('status', 'LIVE')
                 ->orderBy('match_date', 'desc')
                 ->first();
-            $match->home_team = json_decode($match->home_team, true);
-            $match->away_team = json_decode($match->away_team, true);
+            $home_team = json_decode($match->home_team, true);
+            $away_team = json_decode($match->away_team, true);
 
         @endphp
 
@@ -22,18 +22,18 @@
 
                 <!-- Team Logos and Names -->
                 <div class="col-md-6 text-center">
-                    {{-- <div class="row">
+                    <div class="row">
                         <div class="col-6">
-                            <img src="{{ $match->home_team['logo'] }}" alt="{{ $match->home_team['name'] }} Crest"
+                            <img src="{{ $home_team['logo'] }}" alt="{{ $home_team['name'] }} Crest"
                                 style="height: 30px; margin-bottom: 10px;">
-                            <h5>{{ $match->home_team['name'] }}</h5>
+                            <h5>{{ $home_team['name'] }}</h5>
                         </div>
                         <div class="col-6">
-                            <img src="{{ $match->away_team['crest'] }}" alt="{{ $match->away_team['name'] }} Crest"
+                            <img src="{{ $away_team['crest'] }}" alt="{{ $away_team['name'] }} Crest"
                                 style="height: 30px; margin-bottom: 10px;">
-                            <h5>{{ $match->away_team['name'] }}</h5>
+                            <h5>{{ $away_team['name'] }}</h5>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <!-- Ticket Buttons -->
