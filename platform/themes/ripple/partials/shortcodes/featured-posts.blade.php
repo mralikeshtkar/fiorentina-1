@@ -1,4 +1,9 @@
 @if ($posts->isNotEmpty())
+    <style>
+        .black-box{
+            background-color: black; color: white; padding: 20px; font-family: Arial, sans-serif
+        }
+    </style>
     <section class="section hero-section pt-45 pb-20"
         @if ($shortcode->background_color) style="background-color: #441274 !important;" @endif
     >
@@ -93,7 +98,7 @@
 
                 <!-- Black box column (col-3) similar to the image -->
                 <div class="col-md-3">
-                    <div class="black-box" style="background-color: black; color: white; padding: 20px; font-family: Arial, sans-serif;">
+                    <div class="black-box" >
                         <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
                         <p style="font-size: 14px; margin-bottom: 20px;">Fiorentina, il programma di oggi</p>
 
