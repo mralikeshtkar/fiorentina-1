@@ -7,7 +7,6 @@
                 ->orWhere('status', 'LIVE')
                 ->orderBy('match_date', 'desc')
                 ->first();
-            dd($match);
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
 
@@ -23,7 +22,7 @@
 
                 <!-- Team Logos and Names -->
                 <div class="col-md-6 text-center">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-6">
                             <img src="{{ $match->home_team['logo'] }}" alt="{{ $match->home_team['name'] }} Crest"
                                 style="height: 30px; margin-bottom: 10px;">
@@ -34,7 +33,7 @@
                                 style="height: 30px; margin-bottom: 10px;">
                             <h5>{{ $match->away_team['name'] }}</h5>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Ticket Buttons -->
