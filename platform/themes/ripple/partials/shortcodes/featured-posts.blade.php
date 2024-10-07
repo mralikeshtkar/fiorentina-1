@@ -47,9 +47,9 @@
                                 </div>
                             @endif
                         @endif
-@endforeach
-</div>
-</div>
+                    @endforeach
+                    </div>
+                    </div>
 
 <!-- Black box column (col-3) similar to the image -->
 <div class="col-md-3">
