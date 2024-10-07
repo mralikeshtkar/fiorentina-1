@@ -96,7 +96,9 @@
 
 <!-- Black box column (col-3) similar to the image -->
 <div class="col-md-3">
-
+    @php
+        $lastRecentPosts = Botble\Blog\Models\Post::orderBy('created_at', 'desc')->take(4)->get();
+    @endphp
     <div class="black-box">
         @foreach ($lastRecentPosts as $post)
             <article class="post post__inside post__inside--feature">
@@ -108,7 +110,6 @@
                 </header>
             </article>
     </div>
-    @endif
     @endforeach
     {{--                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6> --}}
     {{--                        <p style="font-size: 14px;color: white;  margin-bottom: 20px;">Fiorentina, il programma di oggi</p> --}}
