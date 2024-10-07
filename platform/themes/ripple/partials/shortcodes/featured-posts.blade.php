@@ -7,6 +7,7 @@
                 ->orWhere('status', 'LIVE')
                 ->orderBy('match_date', 'desc')
                 ->first();
+            dd($match);
             $match->home_team = json_decode($match->home_team, true);
             $match->away_team = json_decode($match->away_team, true);
 
