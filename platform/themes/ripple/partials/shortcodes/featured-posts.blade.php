@@ -105,7 +105,7 @@
                 <article class="col-12">
                     <header class="post__last4">
                         <h6
-                            style="color: grey; font-size: 10px; margin-bottom: -10px;background: purple;
+                            style="color: white; font-size: 10px; margin-bottom: -10px;background: purple;
                             display: table-cell;
                             padding: 5px 7px;">
                             NOTIZIE</h6>
