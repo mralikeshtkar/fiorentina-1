@@ -15,10 +15,10 @@
         <div class="container mb-3">
             <div class="row align-items-center upcoming-match">
                 <!-- Match Date, Time, and Venue -->
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <p>{{ ucwords(\Carbon\Carbon::parse($match->match_date)->locale('it')->timezone('Europe/Rome')->isoFormat('dddd D MMMM [ore] H:mm')," \t\r\n\f\v") }}
                     </p>
-                </div>
+                </div> --}}
 
                 <!-- Team Logos and Names -->
                 <div class="col-md-6 text-center">
