@@ -5039,3 +5039,24 @@ header>.container {
 .text-truncate {
     white-space: pre-line;
 }
+.black-box {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.black-box h6 {
+    color: grey;
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.black-box p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: white;
+}
+
