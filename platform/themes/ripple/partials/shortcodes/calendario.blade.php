@@ -26,7 +26,7 @@
                     <h5>{{ $home_team['name'] }}</h5>
                 </div>
                 <div class="col-6">
-                    <img src="{{ $away_team['crest'] }}" alt="{{ $away_team['name'] }} Crest"
+                    <img src="{{ $away_team['logo'] }}" alt="{{ $away_team['name'] }} Crest"
                         style="height: 30px; margin-bottom: 10px;">
                     <h5>{{ $away_team['name'] }}</h5>
                 </div>
