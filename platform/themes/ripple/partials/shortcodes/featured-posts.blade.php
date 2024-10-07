@@ -95,8 +95,8 @@
                 <!-- Black box column (col-3) similar to the image -->
                 <div class="col-md-3">
                     <div class="black-box" >
-                        <h6 >NOTIZIE</h6>
-                        <p style="font-size: 14px; margin-bottom: 20px;">Fiorentina, il programma di oggi</p>
+                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
+                        <p style="font-size: 14px;color: white;  margin-bottom: 20px;">Fiorentina, il programma di oggi</p>
 
                         <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
                         <p style="font-size: 14px;color: white;  margin-bottom: 20px;">Mutu: "Gud? Ho solo pensieri positivi, ma quando hai la 10 devi sempre dimostrare qualcosa in più"</p>
