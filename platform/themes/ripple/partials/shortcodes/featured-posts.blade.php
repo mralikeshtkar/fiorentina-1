@@ -105,8 +105,8 @@
                 <article class="col-12">
                     <header class="post__last4">
                         <h6 style="color: grey; font-size: 10px; margin-bottom: -10px;">NOTIZIE</h6>
-                        <h6 class="text-truncate">
-                            <a style="color: white;font-size:small; margin-bottom: 20px !important;"
+                        <h6 style="margin-bottom: 20px !important;" class="text-truncate">
+                            <a style="color: white;font-size:small;"
                                 href="{{ $post->url }}">{{ $post->name }}</a>
                         </h6>
                     </header>
