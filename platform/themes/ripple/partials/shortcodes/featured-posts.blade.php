@@ -50,6 +50,7 @@
 {{--        </div>--}}
         <div class="container">
             <div class="row">
+                <!-- Main content column (col-9) -->
                 <div class="col-md-9">
                     <div class="post-group post-group--hero">
                         @foreach ($posts as $post)
@@ -90,15 +91,25 @@
                     </div>
                 </div>
 
-                <!-- Black box on the right side in col-3 -->
+                <!-- Black box column (col-3) similar to the image -->
                 <div class="col-md-3">
-                    <div class="black-box" style="background-color: black; height: 100%; color: white;">
-                        <h3 class="text-center">Black Box</h3>
-                        <p class="text-center">Content goes here...</p>
+                    <div class="black-box" style="background-color: black; color: white; padding: 20px; font-family: Arial, sans-serif;">
+                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
+                        <p style="font-size: 14px; margin-bottom: 20px;">Fiorentina, il programma di oggi</p>
+
+                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
+                        <p style="font-size: 14px; margin-bottom: 20px;">Mutu: "Gud? Ho solo pensieri positivi, ma quando hai la 10 devi sempre dimostrare qualcosa in più"</p>
+
+                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
+                        <p style="font-size: 14px; margin-bottom: 20px;">Palladino (sala stampa): "Kean come un leone, De Gea è stato un fenomeno"</p>
+
+                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6>
+                        <p style="font-size: 14px;">Commisso: "È stato un weekend perfetto. Domani parto, torno a gennaio"</p>
                     </div>
                 </div>
             </div>
         </div>
+
 
     </section>
 @endif
