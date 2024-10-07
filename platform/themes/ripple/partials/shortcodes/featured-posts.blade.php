@@ -110,8 +110,8 @@
                         </h6>
                     </header>
                 </article>
+            @endforeach
         </div>
-        @endforeach
     </div>
     {{--                        <h6 style="color: grey; font-size: 10px; margin-bottom: 5px;">NOTIZIE</h6> --}}
     {{--                        <p style="font-size: 14px;color: white;  margin-bottom: 20px;">Fiorentina, il programma di oggi</p> --}}
