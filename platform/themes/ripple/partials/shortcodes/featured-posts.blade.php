@@ -51,13 +51,13 @@
         <div class="container">
             <div class="row">
                 <!-- Main content column (col-9) -->
-                <div class="col-md-9">
-                    <div class="post-group post-group--hero">
+                <div class="col-12 col-lg-9 p-0 m-0">
+                    <div class="post-group post-group--hero h-100">
                         @foreach ($posts as $post)
                             @if ($loop->first)
                                 <div class="post-group__left">
-                                    <article class="post post__inside post__inside--feature">
-                                        <div class="post__thumbnail">
+                                    <article class="post post__inside post__inside--feature h-100">
+                                        <div class="post__thumbnail h-100">
                                             {{ RvMedia::image($post->image, $post->name, 'featured', attributes: ['loading' => 'eager']) }}
                                             <a class="post__overlay" href="{{ $post->url }}"
                                                 title="{{ $post->name }}"></a>
@@ -69,12 +69,12 @@
                                         </header>
                                     </article>
                                 </div>
-                                <div class="post-group__right">
+                                <div class="post-group__right d-flex flex-column">
                                 @else
-                                    <div class="post-group__item">
+                                    <div class="post-group__item w-100 flex-grow-1">
                                         <article
-                                            class="post post__inside post__inside--feature post__inside--feature-small">
-                                            <div class="post__thumbnail">
+                                            class="post post__inside post__inside--feature post__inside--feature-small h-100">
+                                            <div class="post__thumbnail h-100">
                                                 {{ RvMedia::image($post->image, $post->name, 'medium', attributes: ['loading' => 'eager']) }}
                                                 <a class="post__overlay" href="{{ $post->url }}"
                                                     title="{{ $post->name }}"></a>
@@ -95,24 +95,21 @@
 </div>
 
 <!-- Black box column (col-3) similar to the image -->
-<div class="col-md-3">
+<div class="col-12 col-lg-3 mx-0 px-0">
     @php
         $lastRecentPosts = Botble\Blog\Models\Post::orderBy('created_at', 'desc')->take(4)->get();
     @endphp
-    <div class="black-box">
-        <div class="row">
-            @foreach ($lastRecentPosts as $post)
-                <article class="col-12">
+    <div class="black-box px-3 py-2">
+        <div class="d-flex flex-column justify-content-around h-100">
+            @foreach (collect($lastRecentPosts)->take(4) as $post)
+                <article class="w-100 @unless($loop->last) mb-3 @endunless">
                     <header class="post__last4">
-                        <h6
-                            style="color: white; font-size: 10px; margin-bottom: -10px;background: purple;
-                            display: table-cell;
-                            padding: 5px 7px;">
-                            NOTIZIE</h6>
-                        <h6 style="margin-bottom: 20px !important;" class="text-truncate">
-                            <a style="color: white;font-size:small;background:black;"
-                                href="{{ $post->url }}">{{ $post->name }}</a>
-                        </h6>
+                        <div class="d-flex mb-1">
+                            <span class="post__last4-badge">
+                            NOTIZIE</span>
+                        </div>
+                        <a class="post__last4-text"
+                           href="{{ $post->url }}">{{ $post->name }}</a>
                     </header>
                 </article>
             @endforeach

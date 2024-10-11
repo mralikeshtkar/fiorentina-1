@@ -2299,11 +2299,11 @@ p:empty {
 
 .post-group--hero .post-group__left {
     padding-left: 5px;
-    width: calc(50% + 5px)
+    /*width: calc(50% + 5px)*/
 }
 
 .post-group--hero .post-group__right {
-    width: calc(50% - 5px)
+    /*width: calc(50% - 5px)*/
 }
 
 .post-group--hero .post-group__right:after {
@@ -2313,8 +2313,8 @@ p:empty {
 }
 
 .post-group--hero .post {
-    margin-bottom: 5px;
-    margin-right: 5px
+    /*margin-bottom: 5px;*/
+    /*margin-right: 5px*/
 }
 
 .post-group--hero .post-group__item {
@@ -4746,7 +4746,8 @@ header>.container {
 
 .post__thumbnail img {
     width: 100%;
-    height: auto;
+    /*height: auto;*/
+    height: 100%;
 }
 
 @media (max-width: 538px) {
@@ -5060,3 +5061,38 @@ header>.container {
     color: white;
 }
 
+.post-group{
+    display: flex;
+    flex-direction: row;
+}
+
+.post-group__left{
+    flex: 1;
+}
+
+.post-group__right{
+    width: 35%;
+}
+
+.fz-10px{
+    font-size: 10px;
+}
+
+.post__last4{
+    display: flex;
+    flex-direction: column;
+}
+
+.post__last4 .post__last4-badge{
+    font-size: 12px;
+    color: #ffffff;
+    background: #800080;
+    display: flex;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.post__last4 .post__last4-text{
+    font-size: 12px;
+    color: #ffffff;
+}
