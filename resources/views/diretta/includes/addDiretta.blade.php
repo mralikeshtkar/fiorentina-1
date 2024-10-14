@@ -19,7 +19,9 @@
             <select id="tipo_event" name="tipo_event" class="form-select" required>
                 <option value="" disabled selected>Select Event</option>
                 @foreach ($uniqueCommentClasses as $comment_class)
-                    <option value="{{ $comment_class }}">{{ $comment_class }}</option>
+                <option value="{{ $comment_class }}" class="icon-{{ $comment_class }}">
+                    {{ $comment_class }}
+                </option>
                 @endforeach
                 <!-- Add more options as needed -->
             </select>
