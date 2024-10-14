@@ -85,6 +85,7 @@ class DirettaController extends BaseController
     {
         // Check if there's a deleted commentary ID in the session
         $commentaryId = Session::get('deleted_commentary_id');
+        dd($commentaryId);
 
         if ($commentaryId) {
             // Fetch the soft-deleted commentary
