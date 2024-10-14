@@ -57,55 +57,54 @@ class DirettaController extends BaseController
     }
 
     public function deleteCommentary(Request $request)
-    {
-        // Get the commentary ID from the request
-        $commentaryId = $request->query('id');
+{
+    // Get the commentary ID from the request
+    $commentaryId = $request->query('id');
 
-        // Fetch the commentary by its ID
-        $commentary = MatchCommentary::find($commentaryId);
+    // Fetch the commentary by its ID
+    $commentary = MatchCommentary::find($commentaryId);
 
-        // If the commentary exists, soft delete it
+    // If the commentary exists, soft delete it
+    if ($commentary) {
+        $matchId = $commentary->match_id; // Get the match ID before deletion
+        $commentary->delete(); // Soft delete the commentary
+
+        // Store the commentary ID in the session for undo functionality
+        Session::put('deleted_commentary_id', $commentaryId);
+
+        // Redirect with a success message and an option to undo
+        return redirect()->to("https://laviola.collaudo.biz/diretta/view?match_id=$matchId")
+                         ->with('success', 'Commentary deleted successfully. <a href="' . route('undo-commentary') . '">Undo</a>');
+    }
+
+    // If the commentary doesn't exist, handle it (optional)
+    return redirect()->back()->with('error', 'Commentary not found');
+}
+
+public function undoCommentary()
+{
+    // Check if there's a deleted commentary ID in the session
+    $commentaryId = Session::get('deleted_commentary_id');
+
+    if ($commentaryId) {
+        // Fetch the soft-deleted commentary
+        $commentary = MatchCommentary::withTrashed()->find($commentaryId);
+
+        // Restore the commentary if it was soft deleted
         if ($commentary) {
-            $matchId = $commentary->match_id; // Get the match ID before deletion
-            $commentary->delete(); // Soft delete the commentary
+            $commentary->restore();
 
-            // Store the commentary ID in the session for undo functionality
-            Session::flash('deleted_commentary_id', $commentaryId);
+            // Clear the session after restoring
+            Session::forget('deleted_commentary_id');
 
-            // Redirect with a success message and an option to undo
-            return redirect()->to("https://laviola.collaudo.biz/diretta/view?match_id=$matchId")
-                             ->with('success', 'Commentary deleted successfully. <a href="' . route('undo-commentary') . '">Undo</a>');
+            // Redirect back with a success message
+            return redirect()->back()->with('success', 'Commentary restored successfully.');
         }
-
-        // If the commentary doesn't exist, handle it (optional)
-        return redirect()->back()->with('error', 'Commentary not found');
     }
 
-    public function undoCommentary()
-    {
-        // Check if there's a deleted commentary ID in the session
-        $commentaryId = Session::get('deleted_commentary_id');
-        dd($commentaryId);
-
-        if ($commentaryId) {
-            // Fetch the soft-deleted commentary
-            $commentary = MatchCommentary::withTrashed()->find($commentaryId);
-
-            // Restore the commentary if it was soft deleted
-            if ($commentary) {
-                $commentary->restore();
-
-                // Clear the session after restoring
-                Session::forget('deleted_commentary_id');
-
-                // Redirect back with a success message
-                return redirect()->back()->with('success', 'Commentary restored successfully.');
-            }
-        }
-
-        // If there's no commentary to restore
-        return redirect()->back()->with('error', 'Nothing to undo.');
-    }
+    // If there's no commentary to restore
+    return redirect()->back()->with('error', 'Nothing to undo.');
+}
 
     
 
