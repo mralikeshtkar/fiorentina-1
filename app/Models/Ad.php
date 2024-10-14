@@ -31,7 +31,8 @@ class Ad extends BaseModel
     const GROUP_DBLOG_P4 = 11;
     const GROUP_DBLOG_P5 = 12;
     const GROUP_diretta_1 = 13;
-    const Google_adsense = 14;
+    const GROUP_recentpost = 14;
+    const Google_adsense = 15;
 
     const GROUPS = [
         self::GROUP_POPUP_DESKTOP => "DESKTOP popup desktop",
@@ -47,6 +48,7 @@ class Ad extends BaseModel
         self::GROUP_DBLOG_P4 => "DESKTOP  Dblog_P4",
         self::GROUP_DBLOG_P5 => "DESKTOP Dblog_P5",
         self::GROUP_diretta_1 => "DESKTOP Diretta_1",
+        self::GROUP_recentpost => "DESKTOP recentpost",
         self::Google_adsense => "Google n1",
     ];
 
