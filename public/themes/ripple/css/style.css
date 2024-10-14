@@ -5046,6 +5046,8 @@ header>.container {
     padding: 20px;
     font-family: Arial, sans-serif;
     height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .black-box h6 {
