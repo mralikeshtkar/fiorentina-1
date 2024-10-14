@@ -30138,7 +30138,7 @@ a.dropdown-toggle.dropdown-header-name:after {
 }
 
 .whistle .comment-icon::before {
-  content: '\1F3C3';
+  content: '\1F3C1';
   /* Running emoji (as a placeholder for whistle) */
   /* Whistle emoji */
 }
