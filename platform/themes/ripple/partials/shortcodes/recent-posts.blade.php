@@ -59,7 +59,7 @@
                                             </div>
                                         </article>
                                     @endforeach
-
+                                        @include('ads.includes.adsrecentpost')
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
