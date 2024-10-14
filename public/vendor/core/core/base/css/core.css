@@ -30125,31 +30125,72 @@ a.dropdown-toggle.dropdown-header-name:after {
   margin-right: 15px;
 }
 
-/* Specific classes for different event types */
-.whistle .comment-icon::before {
-  content: '\1F3C1';
-  /* Whistle emoji */
-}
-
 .y-card .comment-icon::before {
   content: '\1F7E1';
+  /* Yellow circle emoji (Yellow Card) */
   /* Yellow card emoji */
 }
 
 .soccer-ball .comment-icon::before {
   content: '\26BD';
   /* Soccer ball emoji */
+  /* Soccer ball emoji */
+}
+
+.whistle .comment-icon::before {
+  content: '\1F3C3';
+  /* Running emoji (as a placeholder for whistle) */
+  /* Whistle emoji */
 }
 
 .corner .comment-icon::before {
-  content: '\1F4CB';
+  content: '\2190';
+  /* Left arrow icon (Corner) */
   /* Corner emoji */
 }
 
+.injury .comment-icon::before {
+  content: '\1F691';
+  /* Ambulance emoji */
+  /* Injury emoji */
+}
+
+.time .comment-icon::before {
+  content: '\23F0';
+  /* Alarm clock emoji */
+  /* Time emoji */
+}
+
 .substitution .comment-icon::before {
-  content: '\1F504';
+  content: '\21C4';
+  /* Rightwards arrow over leftwards arrow */
   /* Substitution emoji */
 }
+
+.penalty .comment-icon::before {
+  content: '\1F528';
+  /* Hammer emoji (as placeholder for penalty) */
+  /* Penalty emoji */
+}
+
+.var .comment-icon::before {
+  content: '\1F4BB';
+  /* Speech bubble emoji (as placeholder for VAR) */
+  /* VAR emoji */
+}
+
+.funfact .comment-icon::before {
+  content: '\1F60A';
+  /* Smiling face emoji */
+  /* Fun fact emoji */
+}
+
+.yr-card .comment-icon::before {
+  content: '\1F7E5';
+  /* Red circle emoji (Red Card) */
+  /* Red card emoji */
+}
+
 
 /* Bold text for important comments */
 .comment-bold {
