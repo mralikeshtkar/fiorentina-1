@@ -34,8 +34,8 @@ class Ad extends BaseModel
     const GROUP_recentp1 = 14;
     const GROUP_recentp2 = 15;
     const GROUP_recentp3 = 16;
-    const GROUP_recentp4 = 16;
-    const Google_adsense = 17;
+    const GROUP_recentp4 = 17;
+    const Google_adsense = 18;
 
     const GROUPS = [
         self::GROUP_POPUP_DESKTOP => "DESKTOP popup desktop",
