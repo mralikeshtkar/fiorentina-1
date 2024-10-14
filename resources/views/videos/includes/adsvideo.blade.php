@@ -1,5 +1,4 @@
 @if (isset($video_urls) && $video_urls->count())
-
     <div class="container">
         <div class="row mx-0">
             <div class="col-12 mx-auto">
@@ -19,6 +18,8 @@
         </div>
     </div>
 @endif
+<ins class="adsbygoogle" style="display:block" data-ad-slot="170525737" data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
 <script>
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
