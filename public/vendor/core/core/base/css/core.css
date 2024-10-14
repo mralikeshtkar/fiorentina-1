@@ -30217,3 +30217,73 @@ a.dropdown-toggle.dropdown-header-name:after {
   display: inline-block;
   border-radius: 3px;
 }
+
+/* Default icon class */
+#tipo_event option {
+  font-family: "FontAwesome";
+}
+
+/* Define the icons for each option */
+.icon-lineup1:before {
+  content: "\f0c0";
+  /* users icon */
+}
+
+.icon-whistle:before {
+  content: "\f5c7";
+  /* whistle icon */
+}
+
+.icon-corner:before {
+  content: "\f068";
+  /* corner icon */
+}
+
+.icon-injury:before {
+  content: "\f0f9";
+  /* ambulance icon */
+}
+
+.icon-time:before {
+  content: "\f017";
+  /* clock icon */
+}
+
+.icon-substitution:before {
+  content: "\f362";
+  /* exchange-alt icon */
+}
+
+.icon-y-card:before {
+  content: "\f4c4";
+  /* square icon */
+  color: yellow;
+  /* yellow card color */
+}
+
+.icon-soccer-ball:before {
+  content: "\f1e3";
+  /* soccer ball icon */
+}
+
+.icon-penalty:before {
+  content: "\f15b";
+  /* file-alt icon as a placeholder */
+}
+
+.icon-var:before {
+  content: "\f021";
+  /* sync icon */
+}
+
+.icon-funfact:before {
+  content: "\f118";
+  /* smile icon */
+}
+
+.icon-yr-card:before {
+  content: "\f2d4";
+  /* square icon */
+  color: red;
+  /* red card color */
+}
