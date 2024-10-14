@@ -26,6 +26,7 @@
                 'col-12' => !$topSidebarContent,
             ])>
                 <div class="page-content">
+                    <h3 class="post-group__title">ULTIME NOTIZIE</h3>
                     <div class="post-group post-group--single">
 
                         <div class="post-group__header">
