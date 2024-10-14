@@ -5107,7 +5107,7 @@ header>.container {
 }
 
 .post-group__left-purple-badge{
-    background-color: #800080;
+    background-color: rgb(68, 18, 116);
     color: #ffffff;
     padding: 2px 10px;
     font-size: 16px;
