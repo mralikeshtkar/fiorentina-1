@@ -4,6 +4,18 @@
     $uniqueCommentClasses = MatchCommentary::select('comment_class')->distinct()->pluck('comment_class');
 
 @endphp
+@if (session('success'))
+    <div class="alert alert-success">
+        {!! session('success') !!}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 <form action="" method="POST" class="p-3">
     @csrf
     <div class="row mb-3">
@@ -19,9 +31,9 @@
             <select id="tipo_event" name="tipo_event" class="form-select" required>
                 <option value="" disabled selected>Select Event</option>
                 @foreach ($uniqueCommentClasses as $comment_class)
-                <option value="{{ $comment_class }}" class="icon-{{ $comment_class }}">
-                    {{ $comment_class }}
-                </option>
+                    <option value="{{ $comment_class }}" class="icon-{{ $comment_class }}">
+                        {{ $comment_class }}
+                    </option>
                 @endforeach
                 <!-- Add more options as needed -->
             </select>
