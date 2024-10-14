@@ -58,9 +58,15 @@
                                                 </div>
                                             </div>
                                         </article>
+                                        @if ($index == 0)
+                                            @include('ads.includes.adsrecentp1')
+                                        @endif
+
+                                        @if ($index == 2)
+                                            @include('ads.includes.adsrecentp2')
+                                        @endif
                                     @endforeach
-                                        @include('ads.includes.adsrecentp1')
-                                        @include('ads.includes.adsrecentp2')
+
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
