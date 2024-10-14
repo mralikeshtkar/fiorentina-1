@@ -33,7 +33,7 @@
                             <div class="row">
 
                             </div>
-                            <h3 class="post-group__title">ULTIME NOTIZIE</h3>
+                           
                         </div>
                         <div class="post-group__content">
                             <div class="row">
