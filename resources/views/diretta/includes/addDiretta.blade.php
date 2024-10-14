@@ -1,3 +1,9 @@
+@php
+    use App\Models\MatchCommentary;
+
+    $uniqueCommentClasses = MatchCommentary::select('comment_class')->distinct()->pluck('comment_class');
+
+@endphp
 <form action="" method="POST" class="p-3">
     @csrf
     <div class="row mb-3">
@@ -12,9 +18,9 @@
             <label for="tipo_event" class="form-label">Tipo di Event</label>
             <select id="tipo_event" name="tipo_event" class="form-select" required>
                 <option value="" disabled selected>Select Event</option>
-                <option value="event1">Event 1</option>
-                <option value="event2">Event 2</option>
-                <option value="event3">Event 3</option>
+                @foreach ($uniqueCommentClasses as $comment_class)
+                    <option value="{{ $comment_class }}">{{ $comment_class }}</option>
+                @endforeach
                 <!-- Add more options as needed -->
             </select>
         </div>
