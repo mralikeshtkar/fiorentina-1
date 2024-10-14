@@ -60,6 +60,7 @@
                                         </article>
                                     @endforeach
                                         @include('ads.includes.adsrecentp1')
+                                        @include('ads.includes.adsrecentp2')
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
