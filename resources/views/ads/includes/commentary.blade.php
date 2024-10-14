@@ -5,8 +5,8 @@
     @foreach ($commentaries as $comment)
         <div
             class="commentary-row {{ $comment['comment_class'] }} {{ $comment['is_important'] ? 'important' : '' }}{{ $comment['is_bold'] ? 'comment-is-bold' : '' }}">
-            <div class="comment-time">{{ $comment['comment_time'] }}</div>
-            <div>
+            <div class="comment-time" style="flex: 0.5">{{ $comment['comment_time'] }}</div>
+            <div style="flex: 0.5">
                 @if (Str::contains(request()->url(), '/diretta/view'))
                     <a href="/delete-commentary?id={{ $comment->id }}"><i class="text-danger fa-solid fa-trash"></i></a>
                     <a href="/modify-commentary?id={{ $comment->id }}"><i
