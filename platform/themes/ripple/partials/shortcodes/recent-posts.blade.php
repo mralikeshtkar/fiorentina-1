@@ -28,6 +28,9 @@
                 <div class="page-content">
                     <div class="post-group post-group--single">
                         <div class="post-group__header">
+                            <div class="row">
+                                
+                            </div>
                             <h3 class="post-group__title">ULTIME NOTIZIE</h3>
                         </div>
                         <div class="post-group__content">
@@ -70,7 +73,7 @@
                                             @include('ads.includes.adsrecentp3')
                                         @endif
                                     @endforeach
-                                        @include('ads.includes.adsrecentp4')
+{{--                                        @include('ads.includes.adsrecentp4')--}}
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
