@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
 <div class="container mt-3">
     @foreach ($commentaries as $comment)
         <div
