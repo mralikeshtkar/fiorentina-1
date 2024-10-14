@@ -6,7 +6,7 @@
         <div
             class="commentary-row {{ $comment['comment_class'] }} {{ $comment['is_important'] ? 'important' : '' }}{{ $comment['is_bold'] ? 'comment-is-bold' : '' }}">
             <div class="comment-time">{{ $comment['comment_time'] }}
-                @if (Str::contains(request()->url(), 'https://laviola.collaudo.biz/diretta/view?'))
+                @if (Str::contains(request()->url(), '/diretta/view'))
                     <a href="/delete-commentary?id={{ $comment->id }}"><i class="text-danger fa-solid fa-trash"></i></a>
                 @endif
             </div>
