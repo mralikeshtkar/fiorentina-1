@@ -65,6 +65,10 @@
                                         @if ($index == 2)
                                             @include('ads.includes.adsrecentp2')
                                         @endif
+
+                                        @if ($index == 6)
+                                            @include('ads.includes.adsrecentp3')
+                                        @endif
                                     @endforeach
 
 
