@@ -5080,6 +5080,14 @@ header>.container {
     font-size: 10px;
 }
 
+.fz-16px{
+    font-size: 16px;
+}
+
+.fz-14px{
+    font-size: 14px !important;
+}
+
 .post__last4{
     display: flex;
     flex-direction: column;
@@ -5087,14 +5095,21 @@ header>.container {
 
 .post__last4 .post__last4-badge{
     font-size: 12px;
-    color: #ffffff;
-    background: #800080;
+    color: #bfbfbf;
     display: flex;
-    padding: 2px 4px;
     border-radius: 4px;
+    margin-bottom: 2px;
 }
 
 .post__last4 .post__last4-text{
-    font-size: 12px;
+    font-size: 14px;
     color: #ffffff;
+}
+
+.post-group__left-purple-badge{
+    background-color: #800080;
+    color: #ffffff;
+    padding: 2px 10px;
+    font-size: 16px;
+    user-select: none;
 }

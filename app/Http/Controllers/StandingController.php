@@ -30,7 +30,7 @@ class StandingController extends Controller
             $standings = $response->json()['standings'][0]['table']; // Adjust depending on the actual JSON structure
 
             foreach ($standings as $standing) {
-                Standing::updateOrCreate(
+                /*Standing::updateOrCreate(
                     ['team_id' => $standing['team']['id']], // Assuming team_id is unique and consistent
                     [
                         'position' => $standing['position'],
@@ -48,7 +48,7 @@ class StandingController extends Controller
                         'goals_against' => $standing['goalsAgainst'],
                         'goal_difference' => $standing['goalDifference']
                     ]
-                );
+                );*/
             }
             return "Standings updated successfully.";
         }
@@ -96,7 +96,7 @@ class StandingController extends Controller
         }
         }
         return "No update needed or no matches found.";
-        
+
     }
 
     public static function fetchFinishedMatches()
@@ -108,9 +108,9 @@ class StandingController extends Controller
             ])->get('https://api.football-data.org/v4/teams/99/matches', [
                 'status' => 'FINISHED'
             ]);
-    
+
             $matches = $response->json()['matches'];
-    
+
             foreach ($matches as $match) {
                 Matches::updateOrCreate(
                     ['match_id' => $match['id']],
@@ -136,7 +136,7 @@ class StandingController extends Controller
             return "Matches updated successfully.";
         }
             return "No update needed.";
-        
+
     }
 
 
@@ -165,7 +165,7 @@ class StandingController extends Controller
             foreach ($tournament['EVENTS'] as $match) {
                 // Parse the match date from the timestamp
                 $matchDate = Carbon::createFromTimestamp($match['START_TIME'])->format('Y-m-d H:i:s');
-                
+
                 // Prepare the home and away team information
                 $homeTeam = [
                     'id' => $match['HOME_PARTICIPANT_IDS'][0] ?? null,
@@ -174,7 +174,7 @@ class StandingController extends Controller
                     'slug' => $match['HOME_SLUG'],
                     'logo' => $match['HOME_IMAGES'][0] ?? null,
                 ];
-    
+
                 $awayTeam = [
                     'id' => $match['AWAY_PARTICIPANT_IDS'][0] ?? null,
                     'name' => $match['AWAY_NAME'],
@@ -182,7 +182,7 @@ class StandingController extends Controller
                     'slug' => $match['AWAY_SLUG'],
                     'logo' => $match['AWAY_IMAGES'][0] ?? null,
                 ];
-    
+
                 // Update or create match entry in the 'calendario' table
                 Calendario::updateOrCreate(
                     ['match_id' => $match['EVENT_ID']],  // Use the unique match/event ID
@@ -225,7 +225,7 @@ foreach($data as $tournament){
     foreach ($tournament['EVENTS'] as $match) {
         // Parse the match date from the timestamp
         $matchDate = Carbon::createFromTimestamp($match['START_TIME'])->format('Y-m-d H:i:s');
-        
+
         // Prepare the home and away team information
         $homeTeam = [
             'id' => $match['HOME_PARTICIPANT_IDS'][0] ?? null,
@@ -271,12 +271,12 @@ foreach($data as $tournament){
 }
 
         // Loop through the response data to get fixtures and match information
-        
+
 
         // Return a success message
         return "Fixtures updated.";
     }
-        
+
     }
 
 
@@ -284,4 +284,4 @@ foreach($data as $tournament){
 
 
 }
-    
+
