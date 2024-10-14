@@ -28,7 +28,10 @@
                 <div class="page-content">
                     <div class="post-group post-group--single">
                         <div class="post-group__header">
-                            <h3 class="post-group__title">ULTIME NOTIZIE</h3>
+                            <div class="row">
+                                <h3 class="post-group__title">ULTIME NOTIZIE</h3>
+                            </div>
+
                         </div>
                         <div class="post-group__content">
                             <div class="row">
