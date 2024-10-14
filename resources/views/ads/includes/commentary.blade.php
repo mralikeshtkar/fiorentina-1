@@ -8,7 +8,7 @@
             <div class="comment-time" style="flex: 0.5">{{ $comment['comment_time'] }}</div>
             <div style="flex: 0.5">
                 @if (Str::contains(request()->url(), '/diretta/view'))
-                    <a href="/delete-commentary?id={{ $comment->id }}"><i class="text-danger fa-solid fa-trash"></i></a>
+                    <a style="margin-right: 5px" href="/delete-commentary?id={{ $comment->id }}"><i class="text-danger fa-solid fa-trash"></i></a>
                     <a href="/modify-commentary?id={{ $comment->id }}"><i
                             class="text-white fa-solid fa-pen-to-square"></i></i></a>
                 @endif
