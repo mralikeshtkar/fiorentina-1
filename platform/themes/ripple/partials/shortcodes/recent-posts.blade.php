@@ -33,7 +33,7 @@
                             <div class="row">
 
                             </div>
-                           
+
                         </div>
                         <div class="post-group__content">
                             <div class="row">
