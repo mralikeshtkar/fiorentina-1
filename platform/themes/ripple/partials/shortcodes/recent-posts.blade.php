@@ -70,7 +70,7 @@
                                             @include('ads.includes.adsrecentp3')
                                         @endif
                                     @endforeach
-
+                                        @include('ads.includes.adsrecentp4')
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)

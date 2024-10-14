@@ -34,6 +34,7 @@ class Ad extends BaseModel
     const GROUP_recentp1 = 14;
     const GROUP_recentp2 = 15;
     const GROUP_recentp3 = 16;
+    const GROUP_recentp4 = 16;
     const Google_adsense = 17;
 
     const GROUPS = [
@@ -53,6 +54,7 @@ class Ad extends BaseModel
         self::GROUP_recentp1 => "DESKTOP recentp1",
         self::GROUP_recentp2 => "DESKTOP recentp2",
         self::GROUP_recentp3 => "DESKTOP recentp3",
+        self::GROUP_recentp4 => "DESKTOP recentp4",
         self::Google_adsense => "Google n1",
     ];
 
