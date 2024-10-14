@@ -5111,6 +5111,6 @@ header>.container {
     color: #ffffff;
     padding: 2px 10px;
     font-size: 16px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     user-select: none;
 }
