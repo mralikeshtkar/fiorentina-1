@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MatchCommentary extends Model
 {
+    use SoftDeletes;
     // Define the table name (optional if the table follows Laravel's naming convention)
     protected $table = 'match_commentaries';
 

@@ -86,3 +86,5 @@ Route::post('/notifica/store', [NotificaController::class, 'store']);
 
 Route::get('/diretta/list', [ChatController::class, 'list'])->name('diretta.list');
 Route::get('/diretta/view', [DirettaController::class, 'view'])->name('diretta.view');
+Route::get('/delete-commentary', [DirettaController::class, 'deleteCommentary'])->name('delete-commentary');
+Route::get('/undo-commentary', [DirettaController::class, 'undoCommentary'])->name('undo-commentary');
