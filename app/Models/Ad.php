@@ -48,7 +48,7 @@ class Ad extends BaseModel
         self::GROUP_DBLOG_P4 => "DESKTOP  Dblog_P4",
         self::GROUP_DBLOG_P5 => "DESKTOP Dblog_P5",
         self::GROUP_diretta_1 => "DESKTOP Diretta_1",
-        self::GROUP_recentp1 => "DESKTOP recentpost",
+        self::GROUP_recentp1 => "DESKTOP recentp1",
         self::Google_adsense => "Google n1",
     ];
 
