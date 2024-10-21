@@ -8,7 +8,11 @@
         name="viewport" />
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6741446998584415"
+        crossorigin="anonymous" data-checked-head="true"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     @php(Theme::set('headerMeta', Theme::partial('header-meta')))
 
     {!! Theme::header() !!}
@@ -18,6 +22,8 @@
     {!! apply_filters(THEME_FRONT_BODY, null) !!}
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
         class="page-header page-header--light py-0">
+        <ins class=\"adsbygoogle\" style=\"display:block\" data-ad-slot=\"170525737\" data-ad-format=\"auto\"
+            data-full-width-responsive=\"true\"></ins>
         <div class="container headup" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
