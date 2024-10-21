@@ -25,6 +25,7 @@
                     <td class="align-middle">{{ $video->getModelLabel() }}</td>
                     <td class="align-middle">{{ $video->getStatusLabel() }}</td>
                     <td class="align-middle">{{ $video->media_files_count }}</td>
+                    <td class="align-middle">{{ $video->delay }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
                             <a href="{{ route('videos.edit',$video->id) }}" class="btn btn-primary">Edit</a>
