@@ -123,21 +123,24 @@
 
 @push('footer')
     <script>
+        // This variable will keep track of the current video order
+        let currentOrder = 0;
+
         $.each($(document).find('[data-bb-toggle="video-picker-choose"][data-target="popup"]'), (function (e, t) {
             $(t).rvMedia({
                 multiple: true,
                 filter: "video",
                 onSelectFiles: function (e, t) {
                     const container = $('#videoPreviewContainer');
-                    container.html(''); // Clear existing previews
                     e.forEach((i, k) => {
+                        currentOrder++; // Increment the order for each new video
                         const html = `
                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
                             <input type="hidden" name="videos[]" value="${i.id}">
                             <div class="w-100 p-2 border border-2 rounded-2">
                                 <video src="${i.preview_url}" class="w-100" controls></video>
                                 <div class="mt-1">
-                                    <strong>Order: ${k + 1}</strong> <!-- Display order -->
+                                    <strong>Order: ${currentOrder}</strong> <!-- Display order -->
                                     <button type="button" class="btn btn-danger video-preview-item-delete">
                                         Delete
                                     </button>
@@ -146,7 +149,7 @@
                         </div>
                         `;
                         container.append(html);
-                    })
+                    });
                 }
             })
         }));
@@ -155,6 +158,6 @@
         $(document).on('click', '.video-preview-item-delete', function (e) {
             e.preventDefault();
             $(e.target).closest('.video-preview-item').remove();
-        })
+        });
     </script>
 @endpush
