@@ -45,7 +45,7 @@ class DirettaController extends BaseController
     public function chatView(){
         $matchId = request()->query('match_id');
     
-        $this->pageTitle("Diretta di $matchId");
+        $this->pageTitle("Chat di $matchId");
 
         return view('diretta.view-chat',compact('matchId'));
     }
