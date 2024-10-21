@@ -75,7 +75,7 @@
                                             @include('ads.includes.adsrecentp3')
                                         @endif
                                     @endforeach
-{{--                                        @include('ads.includes.adsrecentp4')--}}
+                                    {{--                                        @include('ads.includes.adsrecentp4') --}}
 
                                     <!-- Load More Button -->
                                     @if (count($posts) > 6)
@@ -220,7 +220,7 @@
                                             } elseif ($rank >= 18) {
                                                 $labelClass = 'badge badge-danger'; // Top 6
                                             } else {
-                                                $labelClass = 'text-dark'; // Top 6
+                                                $labelClass = 'text-dark badge badge-light'; // Top 6
                                             }
                                         @endphp
 
@@ -271,7 +271,7 @@
                                 Serie B
                             </div>
                             @include('videos.includes.adsvideo')
-{{--                            @include('videos.includes.adsvideo', ['videos' => $videos])--}}
+                            {{--                            @include('videos.includes.adsvideo', ['videos' => $videos]) --}}
                         </section>
                     </div>
 
