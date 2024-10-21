@@ -9,12 +9,13 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Mode</th>
-                <th>Status</th>
-                <th>Videos count</th>
+                <th>Titolo</th>
+                <th>Modalità</th>
+                <th>Stato</th>
+                <th>Numero di video</th>
+                <th>Ritardo</th>
+                <th>Azioni</th>
 
-                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                     <td class="align-middle">{{ $video->getModelLabel() }}</td>
                     <td class="align-middle">{{ $video->getStatusLabel() }}</td>
                     <td class="align-middle">{{ $video->media_files_count }}</td>
+                    <td class="align-middle">{{ $video->delay }}</td>
                     <td class="align-middle">
                         <div class="d-flex gap-2">
                             <a href="{{ route('videos.edit',$video->id) }}" class="btn btn-primary">Edit</a>

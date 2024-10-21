@@ -1,4 +1,5 @@
 @if (isset($video_urls) && $video_urls->count())
+
     <div class="container">
         <div class="row mx-0">
             <div class="col-12 mx-auto">
@@ -18,15 +19,19 @@
         </div>
     </div>
 @endif
-{{-- <ins class="adsbygoogle" style="display:block" data-ad-slot="170525737" data-ad-format="auto" --}}
+<ins class="adsbygoogle" style="display:block" data-ad-slot="170525737" data-ad-format="auto"
     data-full-width-responsive="true"></ins>
 <script>
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
+    const delay = 10; // Delay in milliseconds (10ms in this case)
+
     video.addEventListener('ended', function(e) {
-        activeVideo = (++activeVideo) % urls.length;
-        video.src = urls[activeVideo];
-        video.play();
+        activeVideo = (++activeVideo) % urls.length; // Move to the next video
+        setTimeout(function() {
+            video.src = urls[activeVideo]; // Update video source
+            video.play(); // Play the next video after the delay
+        }, delay); // Delay between videos
     });
 </script>
