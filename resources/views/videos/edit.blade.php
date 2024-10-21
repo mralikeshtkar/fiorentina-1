@@ -1,9 +1,10 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
-    <form action="{{ route('videos.update',$video->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
+    <form action="{{ route('videos.update', $video->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
         @method('PUT')
+
         <div class="row">
             <div class="gap-3 col-md-9">
                 <div class="card mb-3">
@@ -20,7 +21,7 @@
                             <label for="videoUpload" class="form-label">Upload Videos</label>
                             <span data-bb-toggle="video-picker-choose"
                                   data-target="popup" class="btn btn-primary">
-                                Choice videos
+                                Choose videos
                             </span>
                             @error('videos')
                             <span class="is-invalid text-danger">{{ $message }}</span>
@@ -47,6 +48,12 @@
                                     @endforeach
                                 @endif
                             </div>
+                        </div>
+
+                        <!-- Delay Input (for Sequential Mode) -->
+                        <div class="mb-3">
+                            <label for="delay" class="form-label">Delay Between Videos (in seconds)</label>
+                            <input type="number" class="form-control" name="delay" id="delay" value="{{ $video->delay / 1000 }}" min="1" step="1">
                         </div>
 
                         <!-- Video Mode Selection -->
@@ -113,7 +120,7 @@
                                 aria-required="true">
                             @foreach(\App\Models\Video::STATUSES as $status)
                                 <option value="{{ $status }}"
-                                        @if($video->checkStatusSelect($mode)) selected @endif>{{ $status }}</option>
+                                        @if($video->checkStatusSelect($status)) selected @endif>{{ $status }}</option>
                             @endforeach
                         </select>
                         @error('status')
@@ -149,13 +156,29 @@
                         </div>
                         `;
                         container.append(html);
-                    })
+                    });
                 }
-            })
+            });
         }));
+
         $(document).on('click', '.video-preview-item-delete', function (e) {
             e.preventDefault();
             $(e.target).closest('.video-preview-item').remove();
-        })
+        });
+
+        // Toggle delay input based on Playlist Mode (show delay only for Sequential mode)
+        function toggleDelayInput() {
+            const mode = document.getElementById('mode').value;
+            const delayInput = document.getElementById('delay').closest('.mb-3');
+            if (mode === 'sequential') {
+                delayInput.style.display = 'block';
+            } else {
+                delayInput.style.display = 'none';
+            }
+        }
+
+        // Initial call to set delay visibility and add event listener
+        toggleDelayInput();
+        document.getElementById('mode').addEventListener('change', toggleDelayInput);
     </script>
 @endpush
