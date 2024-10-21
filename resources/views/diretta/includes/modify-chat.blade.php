@@ -12,9 +12,12 @@
                             class="text-white fa-solid fa-pen-to-square"></i></i></a>
                 @endif
             </div>
-            <div class="user">
+            <div class="user p-2">
                 @php $user=Member::find($chat['user_id']); @endphp
-                {{ $user->first_name }} {{ $user->last_name }}
+
+                <a class="text-white text-underline" href="https://laviola.collaudo.biz/admin/members/edit/{{ $user->id }}">
+                    {{ $user->first_name }} {{ $user->last_name }} </a>
+
             </div>
             <div class="comment-text">{{ $chat['message'] }}
             </div>
