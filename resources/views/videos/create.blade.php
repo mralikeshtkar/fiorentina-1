@@ -124,7 +124,7 @@
 @push('footer')
     <script>
         // Keep track of the number of uploaded videos to set the correct options for ordering
-        let currentOrder = 0;
+        let totalVideos = 0;
 
         $.each($(document).find('[data-bb-toggle="video-picker-choose"][data-target="popup"]'), (function (e, t) {
             $(t).rvMedia({
@@ -132,15 +132,16 @@
                 filter: "video",
                 onSelectFiles: function (e, t) {
                     const container = $('#videoPreviewContainer');
+                    totalVideos += e.length; // Add newly uploaded videos to total count
+
+                    // Build select options based on the new total number of videos
+                    let selectOptions = '';
+                    for (let j = 1; j <= totalVideos; j++) {
+                        selectOptions += `<option value="${j}">${j}</option>`;
+                    }
+
+                    // Append each selected video with the updated select box
                     e.forEach((i, k) => {
-                        currentOrder++; // Increment the order for each new video
-
-                        // Build select options based on current video count
-                        let selectOptions = '';
-                        for (let j = 1; j <= currentOrder; j++) {
-                            selectOptions += `<option value="${j}">${j}</option>`;
-                        }
-
                         const html = `
                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
                             <input type="hidden" name="videos[]" value="${i.id}">
@@ -160,14 +161,31 @@
                         `;
                         container.append(html);
                     });
+
+                    // Update the order select options for all videos based on the new total count
+                    updateAllOrderSelectBoxes(totalVideos);
                 }
             })
         }));
+
+        // Function to update the order select options for all existing videos
+        function updateAllOrderSelectBoxes(totalVideos) {
+            const allSelectBoxes = document.querySelectorAll('#videoPreviewContainer select');
+            allSelectBoxes.forEach((selectBox) => {
+                let options = '';
+                for (let j = 1; j <= totalVideos; j++) {
+                    options += `<option value="${j}">${j}</option>`;
+                }
+                selectBox.innerHTML = options;
+            });
+        }
 
         // Handle video deletion from the preview
         $(document).on('click', '.video-preview-item-delete', function (e) {
             e.preventDefault();
             $(e.target).closest('.video-preview-item').remove();
+            totalVideos--; // Decrement total videos when one is deleted
+            updateAllOrderSelectBoxes(totalVideos); // Update all select boxes after deletion
         });
     </script>
 @endpush
