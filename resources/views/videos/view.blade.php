@@ -9,12 +9,13 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Mode</th>
-                <th>Status</th>
-                <th>Videos count</th>
+                <th>Titolo</th>
+                <th>Modalità</th>
+                <th>Stato</th>
+                <th>Numero di video</th>
+                <th>Ritardo</th>
+                <th>Azioni</th>
 
-                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
