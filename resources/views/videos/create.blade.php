@@ -34,6 +34,16 @@
 
                             </div>
                         </div>
+                        <!-- Delay Selection Section -->
+                        <div class="row mb-3">
+                            <label for="delaySelect" class="form-label">Select Delay Between Plays (ms):</label>
+                            <select class="form-select" id="delaySelect">
+                                <option value="1">1 ms</option>
+                                <option value="5">5 ms</option>
+                                <option value="10">10 ms</option>
+                                <option value="15">15 ms</option>
+                            </select>
+                        </div>
 
                         <!-- Video Mode Selection -->
                         <div class="mb-3">
