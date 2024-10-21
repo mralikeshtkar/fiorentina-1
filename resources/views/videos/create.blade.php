@@ -43,6 +43,7 @@
                                 <option value="5">5 ms</option>
                                 <option value="10">10 ms</option>
                                 <option value="15">15 ms</option>
+                                <option value="15">100 ms</option>
                             </select>
                         </div>
 
