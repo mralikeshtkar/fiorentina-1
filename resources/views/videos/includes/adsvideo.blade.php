@@ -20,18 +20,19 @@
     </div>
 @endif
 <ins class="adsbygoogle" style="display:block" data-ad-slot="170525737" data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"></ins>
+
 <script>
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
-    const delay = 10; // Delay in milliseconds (10s in this case)
+    const delay = 10000; // Delay in milliseconds (10s in this case)
 
     video.addEventListener('ended', function(e) {
         activeVideo = (++activeVideo) % urls.length; // Move to the next video
         setTimeout(function() {
-            video.src = urls[activeVideo]; // Update video source
+            video.src = urls[activeVideo]; // Update video source to the next video
             video.play(); // Play the next video after the delay
-        }, delay); // Delay between videos
+        }, delay); // 10s Delay before the next video starts
     });
 </script>
