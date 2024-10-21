@@ -25,7 +25,7 @@
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
-    const delay = 10; // Delay in milliseconds (10ms in this case)
+    const delay = 10; // Delay in milliseconds (10s in this case)
 
     video.addEventListener('ended', function(e) {
         activeVideo = (++activeVideo) % urls.length; // Move to the next video

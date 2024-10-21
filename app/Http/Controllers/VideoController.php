@@ -43,7 +43,7 @@ class VideoController extends BaseController
             'title' => ['required', 'string'],
             'mode' => ['required', Rule::in(Video::PLAYLIST_MODES)],
             'status' => ['required', Rule::in(Video::STATUSES)],
-            'delay' => ['required', 'integer', 'in:1,5,10,15,'], // Validate the delay value
+            'delay' => ['required', 'integer', 'in:1000,5000,10000,15000,'], // Validate the delay value
             'videos' => ['nullable', 'array'],
             'videos.*' => [Rule::exists(MediaFile::class,'id')],
         ]);
