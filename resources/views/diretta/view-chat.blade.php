@@ -9,7 +9,4 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
-    @include('diretta.includes.modify-chat', [
-        'chats' => $chats,
-    ])
 @endsection
