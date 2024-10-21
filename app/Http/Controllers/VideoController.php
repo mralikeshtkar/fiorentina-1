@@ -43,19 +43,26 @@ class VideoController extends BaseController
             'title' => ['required', 'string'],
             'mode' => ['required', Rule::in(Video::PLAYLIST_MODES)],
             'status' => ['required', Rule::in(Video::STATUSES)],
+            'delay' => ['required', 'integer', 'in:1,5,10,15'], // Validate the delay value
             'videos' => ['nullable', 'array'],
             'videos.*' => [Rule::exists(MediaFile::class,'id')],
         ]);
+
         try {
             return DB::transaction(function () use ($request) {
                 $video_ids = $request->videos;
                 $is_random = $request->mode == Video::PLAYLIST_MODE_RANDOM;
                 $is_published = $request->status == Video::STATUS_PUBLISHED;
+
+                // Create a new Video record with delay included
                 $video = Video::query()->create([
                     'title' => $request->title,
                     'is_random' => $is_random,
                     'published_at' => $is_published ? now() : null,
+                    'delay' => $request->delay, // Store the delay value
                 ]);
+
+                // Sync video files with priorities if provided
                 if ($request->filled('videos')) {
                     $mediaFilesData = collect($video_ids)
                         ->mapWithKeys(function ($item, $key) {
@@ -67,12 +74,14 @@ class VideoController extends BaseController
                         })->toArray();
                     $video->mediaFiles()->sync($mediaFilesData);
                 }
+
                 return redirect()->route('videos.index')->with('success', 'Videos uploaded successfully.');
             });
         } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Failed to upload videos.');
         }
     }
+
 
     public function edit($video)
     {

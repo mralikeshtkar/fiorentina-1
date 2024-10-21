@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <!-- Delay Selection Section -->
-                        <div class="row mb-3">
+                        <div class=" mb-3">
                             <label for="delaySelect" class="form-label">Select Delay Between Plays (ms):</label>
                             <select class="form-select" id="delaySelect">
                                 <option value="1">1 ms</option>
