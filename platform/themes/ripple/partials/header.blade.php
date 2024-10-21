@@ -22,8 +22,6 @@
     {!! apply_filters(THEME_FRONT_BODY, null) !!}
     <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991"
         class="page-header page-header--light py-0">
-        <ins class=\"adsbygoogle\" style=\"display:block\" data-ad-slot=\"170525737\" data-ad-format=\"auto\"
-            data-full-width-responsive=\"true\"></ins>
         <div class="container headup" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-header__left">
                 <a href="{{ BaseHelper::getHomepageUrl() }}" class="page-logo">
