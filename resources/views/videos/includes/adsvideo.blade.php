@@ -19,13 +19,18 @@
         </div>
     </div>
 @endif
+
 <script>
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
+    const delay = 10; // Delay in milliseconds (10ms in this case)
+
     video.addEventListener('ended', function(e) {
-        activeVideo = (++activeVideo) % urls.length;
-        video.src = urls[activeVideo];
-        video.play();
+        activeVideo = (++activeVideo) % urls.length; // Move to the next video
+        setTimeout(function() {
+            video.src = urls[activeVideo]; // Update video source
+            video.play(); // Play the next video after the delay
+        }, delay); // Delay between videos
     });
 </script>
