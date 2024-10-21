@@ -2,7 +2,7 @@
 
 @section('content')
     <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
+        @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
         <div class="row">
             <div class="gap-3 col-md-9">
@@ -31,9 +31,10 @@
                         <div class="mb-3">
                             <label for="videoPreview" class="form-label">Video Previews</label>
                             <div id="videoPreviewContainer" class="row">
-
+                                <!-- Video previews will be injected here -->
                             </div>
                         </div>
+
                         <!-- Delay Selection Section -->
                         <div class=" mb-3">
                             <label for="delaySelect" class="form-label">Select Delay Between Plays (ms):</label>
@@ -128,14 +129,15 @@
                 filter: "video",
                 onSelectFiles: function (e, t) {
                     const container = $('#videoPreviewContainer');
+                    container.html(''); // Clear existing previews
                     e.forEach((i, k) => {
                         const html = `
                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
-
                             <input type="hidden" name="videos[]" value="${i.id}">
                             <div class="w-100 p-2 border border-2 rounded-2">
                                 <video src="${i.preview_url}" class="w-100" controls></video>
                                 <div class="mt-1">
+                                    <strong>Order: ${k + 1}</strong> <!-- Display order -->
                                     <button type="button" class="btn btn-danger video-preview-item-delete">
                                         Delete
                                     </button>
@@ -148,6 +150,8 @@
                 }
             })
         }));
+
+        // Handle video deletion from the preview
         $(document).on('click', '.video-preview-item-delete', function (e) {
             e.preventDefault();
             $(e.target).closest('.video-preview-item').remove();
