@@ -123,7 +123,7 @@
 
 @push('footer')
     <script>
-        // This variable will keep track of the current video order
+        // Keep track of the number of uploaded videos to set the correct options for ordering
         let currentOrder = 0;
 
         $.each($(document).find('[data-bb-toggle="video-picker-choose"][data-target="popup"]'), (function (e, t) {
@@ -134,14 +134,24 @@
                     const container = $('#videoPreviewContainer');
                     e.forEach((i, k) => {
                         currentOrder++; // Increment the order for each new video
+
+                        // Build select options based on current video count
+                        let selectOptions = '';
+                        for (let j = 1; j <= currentOrder; j++) {
+                            selectOptions += `<option value="${j}">${j}</option>`;
+                        }
+
                         const html = `
                         <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
                             <input type="hidden" name="videos[]" value="${i.id}">
                             <div class="w-100 p-2 border border-2 rounded-2">
                                 <video src="${i.preview_url}" class="w-100" controls></video>
                                 <div class="mt-1">
-                                    <strong>Order: ${currentOrder}</strong> <!-- Display order -->
-                                    <button type="button" class="btn btn-danger video-preview-item-delete">
+                                    <label for="orderSelect-${i.id}">Select Order</label>
+                                    <select name="order[${i.id}]" id="orderSelect-${i.id}" class="form-select">
+                                        ${selectOptions}
+                                    </select>
+                                    <button type="button" class="btn btn-danger video-preview-item-delete mt-2">
                                         Delete
                                     </button>
                                 </div>
