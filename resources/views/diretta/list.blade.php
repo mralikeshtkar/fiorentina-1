@@ -147,7 +147,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-p"
-                                                    href="/chat/view?match_id={{ $match->match_id }}">Chat</a>
+                                                    href="/chat-view?match_id={{ $match->match_id }}">Chat</a>
 
                                             </td>
 
