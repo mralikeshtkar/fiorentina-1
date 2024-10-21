@@ -20,7 +20,7 @@
                 @php
                     $updateScheduledMessage = App\Http\Controllers\StandingController::fetchCalendario();
                 @endphp
-                    
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -38,6 +38,9 @@
                                                 class="sort-arrow"></span></th>
                                         <th>
                                             Diretta
+                                        </th>
+                                        <th>
+                                            Chat
                                         </th>
                                     </tr>
                                 </thead>
@@ -140,6 +143,11 @@
                                             <td>
                                                 <a class="btn btn-p"
                                                     href="/diretta/view?match_id={{ $match->match_id }}">Gestione</a>
+
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-p"
+                                                    href="/chat/view?match_id={{ $match->match_id }}">Chat</a>
 
                                             </td>
 
