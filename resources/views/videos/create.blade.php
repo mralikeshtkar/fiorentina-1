@@ -36,9 +36,9 @@
                         </div>
 
                         <!-- Delay Selection Section -->
-                        <div class=" mb-3">
+                        <div class="mb-3">
                             <label for="delaySelect" class="form-label">Select Delay Between Plays (ms):</label>
-                            <select class="form-select" id="delay"  name="delay">
+                            <select class="form-select" id="delaySelect">
                                 <option value="1">1 ms</option>
                                 <option value="5">5 ms</option>
                                 <option value="10">10 ms</option>
@@ -147,15 +147,15 @@
                             <input type="hidden" name="videos[]" value="${i.id}">
                             <div class="w-100 p-2 border border-2 rounded-2">
                                 <video src="${i.preview_url}" class="w-100" controls></video>
-                                <div class="mt-1">
+                                <div class="mt-1 order-select-wrapper">
                                     <label for="orderSelect-${i.id}">Select Order</label>
                                     <select name="order[${i.id}]" id="orderSelect-${i.id}" class="form-select">
                                         ${selectOptions}
                                     </select>
-                                    <button type="button" class="btn btn-danger video-preview-item-delete mt-2">
-                                        Delete
-                                    </button>
                                 </div>
+                                <button type="button" class="btn btn-danger video-preview-item-delete mt-2">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                         `;
@@ -164,6 +164,9 @@
 
                     // Update the order select options for all videos based on the new total count
                     updateAllOrderSelectBoxes(totalVideos);
+
+                    // Check if playlist mode is Sequential and show/hide order select
+                    toggleOrderSelect();
                 }
             })
         }));
@@ -180,12 +183,35 @@
             });
         }
 
+        // Show/hide the order select based on the playlist mode
+        function toggleOrderSelect() {
+            const mode = document.getElementById('mode').value;
+            const orderSelectWrappers = document.querySelectorAll('.order-select-wrapper');
+
+            orderSelectWrappers.forEach(wrapper => {
+                if (mode === 'sequential') {
+                    wrapper.style.display = 'block'; // Show order select
+                } else {
+                    wrapper.style.display = 'none'; // Hide order select
+                }
+            });
+        }
+
+        // Listen to playlist mode changes
+        document.getElementById('mode').addEventListener('change', toggleOrderSelect);
+
         // Handle video deletion from the preview
         $(document).on('click', '.video-preview-item-delete', function (e) {
             e.preventDefault();
             $(e.target).closest('.video-preview-item').remove();
             totalVideos--; // Decrement total videos when one is deleted
             updateAllOrderSelectBoxes(totalVideos); // Update all select boxes after deletion
+
+            // Re-check the visibility of the order select after deletion
+            toggleOrderSelect();
         });
+
+        // Initially hide the order select if needed when the page loads
+        toggleOrderSelect();
     </script>
 @endpush
