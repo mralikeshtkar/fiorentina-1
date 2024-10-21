@@ -39,7 +39,7 @@ class DirettaController extends BaseController
     
         $this->pageTitle("Diretta di $matchId");
 
-        return view('diretta.view-chat',compact('matchId'));
+        return view('diretta.view',compact('matchId'));
     }
 
     public function viewChat(){
@@ -47,7 +47,7 @@ class DirettaController extends BaseController
     
         $this->pageTitle("Diretta di $matchId");
 
-        return view('diretta.view',compact('matchId'));
+        return view('diretta.view-chat',compact('matchId'));
     }
 
     // Post a new comment
