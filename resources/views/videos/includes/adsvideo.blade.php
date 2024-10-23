@@ -26,13 +26,19 @@
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
-    const delayElement = document.getElementById('delay');
-    let delay = parseInt(delayElement.value) * 1000; // Get the selected delay value and convert to milliseconds
+    let delay = 30000; // Set default delay to 30 seconds (30000 milliseconds)
 
-    // Update the delay dynamically when the user changes the delay selection
-    delayElement.addEventListener('change', function() {
-        delay = parseInt(this.value) * 1000;
-    });
+    const delayElement = document.getElementById('delay');
+
+    // Check if the delay dropdown exists and update the delay dynamically
+    if (delayElement) {
+        delay = parseInt(delayElement.value) * 1000; // Get initial delay from dropdown (if present)
+
+        // Update the delay when the user changes the selection
+        delayElement.addEventListener('change', function() {
+            delay = parseInt(this.value) * 1000; // Convert selected delay to milliseconds
+        });
+    }
 
     video.addEventListener('ended', function(e) {
         activeVideo = (++activeVideo) % urls.length; // Move to the next video
