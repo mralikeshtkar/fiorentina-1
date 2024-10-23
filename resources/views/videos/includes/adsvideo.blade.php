@@ -26,13 +26,19 @@
     const video = document.getElementById('ads-video');
     const urls = JSON.parse(video.getAttribute('data-url'));
     let activeVideo = 0;
-    const delay = 10000; // Delay in milliseconds (10s in this case)
+    const delayElement = document.getElementById('delay');
+    let delay = parseInt(delayElement.value) * 1000; // Get the selected delay value and convert to milliseconds
+
+    // Update the delay dynamically when the user changes the delay selection
+    delayElement.addEventListener('change', function() {
+        delay = parseInt(this.value) * 1000;
+    });
 
     video.addEventListener('ended', function(e) {
         activeVideo = (++activeVideo) % urls.length; // Move to the next video
         setTimeout(function() {
             video.src = urls[activeVideo]; // Update video source to the next video
             video.play(); // Play the next video after the delay
-        }, delay); // 10s Delay before the next video starts
+        }, delay); // Use the selected delay before the next video starts
     });
 </script>

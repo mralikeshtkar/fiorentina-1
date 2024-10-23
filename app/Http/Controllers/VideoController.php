@@ -43,7 +43,7 @@ class VideoController extends BaseController
             'title' => ['required', 'string'],
             'mode' => ['required', Rule::in(Video::PLAYLIST_MODES)],
             'status' => ['required', Rule::in(Video::STATUSES)],
-            'delay' => ['required', 'integer', 'in:1,5,10,15,'], // Validate the delay value
+            'delay' => ['required', 'integer', 'in:1,5,10,15,30,60,120'], // Updated delay validation to include new values
             'videos' => ['nullable', 'array'],
             'videos.*' => [Rule::exists(MediaFile::class,'id')],
         ]);
@@ -81,6 +81,7 @@ class VideoController extends BaseController
             return redirect()->back()->with('error', 'Failed to upload videos.');
         }
     }
+
 
 
     public function edit($video)
