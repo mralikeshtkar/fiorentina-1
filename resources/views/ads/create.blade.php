@@ -157,7 +157,7 @@
             const googleAdImageNameSection = document.getElementById('googleAdImageNameSection');
 
             // Check if the value matches
-            if (selectedAdType === googleAdType) {
+            if (selectedAdType == googleAdType) {
                 console.log('Google Ad Manager selected. Hiding image upload and showing image name field.');
                 // Hide the image upload section and show the image name input field
                 imageUploadSection.style.display = 'none';
