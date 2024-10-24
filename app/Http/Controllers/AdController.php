@@ -111,7 +111,7 @@ class AdController extends BaseController
             'width' => $request->width,
             'height' => $request->height,
         ];
-        if($advertisement->type ==1){
+        if($data['type'] ==1){
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
                 $imageResized = ImageManager::gd()->read($request->image);
