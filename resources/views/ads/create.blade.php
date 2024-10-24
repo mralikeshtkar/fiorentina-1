@@ -62,7 +62,7 @@
                             <!-- Image Name Section for Google Ad Manager -->
                             <div class="row mb-3" id="googleAdImageNameSection" style="display: none;">
                                 <label for="imageName" class="form-label">Image Name:</label>
-                                <input type="text" class="form-control" id="imageName" name="image_name"
+                                <input type="text" class="form-control" id="imageName" name="image"
                                     placeholder="XXXXXXXXX">
                             </div>
 
@@ -146,29 +146,29 @@
 
 @push('footer')
     <script>
-document.getElementById('advanced-ad-type').addEventListener('change', function(e) {
-    const selectedAdType = e.target.value;
-    
-    // Log the selected ad type to ensure you're capturing the correct value
-    console.log('Selected Ad Type:', selectedAdType);
-    
-    const googleAdType = 'google-ad-manager'; // Assuming the correct value here
-    const imageUploadSection = document.getElementById('imageUploadSection');
-    const googleAdImageNameSection = document.getElementById('googleAdImageNameSection');
+        document.getElementById('advanced-ad-type').addEventListener('change', function(e) {
+            const selectedAdType = e.target.value;
 
-    // Check if the value matches
-    if (selectedAdType === googleAdType) {
-        console.log('Google Ad Manager selected. Hiding image upload and showing image name field.');
-        // Hide the image upload section and show the image name input field
-        imageUploadSection.style.display = 'none';
-        googleAdImageNameSection.style.display = 'block';
-    } else {
-        console.log('Other Ad Type selected. Showing image upload and hiding image name field.');
-        // Show the image upload section and hide the image name input field
-        imageUploadSection.style.display = 'block';
-        googleAdImageNameSection.style.display = 'none';
-    }
-});
+            // Log the selected ad type to ensure you're capturing the correct value
+            console.log('Selected Ad Type:', selectedAdType);
+
+            const googleAdType = 2; // Assuming the correct value here
+            const imageUploadSection = document.getElementById('imageUploadSection');
+            const googleAdImageNameSection = document.getElementById('googleAdImageNameSection');
+
+            // Check if the value matches
+            if (selectedAdType === googleAdType) {
+                console.log('Google Ad Manager selected. Hiding image upload and showing image name field.');
+                // Hide the image upload section and show the image name input field
+                imageUploadSection.style.display = 'none';
+                googleAdImageNameSection.style.display = 'block';
+            } else {
+                console.log('Other Ad Type selected. Showing image upload and hiding image name field.');
+                // Show the image upload section and hide the image name input field
+                imageUploadSection.style.display = 'block';
+                googleAdImageNameSection.style.display = 'none';
+            }
+        });
 
 
         document.getElementById('imageUpload').addEventListener('change', function(e) {
