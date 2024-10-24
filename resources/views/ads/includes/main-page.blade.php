@@ -14,8 +14,19 @@
             
                     </div>
                 @else
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6741446998584415"
-                        data-ad-slot="{{ $ad->image }}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    googletag.cmd.push(function() {
+                        googletag.defineSlot("/166632497/{{ $ad->title }}", "div-gpt-ad-{{ $ad->image }}").addService(googletag.pubads());
+                        googletag.pubads().enableSingleRequest();
+                        googletag.enableServices();
+                    });
+                </script>
+                    <div id='div-gpt-ad-{{ $ad->image }}'>
+                        <script>
+                          googletag.cmd.push(function() { googletag.display('div-gpt-ad-{{ $ad->image }}'); });
+                        </script>
+                      </div>
+
                 @endif
             @endforeach
         </div>
