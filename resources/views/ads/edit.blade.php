@@ -50,14 +50,21 @@
                             </div>
 
                             <!-- Image Upload Section -->
-                            <div class="row mb-3">
+                            <div class="row mb-3" id="imageUploadSection">
                                 <label for="imageUpload" class="form-label">Upload an image:</label>
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
-                                        <img src="{{ $ad->getImageUrl() }}" class="image-preview" alt="{{ $ad->title }}">
+                                        <img src="" class="image-preview" alt="">
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Image Name Section for Google Ad Manager -->
+                            <div class="row mb-3 mt-3" id="googleAdImageNameSection" style="display: none;">
+                                <label for="imageName" class="form-label">Ad Slot</label>
+                                <input type="text" class="form-control" id="imageName" name="image"
+                                    placeholder="XXXXXXXXX">
                             </div>
 
                             <!-- Ad Parameters Section -->
