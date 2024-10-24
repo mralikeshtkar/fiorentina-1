@@ -98,7 +98,11 @@ class Ad extends BaseModel
      */
     public function getImageUrl(): string
     {
-        return Storage::url($this->image);
+        if($this->type==1){
+            return Storage::url($this->image);
+        }
+        return $this->image;
+
     }
 
     /**
