@@ -146,22 +146,30 @@
 
 @push('footer')
     <script>
-        document.getElementById('advanced-ad-type').addEventListener('change', function(e) {
-            const selectedAdType = e.target.value;
-            const googleAdType = 'google-ad-manager'; // Assuming the value for Google Ad Manager is this
-            const imageUploadSection = document.getElementById('imageUploadSection');
-            const googleAdImageNameSection = document.getElementById('googleAdImageNameSection');
+document.getElementById('advanced-ad-type').addEventListener('change', function(e) {
+    const selectedAdType = e.target.value;
+    
+    // Log the selected ad type to ensure you're capturing the correct value
+    console.log('Selected Ad Type:', selectedAdType);
+    
+    const googleAdType = 'google-ad-manager'; // Assuming the correct value here
+    const imageUploadSection = document.getElementById('imageUploadSection');
+    const googleAdImageNameSection = document.getElementById('googleAdImageNameSection');
 
-            if (selectedAdType === googleAdType) {
-                // Hide the image upload section and show the image name input field
-                imageUploadSection.style.display = 'none';
-                googleAdImageNameSection.style.display = 'block';
-            } else {
-                // Show the image upload section and hide the image name input field
-                imageUploadSection.style.display = 'block';
-                googleAdImageNameSection.style.display = 'none';
-            }
-        });
+    // Check if the value matches
+    if (selectedAdType === googleAdType) {
+        console.log('Google Ad Manager selected. Hiding image upload and showing image name field.');
+        // Hide the image upload section and show the image name input field
+        imageUploadSection.style.display = 'none';
+        googleAdImageNameSection.style.display = 'block';
+    } else {
+        console.log('Other Ad Type selected. Showing image upload and hiding image name field.');
+        // Show the image upload section and hide the image name input field
+        imageUploadSection.style.display = 'block';
+        googleAdImageNameSection.style.display = 'none';
+    }
+});
+
 
         document.getElementById('imageUpload').addEventListener('change', function(e) {
             const input = e.target;
