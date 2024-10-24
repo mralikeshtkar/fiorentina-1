@@ -16,14 +16,14 @@
                 @else
                 <script>
                     googletag.cmd.push(function() {
-                        googletag.defineSlot("/166632497/{{ $ad->title }}", "div-gpt-ad-{{ $ad->image }}").addService(googletag.pubads());
+                        googletag.defineSlot("/166632497/{{ $ad->title }}", "div-gpt-ad-1729771067409-0").addService(googletag.pubads());
                         googletag.pubads().enableSingleRequest();
                         googletag.enableServices();
                     });
                 </script>
-                    <div id='div-gpt-ad-{{ $ad->image }}'>
+                    <div id='div-gpt-ad-1729771067409-0'>
                         <script>
-                          googletag.cmd.push(function() { googletag.display('div-gpt-ad-{{ $ad->image }}'); });
+                          googletag.cmd.push(function() { googletag.display('div-gpt-ad-1729771067409-0'); });
                         </script>
                       </div>
 
