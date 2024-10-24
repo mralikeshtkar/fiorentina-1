@@ -14,7 +14,7 @@
 
                     </div>
                 @else
-                    <amp-ad width=120 height=180 type="doubleclick" data-slot="/166632497/120x180-1">
+                    <amp-ad width=468 height=60 type="doubleclick" data-slot="/166632497/468x60dx">
                     </amp-ad>
                 @endif
             @endforeach
