@@ -99,7 +99,6 @@ class AdController extends BaseController
         // Validate the incoming request data
         $validated = $request->validate([
             'post_title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'width' => 'nullable|numeric|min:0',
             'height' => 'nullable|numeric|min:0',
             'type' => ['required', Rule::in(array_keys(Ad::TYPES))],
@@ -112,16 +111,20 @@ class AdController extends BaseController
             'width' => $request->width,
             'height' => $request->height,
         ];
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
-            $imageResized = ImageManager::gd()->read($request->image);
-            if($request->width && $request->height){
-                $imageResized=$imageResized->resize($request->width, $request->height);
+        if($advertisement->type ==1){
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $filename = Str::random(32) . time() . "." . $request->file('image')->getClientOriginalExtension();
+                $imageResized = ImageManager::gd()->read($request->image);
+                if($request->width && $request->height){
+                    $imageResized=$imageResized->resize($request->width, $request->height);
+                }
+                $imageResized=$imageResized->encode();
+                $path = "ads-images/" . $filename;
+                Storage::disk('public')->put($path, $imageResized);
+                $data['image'] = $path;
             }
-            $imageResized=$imageResized->encode();
-            $path = "ads-images/" . $filename;
-            Storage::disk('public')->put($path, $imageResized);
-            $data['image'] = $path;
+        }else{
+            $data['image'] =$request->image;
         }
         try {
             // Update the advertisement
