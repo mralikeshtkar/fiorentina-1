@@ -108,16 +108,6 @@ class Ad extends BaseModel
     protected static function boot()
     {
         parent::boot();
-        static::updated(function (self $ad) {
-            if ($ad->wasChanged('image')) {
-                Storage::disk('public')->delete($ad->getOriginal('image'));
-            }
-        });
-        static::deleted(function (self $ad) {
-            if ($ad->hasImage()){
-                Storage::disk('public')->delete($ad->image);
-            }
-        });
     }
 
     /**
@@ -125,7 +115,11 @@ class Ad extends BaseModel
      */
     public function getImageUrl(): string
     {
-        return Storage::url($this->image);
+        if($this->type==1){
+            return Storage::url($this->image);
+        }
+        return $this->image;
+
     }
 
     /**

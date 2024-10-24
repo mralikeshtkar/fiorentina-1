@@ -8,7 +8,18 @@
         name="viewport" />
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <noscript>
+        <style amp-boilerplate>
+          body{
+            -webkit-animation:none;
+            -moz-animation:none;
+            -ms-animation:none;
+            animation:none
+          }
+        </style>
+      </noscript>
+      <script async src="https://cdn.ampproject.org/v0.js"></script>
+      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
     @php(Theme::set('headerMeta', Theme::partial('header-meta')))
 
     {!! Theme::header() !!}

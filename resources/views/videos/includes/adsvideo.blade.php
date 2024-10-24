@@ -19,8 +19,7 @@
         </div>
     </div>
 @endif
-<ins class="adsbygoogle" style="display:block" data-ad-slot="170525737" data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+
 
 <script>
     const video = document.getElementById('ads-video');
