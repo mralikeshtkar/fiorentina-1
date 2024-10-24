@@ -60,8 +60,8 @@
                             </div>
 
                             <!-- Image Name Section for Google Ad Manager -->
-                            <div class="row mb-3" id="googleAdImageNameSection" style="display: none;">
-                                <label for="imageName" class="form-label">Image Name:</label>
+                            <div class="row mb-3 mt-3" id="googleAdImageNameSection" style="display: none;">
+                                <label for="imageName" class="form-label">Ad Slot</label>
                                 <input type="text" class="form-control" id="imageName" name="image"
                                     placeholder="XXXXXXXXX">
                             </div>
