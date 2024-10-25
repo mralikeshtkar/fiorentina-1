@@ -43,25 +43,25 @@ class Ad extends BaseModel
     const SIZE_300X250_TOP = 23;
     const SIZE_468X60_TOP_DX = 24;
     const SIZE_468X60_TOP_SX = 25;
-    const SIZE_728X90_B1 = 26;
-    const SIZE_728X90_C1 = 27;
-    const SIZE_728X90_C2 = 28;
-    const SIZE_728X90_TESTATA = 29;
+    // const SIZE_728X90_B1 = 26;
+    // const SIZE_728X90_C1 = 27;
+    // const SIZE_728X90_C2 = 28;
+    // const SIZE_728X90_TESTATA = 29;
 
-    const GRUPPO_POPUP_DESKTOP = 30;
-    const GRUPPO_POPUP_MOBILE = 31;
-    const IN_ARTICLE_DESKTOP_2024 = 32;
-    const MOBILE_DOPO_FOTO = 33;
-    const MOBILE_HOME_TOP_24 = 34;
-    const MOBILE_POSIZIONE_1 = 35;
-    const MOBILE_POSIZIONE_2 = 36;
-    const MOBILE_POSIZIONE_3 = 37;
-    const MOBILE_POSIZIONE_4 = 38;
-    const MOBILE_POSIZIONE_5 = 39;
-    const ROTATION_100 = 40;
-    const ROTAZIONE_728X200 = 41;
-    const SKIN = 42;
-    const SKIN_MOBILE = 43;
+    // const GRUPPO_POPUP_DESKTOP = 30;
+    // const GRUPPO_POPUP_MOBILE = 31;
+    // const IN_ARTICLE_DESKTOP_2024 = 32;
+    // const MOBILE_DOPO_FOTO = 33;
+    // const MOBILE_HOME_TOP_24 = 34;
+    // const MOBILE_POSIZIONE_1 = 35;
+    // const MOBILE_POSIZIONE_2 = 36;
+    // const MOBILE_POSIZIONE_3 = 37;
+    // const MOBILE_POSIZIONE_4 = 38;
+    // const MOBILE_POSIZIONE_5 = 39;
+    // const ROTATION_100 = 40;
+    // const ROTAZIONE_728X200 = 41;
+    // const SKIN = 42;
+    // const SKIN_MOBILE = 43;
 
 
     const GROUPS = [
