@@ -59,6 +59,8 @@ class AdController extends BaseController
         $advertisement->type = $request->type;
         $advertisement->width = $request->width;
         $advertisement->height = $request->height;
+        $advertisement->url = $request->url;
+        $advertisement->amp = $request->amp;
 
         // Handle file upload
         if($advertisement->type ==1){
@@ -110,6 +112,8 @@ class AdController extends BaseController
             'type' => $request->type,
             'width' => $request->width,
             'height' => $request->height,
+            'url' => $request->url,
+            'amp' => $request->amp??null,
         ];
         if($data['type'] ==1){
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
