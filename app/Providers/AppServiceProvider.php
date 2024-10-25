@@ -61,6 +61,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('ads.includes.adsense',function (View $view){
             $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::Google_adsense)->first());
         });
+        view()->composer('ads.includes.SIZE_230X90_DX',function (View $view){
+            $view->with('ad',Ad::query()->typeAnnuncioImmagine()->whereGroup(Ad::SIZE_230X90_DX)->first());
+        });
 
         view()->composer('videos.includes.adsvideo', function (View $view) {
             /** @var Video $video */
