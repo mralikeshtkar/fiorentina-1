@@ -89,7 +89,7 @@ class Ad extends BaseModel
         self::SIZE_300X250_C1 => "SIZE_300X250_C1",
         self::SIZE_300X250_TOP => "SIZE_300X250_TOP",
         self::SIZE_468X60_TOP_DX => "SIZE_468X60_TOP_DX",
-        self::SIZE_468X60_TOP_SX => "SIZE_468X60_TOP_SX",
+        self::SIZE_468X60_TOP_SX => "SIZE_468X60_TOP_SX"
         // self::SIZE_728X90_B1 => "SIZE_468X60_TOP_SX",
         // self::SIZE_728X90_C1 => "SIZE_468X60_TOP_SX",
         // self::SIZE_728X90_C2=> "SIZE_468X60_TOP_SX",
