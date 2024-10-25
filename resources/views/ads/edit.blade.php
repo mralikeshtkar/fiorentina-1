@@ -51,8 +51,9 @@
 
                             <!-- Image Upload Section -->
                             <div class="row mb-3" id="imageUploadSection">
-                                <label for="imageUpload" class="form-label">Upload an image:</label>
                                 <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
+                                <input type="text" class="form-control" name="url" id="url"
+                                    placeholder="https://example.com">
                                 <div class="row mx-0 mt-3">
                                     <div class="col-12">
                                         <img src="" class="image-preview" alt="">
@@ -62,10 +63,12 @@
 
                             <!-- Image Name Section for Google Ad Manager -->
                             <div class="row mb-3 mt-3" id="googleAdImageNameSection" style="display: none;">
-                                <label for="imageName" class="form-label">Ad Slot</label>
-                                <input type="text" class="form-control" id="imageName" name="image"
-                                    placeholder="XXXXXXXXX">
+                                <div class="form-group">
+                                    <label for="code">Amp</label>
+                                    <textarea id="code" name="amp" class="form-control" rows="10" placeholder="Enter your amp code here"></textarea>
+                                </div>
                             </div>
+
 
                             <!-- Ad Parameters Section -->
                             <div class="postbox" id="ad-parameters-box">
