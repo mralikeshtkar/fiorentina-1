@@ -1,4 +1,6 @@
+@dd($ad)
 @if (isset($ad) && $ad)
+
     <div class="container">
         <div class="row mx-0">
             @if ($ad->type == 1)
