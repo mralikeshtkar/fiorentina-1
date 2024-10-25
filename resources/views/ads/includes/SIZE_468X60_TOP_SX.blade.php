@@ -1,4 +1,3 @@
-@dd($ad)
 @if (isset($ad) && $ad)
 
     <div class="container">
