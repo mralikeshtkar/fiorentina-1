@@ -1,6 +1,10 @@
 @extends(BaseHelper::getAdminMasterLayoutTemplate())
 
 @section('content')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script> <!-- or other language mode -->
+
     <form action="{{ route('ads.store') }}" method="POST" enctype="multipart/form-data">
         @csrf <!-- CSRF Token for Laravel, ensures your form is secure -->
 
@@ -48,22 +52,25 @@
                                 </div>
                             </div>
 
-                            <!-- Image Upload Section -->
-                            <div class="row mb-3" id="imageUploadSection">
-                                <label for="imageUpload" class="form-label">Upload an image:</label>
-                                <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
-                                <div class="row mx-0 mt-3">
-                                    <div class="col-12">
-                                        <img src="" class="image-preview" alt="">
-                                    </div>
+                        <!-- Image Upload Section -->
+                        <div class="row mt-3 mb-3" id="imageUploadSection">
+                            <input type="file" class="form-control mb-1" id="imageUpload" name="image"
+                                accept="image/*">
+                            <input type="text" class="form-control" name="url" id="url"
+                                placeholder="https://example.com">
+                            <div class="row mx-0 mt-3">
+                                <div class="col-12">
+                                    <img src="" class="image-preview" alt="">
                                 </div>
                             </div>
+                        </div>
 
                             <!-- Image Name Section for Google Ad Manager -->
                             <div class="row mb-3 mt-3" id="googleAdImageNameSection" style="display: none;">
-                                <label for="imageName" class="form-label">Ad Slot</label>
-                                <input type="text" class="form-control" id="imageName" name="image"
-                                    placeholder="XXXXXXXXX">
+                                <div class="form-group">
+                                    <label for="code">Amp</label>
+                                    <textarea id="code" name="amp" class="form-control" rows="10" placeholder="Enter your amp code here"></textarea>
+                                </div>
                             </div>
 
                             <!-- Ad Parameters Section -->
@@ -180,6 +187,13 @@
                 }
                 reader.readAsDataURL(input.files[0]);
             }
+        });
+
+        // Initialize CodeMirror on the textarea
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            mode: "javascript", // Change "javascript" to other languages as needed
+            theme: "default"
         });
     </script>
 @endpush
