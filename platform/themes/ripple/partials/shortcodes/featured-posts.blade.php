@@ -12,8 +12,22 @@
             $away_team = json_decode($match->away_team, true);
 
         @endphp
-
-        <div class="container mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <div class="col-11">
+                        @include('ads.includes.SIZE_468X60_TOP_SX')
+                    </div>
+                </div>
+                <div class="col-6 mx-auto">
+                    <div class="col-11">
+                        @include('ads.includes.SIZE_468X60_TOP_DX')
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mb-3 ">
             <div class="row align-items-center upcoming-match">
                 <!-- Match Date, Time, and Venue -->
                 <div class="col-md-3">
