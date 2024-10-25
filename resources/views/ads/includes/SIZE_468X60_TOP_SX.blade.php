@@ -1,3 +1,4 @@
+@dd($ad)
 @if (isset($ads) && $ads)
     <div class="container">
         <div class="row mx-0">
