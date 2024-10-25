@@ -50,8 +50,9 @@
                             </div>
 
                             <!-- Image Upload Section -->
-                            <div class="row mb-3" id="imageUploadSection">
-                                <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*">
+                            <div class="row mt-3 mb-3" id="imageUploadSection">
+                                <input type="file" class="form-control mb-1" id="imageUpload" name="image"
+                                    accept="image/*">
                                 <input type="text" class="form-control" name="url" id="url"
                                     placeholder="https://example.com">
                                 <div class="row mx-0 mt-3">
