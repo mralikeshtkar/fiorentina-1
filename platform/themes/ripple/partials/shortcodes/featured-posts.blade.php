@@ -1,6 +1,6 @@
 @if ($posts->isNotEmpty())
 
-    <section class="section hero-section pt-45 pb-20"
+    <section class="section hero-section pt-20 pb-20"
         @if ($shortcode->background_color) style="background-color: #441274 !important;" @endif>
 
         @php

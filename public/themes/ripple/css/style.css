@@ -4141,7 +4141,7 @@ body {
     margin-left: 6px;
 }
 
-.upcoming-match::before {
+/* .upcoming-match::before {
     content: 'La Prossima Partita';
     background-color: #8424e3;
     padding: 4px;
@@ -4149,7 +4149,7 @@ body {
     color: white;
     left: calc(0%);
     top: -28px;
-}
+} */
 
 .fiorentina-btn {
     background-color: #8424e3;
@@ -5040,6 +5040,7 @@ header>.container {
 .text-truncate {
     white-space: pre-line;
 }
+
 .black-box {
     background-color: black;
     color: white;
@@ -5063,37 +5064,37 @@ header>.container {
     color: white;
 }
 
-.post-group{
+.post-group {
     display: flex;
     flex-direction: row;
 }
 
-.post-group__left{
+.post-group__left {
     flex: 1;
 }
 
-.post-group__right{
+.post-group__right {
     width: 35%;
 }
 
-.fz-10px{
+.fz-10px {
     font-size: 10px;
 }
 
-.fz-16px{
+.fz-16px {
     font-size: 16px;
 }
 
-.fz-14px{
+.fz-14px {
     font-size: 14px !important;
 }
 
-.post__last4{
+.post__last4 {
     display: flex;
     flex-direction: column;
 }
 
-.post__last4 .post__last4-badge{
+.post__last4 .post__last4-badge {
     font-size: 12px;
     color: #bfbfbf;
     display: flex;
@@ -5101,12 +5102,12 @@ header>.container {
     margin-bottom: 2px;
 }
 
-.post__last4 .post__last4-text{
+.post__last4 .post__last4-text {
     font-size: 14px;
     color: #ffffff;
 }
 
-.post-group__left-purple-badge{
+.post-group__left-purple-badge {
     background-color: rgb(68, 18, 116);
     color: #ffffff;
     padding: 2px 10px;

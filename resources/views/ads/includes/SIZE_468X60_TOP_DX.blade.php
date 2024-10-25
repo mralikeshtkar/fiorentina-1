@@ -1,6 +1,6 @@
 @if (isset($ad) && $ad)
     <div class="container">
-        <div class="row mx-0">
+        <div class="row mx-0 justify-content-end">
             @if ($ad->type == 1)
                 <div class="row justify-content-center mx-0">
 
