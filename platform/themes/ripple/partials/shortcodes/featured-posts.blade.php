@@ -13,7 +13,7 @@
 
         @endphp
         <div class="container mb-3">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-6 mx-auto">
                     <div class="col-11">
                         @include('ads.includes.SIZE_468X60_TOP_SX')
