@@ -13,8 +13,7 @@
                         </div>
                     </div>
                 @else
-                    <amp-ad width=468 height=60 type="doubleclick" data-slot="/166632497/468x60dx">
-                    </amp-ad>
+                    {!! $ad->amp !!}
                 @endif
             @endforeach
         </div>
