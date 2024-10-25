@@ -15,12 +15,12 @@
         <div class="container mb-3">
             <div class="row justify-content-center">
                 <div class="col-6 mx-auto">
-                    <div class="col-11">
+                    <div class="col-12">
                         @include('ads.includes.SIZE_468X60_TOP_SX')
                     </div>
                 </div>
                 <div class="col-6 mx-auto">
-                    <div class="col-11">
+                    <div class="col-12">
                         @include('ads.includes.SIZE_468X60_TOP_DX')
                     </div>
                 </div>
