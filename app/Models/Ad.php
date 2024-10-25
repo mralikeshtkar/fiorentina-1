@@ -110,6 +110,7 @@ class Ad extends BaseModel
         'title',
         'type',
         'image',
+        'url',
         'amp',
         'group',
         'starts_at',
