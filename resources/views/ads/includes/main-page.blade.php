@@ -5,7 +5,7 @@
                 @if ($ad->type == 1)
                     <div class="row justify-content-center mx-0">
 
-                        <div class="col-12 mx-auto">
+                        <div class="col-8 mx-auto">
                             <a href="{{ $ad->url }}" class="d-block">
                                 <img src="{{ $ad->getImageUrl() }}" alt="{{ $ad->title }}" class="img-fluid"
                                     style="width: 100%; height: auto;">
