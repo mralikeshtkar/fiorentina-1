@@ -67,7 +67,7 @@
                             <!-- Image Name Section for Google Ad Manager -->
                             <div class="row mb-3 mt-3" id="googleAdImageNameSection" style="display: none;">
                                 <div class="form-group">
-                                    <label for="code">Code</label>
+                                    <label for="code">Amp</label>
                                     <textarea id="code" name="amp" class="form-control" rows="10" placeholder="Enter your amp code here"></textarea>
                                 </div>
                             </div>
