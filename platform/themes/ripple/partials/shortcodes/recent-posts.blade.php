@@ -208,6 +208,9 @@
                                 </div>
                             </div>
                     </div>
+                    <div class="row">
+                        @include('ads.includes.SIZE_300X250_TOP')
+                    </div>
                     <div class="page-content">
                         <div class="post-group">
                             <div class="post-group__header">
