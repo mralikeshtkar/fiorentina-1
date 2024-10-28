@@ -136,32 +136,28 @@
                 filter: "video",
                 onSelectFiles: function (e, t) {
                     const container = $('#videoPreviewContainer');
-                    totalVideos += e.length; // Add newly uploaded videos to total count
+                    const currentVideoCount = container.children().length; // Count existing videos in the container
+                    totalVideos = currentVideoCount + e.length; // Update totalVideos based on newly added videos
 
-                    // Build select options based on the new total number of videos
-                    let selectOptions = '';
-                    for (let j = 1; j <= totalVideos; j++) {
-                        selectOptions += `<option value="${j}">${j}</option>`;
-                    }
-
-                    // Append each selected video with the updated select box
-                    e.forEach((i, k) => {
+                    e.forEach((i, index) => {
+                        // Automatically assign order based on upload sequence
+                        const orderValue = currentVideoCount + index + 1; // Start from the next available order
                         const html = `
-                        <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
-                            <input type="hidden" name="videos[]" value="${i.id}">
-                            <div class="w-100 p-2 border border-2 rounded-2">
-                                <video src="${i.preview_url}" class="w-100" controls></video>
-                                <div class="mt-1">
-                                    <label for="orderSelect-${i.id}">Select Order</label>
-                                    <select name="order[${i.id}]" id="orderSelect-${i.id}" class="form-select">
-                                        ${selectOptions}
-                                    </select>
-                                    <button type="button" class="btn btn-danger video-preview-item-delete mt-2">
-                                        Delete
-                                    </button>
+                            <div class="col-12 col-md-6 col-lg-4 mb-3 video-preview-item">
+                                <input type="hidden" name="videos[]" value="${i.id}">
+                                <div class="w-100 p-2 border border-2 rounded-2">
+                                    <video src="${i.preview_url}" class="w-100" controls></video>
+                                    <div class="mt-1">
+                                        <label for="orderSelect-${i.id}">Select Order</label>
+                                        <select name="order[${i.id}]" id="orderSelect-${i.id}" class="form-select">
+                                            ${generateOrderOptions(orderValue)}
+                                        </select>
+                                        <button type="button" class="btn btn-danger video-preview-item-delete mt-2">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         `;
                         container.append(html);
                     });
@@ -169,16 +165,25 @@
                     // Update the order select options for all videos based on the new total count
                     updateAllOrderSelectBoxes(totalVideos);
                 }
-            })
+            });
         }));
+
+        // Function to generate select options up to totalVideos, with the specified selected order
+        function generateOrderOptions(selectedOrder) {
+            let options = '';
+            for (let j = 1; j <= totalVideos; j++) {
+                options += `<option value="${j}" ${j === selectedOrder ? 'selected' : ''}>${j}</option>`;
+            }
+            return options;
+        }
 
         // Function to update the order select options for all existing videos
         function updateAllOrderSelectBoxes(totalVideos) {
             const allSelectBoxes = document.querySelectorAll('#videoPreviewContainer select');
-            allSelectBoxes.forEach((selectBox) => {
+            allSelectBoxes.forEach((selectBox, index) => {
                 let options = '';
                 for (let j = 1; j <= totalVideos; j++) {
-                    options += `<option value="${j}">${j}</option>`;
+                    options += `<option value="${j}" ${j === index + 1 ? 'selected' : ''}>${j}</option>`;
                 }
                 selectBox.innerHTML = options;
             });
