@@ -5121,3 +5121,7 @@ header>.container {
     padding: 25px 40px;
     background-color: rgb(201, 154, 245);
 }
+
+.upcoming-match-sidebar p {
+    color: #000;
+}
