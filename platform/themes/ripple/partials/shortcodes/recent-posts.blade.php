@@ -315,7 +315,10 @@
                         Serie B
                     </div>
                     @include('videos.includes.adsvideo')
-                    {{--                            @include('videos.includes.adsvideo', ['videos' => $videos]) --}}
+
+                    <div class="row mt-30 ad-top-sidebar">
+                        @include('ads.includes.SIZE_300X250_C1')
+                    </div>
 </section>
 </div>
 
