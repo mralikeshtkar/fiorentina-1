@@ -172,257 +172,224 @@
 
                 @endphp
                 <div class="col-lg-4">
-                    <div class="row align-items-center upcoming-match">
-                        <!-- Match Date, Time, and Venue -->
-                        <div class="col-md-3">
-                            <p>{{ ucwords(\Carbon\Carbon::parse($match->match_date)->locale('it')->timezone('Europe/Rome')->isoFormat('dddd D MMMM [ore] H:mm')," \t\r\n\f\v") }}
-                            </p>
-                        </div>
-
-                        <!-- Team Logos and Names -->
-                        <div class="col-md-6 text-center">
-                            <div class="row">
-                                <div class="col-6">
-                                    <img src="{{ $home_team['logo'] }}" alt="{{ $home_team['name'] }} Crest"
-                                        style="height: 30px; margin-bottom: 10px;">
-                                    <h5>{{ $home_team['name'] }}</h5>
-                                </div>
-                                <div class="col-6">
-                                    <img src="{{ $away_team['logo'] }}" alt="{{ $away_team['name'] }} Crest"
-                                        style="height: 30px; margin-bottom: 10px;">
-                                    <h5>{{ $away_team['name'] }}</h5>
+                    <div class="page-sidebar">
+                        <section>
+                            <div class="page-content">
+                                <div class="post-group">
+                                    <div class="post-group__header">
+                                        <h3 class="post-group__title">CLASSIFICA SERIE A</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Ticket Buttons -->
-                        <div class="col-md-3">
-                            <div class="d-grid">
-                                <a href="https://laviola.collaudo.biz/diretta?match_id={{ $match->match_id }}"
-                                    class="btn-sm btn-primary mb-2 fiorentina-btn" style="grid-area: auto;">Vai alla
-                                    diretta!</a>
+
+                            <div>
+                                @php
+                                    $updateMessage = App\Http\Controllers\StandingController::fetchStandingsIfNeeded();
+                                    $updateScheduledMessage = App\Http\Controllers\StandingController::fetchScheduledMatches();
+                                @endphp
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-sidebar">
-                    <section>
-                        <div class="page-content">
-                            <div class="post-group">
-                                <div class="post-group__header">
-                                    <h3 class="post-group__title">CLASSIFICA SERIE A</h3>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div>
-                            @php
-                                $updateMessage = App\Http\Controllers\StandingController::fetchStandingsIfNeeded();
-                                $updateScheduledMessage = App\Http\Controllers\StandingController::fetchScheduledMatches();
-                            @endphp
-                        </div>
-                        <table class="table table-sm table-striped">
-                            <thead
-                                style="
+                            <table class="table table-sm table-striped">
+                                <thead
+                                    style="
                             background: blueviolet;
                             border: 1px solid white;
                             color: white;
                             font-weight: 900;
                         ">
-                                <tr>
-                                    <th style="border-right: 1px solid white;"></th>
-                                    <th style="border-right: 1px solid white;">PT</th>
-                                    <th style="border-right: 1px solid white;">G</th>
-                                    <th style="border-right: 1px solid white;">V</th>
-                                    <th style="border-right: 1px solid white;">N</th>
-                                    <th style="border-right: 1px solid white;">P</th>
-                                    <th>DR</th>
-                                </tr>
-                            </thead>
-                            <tbody
-                                style="
+                                    <tr>
+                                        <th style="border-right: 1px solid white;"></th>
+                                        <th style="border-right: 1px solid white;">PT</th>
+                                        <th style="border-right: 1px solid white;">G</th>
+                                        <th style="border-right: 1px solid white;">V</th>
+                                        <th style="border-right: 1px solid white;">N</th>
+                                        <th style="border-right: 1px solid white;">P</th>
+                                        <th>DR</th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    style="
                             background: white;
                             border: 1px solid white;
                         ">
 
-                                @foreach (App\Models\Standing::all() as $index => $standing)
-                                    @php
-                                        // Assign special styles or labels based on the position
-                                        $rank = $index + 1;
-                                        $labelClass = '';
-                                        if ($rank <= 4) {
-                                            $labelClass = 'badge badge-success'; // First place
-                                        } elseif ($rank == 5) {
-                                            $labelClass = 'badge badge-warning'; // Top 4
-                                        } elseif ($rank == 6) {
-                                            $labelClass = 'badge badge-warning'; // Top 6
-                                        } elseif ($rank >= 18) {
-                                            $labelClass = 'badge badge-danger'; // Top 6
-                                        } else {
-                                            $labelClass = 'text-dark badge badge-light'; // Top 6
-                                        }
-                                    @endphp
+                                    @foreach (App\Models\Standing::all() as $index => $standing)
+                                        @php
+                                            // Assign special styles or labels based on the position
+                                            $rank = $index + 1;
+                                            $labelClass = '';
+                                            if ($rank <= 4) {
+                                                $labelClass = 'badge badge-success'; // First place
+                                            } elseif ($rank == 5) {
+                                                $labelClass = 'badge badge-warning'; // Top 4
+                                            } elseif ($rank == 6) {
+                                                $labelClass = 'badge badge-warning'; // Top 6
+                                            } elseif ($rank >= 18) {
+                                                $labelClass = 'badge badge-danger'; // Top 6
+                                            } else {
+                                                $labelClass = 'text-dark badge badge-light'; // Top 6
+                                            }
+                                        @endphp
 
-                                    <tr style="border-bottom:1px solid blueviolet">
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
-                                            style="border-right: 1px solid blueviolet;">
-                                            <span class="{{ $labelClass }}">{{ $rank }}</span>
-                                            <img src="{{ $standing->crest_url }}" width="15">
-                                            {{ $standing->short_name }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
-                                            style="border-right: 1px solid blueviolet;">
-                                            {{ $standing->points }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                            style="border-right: 1px solid blueviolet;text-align:center">
-                                            {{ $standing->played_games }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                            style="border-right: 1px solid blueviolet;text-align:center">
-                                            {{ $standing->won }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                            style="border-right: 1px solid blueviolet;text-align:center">
-                                            {{ $standing->draw }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                            style="border-right: 1px solid blueviolet;text-align:center">
-                                            {{ $standing->lost }}
-                                        </td>
-                                        <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
-                                            style="text-align:center">{{ $standing->goal_difference }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="legend mb-4">
-                            <span class="badge badge-success"
-                                style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
-                            Champions League
-                            <span class="badge badge-warning"
-                                style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
-                            Europa & Conference League
-                            <br>
-                            <span class="badge badge-danger"
-                                style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
-                            Serie B
-                        </div>
-                        @include('videos.includes.adsvideo')
-                        {{--                            @include('videos.includes.adsvideo', ['videos' => $videos]) --}}
-                    </section>
-                </div>
+                                        <tr style="border-bottom:1px solid blueviolet">
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
+                                                style="border-right: 1px solid blueviolet;">
+                                                <span class="{{ $labelClass }}">{{ $rank }}</span>
+                                                <img src="{{ $standing->crest_url }}" width="15">
+                                                {{ $standing->short_name }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;" @endif
+                                                style="border-right: 1px solid blueviolet;">
+                                                {{ $standing->points }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                                                style="border-right: 1px solid blueviolet;text-align:center">
+                                                {{ $standing->played_games }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                                                style="border-right: 1px solid blueviolet;text-align:center">
+                                                {{ $standing->won }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                                                style="border-right: 1px solid blueviolet;text-align:center">
+                                                {{ $standing->draw }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                                                style="border-right: 1px solid blueviolet;text-align:center">
+                                                {{ $standing->lost }}
+                                            </td>
+                                            <td @if ($standing->short_name == 'Fiorentina') style="background-color:#8a2be270 !important;text-align:center" @endif
+                                                style="text-align:center">{{ $standing->goal_difference }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="legend mb-4">
+                                <span class="badge badge-success"
+                                    style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
+                                Champions League
+                                <span class="badge badge-warning"
+                                    style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
+                                Europa & Conference League
+                                <br>
+                                <span class="badge badge-danger"
+                                    style="display: inline-block; width: 15px; height: 15px; margin-right: 5px;"></span>
+                                Serie B
+                            </div>
+                            @include('videos.includes.adsvideo')
+                            {{--                            @include('videos.includes.adsvideo', ['videos' => $videos]) --}}
+                        </section>
+                    </div>
 
-                @if ($poll)
-                    <div class="row container mt-4">
-                        <div class="col-12">
-                            <div>
-                                <h1>{{ $poll->question }}</h1>
-                                <div id="options-container">
-                                    @foreach ($poll->options as $option)
-                                        <div class="row">
-                                            <button class="col-12 btn btn-outline-primary vote-btn"
-                                                data-id="{{ $option->id }}"
-                                                style="--fill-width: {{ $option->percentage }}%;">
-                                                <span
-                                                    @if ($option->percentage > 16.66) class="option-text-w"
+                    @if ($poll)
+                        <div class="row container mt-4">
+                            <div class="col-12">
+                                <div>
+                                    <h1>{{ $poll->question }}</h1>
+                                    <div id="options-container">
+                                        @foreach ($poll->options as $option)
+                                            <div class="row">
+                                                <button class="col-12 btn btn-outline-primary vote-btn"
+                                                    data-id="{{ $option->id }}"
+                                                    style="--fill-width: {{ $option->percentage }}%;">
+                                                    <span
+                                                        @if ($option->percentage > 16.66) class="option-text-w"
 
                                             @else
                                                 class="option-text-p" @endif>
-                                                    {{ $option->option }}</span>
-                                                <span
-                                                    @if ($option->percentage < 88) class="percentage-text-p"
+                                                        {{ $option->option }}</span>
+                                                    <span
+                                                        @if ($option->percentage < 88) class="percentage-text-p"
 
                                             @else
                                                 class="percentage-text-w" @endif>{{ $totalVotes > 0 ? round(($option->votes / $totalVotes) * 100, 2) : 0 }}
-                                                    %</span>
-                                            </button>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div id="results-container">
-                                    @foreach ($poll->options as $option)
-                                        <div class="result" id="result-{{ $option->id }}">
-                                            {{ $option->option }}: <span class="percentage">0%</span>
-                                        </div>
-                                    @endforeach
+                                                        %</span>
+                                                </button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div id="results-container">
+                                        @foreach ($poll->options as $option)
+                                            <div class="result" id="result-{{ $option->id }}">
+                                                {{ $option->option }}: <span class="percentage">0%</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endif
-                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                        const buttons = document.querySelectorAll('.vote-btn');
-                        buttons.forEach(button => {
-                            button.onclick = function() {
-                                const optionId = this.getAttribute('data-id');
-                                fetch(`/poll-options/${optionId}/vote`, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': csrfToken
-                                        },
-                                        body: JSON.stringify({
-                                            // Additional data can be added here if needed
+                    @endif
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                            const buttons = document.querySelectorAll('.vote-btn');
+                            buttons.forEach(button => {
+                                button.onclick = function() {
+                                    const optionId = this.getAttribute('data-id');
+                                    fetch(`/poll-options/${optionId}/vote`, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': csrfToken
+                                            },
+                                            body: JSON.stringify({
+                                                // Additional data can be added here if needed
+                                            })
                                         })
-                                    })
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            throw new Error('Network response was not ok: ' + response
-                                                .statusText);
-                                        }
-                                        return response.json();
-                                    })
-                                    .then(data => {
-                                        updateResults(data.results, optionId);
-                                    })
-                                    .catch(error => console.error('Error:', error));
-                                this.disabled = true; // Disable the button after vote
-                            };
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok: ' + response
+                                                    .statusText);
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            updateResults(data.results, optionId);
+                                        })
+                                        .catch(error => console.error('Error:', error));
+                                    this.disabled = true; // Disable the button after vote
+                                };
+                            });
                         });
-                    });
 
-                    function updateResults(results, votedOptionId) {
-                        results.forEach(result => {
-                            const button = document.querySelector(`.vote-btn[data-id="${result.id}"]`);
-                            if (button) {
-                                const percentage = result.percentage;
-                                const optionText = result.option;
+                        function updateResults(results, votedOptionId) {
+                            results.forEach(result => {
+                                const button = document.querySelector(`.vote-btn[data-id="${result.id}"]`);
+                                if (button) {
+                                    const percentage = result.percentage;
+                                    const optionText = result.option;
 
-                                // Update button width according to the new percentage
-                                button.style.setProperty('--fill-width', `${percentage}%`);
-                                button.querySelector('.percentage-text').textContent = `${percentage}%`;
+                                    // Update button width according to the new percentage
+                                    button.style.setProperty('--fill-width', `${percentage}%`);
+                                    button.querySelector('.percentage-text').textContent = `${percentage}%`;
 
-                                // Optionally disable other buttons after voting
-                                if (result.id.toString() !== votedOptionId) {
-                                    button.disabled = true;
+                                    // Optionally disable other buttons after voting
+                                    if (result.id.toString() !== votedOptionId) {
+                                        button.disabled = true;
+                                    }
                                 }
-                            }
-                        });
-                    }
-                </script>
+                            });
+                        }
+                    </script>
 
-                <style>
-                    .btn-purple {
-                        background-color: purple;
-                        color: white;
-                    }
-                </style>
+                    <style>
+                        .btn-purple {
+                            background-color: purple;
+                            color: white;
+                        }
+                    </style>
+
+                </div>
+            @endif
+
+
+
+
 
         </div>
-        @endif
-
-
-
-
-
-    </div>
     </div>
 </section>
 
