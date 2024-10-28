@@ -5116,4 +5116,8 @@ header>.container {
     user-select: none;
 }
 
-.upcoming-match-sidebar {}
+.upcoming-match-sidebar {
+    margin-top: 20px;
+    padding: 25px 40px;
+    background-color: rgb(201, 154, 245);
+}
