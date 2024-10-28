@@ -162,7 +162,15 @@
             </div>
 
             @if ($topSidebarContent)
+                @php
+                    $match = App\Models\Calendario::where('status', 'SCHEDULED')
+                        ->orWhere('status', 'LIVE')
+                        ->orderBy('match_date', 'asc')
+                        ->first();
+                    $home_team = json_decode($match->home_team, true);
+                    $away_team = json_decode($match->away_team, true);
 
+                @endphp
                 <div class="col-lg-4">
                     <div class="row align-items-center upcoming-match">
                         <!-- Match Date, Time, and Venue -->
