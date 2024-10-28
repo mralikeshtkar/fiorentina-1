@@ -5125,3 +5125,9 @@ header>.container {
 .upcoming-match-sidebar p {
     color: #000;
 }
+.ad-top-sidebar .container .row{
+
+    display: flex;
+    justify-content: center !important;
+
+}

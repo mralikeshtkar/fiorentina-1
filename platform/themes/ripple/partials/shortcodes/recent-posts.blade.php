@@ -208,7 +208,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="row justify-content-start mt-30">
+                    <div class="row mt-30 ad-top-sidebar">
                         @include('ads.includes.SIZE_300X250_TOP')
                     </div>
                     <div class="page-content">
