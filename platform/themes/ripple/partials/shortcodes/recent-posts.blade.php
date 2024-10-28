@@ -174,9 +174,9 @@
                 <div class="col-lg-4">
                     <div class="page-sidebar">
                         <section>
-                            <div class="row align-items-center upcoming-match">
+                            <div class="row align-items-center upcoming-match upcoming-match-sidebar">
                                 <!-- Match Date, Time, and Venue -->
-                                <div class="col-md-12">
+                                <div class="col-md-12 text-center">
                                     <p>{{ ucwords(\Carbon\Carbon::parse($match->match_date)->locale('it')->timezone('Europe/Rome')->isoFormat('dddd D MMMM [ore] H:mm')," \t\r\n\f\v") }}
                                     </p>
                                 </div>
