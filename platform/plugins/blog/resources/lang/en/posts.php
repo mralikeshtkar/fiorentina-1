@@ -14,6 +14,7 @@ return [
         'is_featured' => 'Is featured?',
         'note' => 'Note content',
         'format_type' => 'Format',
+        'scheduled_publishing' => 'Pubblicazione programmata',
     ],
     'cannot_delete' => 'Post could not be deleted',
     'post_deleted' => 'Post deleted',

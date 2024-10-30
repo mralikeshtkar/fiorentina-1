@@ -13,8 +13,11 @@ use Botble\Blog\Models\Post;
 use Botble\Blog\Services\StoreCategoryService;
 use Botble\Blog\Services\StoreTagService;
 use Botble\Blog\Tables\PostTable;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 
 class PostController extends BaseController
 {
@@ -40,10 +43,11 @@ class PostController extends BaseController
     }
 
     public function store(
-        PostRequest $request,
-        StoreTagService $tagService,
+        PostRequest          $request,
+        StoreTagService      $tagService,
         StoreCategoryService $categoryService
-    ) {
+    )
+    {
         $postForm = PostForm::create();
 
         $postForm->saving(function (PostForm $form) use ($request, $tagService, $categoryService) {
@@ -80,15 +84,20 @@ class PostController extends BaseController
     }
 
     public function update(
-        Post $post,
-        PostRequest $request,
-        StoreTagService $tagService,
+        Post                 $post,
+        PostRequest          $request,
+        StoreTagService      $tagService,
         StoreCategoryService $categoryService,
-    ) {
+    )
+    {
         PostForm::createFromModel($post)
             ->setRequest($request)
             ->saving(function (PostForm $form) use ($categoryService, $tagService) {
                 $request = $form->getRequest();
+
+                $request->merge([
+                    'published_at' => $request->filled('published_at') ? Carbon::parse($request->published_at) : null,
+                ]);
 
                 $post = $form->getModel();
                 $post->fill($request->input());

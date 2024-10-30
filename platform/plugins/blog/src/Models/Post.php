@@ -9,6 +9,7 @@ use Botble\Revision\RevisionableTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Schema\Builder;
 
 class Post extends BaseModel
 {
@@ -37,6 +38,7 @@ class Post extends BaseModel
         'status',
         'author_id',
         'author_type',
+        'published_at',
     ];
 
     protected static function booted(): void
@@ -51,6 +53,7 @@ class Post extends BaseModel
         'status' => BaseStatusEnum::class,
         'name' => SafeContent::class,
         'description' => SafeContent::class,
+        'published_at' => 'datetime',
     ];
 
     public function tags(): BelongsToMany
@@ -81,7 +84,7 @@ class Post extends BaseModel
     {
         return Attribute::make(
             get: function (): ?string {
-                if (! $this->content) {
+                if (!$this->content) {
                     return null;
                 }
 
@@ -90,11 +93,35 @@ class Post extends BaseModel
                 $timeToRead = $this->getMetaData('time_to_read', true);
 
                 if ($timeToRead != null) {
-                    return number_format((float) $timeToRead);
+                    return number_format((float)$timeToRead);
                 }
 
                 return number_format(ceil(str_word_count(strip_tags($this->content)) / 200));
             }
         );
+    }
+
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function scopePublished($q): mixed
+    {
+        return $q->where(function ($q) {
+            $q->whereNull('published_at')
+                ->where('published_at', '<=', now());
+        });
+    }
+
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function scopeUnpublished($q): mixed
+    {
+        return $q->where(function ($q) {
+            $q->whereNotNull('published_at')
+                ->where('published_at', '>', now());
+        });
     }
 }

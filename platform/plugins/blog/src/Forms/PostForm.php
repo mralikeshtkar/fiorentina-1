@@ -3,6 +3,7 @@
 namespace Botble\Blog\Forms;
 
 use Botble\Base\Forms\FieldOptions\ContentFieldOption;
+use Botble\Base\Forms\FieldOptions\DatePickerFieldOption;
 use Botble\Base\Forms\FieldOptions\DescriptionFieldOption;
 use Botble\Base\Forms\FieldOptions\IsFeaturedFieldOption;
 use Botble\Base\Forms\FieldOptions\NameFieldOption;
@@ -10,6 +11,9 @@ use Botble\Base\Forms\FieldOptions\RadioFieldOption;
 use Botble\Base\Forms\FieldOptions\SelectFieldOption;
 use Botble\Base\Forms\FieldOptions\StatusFieldOption;
 use Botble\Base\Forms\FieldOptions\TagFieldOption;
+use Botble\Base\Forms\FieldOptions\TextFieldOption;
+use Botble\Base\Forms\Fields\DatePickerField;
+use Botble\Base\Forms\Fields\DatetimeField;
 use Botble\Base\Forms\Fields\EditorField;
 use Botble\Base\Forms\Fields\MediaImageField;
 use Botble\Base\Forms\Fields\OnOffField;
@@ -18,6 +22,7 @@ use Botble\Base\Forms\Fields\SelectField;
 use Botble\Base\Forms\Fields\TagField;
 use Botble\Base\Forms\Fields\TextareaField;
 use Botble\Base\Forms\Fields\TextField;
+use Botble\Base\Forms\Fields\TimeField;
 use Botble\Base\Forms\Fields\TreeCategoryField;
 use Botble\Base\Forms\FormAbstract;
 use Botble\Blog\Http\Requests\PostRequest;
@@ -41,6 +46,9 @@ class PostForm extends FormAbstract
                 IsFeaturedFieldOption::make()
                     ->toArray()
             )
+            ->add('published_at', DatetimeField::class, DatePickerFieldOption::make()
+                ->label(trans('plugins/blog::posts.form.scheduled_publishing'))
+                ->defaultValue(null))
             ->add('content', EditorField::class, ContentFieldOption::make()->allowedShortcodes()->toArray())
             ->add('status', SelectField::class, StatusFieldOption::make()->toArray())
             ->when(get_post_formats(true), function (PostForm $form, array $postFormats) {
@@ -73,9 +81,9 @@ class PostForm extends FormAbstract
                     }, function (SelectFieldOption $fieldOption) {
                         return $fieldOption
                             ->selected(Category::query()
-                            ->where('is_default', 1)
-                            ->pluck('id')
-                            ->all());
+                                ->where('is_default', 1)
+                                ->pluck('id')
+                                ->all());
                     })
                     ->toArray()
             )
@@ -89,12 +97,12 @@ class PostForm extends FormAbstract
                         return $fieldOption
                             ->selected(
                                 $this
-                                ->getModel()
-                                ->tags()
-                                ->select('name')
-                                ->get()
-                                ->map(fn (Tag $item) => $item->name)
-                                ->implode(',')
+                                    ->getModel()
+                                    ->tags()
+                                    ->select('name')
+                                    ->get()
+                                    ->map(fn(Tag $item) => $item->name)
+                                    ->implode(',')
                             );
                     })
                     ->placeholder(trans('plugins/blog::base.write_some_tags'))

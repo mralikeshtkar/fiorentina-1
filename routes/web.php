@@ -14,6 +14,7 @@
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\MatchCommentaryController;
 use Botble\Base\Facades\AdminHelper;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\NotificaController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DirettaController;
 use App\Http\Controllers\VideoController;
-
+use Illuminate\Support\Facades\Schema;
 
 
 Route::get('/match/{matchId}/commentaries', [MatchCommentaryController::class, 'fetchLatestCommentaries']);
@@ -91,3 +92,8 @@ Route::get('/delete-commentary', [DirettaController::class, 'deleteCommentary'])
 Route::get('/delete-chat', [DirettaController::class, 'deleteChat'])->name('delete-chat');
 Route::get('/undo-commentary', [DirettaController::class, 'undoCommentary'])->name('undo-commentary');
 Route::get('/undo-chat', [DirettaController::class, 'undoChat'])->name('undo-chat');
+Route::get('/test', function (){
+    Schema::table('posts', function (Blueprint $table) {
+        $table->timestamp('published_at')->nullable();
+    });
+});
